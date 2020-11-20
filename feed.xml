@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tomatenstau.de</title>
+    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 02 May 2018 14:20:31 +0200</pubDate>
+    <lastBuildDate>Wed, 02 May 2018 14:20:31 +0200</lastBuildDate>
+    <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>Tomatenstau.de</title>
+        <description>&lt;p&gt;Diese Seite ist unter anderem für Präsentationszwecke gedacht. Jegliche Präsentationen befinden sich (bald) &lt;a href=&quot;&quot;&gt;hier&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Wenn man auf dieser Seite gelandet ist, dann wurde man entweder darauf aufmerksam gemacht oder hat zuviel Zeit mit googlen verbracht.
+Sollte Letzteres der Fall sein und man erwartet eine Seite über Tomaten oder dergleichen, dann sollte man sich wieder der
+Suchmaschine seines Vertrauens widmen.&lt;/p&gt;
+&lt;div&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; name=&quot;code&quot; id=&quot;code1&quot; style=&quot;display: none;&quot;&gt;#!/usr/bin/perl
+use strict;
+print &quot;Hello World!&quot;; &lt;/textarea&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Wed, 15 Jul 2015 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/index.html</link>
+        <guid isPermaLink="true">http://localhost:4000/index.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Palindrom</title>
+        <description>&lt;div class=&quot;entry&quot;&gt;
+  &lt;p&gt;&lt;img src=&quot;/img/reliefpfeiler.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;Ein Palindrom ist ein Wort was sowohl vorw&amp;auml;rts als auch r&amp;uuml;ckw&amp;auml;rts gelesen gleich bleibt. Beispielsweise &amp;quot;Otto&amp;quot; oder &amp;quot;Rotor&amp;quot;.&lt;/p&gt;
+  &lt;p&gt;Nun schreiben wir ein Programm, was uns &amp;quot;true&amp;quot; zur&amp;uuml;ckgibt wenn es sich bei dem aufgerufenen Wort um ein Palindrom handelt und &amp;quot;false&amp;quot; falls es kein Palindrom ist. &lt;img src=&quot;/img/smileys/smiley-computer.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;div id=&quot;code_palindrom&quot;&gt;
+    &lt;textarea class=&quot;codeblock_instant&quot; name=&quot;code1&quot; id=&quot;code1&quot;&gt;&amp;#35;/usr/bin/perl
+
+use strict&amp;#59;
+use warnings&amp;#59;
+
+foreach my &amp;#36;wort &amp;#40; qw&amp;#40;Der Reliefpfeiler namens Otto ist kein Reittier&amp;#41; &amp;#41; &amp;#123;
+  print &quot;Palindrom: &amp;#36;wort\n&quot; if palindrom&amp;#40; &amp;#36;wort &amp;#41;&amp;#59;
+&amp;#125;
+
+sub palindrom &amp;#123;
+  my &amp;#40; &amp;#36;wort &amp;#41; = &amp;#64;_&amp;#59;
+
+  &amp;#35; Wort nach Buchstaben splitten
+  my &amp;#64;buchstaben = split /, &amp;#36;wort&amp;#59;
+
+  &amp;#35; Wort in umgekehrter Reihenfolge speichern
+  my &amp;#64;buchstaben_rev = reverse &amp;#64;buchstaben&amp;#59;
+  for &amp;#40; my &amp;#36;i = 0&amp;#59; &amp;#36;i &amp;lt; scalar&amp;#40; &amp;#64;buchstaben &amp;#41;&amp;#59; &amp;#36;i++ &amp;#41; &amp;#123;
+
+    &amp;#35; wenn der letzte Buchstabe nicht dem Ersten entspricht,
+    &amp;#35; dann ist es kein Palindrom
+    &amp;#35; lc = lowercase
+    if &amp;#40; lc&amp;#40; &amp;#36;buchstaben[&amp;#36;i] &amp;#41; ne lc&amp;#40; &amp;#36;buchstaben_rev[&amp;#36;i] &amp;#41; &amp;#41; &amp;#123;
+      return 0&amp;#59;
+    &amp;#125;
+  &amp;#125;
+
+  &amp;#35; wenn noch nicht abgerochen ist, dann ist es definitiv ein Palindrom,
+  &amp;#35; daher return true
+  return 1&amp;#59;
+&amp;#125;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Es ensteht folgende Ausgabe:&lt;/p&gt;
+  &lt;div class=&quot;consolenblock&quot;&gt;
+Palindrom: Reliefpfeiler&lt;br /&gt;
+Palindrom: Otto&lt;br /&gt;
+Palindrom: Reittier
+  &lt;/div&gt;
+  &lt;p&gt;Das Programm funktioniert &lt;img src=&quot;/img/smileys/thumbsup.gif&quot; alt=&quot;&quot; /&gt;.&lt;/p&gt;
+  &lt;p&gt;Folgend noch ein kleiner ... &amp;quot;etwas&amp;quot; h&amp;auml;sslicher 1-Zeiler.&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; name=&quot;code_oneliner&quot; id=&quot;code_oneliner&quot;&gt;sub is_palindrom &amp;#123;
+  return &amp;#40; lc&amp;#40; &amp;#36;_[0] &amp;#41; eq &amp;#40; reverse lc&amp;#40; &amp;#36;_[0] &amp;#41; &amp;#41; &amp;#41;;
+&amp;#125;&lt;/textarea&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 18 Jul 2014 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/code/perl/palindrom.html</link>
+        <guid isPermaLink="true">http://localhost:4000/code/perl/palindrom.html</guid>
+        
+        
+        <category>code</category>
+        
+        <category>perl</category>
+        
+      </item>
+    
+      <item>
+        <title>strict</title>
+        <description>&lt;div class=&quot;entry&quot;&gt;
+  &lt;p&gt;&lt;img src=&quot;/img/tomato1_k.png&quot; alt=&quot;&quot; /&gt;
+  &lt;/p&gt;
+  &lt;p&gt;Die Codeschnipsel die ich hier verwende k&amp;ouml;nnen gerne f&amp;uuml;r private Zwecke gebraucht werden.&lt;/p&gt;
+
+  &lt;textarea class=&quot;codeblock_instant&quot; name=&quot;code0&quot; id=&quot;code0&quot; readonly=&quot;&quot;&gt;#!/usr/bin/perl
+
+use strict;
+use warnings;
+print &quot;Das ist ein Test fuer die Site 'www.tomatenstau.de'\n&quot;;&lt;/textarea&gt;
+  &lt;p&gt;Dieser Codeschnipsel ist zun&amp;auml;chst nur ein Test. Zu beachten ist jedoch das &lt;span class=&quot;code&quot;&gt;&lt;span class=&quot;code_function&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;code_pragma&quot;&gt;strict&lt;/span&gt;;&lt;/span&gt;
+  und das &lt;span class=&quot;code&quot;&gt;&lt;span class=&quot;code_function&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;code_pragma&quot;&gt;warnings&lt;/span&gt;;&lt;/span&gt;.
+  Auch wenn dieses Script h&amp;ouml;chstwahrscheinlich keine Warnungen ausgeben wird und auch die &quot;Exaktheit&quot; bei einer Zeile Code, die nur was ausgibt, nicht von Relevanz
+  ist, so sollte man diese 4 W&amp;ouml;rter immer am Anfang seines Codes stehen haben.&lt;/p&gt;
+  &lt;p&gt;Ein Beispiel warum dies so wichtig ist:&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; name=&quot;code1&quot; id=&quot;code1&quot; readonly=&quot;&quot;&gt;$line = &amp;lt;STDIN&amp;gt;
+chomp $line;
+print &quot;Der Benutzer hat $line eingegeben.\n&quot;;&lt;/textarea&gt;
+  &lt;p&gt;Dieser Code wird ohne Probleme funktionieren. Doch wenn man ihn modifiziert:&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; name=&quot;code2&quot; id=&quot;code2&quot; readonly=&quot;&quot;&gt;use strict;
+$line = &amp;lt;STDIN&amp;gt;
+chomp $line;
+print &quot;Der Benutzer hat $line eingegeben.\n&quot;;&lt;/textarea&gt;
+  &lt;p&gt;Wird Perl ihn nicht mehr compilieren, da er nun einige Fehler aufweist:&lt;/p&gt;
+  &lt;div class=&quot;consolenblock&quot;&gt;
+    Global symbol &quot;$line&quot; requires explicit package name at foo.pl line 3. &lt;br /&gt;
+    Global symbol &quot;$line&quot; requires explicit package name at foo.pl line 4. &lt;br /&gt;
+    Global symbol &quot;$line&quot; requires explicit package name at foo.pl line 5. &lt;br /&gt;
+    Execution of foo.pl aborted due to compilation errors.
+  &lt;/div&gt;&lt;!-- end .consolenblock --&gt;
+  &lt;p&gt;Doch wie L&amp;ouml;sen wir dieses Problem? Ganz einfach - das &quot;Zauberwort&quot; ist &lt;span class=&quot;code code_function&quot;&gt;my&lt;/span&gt;.&lt;/p&gt;
+  &lt;p&gt;Passt man den Code nun dementsprechend an, sieht er in etwa so aus:&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; name=&quot;code3&quot; id=&quot;code3&quot; readonly=&quot;&quot;&gt;use strict;
+my $line = &amp;lt;STDIN&amp;gt;
+chomp $line;
+print &quot;Der Benutzer hat $line eingegeben.\n&quot;;&lt;/textarea&gt;
+  &lt;p&gt;Nun, was ist passiert. Und was macht &lt;span class=&quot;code code_function&quot;&gt;my&lt;/span&gt; &amp;uuml;berhaupt?&lt;/p&gt;
+  &lt;p&gt;Zun&amp;auml;chst sei einmal gesagt, dass &lt;span class=&quot;code code_function&quot;&gt;my&lt;/span&gt; eine Funktion ist.&lt;/p&gt;
+  &lt;p class=&quot;quote_source&quot;&gt;Hinweis &lt;a href=&quot;http://perldoc.perl.org/perlfunc.html#Keywords-related-to-scoping&quot;&gt;Perldoc.perl.org/perlfunc.html&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;div class=&quot;codeblock quote&quot;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;my EXPR&lt;/li&gt;
+      &lt;li&gt;my TYPE EXPR&lt;/li&gt;
+      &lt;li&gt;my EXPR : ATTRS&lt;/li&gt;
+      &lt;li&gt;my TYPE EXPR : ATTRS&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;A my declares the listed variables to be local (lexically) to the enclosing block, file, or eval. If more than one value is listed, the list must be placed in parentheses.&lt;/p&gt;
+  &lt;/div&gt;&lt;!-- end .codeblock .quote --&gt;
+  &lt;p class=&quot;quote_source&quot;&gt;Zitat &lt;a href=&quot;http://perldoc.perl.org/functions/my.html&quot;&gt;Perldoc.perl.org&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;Sie &lt;abbr class=&quot;quote&quot; title=&quot;deklarieren: als etwas bezeichnen, zu etwas erkl&amp;auml;ren&quot;&gt;deklariert&lt;/abbr&gt; eine Variable. Okay...&lt;img src=&quot;/img/smileys/smiley-confused.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;Vielleicht fragst du dich jetzt - Warum verwende ich dann &lt;span class=&quot;code code_pragma&quot;&gt;strict&lt;/span&gt; und &lt;span class=&quot;code code_function&quot;&gt;my&lt;/span&gt; wenn es auch ohne geht?&lt;/p&gt;
+  &lt;p&gt;Um beim selben Beispiel wie vorhin zu bleiben, hier ein Beispiel bei dem klar wird, warum es sinnvoll ist:&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; name=&quot;code4&quot; id=&quot;code4&quot; readonly=&quot;&quot;&gt;$line = &amp;lt;STDIN&amp;gt;
+chomp $line;
+print &quot;Der Benutzer hat $lne eingegeben.\n&quot;;&lt;/textarea&gt;
+  &lt;p&gt;Man beachte, dass in der Ausgabe &lt;span class=&quot;code code_variable&quot;&gt;$lne&lt;/span&gt; statt &lt;span class=&quot;code code_variable&quot;&gt;$line&lt;/span&gt; steht.&lt;/p&gt;
+  &lt;p&gt;W&amp;uuml;rde man das Script mit &lt;span class=&quot;code&quot;&gt;&lt;span class=&quot;code_function&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;code_pragma&quot;&gt;warnings&lt;/span&gt;&lt;/span&gt; ausf&amp;uuml;hren, w&amp;uuml;rde man folgende
+  Fehlermeldung erhalten:&lt;/p&gt;
+  &lt;div class=&quot;consolenblock&quot;&gt;
+    Name &quot;main::lne&quot; used only once: possible typo at foo.pl line 4. &lt;br /&gt;
+    Use of uninitialized value $lne in concatenation (.) or string at foo.pl line 4, &amp;lt;STDIN&amp;gt; line 1.
+  &lt;/div&gt;&lt;!-- end .consolenblock --&gt;
+  &lt;p&gt;Wenn wir unseren Code nun um &lt;span class=&quot;code code_pragma&quot;&gt;strict&lt;/span&gt; und &lt;span class=&quot;code code_function&quot;&gt;my&lt;/span&gt; erweitern, er also so aussieht:&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; name=&quot;code5&quot; id=&quot;code5&quot; readonly=&quot;&quot;&gt;use strict;
+my $line = &amp;lt;STDIN&amp;gt;
+chomp $line;
+print &quot;Der Benutzer hat $lne eingegeben.\n&quot;;&lt;/textarea&gt;&lt;!-- end .consolenblock --&gt;
+  &lt;p&gt;Erhalten wir beim Versuch das Script zu Compilieren folgende Ausgabe:&lt;/p&gt;
+  &lt;div class=&quot;consolenblock&quot;&gt;
+    Global symbol &quot;$lne&quot; requires explicit package name at foo.pl line 5. &lt;br /&gt;
+    Execution of foo.pl aborted due to compilation errors.
+  &lt;/div&gt;&lt;!-- end .consolenblock --&gt;
+  &lt;p&gt;Hey! Das ist gut! &lt;img src=&quot;/img/smileys/thumbsup.gif&quot; alt=&quot;&quot; /&gt; Wir bekommen direkt beim Compilieren einen Fehler. Wir kommen also erst gar nicht dazu, den Code mit m&amp;ouml;glichen Tippfehlern kaputt zu machen.&lt;/p&gt;
+  &lt;p&gt;... Rechtschreibfehler bei der Variablendeklarierung sind, solange sie durchgehalten werden, .... na ja... eigentlich sind sie schlecht. Aber das ist ein anderes Thema. &lt;img src=&quot;/img/smileys/smiley-pfeifen.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;Soviel Text nur wegen einem Bild... ich glaub, ich muss das rausnehmen &lt;img src=&quot;/img/smileys/smiley-fg.gif&quot; alt=&quot;&quot; /&gt; &lt;/p&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 18 Jul 2014 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/code/perl/strict.html</link>
+        <guid isPermaLink="true">http://localhost:4000/code/perl/strict.html</guid>
+        
+        
+        <category>code</category>
+        
+        <category>perl</category>
+        
+      </item>
+    
+      <item>
+        <title>Pi</title>
+        <description>&lt;div class=&quot;entry&quot;&gt;
+  &lt;p&gt;Der Mathematiker &lt;a href=&quot;http://de.wikipedia.org/wiki/S._Ramanujan&quot;&gt;Srinivasa Ramanujan&lt;/a&gt; hat im Jahre 1910 die &lt;a href=&quot;http://en.wikipedia.org/wiki/Approximations_of_%CF%80#20th_century&quot;&gt;Funktion zur Ann&amp;auml;herung an &amp;pi;&lt;/a&gt; ver&amp;ouml;ffentlicht.&lt;/p&gt;
+  &lt;p&gt;In diesem Bereich soll es um eine Implementation dieser Formel in Perl gehen.&lt;/p&gt;
+  &lt;p&gt;&lt;img src=&quot;/img/pi_pie.jpg&quot; width=&quot;300px&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;Hier die verwendete Funktionsdefinition: &lt;/p&gt;
+  &lt;p&gt;&lt;img src=&quot;/img/pi_srinivasa_ramanunjan.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;Zuerst schreiben wir die rekursive Funktion f&amp;uuml;r die Berechnung der Fakult&amp;auml;t&lt;/p&gt;
+  &lt;textarea name=&quot;code_fakultaet&quot; class=&quot;codeblock_instant&quot; id=&quot;code1&quot;&gt;sub fakultaet {
+  my ( $n ) = @_;
+
+  if ( $n == 0 ) {
+    return 1;
+  }
+  else {
+    my $rekursiere = fakultaet( $n - 1 );
+    my $ergebnis   = $n * $rekursiere;
+    return $ergebnis;
+  }
+}&lt;/textarea&gt;
+      &lt;p&gt;Als n&amp;auml;chstes kommt die Darstellung der Funktion selbst unter Einbeziehung der Fakult&amp;auml;tsfunktion.&lt;/p&gt;
+      &lt;textarea name=&quot;code_pi1&quot; id=&quot;code2&quot; class=&quot;codeblock_instant&quot;&gt;sub schaetze_pi {
+
+  my $summe = 0;
+
+  # k ist die Zaehlvariable der Summe
+  my $k = 0;
+
+  # Faktor
+  my $faktor = 2 * sqrt( 2 ) / 9801;
+
+  # Summenzeichen 'von k=0 bis infinity' =&amp;gt; while 1
+  while ( 1 ) {
+
+    # Siehe Funktion
+    my $zaehler = fakultaet( 4 * $k ) * ( 1103 + 26390 * $k );
+    my $nenner  = fakultaet( $k )**4 * 396**( 4 * $k );
+    my $term    = $faktor * $zaehler / $nenner;
+    $summe += $term;
+
+    # $term ist der zu addierende Term der Summe. Wenn dieser kleiner als 1e-15
+    # die while-Schleife abbrechen
+    last if abs( $term ) &amp;lt; 1e-15;
+    $k++;
+  }
+
+  # Kehrwert zurueckgeben, da die Funktion selbst nur den Kehrwert von Pi liefert
+  return 1 / $summe;
+}&lt;/textarea&gt;
+      &lt;p&gt;Nun m&amp;uuml;ssen wir nur noch die Funktionen zusammenschreiben und schaetze_pi() aufrufen.&lt;/p&gt;
+      &lt;textarea name=&quot;code_gesamt&quot; id=&quot;code3&quot; class=&quot;codeblock_instant&quot;&gt;#/usr/bin/perl
+
+use strict;
+use warnings;
+
+print schaetze_pi();
+
+
+# Berechnet rekursiv die Fakultaet von n.
+sub fakultaet {
+  my ( $n ) = @_;
+
+  if ( $n == 0 ) {
+    return 1;
+  }
+  else {
+    my $rekursiere = fakultaet( $n - 1 );
+    my $ergebnis   = $n * $rekursiere;
+    return $ergebnis;
+  }
+}
+
+# Berechnet einen Naeherungswert von Pi.
+#
+# Algorithmus von Srinivasa Ramanujan, siehe
+# http://de.wikipedia.org/wiki/Kreiszahl
+#
+sub schaetze_pi {
+
+  my $summe = 0;
+
+  # k ist die Zaehlvariable der Summe
+  my $k = 0;
+
+  # Faktor
+  my $faktor = 2 * sqrt( 2 ) / 9801;
+
+  # Summenzeichen 'von k=0 bis infinity' =&amp;gt; while 1
+  while ( 1 ) {
+
+    # Siehe Funktion
+    my $zaehler = fakultaet( 4 * $k ) * ( 1103 + 26390 * $k );
+    my $nenner  = fakultaet( $k )**4 * 396**( 4 * $k );
+    my $term    = $faktor * $zaehler / $nenner;
+    $summe += $term;
+
+    # $term ist der zu addierende Term der Summe. Wenn dieser kleiner als 1e-15
+    # die while-Schleife abbrechen
+    last if abs( $term ) &amp;lt; 1e-15;
+    $k++;
+  }
+
+  # Kehrwert zurueckgeben, da die Funktion selbst nur den Kehrwert von Pi liefert
+  return 1 / $summe;
+}&lt;/textarea&gt;
+  &lt;p&gt;Das Ergebnis ist folgendes:&lt;/p&gt;
+  &lt;div class=&quot;consolenblock&quot;&gt;
+    3.14159265358979
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- end .entry --&gt;
+</description>
+        <pubDate>Fri, 18 Jul 2014 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/code/perl/pi.html</link>
+        <guid isPermaLink="true">http://localhost:4000/code/perl/pi.html</guid>
+        
+        
+        <category>code</category>
+        
+        <category>perl</category>
+        
+      </item>
+    
+      <item>
+        <title>Cartalk 1</title>
+        <description>&lt;div class=&quot;entry&quot;&gt;
+  &lt;p&gt;Hier ein R&amp;auml;tsel aus der amerikanischen Radiosendung &lt;em&gt;Car Talk&lt;/em&gt;:&lt;/p&gt;
+  &lt;div class=&quot;codeblock&quot;&gt;
+    &lt;p&gt;&quot;I was driving on the highway the other day recently and I happened to notice my odometer. &lt;br /&gt;Like most odometers nowadays, it shows six digits, in whole miles only -- no tenths of a mile. So, if my car had 300,000 miles, for example, I'd see 3-0-0-0-0-0. And that's all. Until I drove another mile, at which point it would read 3-0-0-0-0-1.&lt;/p&gt;
+    &lt;p&gt;&quot;Now, what I saw that day was very interesting. I noticed that the last 4 digits were palindromic, that is they read the same forwards as backwards. &lt;br /&gt;For example, &quot;5-4-4-5&quot; is a palindrome. So, my odometer could have read 3-1-5-4-4-5, with those last four digits, starting with the units, then the tens, then the hundreds, and finally the thousands, being the palindrome.&lt;/p&gt;
+    &lt;p&gt;&quot;One mile later, the last 5 numbers were palindromic. For example, it could have read 3-6-5-4-5-6.&lt;/p&gt;
+    &lt;p&gt;&quot;One mile after that, the middle 4 out of 6 numbers were palindromic. So, the first and last numbers weren't involved in the palindrome, but the middle 4 were palindromic.&lt;/p&gt;
+    &lt;p&gt;&quot;And you ready for this? One mile later, all 6 were palindromic! &lt;br /&gt;For example, 2-1-3-3-1-2. &quot;&lt;/p&gt;
+    &lt;p&gt;Pretty good, huh? I thought so. So, here again are the conditions as stated by Terry. &quot;I noticed that the last 4 digits were palindromic. I drove a mile, and the last 5 were palindromic. I drove another mile and the middle 4 were palindromic, and the ends were not involved. And then one mile later, all 6 digits were palindromic.&quot;&lt;/p&gt;
+    &lt;p&gt;The question is, what did Terry see on the odometer when he first looked?&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p class=&quot;quote_source&quot;&gt;&lt;a href=&quot;http://www.cartalk.com/content/palindromic-odometer&quot;&gt;R&amp;auml;tselquelle&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;Fassen wir nochmal zusammen:&lt;/p&gt;
+  &lt;p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;es kommen nur Zahlen infrage mit 6 Ziffern&lt;/li&gt;
+      &lt;li&gt;das erste Palindrom besteht aus den letzten 4 Ziffern&lt;/li&gt;
+      &lt;li&gt;das zweite Palindrom (eine Meile weiter) besteht aus den letzten 5 Ziffern&lt;/li&gt;
+      &lt;li&gt;das dritte Palindrom (eine weitere Meile sp&amp;auml;ter) besteht aus den mittleren 4 Ziffern&lt;/li&gt;
+      &lt;li&gt;das letzte Palindrom (noch eine Meile weiter) besteht aus allen 6 Ziffern&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/p&gt;
+  &lt;p&gt;Diese &lt;a href=&quot;/Code/Perl/Palindrom/&quot; target=&quot;_blank&quot;&gt;Palindromfunktion&lt;/a&gt; k&amp;ouml;nnen wir hier nur f&amp;uuml;r den letzten Fall verwenden, da sie immer den gesamten Aufrufparameter &amp;uuml;berpr&amp;uuml;ft.&lt;/p&gt;
+  &lt;p&gt;Wir m&amp;uuml;ssen uns also eine Funktion schreiben, die den String/Zahl, die L&amp;auml;nge und den Startindex entgegennimmt.&lt;/p&gt;
+  &lt;p&gt;Diese Funktion k&amp;ouml;nnte in etwa so aussehen:&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; id=&quot;code1&quot; name=&quot;function_palindrom&quot;&gt;sub enthaelt_palindrom {
+  my ( $i, $start, $len ) = @_;
+  my $s = substr ($i, $start,$len);
+  return $s eq reverse $s;
+}&lt;/textarea&gt;
+  &lt;p&gt;Da wir diese Funktion sehr oft aufrufen, ist es eventuell sinnvoll sie ein wenig zu optimieren um Ressourcen zu sparen:&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; id=&quot;code2&quot; name=&quot;function_palindrom2&quot;&gt;sub enthaelt_palindrom {
+  return substr ($_[0], $_[1],$_[2]) eq reverse substr ($_[0], $_[1],$_[2]);
+}&lt;/textarea&gt;
+  &lt;p&gt;Um einen Teilstring zu erhalten verwende ich &lt;span class=&quot;code&quot;&gt;&lt;span class=&quot;code_function&quot;&gt;substr&lt;/span&gt;&lt;/span&gt;. Die Doku hierf&amp;uuml;r kann man &lt;a href=&quot;http://perldoc.perl.org/functions/substr.html&quot;&gt;Hier&lt;/a&gt; finden.&lt;/p&gt;
+  &lt;p&gt;Als n&amp;auml;chtes schreiben wir eine Funktion die sich mit der aktuell Problematik ausseinandersetzt. Sie kennt die Palindrombedinungen und wertet sie je Ziffer aus:&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; id=&quot;code3&quot; name=&quot;function_palindrom3&quot;&gt;sub pruefe {
+  my ( $meilenstand ) = @_;
+  return (
+    # Palindrom 1 =&amp;gt; letzte 4 Ziffern sind ein Palindrom
+    enthaelt_palindrom( $meilenstand, 2, 4 ) &amp;amp;&amp;amp;
+
+    # Palindrom 2 =&amp;gt; letzte 5 Ziffern sind ein Palindrom
+    enthaelt_palindrom( $meilenstand + 1, 1, 5 ) &amp;amp;&amp;amp;
+
+    # Palindrom 3 =&amp;gt; mittlere 4 Ziffern sind ein Palindrom
+    enthaelt_palindrom( $meilenstand + 2, 1, 4 ) &amp;amp;&amp;amp;
+
+    # Palindrom 4 =&amp;gt; alle Ziffern sind ein Palindrom
+    enthaelt_palindrom( $meilenstand + 3, 0, 6 ) );
+}&lt;/textarea&gt;
+  &lt;p&gt;Jetzt nur noch eine Funktion (optional) die sich mit dem Aufruf je Zahl besch&amp;auml;ftigt. Wir verwenden hier eine einfache for-Schleife.&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; id=&quot;code4&quot; name=&quot;function_palindrom4&quot;&gt;sub pruefe_alle {
+
+  for my $meilenstand ( 100000 .. 999999 ) {
+    if ( pruefe( $meilenstand ) ) {
+      print $meilenstand. &quot;\n&quot;;
+    }
+  }
+}&lt;/textarea&gt;
+  &lt;p&gt;Das ist alles. Jetzt noch alles zusammenbauen und den Aufruf hinzuschreiben:&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; id=&quot;code5&quot; name=&quot;function_palindrom5&quot;&gt;#!/usr/bin/perl
+use strict;
+use warnings;
+
+print &quot;Die folgenden Zahlen kommen als Meilenstaende infrage:\n&quot;;
+pruefe_alle();
+
+sub enthaelt_palindrom {
+  return substr( $_[0], $_[1], $_[2] ) eq reverse substr( $_[0], $_[1], $_[2] );
+}
+
+sub pruefe {
+  my ( $meilenstand ) = @_;
+  return (
+    enthaelt_palindrom( $meilenstand, 2, 4 ) &amp;amp;&amp;amp;
+    enthaelt_palindrom( $meilenstand + 1, 1, 5 ) &amp;amp;&amp;amp;
+    enthaelt_palindrom( $meilenstand + 2, 1, 4 ) &amp;amp;&amp;amp;
+    enthaelt_palindrom( $meilenstand + 3, 0, 6 )
+  );
+}
+
+sub pruefe_alle {
+  for my $meilenstand ( 100000 .. 999999 ) {
+    if ( pruefe( $meilenstand ) ) {
+      print $meilenstand. &quot;\n&quot;;
+    }
+  }
+}&lt;/textarea&gt;
+  &lt;p&gt;Unsere Code gibt folgendes aus:&lt;/p&gt;
+  &lt;div class=&quot;consolenblock&quot;&gt;Die folgenden Zahlen kommen als Kilometerstand infrage:&lt;br /&gt;
+198888&lt;br /&gt;
+199999
+  &lt;/div&gt;
+  &lt;img src=&quot;/img/smileys/matrix_smiley.gif&quot; alt=&quot;&quot; /&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 18 Jul 2014 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/code/raetsel/cartalk1.html</link>
+        <guid isPermaLink="true">http://localhost:4000/code/raetsel/cartalk1.html</guid>
+        
+        
+        <category>code</category>
+        
+        <category>raetsel</category>
+        
+      </item>
+    
+      <item>
+        <title>Ackermann</title>
+        <description>&lt;div class=&quot;entry&quot;&gt;
+  &lt;p&gt;Die &lt;a href=&quot;http://de.wikipedia.org/wiki/Ackermannfunktion&quot; target=&quot;_blank&quot;&gt;Ackermannnfunktion&lt;/a&gt; ist eine nach &lt;a href=&quot;http://de.wikipedia.org/wiki/Wilhelm_Ackermann_(Mathematiker)&quot; target=&quot;_blank&quot;&gt;Wilhelm Ackermann&lt;/a&gt; benannte, rekursive Funktion.&lt;/p&gt;
+  &lt;p&gt;Sie ist folgenderma&amp;szlig;en definiert:&lt;/p&gt;
+  &lt;p&gt;&lt;img src=&quot;/img/ackermannfunktion.png&quot; class=&quot;head_menu&quot; max-width=&quot;490&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;Schreiben wir also eine Funktion mit dem Namen &lt;em&gt;ack&lt;/em&gt; und testen danach den Aufruf mit &lt;em&gt;ack(3,4)&lt;/em&gt;, von dem wir wissen, dass das &lt;a href=&quot;http://www.wolframalpha.com/input/?i=ack%283%2C4%29&quot; target=&quot;_blank&quot;&gt;Ergebnis 125&lt;/a&gt; sein muss.&lt;/p&gt;
+  &lt;p&gt;Die Funktion sieht demnach in etwa so aus:&lt;/p&gt;
+  &lt;div id=&quot;ackermann_codeblock&quot;&gt;
+    &lt;textarea name=&quot;code1&quot; id=&quot;code1&quot; class=&quot;codeblock_instant&quot;&gt;&amp;#35;/usr/bin/perl
+
+use strict;
+use warnings;
+
+sub ack {
+  my ( &amp;#36;m, &amp;#36;n ) &amp;#61; &amp;#64;_;
+  &amp;#35; Bedingung 1 &amp;#61;&amp;gt; wenn m &amp;#61; 0 dann n + 1
+  if ( &amp;#36;m &amp;#61;&amp;#61; 0 ) {
+    return &amp;#36;n + 1;
+  }
+  &amp;#35; Bedingung 2 &amp;#61;&amp;gt;
+  &amp;#35; wenn m &amp;gt; 0 und n &amp;#61;&amp;#61; 0 dann ruf dich selbst mit m - 1 und 1 auf.
+  &amp;#35; Da die Funktion f&amp;uuml;r alle nicht negativen, ganzzahligen n und m definiert ist,
+  &amp;#35; brauchen wir nur nach n == 0 &amp;uuml;berpr&amp;uuml;fen.
+  elsif ( &amp;#36;n &amp;#61;&amp;#61; 0 ) {
+    return ack( &amp;#36;m - 1, 1 );
+  }
+  &amp;#35; Andernfalls ist sowohl n als auch m nicht 0.
+  else {
+    return ack( &amp;#36;m - 1, ack( &amp;#36;m, &amp;#36;n - 1 ) );
+  }
+}
+
+print ack(3,4);&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;p&gt;W&amp;uuml;rde man den Code so ausf&amp;uuml;hren, erh&amp;auml;lt man in etwa folgende Ausgabe:&lt;/p&gt;
+  &lt;div class=&quot;consolenblock&quot;&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 17. &lt;br /&gt;
+125 &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+...Meldung noch einige Male mehr...&lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+Deep recursion on subroutine &amp;quot;main&amp;#58;&amp;#58;ack&amp;quot; at ackermann.pl line 21. &lt;br /&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Wenn wir die Funktion nun nicht nur mit 3 und 4 aufrufen w&amp;uuml;rden, sondern mit entsprechend h&amp;ouml;heren Werten, entstehen wesentlich mehr Fehlermeldungen.&lt;/p&gt;
+  &lt;p&gt;Diese Fehlermeldungen tauchen nur bei der Verwendung von &lt;span class=&quot;code&quot;&gt;&lt;span class=&quot;code_function&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;code_pragma&quot;&gt;warnings&lt;/span&gt;;&lt;/span&gt; auf.&lt;/p&gt;
+  &lt;p&gt;Doch das Weglassen dieser 2 W&amp;ouml;rter ist keine akzeptable L&amp;ouml;sung.&lt;/p&gt;
+  &lt;p&gt;Eine L&amp;ouml;sung w&amp;auml;re, dass wir global die Warnungen f&amp;uuml;r 'recursion's ausmachen. Doch besser ist es in einem naked Block innerhalb der betroffenen Funktion selbst.&lt;/p&gt;
+  &lt;p&gt;Das Ganze sieht dann in etwa so aus:&lt;/p&gt;
+  &lt;div id=&quot;codeblock_ackermann_clean&quot;&gt;
+    &lt;textarea class=&quot;codeblock_instant&quot; name=&quot;code2&quot; id=&quot;code2&quot;&gt;&amp;#35;/usr/bin/perl
+
+use strict;
+use warnings;
+
+sub ack {
+  { &amp;#35; Anfang naked block 'no warnings recursion'
+    no warnings 'recursion';
+    my ( &amp;#36;m, &amp;#36;n ) &amp;#61; &amp;#64;_;
+    &amp;#35; Bedingung 1 &amp;#61;&amp;gt; wenn m &amp;#61; 0 dann n + 1
+    if ( &amp;#36;m &amp;#61;&amp;#61; 0 ) {
+      return &amp;#36;n + 1;
+    }
+    &amp;#35; Bedingung 2 &amp;#61;&amp;gt;
+    &amp;#35; wenn m &amp;gt; 0 und n &amp;#61;&amp;#61; 0 dann ruf dich selbst mit m - 1 und 1 auf.
+    &amp;#35; Da die Funktion f&amp;uuml;r alle nicht negativen, ganzzahligen n und m definiert ist,
+    &amp;#35; brauchen wir nur nach n == 0 &amp;uuml;berpr&amp;uuml;fen.
+    elsif ( &amp;#36;n &amp;#61;&amp;#61; 0 ) {
+      return ack( &amp;#36;m - 1, 1 );
+    }
+    &amp;#35; Andernfalls ist sowohl n als auch m nicht 0.
+    else {
+      return ack( &amp;#36;m - 1, ack( &amp;#36;m, &amp;#36;n - 1 ) );
+    }
+  } &amp;#35; Ende naked block 'no warnings recursion'
+}
+
+print ack(3,4);&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Ruft man die Funktion nun mit ein wenig erh&amp;ouml;hten Parametern auf, merkt man schnell, dass die Geschwindigkeit stark abnimmt. Das Zauberwort um dies ein wenig zu minimieren ist &lt;em&gt;Caching&lt;/em&gt;.&lt;/p&gt;
+  &lt;p&gt;Die Idee die dahinter steckt ist folgende:&lt;/p&gt;
+  &lt;p class=&quot;notes&quot;&gt;Bereits berechnete Werte kennen wir bereits, brauchen sie also nicht noch einmal berechnen.&lt;/p&gt;
+  &lt;p&gt;Wir optimieren unseren oberen Code nun dahingehend, dass wir einen Cache einbauen der uns bereits berechnete Werte zur&amp;uuml;ckliefert. Das Ganze sieht dann beispielsweise so aus:&lt;/p&gt;
+  &lt;textarea class=&quot;codeblock_instant&quot; name=&quot;code_cached_acker&quot; id=&quot;code_cached_acker&quot;&gt;#!/usr/bin/perl
+use strict;
+use warnings;
+
+my %cache;
+
+sub ack {
+  { # Anfang naked block 'no warnings recursion'
+    no warnings 'recursion';
+    my ( $m, $n ) = @_;
+    # Bedingung 1 =&amp;gt; wenn m = 0 dann n + 1
+    if ( $m == 0 ) {
+      return $n + 1;
+    }
+    # Bedingung 2 =&amp;gt;
+    # wenn m &amp;gt; 0 und n == 0 dann ruf dich selbst mit m - 1 und 1 auf.
+    # Da die Funktion fuer alle nicht negativen, ganzzahligen n und m definiert ist,
+    # brauchen wir nur nach n == 0 ueberpruefen.
+    if ( $n == 0 ) {
+      return ack( $m - 1, 1 );
+    }
+
+    # Hier kommt nun der Cache zum Einsatz. In diesem Falle speichern wir in einem
+    # Hash die jeweiligen Werte fuer m und n als Keystring. Wenn der Wert
+    # bereits berechnet vorliegt, brauchen wir ihn nicht noch einmal auszurechnen
+    # und geben den bereits berechneten Wert aus dem Hash zurueck.
+    if ( exists $cache{&quot;$m $n&quot;} ) {
+      return $cache{&quot;$m $n&quot;};
+    }
+    # Ansonsten rechnen wir den Wert aus und geben ihn danach zurueck.
+    else {
+      $cache{&quot;$m $n&quot;} = ack( $m - 1, ack( $m, $n - 1 ) );
+      return $cache{&quot;$m $n&quot;};
+    }
+  } # Ende naked block 'no warnings recursion'
+}
+print ack( 3, 4 ) . &quot;\n&quot;;&lt;/textarea&gt;
+  &lt;p&gt;Die Funktion ist nun um einiges schneller.&lt;/p&gt;
+  &lt;p&gt;Die Ackermannfunktion ist ein Beispiel f&amp;uuml;r eine nicht primitiv-rekursive aber berechenbare Funktion. Durch den letzten Aufruf&lt;/p&gt;
+  &lt;p&gt;&lt;span class=&quot;code&quot;&gt;&lt;span class=&quot;code_function&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;code_pragma&quot;&gt;ack&lt;/span&gt;( &lt;span class=&quot;code_variable&quot;&gt;&amp;#36;m&lt;/span&gt; - 1, &lt;span class=&quot;code_pragma&quot;&gt;ack&lt;/span&gt;( &lt;span class=&quot;code_variable&quot;&gt;&amp;#36;m&lt;/span&gt;, &lt;span class=&quot;code_variable&quot;&gt;&amp;#36;n&lt;/span&gt; - 1 ) );&lt;/span&gt;&lt;/p&gt;
+  &lt;p&gt;und die tiefe Verschachtelung der Funktionsaufrufe, kommt es leicht zu einem &lt;a href=&quot;http://de.wikipedia.org/wiki/Stapelspeicher&quot; target=&quot;_blank&quot;&gt;Stapel&amp;uuml;berlauf&lt;/a&gt; (engl. Stack Overflow), also dazu, dass dem System der Speicher ausgeht.&lt;/p&gt;
+  &lt;p&gt;Das k&amp;ouml;nnen wir zum Beispiel mit dem Aufruf &lt;span class=&quot;code&quot;&gt;&lt;span class=&quot;code_function&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;code_pragma&quot;&gt;ack&lt;/span&gt;( 4, 2 );&lt;/span&gt; erreichen.&lt;/p&gt;
+  &lt;p&gt;Nach 20-30 Sekunden kommt folgende Ausgabe:&lt;/p&gt;
+  &lt;div class=&quot;consolenblock&quot;&gt;
+    Out of memory!
+  &lt;/div&gt;
+  &lt;p&gt;Das richtige Ergebnis von &lt;span class=&quot;code&quot;&gt;&lt;span class=&quot;code_pragma&quot;&gt;ack&lt;/span&gt;( 4, 2 );&lt;/span&gt; ist &amp;uuml;brigends &lt;span class=&quot;code&quot;&gt;2.00352993040684646497907235156025575044782547 x 10&lt;sup&gt;19728&lt;/sup&gt;&lt;/span&gt;&lt;/p&gt;
+  &lt;p&gt;Beziehungsweise &lt;span class=&quot;code&quot;&gt;10&lt;sup&gt;10&lt;sup&gt;4.295089702969369&lt;/sup&gt;&lt;/sup&gt;&lt;/span&gt;.&lt;/p&gt;
+  &lt;p class=&quot;quote_source&quot;&gt;&lt;a href=&quot;http://www.wolframalpha.com/input/?i=ack%284%2C2%29&quot; target=&quot;_blank&quot;&gt;Quelle&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 18 Jul 2014 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/code/perl/ackermann.html</link>
+        <guid isPermaLink="true">http://localhost:4000/code/perl/ackermann.html</guid>
+        
+        
+        <category>code</category>
+        
+        <category>perl</category>
+        
+      </item>
+    
+      <item>
+        <title>Rätsel</title>
+        <description>&lt;p&gt;Diese Rubrik beschäftigt sich mit diversen R&amp;auml;tseln und mögliche Lösungswege in verschiedenen Programmiersprachen.&lt;/p&gt;
+
+&lt;p&gt;Wenn du ein Rätsel kennst das du gerne auf diese Seite sehen möchtest, schreib es &lt;a href=&quot;mailto:meik.ruecker@tomatenstau.de&quot;&gt;mir&lt;/a&gt; doch.&lt;/p&gt;
+
+&lt;p&gt;Links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/code/raetsel/cartalk1.html&quot;&gt;Cartalk 1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 18 Jul 2014 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/code/raetsel.html</link>
+        <guid isPermaLink="true">http://localhost:4000/code/raetsel.html</guid>
+        
+        
+        <category>code</category>
+        
+      </item>
+    
+      <item>
+        <title>Perl</title>
+        <description>&lt;p&gt;Dieser Bereich ist für die Programmiersprache &lt;a href=&quot;http://www.perl.org/&quot;&gt;Perl&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/code/perl/ackermann.html&quot;&gt;Ackermann&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/code/perl/palindrom.html&quot;&gt;Palindrom&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/code/perl/pi.html&quot;&gt;Pi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/code/perl/strict.html&quot;&gt;strict&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 18 Jul 2014 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/code/perl.html</link>
+        <guid isPermaLink="true">http://localhost:4000/code/perl.html</guid>
+        
+        
+        <category>code</category>
+        
+      </item>
+    
+      <item>
+        <title>Code</title>
+        <description>&lt;p&gt;Dieser Bereich ist für verschiedenste Programmiersprachen und Beispiele der jeweiligen Sprache gedacht.&lt;/p&gt;
+
+&lt;p&gt;Links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/code/perl.html&quot;&gt;Perl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/code/raetsel.html&quot;&gt;R&amp;auml;tsel&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 18 Jul 2014 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/code.html</link>
+        <guid isPermaLink="true">http://localhost:4000/code.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Über</title>
+        <description>&lt;p&gt;Jaa....dann fang ich mal an...&lt;/p&gt;
+&lt;p&gt;Ich bin Meik und wurde 1991 in Hannover geboren. Demnach bin ich nach meinem Geburtstag Anfang Oktober &lt;span class=&quot;code&quot;&gt;&amp;#40;&lt;span class=&quot;code_function&quot;&gt;localtime&lt;/span&gt;&amp;#41;&amp;#91;&lt;span class=&quot;code_pragma&quot;&gt;5&lt;/span&gt;&amp;#93; &amp;#45; &lt;span class=&quot;code_pragma&quot;&gt;91&lt;/span&gt;&lt;/span&gt; Jahre alt.&lt;/p&gt;
+&lt;p&gt;Mein gewohnter Nick ist &lt;span class=&quot;code quote&quot;&gt;Paulchenkiller&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Weiteres folgt.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 18 Jul 2014 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/about.html</link>
+        <guid isPermaLink="true">http://localhost:4000/about.html</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
