@@ -1,0 +1,10 @@
+section {
+  background    : #111417;
+  padding-top   : 120px;
+  border-bottom : 1px solid #15191d;
+}
+
+section .row.items {
+  max-width  : 1260px;
+  margin-top : 24px;
+}

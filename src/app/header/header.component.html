@@ -1,0 +1,28 @@
+<header id="main-header">
+  <div class="row">
+    <div class="logo">
+      <a routerLink="index">Tomatenstaude</a>
+    </div>
+    <nav id="nav-wrap">
+      <input id="menu__toggle" type="checkbox" [(ngModel)]="menu" />
+      <label class="menu__btn" for="menu__toggle">
+        <span></span>
+      </label>
+
+      <ul id="nav" class="nav menu__box" >
+        <li class="menu__item" routerLink="/index" routerLinkActive="current">Home.</li>
+        <li class="menu__item" routerLink="/portfolio" routerLinkActive="current">Works.</li>
+        <li class="menu__item" routerLink="/services" routerLinkActive="current">Services.</li>
+        <li class="menu__item" routerLink="/about" routerLinkActive="current">About.</li>
+        <li class="menu__item" routerLink="/contact" routerLinkActive="current">Contact.</li>
+      </ul>
+    </nav>
+    <ul class="header-social">
+      <li *ngFor="let sm of socialMedia">
+        <a target="_blank" [href]="sm.link">
+          <fa-icon [icon]="sm.icon"></fa-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>

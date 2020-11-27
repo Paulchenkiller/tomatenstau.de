@@ -1,0 +1,20 @@
+
+<div class="member-pic">
+  <img [src]="person.picture" [alt]="person.name"/>
+  <div class="mask"></div>
+</div>
+<div class="member-name">
+  <h3>{{person.name}}</h3>
+  <span>{{person.jobTitle}}</span>
+</div>
+<p>{{person.slogan}}</p>
+<ul class="member-social">
+  <li *ngFor="let social of person.social">
+    <a [href]="social.link"><fa-icon [icon]="['fab', social.icon]"></fa-icon></a>
+  </li>
+<!--    <li><a href="#"><fa-icon [icon]="['fab', 'facebook']"></fa-icon></a></li>-->
+<!--    <li><a href="#"><fa-icon [icon]="['fab', 'twitter']"></fa-icon></a></li>-->
+<!--    <li><a href="#"><fa-icon [icon]="['fab', 'google-plus']"></fa-icon></a></li>-->
+<!--    <li><a href="#"><fa-icon [icon]="['fab', 'linkedin']"></fa-icon></a></li>-->
+<!--    <li><a href="#"><fa-icon [icon]="['fab', 'skype']"></fa-icon></a></li>-->
+</ul>

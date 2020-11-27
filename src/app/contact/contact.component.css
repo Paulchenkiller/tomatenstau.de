@@ -1,0 +1,128 @@
+#contact {
+  background     : #12151b;
+  padding-top    : 120px;
+  padding-bottom : 138px;
+  overflow       : hidden;
+  border-bottom  : 1px solid #15191d;
+}
+
+#contact h3 {
+  font          : 18px/36px "raleway-heavy", sans-serif;
+  color         : #2e7d32;
+  padding       : 0;
+  margin-bottom : 6px;
+}
+
+#contact .left {
+  padding-right : 35px;
+}
+
+#contact .right {
+  padding-left : 35px;
+  position     : relative;
+  top          : -6px;
+}
+
+@media only screen and (max-width : 1024px) {
+  #contact .left {
+    padding-right : 30px;
+  }
+
+  #contact .right {
+    padding-left : 30px;
+  }
+}
+
+@media only screen and (max-width : 768px) {
+  #contact .left, #contact .right {
+    width   : 100%;
+    padding : 0 15px;
+  }
+
+  #contact .right p.lead {
+    font : 18px/36px "merriweather-light", serif;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #contact .left, #contact .right {
+    padding : 0 10px;
+  }
+
+  #contact .right p.lead {
+    font : 17px/33px "merriweather-light", serif;
+  }
+}
+
+@media only screen and (max-width : 400px) {
+  #contact .left, #contact .right {
+    padding : 0;
+  }
+}
+
+#contact form {
+  margin-top    : 12px;
+  margin-bottom : 30px;
+}
+
+#contact form div {
+  position : relative;
+}
+
+#contact form div:before, #contact form div:after {
+  content : "";
+  display : table;
+}
+
+#contact form div:after {
+  clear : both;
+}
+
+#contact form div label {
+  font           : 11px/24px "raleway-bold", sans-serif;
+  position       : absolute;
+  bottom         : 3px;
+  right          : 6px;
+  border-radius  : 3px;
+  text-transform : uppercase;
+  letter-spacing : 1px;
+  padding        : 0 20px;
+  color          : #e64e04;
+}
+
+input[type="text"], input[type="password"], input[type="email"], #contact textarea, #contact select {
+  margin-bottom : 45px;
+  width         : 100%;
+}
+
+#contact button.submitform {
+  font           : 15px/30px "raleway-heavy", sans-serif;
+  text-transform : uppercase;
+  letter-spacing : 2px;
+  height         : 60px;
+  display        : inline-block;
+  padding        : 15px 30px;
+  width          : 100%;
+  box-shadow     : inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#message-warning, #message-success {
+  display       : none;
+  background    : #0f1215;
+  border-radius : 3px;
+  padding       : 24px;
+  margin-bottom : 36px;
+  width         : 100%;
+}
+
+#message-warning {
+  color : #e64e04;
+}
+
+#message-success {
+  color : #2e7d32;
+}
+
+#message-warning i, #message-success i {
+  margin-right : 10px;
+}
