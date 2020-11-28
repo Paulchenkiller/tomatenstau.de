@@ -20,10 +20,12 @@ import {ContentComponent} from './content/content.component';
 import {HeadlineComponent} from './headline/headline.component';
 import {MemberComponent} from './member/member.component';
 import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
+import {CodeComponent} from './code/code.component';
 
 const routes: Routes = [
   {path: 'index', component: IndexComponent},
   {path: '', redirectTo: 'index', pathMatch: 'full'},
+  {path: 'code', component: CodeComponent},
   // {path: 'about', component: AboutComponent},
   // {path: 'contact', component: ContactComponent},
   // {path: 'portfolio', component: PortfolioComponent},
@@ -46,7 +48,8 @@ const routes: Routes = [
     ModalComponent,
     ContentComponent,
     HeadlineComponent,
-    MemberComponent
+    MemberComponent,
+    CodeComponent
   ],
   imports     : [
     BrowserModule,
