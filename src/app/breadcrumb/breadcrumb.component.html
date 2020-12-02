@@ -1,0 +1,17 @@
+<div class="row">
+  <nav class="twelve columns">
+    <ul class="breadcrumb">
+      <li *ngFor="let breadcrumb of breadcrumbs$ | async; last as isLast;">
+        <a *ngIf="!isLast; else lastRoute"
+           [routerLink]="[breadcrumb.url]"
+           routerLinkActive="active">
+          <span class="icon icon-file"><fa-icon [icon]="breadcrumb.logo"></fa-icon></span>
+          <span class="text">{{ breadcrumb.label }}</span>
+        </a>
+        <ng-template #lastRoute>
+          <a routerLink="/"><span><fa-icon icon="home"></fa-icon></span></a>
+        </ng-template>
+      </li>
+    </ul>
+  </nav>
+</div>

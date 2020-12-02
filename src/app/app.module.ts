@@ -21,11 +21,42 @@ import {HeadlineComponent} from './headline/headline.component';
 import {MemberComponent} from './member/member.component';
 import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
 import {CodeComponent} from './code/code.component';
+import {PrologIndexComponent} from './code/prolog/prolog-index/prolog-index.component';
+import {PerlIndexComponent} from './code/perl/perl-index/perl-index.component';
+import {PythonIndexComponent} from './code/python/python-index/python-index.component';
+import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
+import {CommonModule} from '@angular/common';
+import {PrologAckermannComponent} from './code/prolog/prolog-ackermann/prolog-ackermann.component';
 
 const routes: Routes = [
-  {path: 'index', component: IndexComponent},
+  {path: 'index', component: IndexComponent, data: {breadcrumb: 'Home', logo: 'home'}},
   {path: '', redirectTo: 'index', pathMatch: 'full'},
-  {path: 'code', component: CodeComponent},
+  {
+    path    : 'code', data: {breadcrumb: 'Code', logo: 'terminal'},
+    children: [
+      {path: '', component: CodeComponent},
+      {
+        path    : 'perl', data: {breadcrumb: 'Perl', logo: 'keyboard'},
+        children: [{path: '', component: PerlIndexComponent}]
+      },
+      {
+        path    : 'python', data: {breadcrumb: 'Python', logo: ['fab', 'python']},
+        children: [{component: PythonIndexComponent, path: ''}]
+      },
+      {
+        path    : 'prolog', data: {breadcrumb: 'Prolog', logo: 'brain'},
+        children: [
+          {path: '', component: PrologIndexComponent},
+          {
+            path    : 'ackermann', data: {breadcrumb: 'Ackermann', logo: 'superscript'},
+            children: [
+              {path: '', component: PrologAckermannComponent}
+            ]
+          },
+        ]
+      }
+    ]
+  },
   // {path: 'about', component: AboutComponent},
   // {path: 'contact', component: ContactComponent},
   // {path: 'portfolio', component: PortfolioComponent},
@@ -49,13 +80,19 @@ const routes: Routes = [
     ContentComponent,
     HeadlineComponent,
     MemberComponent,
-    CodeComponent
+    CodeComponent,
+    PrologIndexComponent,
+    PerlIndexComponent,
+    PythonIndexComponent,
+    BreadcrumbComponent,
+    PrologAckermannComponent
   ],
   imports     : [
     BrowserModule,
     RouterModule.forRoot( routes ),
     FormsModule,
     HighlightModule,
+    CommonModule,
     FontAwesomeModule
   ],
   exports     : [RouterModule],
@@ -67,7 +104,9 @@ const routes: Routes = [
       languages        : {
         perl  : () => import('highlight.js/lib/languages/perl'),
         python: () => import('highlight.js/lib/languages/python'),
-        prolog: () => import('highlight.js/lib/languages/prolog')
+        prolog: () => import('highlight.js/lib/languages/prolog'),
+        matlab: ()  => import('highlight.js/lib/languages/matlab'),
+        shell: ()  => import('highlight.js/lib/languages/shell'),
       }
     }
   }],

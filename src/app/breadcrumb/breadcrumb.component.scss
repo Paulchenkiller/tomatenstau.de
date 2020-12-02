@@ -1,0 +1,81 @@
+$green: #2e7d32;
+$green-dark: #000000;
+$size: 50px;
+
+
+ul.breadcrumb {
+  margin-left: $size;
+  display: inline-block;
+  list-style: none;
+
+  li {
+    float: right;
+    padding: $size/10;
+    background-color: $green-dark;
+    border-radius: $size;
+    position: relative;
+    margin-left: -$size;
+    transition: all .2s;
+    margin-top: 3px;
+
+    a {
+      overflow: hidden;
+      border-radius: $size;
+      transition: all .2s;
+      text-decoration: none;
+      height: $size;
+      color: darken($green-dark, 5%);
+      background-color: $green;
+      text-align: center;
+      min-width: $size;
+      display: block;
+      line-height: $size;
+      padding-left: $size + 2;
+      padding-right: $size/2 +$size/6;
+      width: $size;
+
+      .icon {
+        display: inline-block;
+      }
+
+      .text {
+        display: none;
+        opacity: 0;
+      }
+
+      &:hover {
+        width: 220px;
+        background-color: lighten($green, 5%);
+
+        .text {
+          display: inline-block;
+          opacity: 1;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    &:last-child {
+      a {
+        padding: 0;
+      }
+
+      &:hover {
+        padding: (($size/10) - 2px);
+        margin-top: 0;
+
+        a {
+          width: $size + 10;
+          height: $size + 10;
+          line-height: $size + 10;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width : 768px) {
+  nav .breadcrumb {
+    display: none;
+  }
+}

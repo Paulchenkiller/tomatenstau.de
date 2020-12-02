@@ -1,12 +1,16 @@
 <app-headline h1="Code"></app-headline>
 <div class="row">
   <div class="twelve columns">
-    Perl:
-    <pre><code [highlight]="code.helloWorld.perl" [lineNumbers]="true"></code></pre>
-    Python:
-    <pre><code [highlight]="code.helloWorld.python" [lineNumbers]="true"></code></pre>
-    Prolog:
-    <pre><code [highlight]="code.helloWorld.prolog" [lineNumbers]="true"></code></pre>
+    <p>
+      Ich möchte zu unterschiedlichen Programmiersprachen ein paar Tipps und Tricks bereitstellen.
+    </p>
+
+    <ul>
+      <li *ngFor="let codeComponent of codeComponents">
+        <a [routerLink]="codeComponent.name.toLowerCase()">{{codeComponent.name}}</a>
+      </li>
+    </ul>
+
   </div>
 
 </div>

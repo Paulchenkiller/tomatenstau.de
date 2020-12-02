@@ -6,13 +6,11 @@ import {Component, OnInit} from '@angular/core';
   styleUrls  : ['./code.component.css']
 } )
 export class CodeComponent implements OnInit {
-  code = {
-    helloWorld: {
-      perl: `#!/usr/bin/perl\nuse strict;\nprint "Hello World!";`,
-      python: `#!/usr/bin/python\nprint "Hello World"";`,
-      prolog: `write('Hello World').`
-    }
-  };
+  codeComponents = [
+    {name: 'Perl'},
+    {name: 'Python'},
+    {name: 'Prolog'},
+  ];
 
   constructor() {
   }
