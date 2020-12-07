@@ -27,6 +27,7 @@ import {PythonIndexComponent} from './code/python/python-index/python-index.comp
 import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
 import {CommonModule} from '@angular/common';
 import {PrologAckermannComponent} from './code/prolog/prolog-ackermann/prolog-ackermann.component';
+import {PrologHanoiComponent} from './code/prolog/prolog-hanoi/prolog-hanoi.component';
 
 const routes: Routes = [
   {path: 'index', component: IndexComponent, data: {breadcrumb: 'Home', logo: 'home'}},
@@ -51,6 +52,12 @@ const routes: Routes = [
             path    : 'ackermann', data: {breadcrumb: 'Ackermann', logo: 'superscript'},
             children: [
               {path: '', component: PrologAckermannComponent}
+            ]
+          },
+          {
+            path    : 'hanoi', data: {breadcrumb: 'Hanoi', logo: 'gopuram'},
+            children: [
+              {path: '', component: PrologHanoiComponent}
             ]
           },
         ]
@@ -85,7 +92,8 @@ const routes: Routes = [
     PerlIndexComponent,
     PythonIndexComponent,
     BreadcrumbComponent,
-    PrologAckermannComponent
+    PrologAckermannComponent,
+    PrologHanoiComponent
   ],
   imports     : [
     BrowserModule,
@@ -105,8 +113,8 @@ const routes: Routes = [
         perl  : () => import('highlight.js/lib/languages/perl'),
         python: () => import('highlight.js/lib/languages/python'),
         prolog: () => import('highlight.js/lib/languages/prolog'),
-        matlab: ()  => import('highlight.js/lib/languages/matlab'),
-        shell: ()  => import('highlight.js/lib/languages/shell'),
+        matlab: () => import('highlight.js/lib/languages/matlab'),
+        shell : () => import('highlight.js/lib/languages/shell'),
       }
     }
   }],
