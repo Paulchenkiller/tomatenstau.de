@@ -1,4 +1,4 @@
-@import url("fonts.css");
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Raleway:wght@800&display=swap');
 
 html, body {
   height : 100%;
@@ -6,7 +6,7 @@ html, body {
 
 body {
   background  : #0f1215;
-  font        : 16px/30px "merriweather-regular", serif;
+  font        : 16px/30px 'Merriweather', serif;
   font-weight : normal;
   color       : #575859;
 }
@@ -26,7 +26,7 @@ a:hover, a:focus {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family    : "raleway-heavy", sans-serif;
+  font-family    : 'Raleway', sans-serif;
   color          : #ffffff;
   font-style     : normal;
   text-rendering : optimizeLegibility;
@@ -84,17 +84,17 @@ p img {
 }
 
 p.lead {
-  font  : 20px/36px "merriweather-light", serif;
+  font  : 20px/36px 'Merriweather', serif;
   color : #707273;
 }
 
 em {
-  font       : 16px/30px "merriweather-italic", serif;
+  font       : 16px/30px 'Merriweather', serif;
   font-style : normal;
 }
 
 strong, b {
-  font        : 16px/30px "merriweather-bold", serif;
+  font        : 16px/30px 'Merriweather', serif;
   font-weight : normal;
 }
 
@@ -146,7 +146,7 @@ blockquote cite a, blockquote cite a:visited {
 }
 
 abbr {
-  font-family    : "merriweather-bold", serif;
+  font-family    : 'Merriweather', serif;
   font-variant   : small-caps;
   text-transform : lowercase;
   letter-spacing : 1px;
@@ -292,7 +292,7 @@ input[type="text"], input[type="password"], input[type="email"], textarea, selec
   outline            : none;
   vertical-align     : middle;
   color              : #a3a4a6;
-  font-family        : "raleway-bold", sans-serif;
+  font-family        : 'Raleway', sans-serif;
   font-size          : 15px;
   line-height        : 24px;
   border-radius      : 3px;
@@ -316,7 +316,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 
 .button, .button:visited, button, input[type="submit"], input[type="reset"], input[type="button"] {
   display                : inline-block;
-  font                   : 16px/30px "raleway-heavy", sans-serif;
+  font                   : 16px/30px 'Raleway', sans-serif;
   padding                : 9px 16px;
   margin                 : 0 3px 6px 0;
   background             : #2e7d32;
@@ -342,7 +342,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 }
 
 label, legend {
-  font    : 15px/30px "raleway-bold", sans-serif;
+  font    : 15px/30px 'Raleway', sans-serif;
   margin  : 12px 0;
   color   : #252525;
   display : block;
@@ -350,7 +350,7 @@ label, legend {
 
 label span, legend span {
   color : #575859;
-  font  : 16px/30px "raleway-bold", sans-serif;
+  font  : 16px/30px 'Raleway', sans-serif;
 }
 
 input[type="checkbox"], input[type="radio"] {

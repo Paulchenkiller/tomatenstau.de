@@ -7,7 +7,7 @@
 }
 
 #contact h3 {
-  font          : 18px/36px "raleway-heavy", sans-serif;
+  font          : 18px/36px 'Raleway', sans-serif;
   color         : #2e7d32;
   padding       : 0;
   margin-bottom : 6px;
@@ -40,7 +40,7 @@
   }
 
   #contact .right p.lead {
-    font : 18px/36px "merriweather-light", serif;
+    font : 18px/36px 'Merriweather', serif;
   }
 }
 
@@ -50,7 +50,7 @@
   }
 
   #contact .right p.lead {
-    font : 17px/33px "merriweather-light", serif;
+    font : 17px/33px 'Merriweather', serif;
   }
 }
 
@@ -79,7 +79,7 @@
 }
 
 #contact form div label {
-  font           : 11px/24px "raleway-bold", sans-serif;
+  font           : 11px/24px 'Raleway', sans-serif;
   position       : absolute;
   bottom         : 3px;
   right          : 6px;
@@ -96,7 +96,7 @@ input[type="text"], input[type="password"], input[type="email"], #contact textar
 }
 
 #contact button.submitform {
-  font           : 15px/30px "raleway-heavy", sans-serif;
+  font           : 15px/30px 'Raleway', sans-serif;
   text-transform : uppercase;
   letter-spacing : 2px;
   height         : 60px;

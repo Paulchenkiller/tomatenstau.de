@@ -113,8 +113,8 @@ const routes: Routes = [
         perl  : () => import('highlight.js/lib/languages/perl'),
         python: () => import('highlight.js/lib/languages/python'),
         prolog: () => import('highlight.js/lib/languages/prolog'),
-        matlab: () => import('highlight.js/lib/languages/matlab'),
-        shell : () => import('highlight.js/lib/languages/shell'),
+        // matlab: () => import('highlight.js/lib/languages/matlab'),
+        // shell : () => import('highlight.js/lib/languages/shell'),
       }
     }
   }],

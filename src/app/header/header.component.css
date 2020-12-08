@@ -96,7 +96,7 @@ header .header-social li a:hover {
 }
 
 #nav-wrap {
-  font           : 13px "raleway-heavy", sans-serif;
+  font           : 13px 'Raleway', sans-serif;
   text-transform : uppercase;
   letter-spacing : 2px;
   float          : left;
@@ -390,7 +390,7 @@ ul#nav li.current:after {
     padding             : 12px 24px;
     color               : #2e7d32;
 
-    font                : 12px "raleway-heavy", sans-serif;
+    font                : 12px 'Raleway', sans-serif;
     text-transform      : uppercase;
     letter-spacing      : 2px;
 

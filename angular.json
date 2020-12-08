@@ -24,14 +24,12 @@
             "aot": true,
             "assets": [
               "src/favicon",
-              "src/assets",
-              "src/fonts"
+              "src/assets"
             ],
             "styles": [
               "src/styles.css",
               "src/css/base.css",
               "src/css/vendor.min.css",
-              "src/css/fonts.css",
               "src/css/main.css",
               "node_modules/highlight.js/styles/darcula.css"
             ],
@@ -93,14 +91,12 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon",
-              "src/assets",
-              "src/fonts"
+              "src/assets"
             ],
             "styles": [
               "src/styles.css",
               "src/css/base.css",
               "src/css/vendor.min.css",
-              "src/css/fonts.css",
               "src/css/main.css"
             ],
             "scripts": []

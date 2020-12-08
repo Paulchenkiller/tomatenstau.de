@@ -79,14 +79,14 @@
 }
 
 .portfolio-item-meta h5 {
-  font           : 14px/21px "raleway-bold", sans-serif;
+  font           : 14px/21px 'Raleway', sans-serif;
   letter-spacing : 2px;
   color          : white;
   margin         : 0;
 }
 
 .portfolio-item-meta p {
-  font   : 14px/18px "raleway-semibold", sans-serif;
+  font   : 14px/18px 'Raleway', sans-serif;
   color  : #8a8a8a;
   margin : 0;
 }
@@ -117,12 +117,12 @@
   }
 
   .portfolio-item-meta h5 {
-    font           : 13px/21px "raleway-bold", sans-serif;
+    font           : 13px/21px 'Raleway', sans-serif;
     letter-spacing : 1px;
   }
 
   .portfolio-item-meta p {
-    font : 13px/18px "raleway-semibold", sans-serif;
+    font : 13px/18px 'Raleway', sans-serif;
   }
 }
 
@@ -132,12 +132,12 @@
   }
 
   .portfolio-item-meta h5 {
-    font           : 11px/18px "raleway-bold", sans-serif;
+    font           : 11px/18px 'Raleway', sans-serif;
     letter-spacing : 1px;
   }
 
   .portfolio-item-meta p {
-    font : 11px/16px "raleway-semibold", sans-serif;
+    font : 11px/16px 'Raleway', sans-serif;
   }
 }
 
