@@ -31,9 +31,9 @@ import {PrologHanoiComponent} from './code/prolog/prolog-hanoi/prolog-hanoi.comp
 import {GamesComponent} from './games/games.component';
 import {TictactoeComponent} from './games/tictactoe/tictactoe.component';
 import {MemoryComponent} from './games/memory/memory.component';
-import { BoardComponent } from './games/tictactoe/board/board.component';
-import { SquareComponent } from './games/tictactoe/square/square.component';
-import { GameCardComponent } from './games/memory/game-card/game-card.component';
+import {BoardComponent} from './games/tictactoe/board/board.component';
+import {SquareComponent} from './games/tictactoe/square/square.component';
+import {GameCardComponent} from './games/memory/game-card/game-card.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routes: Routes = [

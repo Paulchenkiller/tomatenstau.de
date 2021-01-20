@@ -25,7 +25,6 @@ export class MemoryComponent implements OnInit {
   playedCount = 0;
   won = false;
 
-
   shuffleArray( anArray: any[] ): any[] {
     return anArray.map( a => [Math.random(), a] )
       .sort( ( a, b ) => a[0] - b[0] )
