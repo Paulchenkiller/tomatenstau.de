@@ -28,6 +28,11 @@ import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
 import {CommonModule} from '@angular/common';
 import {PrologAckermannComponent} from './code/prolog/prolog-ackermann/prolog-ackermann.component';
 import {PrologHanoiComponent} from './code/prolog/prolog-hanoi/prolog-hanoi.component';
+import {GamesComponent} from './games/games.component';
+import {TictactoeComponent} from './games/tictactoe/tictactoe.component';
+import {MemoryComponent} from './games/memory/memory.component';
+import { BoardComponent } from './games/tictactoe/board/board.component';
+import { SquareComponent } from './games/tictactoe/square/square.component';
 
 const routes: Routes = [
   {path: 'index', component: IndexComponent, data: {breadcrumb: 'Home', logo: 'home'}},
@@ -64,7 +69,9 @@ const routes: Routes = [
       }
     ]
   },
-  // {path: 'about', component: AboutComponent},
+  {path: 'games', component: GamesComponent},
+  {path: 'games/ttt', component: TictactoeComponent},
+  {path: 'games/memory', component: MemoryComponent},
   // {path: 'contact', component: ContactComponent},
   // {path: 'portfolio', component: PortfolioComponent},
   // {path: 'services', component: ServicesComponent},
@@ -93,7 +100,12 @@ const routes: Routes = [
     PythonIndexComponent,
     BreadcrumbComponent,
     PrologAckermannComponent,
-    PrologHanoiComponent
+    PrologHanoiComponent,
+    GamesComponent,
+    TictactoeComponent,
+    MemoryComponent,
+    BoardComponent,
+    SquareComponent
   ],
   imports     : [
     BrowserModule,
