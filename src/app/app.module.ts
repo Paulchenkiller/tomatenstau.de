@@ -33,6 +33,8 @@ import {TictactoeComponent} from './games/tictactoe/tictactoe.component';
 import {MemoryComponent} from './games/memory/memory.component';
 import { BoardComponent } from './games/tictactoe/board/board.component';
 import { SquareComponent } from './games/tictactoe/square/square.component';
+import { GameCardComponent } from './games/memory/game-card/game-card.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {path: 'index', component: IndexComponent, data: {breadcrumb: 'Home', logo: 'home'}},
@@ -105,7 +107,8 @@ const routes: Routes = [
     TictactoeComponent,
     MemoryComponent,
     BoardComponent,
-    SquareComponent
+    SquareComponent,
+    GameCardComponent
   ],
   imports     : [
     BrowserModule,
@@ -113,7 +116,8 @@ const routes: Routes = [
     FormsModule,
     HighlightModule,
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule
   ],
   exports     : [RouterModule],
   providers   : [{
