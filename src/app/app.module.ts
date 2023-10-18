@@ -36,110 +36,53 @@ import {SquareComponent} from './games/tictactoe/square/square.component';
 import {GameCardComponent} from './games/memory/game-card/game-card.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-const routes: Routes = [
-  {path: 'index', component: IndexComponent, data: {breadcrumb: 'Home', logo: 'home'}},
-  {path: '', redirectTo: 'index', pathMatch: 'full'},
-  {
-    path    : 'code', data: {breadcrumb: 'Code', logo: 'terminal'},
-    children: [
-      {path: '', component: CodeComponent},
-      {
-        path    : 'perl', data: {breadcrumb: 'Perl', logo: 'keyboard'},
-        children: [{path: '', component: PerlIndexComponent}]
-      },
-      {
-        path    : 'python', data: {breadcrumb: 'Python', logo: ['fab', 'python']},
-        children: [{component: PythonIndexComponent, path: ''}]
-      },
-      {
-        path    : 'prolog', data: {breadcrumb: 'Prolog', logo: 'brain'},
-        children: [
-          {path: '', component: PrologIndexComponent},
-          {
-            path    : 'ackermann', data: {breadcrumb: 'Ackermann', logo: 'superscript'},
-            children: [
-              {path: '', component: PrologAckermannComponent}
-            ]
-          },
-          {
-            path    : 'hanoi', data: {breadcrumb: 'Hanoi', logo: 'gopuram'},
-            children: [
-              {path: '', component: PrologHanoiComponent}
-            ]
-          },
-        ]
-      }
-    ]
-  },
-  {path: 'games', component: GamesComponent},
-  {path: 'games/ttt', component: TictactoeComponent},
-  {path: 'games/memory', component: MemoryComponent},
-  // {path: 'contact', component: ContactComponent},
+const routes: Routes = [{path: 'index', component: IndexComponent, data: {breadcrumb: 'Home', logo: 'home'}}, {
+  path: '',
+  redirectTo: 'index',
+  pathMatch: 'full'
+}, {
+  path: 'code', data: {breadcrumb: 'Code', logo: 'terminal'}, children: [{path: '', component: CodeComponent}, {
+    path: 'perl', data: {breadcrumb: 'Perl', logo: 'keyboard'}, children: [{path: '', component: PerlIndexComponent}]
+  }, {
+    path: 'python', data: {breadcrumb: 'Python', logo: ['fab', 'python']}, children: [{component: PythonIndexComponent, path: ''}]
+  }, {
+    path: 'prolog', data: {breadcrumb: 'Prolog', logo: 'brain'}, children: [{path: '', component: PrologIndexComponent}, {
+      path: 'ackermann', data: {breadcrumb: 'Ackermann', logo: 'superscript'}, children: [{path: '', component: PrologAckermannComponent}]
+    }, {
+      path: 'hanoi', data: {breadcrumb: 'Hanoi', logo: 'gopuram'}, children: [{path: '', component: PrologHanoiComponent}]
+    },]
+  }]
+}, {path: 'games', component: GamesComponent}, {path: 'games/ttt', component: TictactoeComponent}, {
+  path: 'games/memory',
+  component: MemoryComponent
+}, // {path: 'contact', component: ContactComponent},
   // {path: 'portfolio', component: PortfolioComponent},
   // {path: 'services', component: ServicesComponent},
-  {path: '**', component: PageNotFoundComponent}
-];
+  {path: '**', component: PageNotFoundComponent}];
 
-@NgModule( {
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    PageNotFoundComponent,
-    PortfolioComponent,
-    ServicesComponent,
-    AboutComponent,
-    ContactComponent,
-    IndexComponent,
-    CardComponent,
-    ModalComponent,
-    ContentComponent,
-    HeadlineComponent,
-    MemberComponent,
-    CodeComponent,
-    PrologIndexComponent,
-    PerlIndexComponent,
-    PythonIndexComponent,
-    BreadcrumbComponent,
-    PrologAckermannComponent,
-    PrologHanoiComponent,
-    GamesComponent,
-    TictactoeComponent,
-    MemoryComponent,
-    BoardComponent,
-    SquareComponent,
-    GameCardComponent
-  ],
-  imports     : [
-    BrowserModule,
-    RouterModule.forRoot( routes ),
-    FormsModule,
-    HighlightModule,
-    CommonModule,
-    FontAwesomeModule,
-    BrowserAnimationsModule
-  ],
-  exports     : [RouterModule],
-  providers   : [{
-    provide : HIGHLIGHT_OPTIONS,
-    useValue: {
+@NgModule({
+  declarations: [AppComponent, HeaderComponent, FooterComponent, PageNotFoundComponent, PortfolioComponent, ServicesComponent, AboutComponent, ContactComponent, IndexComponent, CardComponent, ModalComponent, ContentComponent, HeadlineComponent, MemberComponent, CodeComponent, PrologIndexComponent, PerlIndexComponent, PythonIndexComponent, BreadcrumbComponent, PrologAckermannComponent, PrologHanoiComponent, GamesComponent, TictactoeComponent, MemoryComponent, BoardComponent, SquareComponent, GameCardComponent],
+  imports: [BrowserModule, RouterModule.forRoot(routes), FormsModule, HighlightModule, CommonModule, FontAwesomeModule, BrowserAnimationsModule],
+  exports: [RouterModule],
+  providers: [{
+    provide: HIGHLIGHT_OPTIONS, useValue: {
       coreLibraryLoader: () => import('highlight.js/lib/core'),
-      lineNumbersLoader: () => import('highlightjs-line-numbers.js'),
-      languages        : {
-        perl  : () => import('highlight.js/lib/languages/perl'),
+      lineNumbersLoader: () => import('ngx-highlightjs/line-numbers'),
+      languages: {
+        perl: () => import('highlight.js/lib/languages/perl'),
         python: () => import('highlight.js/lib/languages/python'),
-        prolog: () => import('highlight.js/lib/languages/prolog'),
+        prolog: () => import('highlight.js/lib/languages/prolog')
         // matlab: () => import('highlight.js/lib/languages/matlab'),
         // shell : () => import('highlight.js/lib/languages/shell'),
       }
     }
   }],
-  bootstrap   : [AppComponent]
-} )
+  bootstrap: [AppComponent]
+})
 export class AppModule {
-  constructor( library: FaIconLibrary ) {
+  constructor(library: FaIconLibrary) {
     // TODO auf die gebrauchten reduzieren
-    library.addIconPacks( fas, fab );
+    library.addIconPacks(fas, fab);
     // library.addIcons(faGithub);
   }
 }

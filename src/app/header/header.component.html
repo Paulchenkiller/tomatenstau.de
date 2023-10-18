@@ -3,23 +3,24 @@
     <div class="logo">
       <a routerLink="index">Tomatenstaude</a>
     </div>
-    <nav id="nav-wrap">
-      <input id="menu__toggle" type="checkbox" [(ngModel)]="menu" />
-      <label class="menu__btn" for="menu__toggle">
-        <span></span>
-      </label>
+<!--    <nav id="nav-wrap">-->
+<!--      <input [(ngModel)]="menu" id="menu__toggle" type="checkbox"/>-->
+<!--      <label class="menu__btn" for="menu__toggle">-->
+<!--        <span></span>-->
+<!--      </label>-->
 
-      <ul id="nav" class="nav menu__box" >
-        <li class="menu__item" routerLink="/index" routerLinkActive="current">Home.</li>
-        <li class="menu__item" routerLink="/code" routerLinkActive="current">Code.</li>
-<!--        <li class="menu__item" routerLink="/services" routerLinkActive="current">Services.</li>-->
-<!--        <li class="menu__item" routerLink="/about" routerLinkActive="current">About.</li>-->
-<!--        <li class="menu__item" routerLink="/contact" routerLinkActive="current">Contact.</li>-->
-      </ul>
-    </nav>
+<!--      <ul class="nav menu__box" id="nav">-->
+<!--&lt;!&ndash;        <li class="menu__item" routerLink="/index" routerLinkActive="current">Home.</li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="menu__item" routerLink="/code" routerLinkActive="current">Code.</li>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <li class="menu__item" routerLink="/services" routerLinkActive="current">Services.</li>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <li class="menu__item" routerLink="/about" routerLinkActive="current">About.</li>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <li class="menu__item" routerLink="/contact" routerLinkActive="current">Contact.</li>&ndash;&gt;-->
+<!--      </ul>-->
+<!--    </nav>-->
+<!--    .bar-left to header-social -->
     <ul class="header-social">
       <li *ngFor="let sm of socialMedia">
-        <a target="_blank" [href]="sm.link">
+        <a [href]="sm.link" target="_blank">
           <fa-icon [icon]="sm.icon"></fa-icon>
         </a>
       </li>

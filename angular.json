@@ -31,7 +31,7 @@
               "src/css/base.css",
               "src/css/vendor.min.css",
               "src/css/main.css",
-              "node_modules/highlight.js/styles/darcula.css"
+              "node_modules/highlight.js/styles/monokai.css"
             ],
             "scripts": []
           },

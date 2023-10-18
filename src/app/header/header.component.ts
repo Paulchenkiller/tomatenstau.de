@@ -9,8 +9,8 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
   socialMedia = [
     {icon: ['fab', 'github'], link: 'https://github.com/Paulchenkiller'},
-    {icon: ['fab', 'linkedin'], link: 'https://linkedin.com/in/meik-rücker'},
-    {icon: ['fab', 'xing'], link: 'https://xing.com/profile/Meik_Ruecker2'}
+    {icon: ['fab', 'linkedin'], link: 'https://www.linkedin.com/in/meik-geldmacher'},
+    {icon: ['fab', 'xing'], link: 'https://www.xing.com/profile/Meik_Geldmacher'}
   ];
   nav: any;
   menu = false;

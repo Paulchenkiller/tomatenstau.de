@@ -42,14 +42,19 @@ header .logo a {
   background-size : 50%;
 }
 
+.bar-left {
+  border-left  : 1px solid rgba(150, 150, 150, 0.2);
+  padding-left : 36px;
+}
+
 header .header-social {
   font-size    : 20px;
   font-weight  : normal;
   line-height  : 66px;
   margin-top   : 0;
   margin-left  : 30px;
-  padding-left : 36px;
-  border-left  : 1px solid rgba(150, 150, 150, 0.2);
+  /*padding-left : 36px;*/
+  /*border-left  : 1px solid rgba(150, 150, 150, 0.2);*/
   float        : left;
   position     : relative;
   top          : -1px;
