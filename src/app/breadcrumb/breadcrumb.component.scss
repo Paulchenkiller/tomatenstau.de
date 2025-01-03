@@ -15,13 +15,13 @@ ul.breadcrumb {
     border-radius: $size;
     position: relative;
     margin-left: -$size;
-    transition: all .2s;
+    //transition: all .2s;
     margin-top: 3px;
 
     a {
       overflow: hidden;
       border-radius: $size;
-      transition: all .2s;
+      //transition: all .2s;
       text-decoration: none;
       height: $size;
       color: darken($green-dark, 5%);

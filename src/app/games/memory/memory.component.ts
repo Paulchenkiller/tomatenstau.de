@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {CardData} from './card-data.model';
 
 @Component( {
-  selector   : 'app-memory',
-  templateUrl: './memory.component.html',
-  styleUrls  : ['./memory.component.css']
+    selector: 'app-memory',
+    templateUrl: './memory.component.html',
+    styleUrls: ['./memory.component.css'],
+    standalone: false
 } )
 export class MemoryComponent implements OnInit {
   cardImages = [

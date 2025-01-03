@@ -2,9 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+    selector: 'app-modal',
+    templateUrl: './modal.component.html',
+    styleUrls: ['./modal.component.css'],
+    standalone: false
 })
 export class ModalComponent implements OnInit {
 

@@ -4,10 +4,11 @@ import {distinctUntilChanged, filter, map} from 'rxjs/operators';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component( {
-  selector     : 'app-breadcrumb',
-  templateUrl  : './breadcrumb.component.html',
-  styleUrls    : ['./breadcrumb.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-breadcrumb',
+    templateUrl: './breadcrumb.component.html',
+    styleUrls: ['./breadcrumb.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 } )
 export class BreadcrumbComponent implements OnInit {
   breadcrumbs$ = this.router.events.pipe(

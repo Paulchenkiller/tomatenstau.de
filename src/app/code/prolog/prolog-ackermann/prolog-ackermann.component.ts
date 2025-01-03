@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component( {
-  selector   : 'app-prolog-ackermann',
-  templateUrl: './prolog-ackermann.component.html',
-  styleUrls  : ['./prolog-ackermann.component.css']
+    selector: 'app-prolog-ackermann',
+    templateUrl: './prolog-ackermann.component.html',
+    styleUrls: ['./prolog-ackermann.component.css'],
+    standalone: false
 } )
 export class PrologAckermannComponent implements OnInit {
   code1 = `f(n', x', y') = f(n, f(n', x, y), x)`;

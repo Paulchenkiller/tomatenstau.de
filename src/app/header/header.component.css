@@ -7,11 +7,11 @@ header {
   top                : 0;
   z-index            : 600;
   background-color   : rgba(17, 20, 23, 0.8);
-  -moz-transition    : all 0.5s ease-in-out;
-  -o-transition      : all 0.5s ease-in-out;
-  -webkit-transition : all 0.5s ease-in-out;
-  -ms-transition     : all 0.5s ease-in-out;
-  transition         : all 0.5s ease-in-out;
+  /*-moz-transition    : all 0.5s ease-in-out;*/
+  /*-o-transition      : all 0.5s ease-in-out;*/
+  /*-webkit-transition : all 0.5s ease-in-out;*/
+  /*-ms-transition     : all 0.5s ease-in-out;*/
+  /*transition         : all 0.5s ease-in-out;*/
 }
 
 header.opaque {
@@ -132,11 +132,11 @@ ul#nav > li {
   text-align         : left;
   color              : #ffffff;
   position           : relative;
-  -moz-transition    : color 0.2s ease-in-out;
-  -o-transition      : color 0.2s ease-in-out;
-  -webkit-transition : color 0.2s ease-in-out;
-  -ms-transition     : color 0.2s ease-in-out;
-  transition         : color 0.2s ease-in-out;
+  /*-moz-transition    : color 0.2s ease-in-out;*/
+  /*-o-transition      : color 0.2s ease-in-out;*/
+  /*-webkit-transition : color 0.2s ease-in-out;*/
+  /*-ms-transition     : color 0.2s ease-in-out;*/
+  /*transition         : color 0.2s ease-in-out;*/
 }
 
 ul#nav li:hover {
@@ -165,11 +165,11 @@ ul#nav li.current:after {
   background-color   : white;
   content            : '\0020';
   display            : block;
-  -moz-transition    : all 0.3s ease-in-out;
-  -o-transition      : all 0.3s ease-in-out;
-  -webkit-transition : all 0.3s ease-in-out;
-  -ms-transition     : all 0.3s ease-in-out;
-  transition         : all 0.3s ease-in-out;
+  /*-moz-transition    : all 0.3s ease-in-out;*/
+  /*-o-transition      : all 0.3s ease-in-out;*/
+  /*-webkit-transition : all 0.3s ease-in-out;*/
+  /*-ms-transition     : all 0.3s ease-in-out;*/
+  /*transition         : all 0.3s ease-in-out;*/
 }
 
 @media only screen and (min-width : 769px) {
@@ -224,11 +224,11 @@ ul#nav li.current:after {
     bottom             : auto;
     left               : auto;
     background         : #2e7d32;
-    -moz-transition    : all 0.3s ease-in-out;
-    -o-transition      : all 0.3s ease-in-out;
-    -webkit-transition : all 0.3s ease-in-out;
-    -ms-transition     : all 0.3s ease-in-out;
-    transition         : all 0.3s ease-in-out;
+    /*-moz-transition    : all 0.3s ease-in-out;*/
+    /*-o-transition      : all 0.3s ease-in-out;*/
+    /*-webkit-transition : all 0.3s ease-in-out;*/
+    /*-ms-transition     : all 0.3s ease-in-out;*/
+    /*transition         : all 0.3s ease-in-out;*/
     text-shadow        : none;
     color              : transparent;
   }
@@ -361,7 +361,7 @@ ul#nav li.current:after {
     width               : 100%;
     height              : 2px;
     background-color    : #2e7d32;
-    transition-duration : .25s;
+    /*transition-duration : .25s;*/
   }
 
   .menu__btn > span::before {
@@ -387,7 +387,7 @@ ul#nav li.current:after {
     list-style          : none;
     background-color    : #eceff1;
     box-shadow          : 1px 0 6px rgba(0, 0, 0, .2);
-    transition-duration : .25s;
+    /*transition-duration : .25s;*/
   }
 
   .menu__item {
@@ -402,7 +402,7 @@ ul#nav li.current:after {
     font-weight         : 600;
     outline             : none;
     text-decoration     : none;
-    transition-duration : .25s;
+    /*transition-duration : .25s;*/
   }
 
   .menu__item:hover {

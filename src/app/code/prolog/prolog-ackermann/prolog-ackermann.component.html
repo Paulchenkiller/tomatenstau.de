@@ -15,42 +15,42 @@
     </p>
 
 
-    <pre><code [highlight]="code1" [languages]="emptyLanguages"></code></pre>
+    <pre><code [highlight]="code1" [language]=""></code></pre>
 
     <p>
       Stattdessen wird die Variante von Hans Hermes verwendet, welche direkt aus dem Original gewonnen wird. Dabei ist
       die Funktion eine Abbildung von zwei ganzen Zahlen auf eine ganze Zahl
-      <code class="inline-code" highlight="a(n,m)"></code>. Sie ist mathematisch durch folgende Gesetzmäßigkeit
+      <code class="inline-code" highlight="a(n,m)" [language]=""></code>. Sie ist mathematisch durch folgende Gesetzmäßigkeit
       definiert:
     </p>
 
-    <pre><code [highlight]="code2" [languages]="emptyLanguages"></code></pre>
+    <pre><code [highlight]="code2" [language]=""></code></pre>
 
     <p>
       Die Ackermann-Funktion ist dafür berühmt, die Rechenkapazität ganz schnell zu erschöpfen. Die Funktionsdefinition
       nach Hermes lässt sich dabei quasi 1:1 in Prolog überführen:
     </p>
 
-    <pre><code [highlight]="code3"></code></pre>
+    <pre><code [highlight]="code3" [language]=""></code></pre>
 
     <p>
       Ausgeführt werden kann dann mittels:
     </p>
 
-    <pre><code [highlight]="code4"></code></pre>
+    <pre><code [highlight]="code4" [language]=""></code></pre>
 
     <p>
-      Das Ergebnis würde in der Variable <code class="inline-code" highlight="L"></code> stehen. Allerdings kommt es zu
+      Das Ergebnis würde in der Variable <code class="inline-code" highlight="L" [language]=""></code> stehen. Allerdings kommt es zu
       folgendem Fehler:
     </p>
 
-    <pre><code [highlight]="code5"></code></pre>
+    <pre><code [highlight]="code5" [language]=""></code></pre>
 
     <p>
       Bei kleinerem Funktionsaufruf erhält man ein Ergebnis:
     </p>
 
-    <pre><code [highlight]="code6"></code></pre>
+    <pre><code [highlight]="code6" [language]=""></code></pre>
 
     Dies zeigt deutlich, dass es bei der Ackermann-Funktion bereits bei geringen Werten zu Speicherengpässen kommen
     kann.
