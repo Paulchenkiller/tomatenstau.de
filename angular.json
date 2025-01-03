@@ -130,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "tomatenstaude"
+  "defaultProject": "tomatenstaude",
+  "cli": {
+    "analytics": false
+  }
 }
