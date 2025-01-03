@@ -11,15 +11,16 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
     standalone: false
 } )
 export class BreadcrumbComponent implements OnInit {
-  breadcrumbs$ = this.router.events.pipe(
-    filter( event => event instanceof NavigationEnd ),
-    distinctUntilChanged(),
-    map( event => this.buildBreadCrumb( this.activatedRoute.root ) )
-  );
+  breadcrumbs$;
 
   // Build your breadcrumb starting with the root route of your current activated route
   constructor( private activatedRoute: ActivatedRoute,
                private router: Router ) {
+    this.breadcrumbs$ = this.router.events.pipe(
+      filter( event => event instanceof NavigationEnd ),
+      distinctUntilChanged(),
+      map( event => this.buildBreadCrumb( this.activatedRoute.root ) )
+    );
   }
 
   ngOnInit() {

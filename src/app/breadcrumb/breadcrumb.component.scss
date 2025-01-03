@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $green: #2e7d32;
 $green-dark: #000000;
 $size: 50px;
@@ -10,7 +12,7 @@ ul.breadcrumb {
 
   li {
     float: right;
-    padding: $size/10;
+    padding: calc($size/10);
     background-color: $green-dark;
     border-radius: $size;
     position: relative;
@@ -24,14 +26,14 @@ ul.breadcrumb {
       //transition: all .2s;
       text-decoration: none;
       height: $size;
-      color: darken($green-dark, 5%);
+      color: color.adjust($green-dark, $lightness: -5%);
       background-color: $green;
       text-align: center;
       min-width: $size;
       display: block;
       line-height: $size;
       padding-left: $size + 2;
-      padding-right: $size/2 +$size/6;
+      padding-right: calc($size/2 + $size/6);
       width: $size;
 
       .icon {
@@ -45,7 +47,7 @@ ul.breadcrumb {
 
       &:hover {
         width: 220px;
-        background-color: lighten($green, 5%);
+        background-color: color.adjust($green, $lightness: 5%);
 
         .text {
           display: inline-block;
@@ -61,7 +63,7 @@ ul.breadcrumb {
       }
 
       &:hover {
-        padding: (($size/10) - 2px);
+        padding: calc(($size/10) - 2px);
         margin-top: 0;
 
         a {
