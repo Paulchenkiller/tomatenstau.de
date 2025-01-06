@@ -9,7 +9,7 @@ import {faPlus} from '@fortawesome/free-solid-svg-icons';
 })
 export class ModalComponent implements OnInit {
 
-  @Input() img: {src, alt};
+  @Input() img: {src: string, alt: string};
   @Input() title: string;
   @Input() content: string;
   faPlus = faPlus;
