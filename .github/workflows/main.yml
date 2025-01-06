@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: All things angular
-      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@2272ef32f364bc80d8680ee03d8e58f126156c31
       with:
         github_access_token: ${{ secrets.ACCESS_TOKEN }} # see the Configuration section for how you can create secrets
         deploy_branch: gh-pages # The branch the action should deploy to.
