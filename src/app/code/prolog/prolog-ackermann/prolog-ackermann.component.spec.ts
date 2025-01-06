@@ -8,9 +8,8 @@ describe('PrologAckermannComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrologAckermannComponent ]
-    })
-    .compileComponents();
+      declarations: [PrologAckermannComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

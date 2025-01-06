@@ -8,9 +8,8 @@ describe('TictactoeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TictactoeComponent ]
-    })
-    .compileComponents();
+      declarations: [TictactoeComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,54 +1,54 @@
 h1 {
-  font           : 15px/30px 'Raleway', sans-serif;
-  text-transform : uppercase;
-  letter-spacing : 3px;
-  color          : #ffffff;
-  margin-bottom  : 30px;
-  margin-top     : 18px;
+  font: 15px/30px 'Raleway', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #ffffff;
+  margin-bottom: 30px;
+  margin-top: 18px;
 }
 
 h1 span {
-  color    : #2e7d32;
-  position : relative;
-  left     : 3px;
+  color: #2e7d32;
+  position: relative;
+  left: 3px;
 }
 
 p {
-  font  : 20px/36px 'Merriweather', serif;
-  width : 95%;
+  font: 20px/36px 'Merriweather', serif;
+  width: 95%;
 }
 
 .row:hover h1 + hr {
-  border-color : #2e7d32;
-  width        : 120px;
-  text-align   : left;
+  border-color: #2e7d32;
+  width: 120px;
+  text-align: left;
 }
 
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width: 768px) {
   .row {
-    text-align : center;
+    text-align: center;
   }
 
   p {
-    font  : 18px/36px 'Merriweather', serif;
-    width : auto;
+    font: 18px/36px 'Merriweather', serif;
+    width: auto;
   }
 
   h1 + hr {
-    margin-left  : auto;
-    margin-right : auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width: 600px) {
   p {
-    font  : 17px/33px 'Merriweather', serif;
-    width : auto;
+    font: 17px/33px 'Merriweather', serif;
+    width: auto;
   }
 }
 
-@media only screen and (max-width : 400px) {
+@media only screen and (max-width: 400px) {
   [class*="column"] {
-    padding : 0;
+    padding: 0;
   }
 }

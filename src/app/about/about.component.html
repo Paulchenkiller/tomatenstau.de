@@ -1,19 +1,19 @@
 <app-headline h1="Who we are"></app-headline>
 <div class="row mobile-no-padding">
   <div class="process bgrid-half tab-bgrid-whole group">
-    <app-card header="Our Mission." class="bgrid"
-              content="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."></app-card>
-    <app-card header="Our Goal." class="bgrid"
-              content="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."></app-card>
-    <app-card header="Our Approach." class="bgrid"
-              content="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."></app-card>
-    <app-card header="Our Process." class="bgrid"
-              content="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."></app-card>
+    <app-card class="bgrid" content="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+              header="Our Mission."></app-card>
+    <app-card class="bgrid" content="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+              header="Our Goal."></app-card>
+    <app-card class="bgrid" content="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+              header="Our Approach."></app-card>
+    <app-card class="bgrid" content="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+              header="Our Process."></app-card>
   </div> <!-- end process -->
 </div> <!-- end row -->
 <app-headline h1="Meet Our Team"></app-headline>
 <div class="row">
-  <div id="team-wrapper" class="bgrid-fourth s-bgrid-third tab-bgrid-half mob-bgrid-whole group">
-    <app-member class="bgrid member" *ngFor="let person of persons" [person]="person"></app-member>
+  <div class="bgrid-fourth s-bgrid-third tab-bgrid-half mob-bgrid-whole group" id="team-wrapper">
+    <app-member *ngFor="let person of persons" [person]="person" class="bgrid member"></app-member>
   </div> <!-- end team-wrapper -->
 </div> <!-- end row -->

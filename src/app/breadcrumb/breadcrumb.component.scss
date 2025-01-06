@@ -12,7 +12,7 @@ ul.breadcrumb {
 
   li {
     float: right;
-    padding: calc($size/10);
+    padding: calc($size / 10);
     background-color: $green-dark;
     border-radius: $size;
     position: relative;
@@ -33,7 +33,7 @@ ul.breadcrumb {
       display: block;
       line-height: $size;
       padding-left: $size + 2;
-      padding-right: calc($size/2 + $size/6);
+      padding-right: calc($size / 2 + $size / 6);
       width: $size;
 
       .icon {
@@ -63,7 +63,7 @@ ul.breadcrumb {
       }
 
       &:hover {
-        padding: calc(($size/10) - 2px);
+        padding: calc(($size / 10) - 2px);
         margin-top: 0;
 
         a {
@@ -76,7 +76,7 @@ ul.breadcrumb {
   }
 }
 
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width: 768px) {
   nav .breadcrumb {
     display: none;
   }

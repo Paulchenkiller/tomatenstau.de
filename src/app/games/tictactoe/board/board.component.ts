@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-board',
-    templateUrl: './board.component.html',
-    styleUrls: ['./board.component.css'],
-    standalone: false
+  selector: 'app-board',
+  templateUrl: './board.component.html',
+  styleUrls: ['./board.component.css'],
+  standalone: false,
 })
 export class BoardComponent implements OnInit {
   squares: ('X' | 'O')[];
@@ -13,6 +13,10 @@ export class BoardComponent implements OnInit {
   winner: 'X' | 'O';
 
   constructor() {}
+
+  get player(): 'X' | 'O' {
+    return this.xIsNext ? 'X' : 'O';
+  }
 
   ngOnInit(): void {
     this.newGame();
@@ -23,10 +27,6 @@ export class BoardComponent implements OnInit {
     this.winnerSquares = Array(9).fill(null);
     this.winner = null;
     this.xIsNext = true;
-  }
-
-  get player(): 'X' | 'O' {
-    return this.xIsNext ? 'X' : 'O';
   }
 
   makeMove(idx: number): void {
@@ -47,7 +47,7 @@ export class BoardComponent implements OnInit {
       [1, 4, 7],
       [2, 5, 8],
       [0, 4, 8],
-      [2, 4, 6]
+      [2, 4, 6],
     ];
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];

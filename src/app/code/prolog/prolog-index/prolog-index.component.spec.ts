@@ -8,9 +8,8 @@ describe('PrologIndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrologIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [PrologIndexComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

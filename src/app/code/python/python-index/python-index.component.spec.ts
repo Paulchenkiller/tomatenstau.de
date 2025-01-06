@@ -8,9 +8,8 @@ describe('PythonIndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PythonIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [PythonIndexComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

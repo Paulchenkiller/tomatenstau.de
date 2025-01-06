@@ -1,4 +1,4 @@
-import {IconName} from '@fortawesome/fontawesome-common-types';
+import { IconName } from '@fortawesome/fontawesome-common-types';
 
 interface Social {
   icon: IconName;

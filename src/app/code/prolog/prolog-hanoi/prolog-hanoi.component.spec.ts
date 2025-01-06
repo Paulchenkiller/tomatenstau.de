@@ -8,9 +8,8 @@ describe('PrologHanoiComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrologHanoiComponent ]
-    })
-    .compileComponents();
+      declarations: [PrologHanoiComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

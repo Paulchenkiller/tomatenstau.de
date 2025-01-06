@@ -4,7 +4,7 @@
     <button (click)="restart()">Neues Spiel starten</button>
     <p>Aktuelle Züge: {{ playedCount }}</p>
     <p *ngIf="won">Gewonnen! Herzlichen Glückwunsch! </p>
-    <app-game-card *ngFor="let c of cards; let idx=index" [data]="c" (cardClicked)="cardClicked(idx)">
+    <app-game-card (cardClicked)="cardClicked(idx)" *ngFor="let c of cards; let idx=index" [data]="c">
     </app-game-card>
   </div>
 </div>

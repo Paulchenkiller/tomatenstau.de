@@ -8,9 +8,8 @@ describe('PerlIndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PerlIndexComponent ]
-    })
-    .compileComponents();
+      declarations: [PerlIndexComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

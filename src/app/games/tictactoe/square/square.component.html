@@ -1,1 +1,3 @@
-<div [class.player-x]="value == 'X'" [class.player-o]="value == 'O'" [class.winnersquare]="winnerSquare">{{value ? value : 'I'}}</div>
+<div [class.player-o]="value == 'O'" [class.player-x]="value == 'X'"
+     [class.winnersquare]="winnerSquare">{{ value ? value : 'I' }}
+</div>

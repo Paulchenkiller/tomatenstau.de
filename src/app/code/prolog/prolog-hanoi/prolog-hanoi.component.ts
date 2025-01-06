@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-@Component( {
-    selector: 'app-prolog-hanoi',
-    templateUrl: './prolog-hanoi.component.html',
-    styleUrls: ['./prolog-hanoi.component.css'],
-    standalone: false
-} )
+@Component({
+  selector: 'app-prolog-hanoi',
+  templateUrl: './prolog-hanoi.component.html',
+  styleUrls: ['./prolog-hanoi.component.css'],
+  standalone: false,
+})
 export class PrologHanoiComponent implements OnInit {
   languages = [];
   code1 = `   |        |         |\n  xxx       |         |\n xxxxx      |         |\nxxxxxxx     |         |`;
@@ -14,9 +14,7 @@ export class PrologHanoiComponent implements OnInit {
   code3 = `move(3,left,right,center).`;
   code4 = `Move top disk from left to right\nMove top disk from left to center\nMove top disk from right to center\nMove top disk from left to right\nMove top disk from center to left\nMove top disk from center to right\nMove top disk from left to right`;
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

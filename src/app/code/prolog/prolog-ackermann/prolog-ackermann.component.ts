@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-@Component( {
-    selector: 'app-prolog-ackermann',
-    templateUrl: './prolog-ackermann.component.html',
-    styleUrls: ['./prolog-ackermann.component.css'],
-    standalone: false
-} )
+@Component({
+  selector: 'app-prolog-ackermann',
+  templateUrl: './prolog-ackermann.component.html',
+  styleUrls: ['./prolog-ackermann.component.css'],
+  standalone: false,
+})
 export class PrologAckermannComponent implements OnInit {
   code1 = `f(n', x', y') = f(n, f(n', x, y), x)`;
   code2 = `a(0,m) = m + 1\na(n,0) = a(n - 1, 1)\na(n,m) = a(n - 1, a(n, m - 1))`;
@@ -45,9 +45,7 @@ ERROR: ?- set_prolog_flag(stack_limit, 2_147_483_648). to double the limit.`;
   code6 = `ackermann(3,4,L).\nL = 125`;
   emptyLanguages = [];
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }
