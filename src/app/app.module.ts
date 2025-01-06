@@ -7,7 +7,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ServicesComponent } from './services/services.component';
-import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule } from '@angular/forms';
 import { IndexComponent } from './index/index.component';
@@ -16,12 +15,10 @@ import {
   FaIconLibrary,
   FontAwesomeModule,
 } from '@fortawesome/angular-fontawesome';
-import { ModalComponent } from './modal/modal.component';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { ContentComponent } from './content/content.component';
 import { HeadlineComponent } from './headline/headline.component';
-import { MemberComponent } from './member/member.component';
 import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { CodeComponent } from './code/code.component';
 import { PrologIndexComponent } from './code/prolog/prolog-index/prolog-index.component';
@@ -31,12 +28,6 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { CommonModule } from '@angular/common';
 import { PrologAckermannComponent } from './code/prolog/prolog-ackermann/prolog-ackermann.component';
 import { PrologHanoiComponent } from './code/prolog/prolog-hanoi/prolog-hanoi.component';
-import { GamesComponent } from './games/games.component';
-import { TictactoeComponent } from './games/tictactoe/tictactoe.component';
-import { MemoryComponent } from './games/memory/memory.component';
-import { BoardComponent } from './games/tictactoe/board/board.component';
-import { SquareComponent } from './games/tictactoe/square/square.component';
-import { GameCardComponent } from './games/memory/game-card/game-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
@@ -84,14 +75,6 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'games', component: GamesComponent },
-  { path: 'games/ttt', component: TictactoeComponent },
-  {
-    path: 'games/memory',
-    component: MemoryComponent,
-  }, // {path: 'contact', component: ContactComponent},
-  // {path: 'portfolio', component: PortfolioComponent},
-  // {path: 'services', component: ServicesComponent},
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -103,14 +86,11 @@ const routes: Routes = [
     PageNotFoundComponent,
     PortfolioComponent,
     ServicesComponent,
-    AboutComponent,
     ContactComponent,
     IndexComponent,
     CardComponent,
-    ModalComponent,
     ContentComponent,
     HeadlineComponent,
-    MemberComponent,
     CodeComponent,
     PrologIndexComponent,
     PerlIndexComponent,
@@ -118,12 +98,6 @@ const routes: Routes = [
     BreadcrumbComponent,
     PrologAckermannComponent,
     PrologHanoiComponent,
-    GamesComponent,
-    TictactoeComponent,
-    MemoryComponent,
-    BoardComponent,
-    SquareComponent,
-    GameCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -157,6 +131,5 @@ export class AppModule {
   constructor(library: FaIconLibrary) {
     // TODO auf die gebrauchten reduzieren
     library.addIconPacks(fas, fab);
-    // library.addIcons(faGithub);
   }
 }
