@@ -5,8 +5,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
-import { ServicesComponent } from './services/services.component';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule } from '@angular/forms';
 import { IndexComponent } from './index/index.component';
@@ -84,8 +82,6 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
-    PortfolioComponent,
-    ServicesComponent,
     ContactComponent,
     IndexComponent,
     CardComponent,
