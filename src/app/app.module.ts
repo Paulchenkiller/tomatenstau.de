@@ -17,7 +17,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { ContentComponent } from './content/content.component';
 import { HeadlineComponent } from './headline/headline.component';
-// import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
+import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { CodeComponent } from './code/code.component';
 import { PrologIndexComponent } from './code/prolog/prolog-index/prolog-index.component';
 import { PerlIndexComponent } from './code/perl/perl-index/perl-index.component';
@@ -99,27 +99,27 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    // HighlightModule,
+    HighlightModule,
     CommonModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
   ],
   exports: [RouterModule],
   providers: [
-    // {
-    //   provide: HIGHLIGHT_OPTIONS,
-    //   useValue: {
-    //     coreLibraryLoader: () => import('highlight.js/lib/core'),
-    //     lineNumbersLoader: () => import('ngx-highlightjs/line-numbers'),
-    //     languages: {
-    //       perl: () => import('highlight.js/lib/languages/perl'),
-    //       python: () => import('highlight.js/lib/languages/python'),
-    //       prolog: () => import('highlight.js/lib/languages/prolog'),
-    //       // matlab: () => import('highlight.js/lib/languages/matlab'),
-    //       // shell : () => import('highlight.js/lib/languages/shell'),
-    //     },
-    //   },
-    // },
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        coreLibraryLoader: () => import('highlight.js/lib/core'),
+        lineNumbersLoader: () => import('ngx-highlightjs/line-numbers'),
+        languages: {
+          perl: () => import('highlight.js/lib/languages/perl'),
+          python: () => import('highlight.js/lib/languages/python'),
+          prolog: () => import('highlight.js/lib/languages/prolog'),
+          // matlab: () => import('highlight.js/lib/languages/matlab'),
+          // shell : () => import('highlight.js/lib/languages/shell'),
+        },
+      },
+    },
   ],
   bootstrap: [AppComponent],
 })
