@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PrologIndexComponent } from './prolog-index.component';
+import { RouterModule } from '@angular/router';
 
 describe('PrologIndexComponent', () => {
   let component: PrologIndexComponent;
@@ -8,7 +9,7 @@ describe('PrologIndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PrologIndexComponent],
+      imports: [RouterModule.forRoot([])],
     }).compileComponents();
   });
 

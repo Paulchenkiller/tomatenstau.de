@@ -1,32 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ContactComponent } from './contact/contact.component';
 import { FormsModule } from '@angular/forms';
 import { IndexComponent } from './index/index.component';
-import { CardComponent } from './card/card.component';
 import {
   FaIconLibrary,
   FontAwesomeModule,
 } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { ContentComponent } from './content/content.component';
-import { HeadlineComponent } from './headline/headline.component';
 import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { CodeComponent } from './code/code.component';
 import { PrologIndexComponent } from './code/prolog/prolog-index/prolog-index.component';
 import { PerlIndexComponent } from './code/perl/perl-index/perl-index.component';
 import { PythonIndexComponent } from './code/python/python-index/python-index.component';
-import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { CommonModule } from '@angular/common';
 import { PrologAckermannComponent } from './code/prolog/prolog-ackermann/prolog-ackermann.component';
 import { PrologHanoiComponent } from './code/prolog/prolog-hanoi/prolog-hanoi.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './footer/footer.component';
+import { ContentComponent } from './content/content.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   {
@@ -77,24 +73,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    PageNotFoundComponent,
-    ContactComponent,
-    IndexComponent,
-    CardComponent,
-    ContentComponent,
-    HeadlineComponent,
-    CodeComponent,
-    PrologIndexComponent,
-    PerlIndexComponent,
-    PythonIndexComponent,
-    BreadcrumbComponent,
-    PrologAckermannComponent,
-    PrologHanoiComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
@@ -103,6 +82,9 @@ const routes: Routes = [
     CommonModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    FooterComponent,
+    ContentComponent,
+    HeaderComponent,
   ],
   exports: [RouterModule],
   providers: [

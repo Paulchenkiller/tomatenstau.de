@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import {
+  FaIconComponent,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import { NgForOf } from '@angular/common';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  standalone: false,
+  imports: [RouterLink, FaIconComponent, NgForOf],
 })
 export class HeaderComponent implements OnInit {
   socialMedia = [
@@ -22,7 +29,11 @@ export class HeaderComponent implements OnInit {
   nav: any;
   menu = false;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private library: FaIconLibrary,
+  ) {
+    this.library.addIconPacks(fas, fab);
     this.router.events.subscribe((__) => {
       this.menu = false;
     });

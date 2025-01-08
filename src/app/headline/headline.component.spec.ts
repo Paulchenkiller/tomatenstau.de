@@ -7,9 +7,7 @@ describe('HeadlineComponent', () => {
   let fixture: ComponentFixture<HeadlineComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [HeadlineComponent],
-    }).compileComponents();
+    await TestBed.configureTestingModule({}).compileComponents();
   });
 
   beforeEach(() => {

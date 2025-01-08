@@ -1,17 +1,33 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Breadcrumb } from './breadcrumb';
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  standalone: false,
+  imports: [
+    RouterLink,
+    NgIf,
+    FaIconComponent,
+    AsyncPipe,
+    RouterLinkActive,
+    NgForOf,
+  ],
 })
 export class BreadcrumbComponent implements OnInit {
-  breadcrumbs$;
+  breadcrumbs$: Observable<Breadcrumb[]>;
 
   // Build your breadcrumb starting with the root route of your current activated route
   constructor(

@@ -7,9 +7,7 @@ describe('PerlIndexComponent', () => {
   let fixture: ComponentFixture<PerlIndexComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [PerlIndexComponent],
-    }).compileComponents();
+    await TestBed.configureTestingModule({}).compileComponents();
   });
 
   beforeEach(() => {

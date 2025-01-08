@@ -7,9 +7,7 @@ describe('PrologAckermannComponent', () => {
   let fixture: ComponentFixture<PrologAckermannComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [PrologAckermannComponent],
-    }).compileComponents();
+    await TestBed.configureTestingModule({}).compileComponents();
   });
 
   beforeEach(() => {

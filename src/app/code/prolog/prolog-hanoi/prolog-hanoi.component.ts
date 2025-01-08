@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { HeadlineComponent } from '../../../headline/headline.component';
+import { Highlight } from 'ngx-highlightjs';
 
 @Component({
   selector: 'app-prolog-hanoi',
   templateUrl: './prolog-hanoi.component.html',
   styleUrls: ['./prolog-hanoi.component.css'],
-  standalone: false,
+  imports: [HeadlineComponent, Highlight],
 })
 export class PrologHanoiComponent implements OnInit {
   languages = [];
@@ -14,7 +16,9 @@ export class PrologHanoiComponent implements OnInit {
   code3 = `move(3,left,right,center).`;
   code4 = `Move top disk from left to right\nMove top disk from left to center\nMove top disk from right to center\nMove top disk from left to right\nMove top disk from center to left\nMove top disk from center to right\nMove top disk from left to right`;
 
-  constructor() {}
+  constructor() {
+    // do nothing
+  }
 
   ngOnInit(): void {}
 }

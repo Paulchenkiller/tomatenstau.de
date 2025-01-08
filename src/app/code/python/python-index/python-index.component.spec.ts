@@ -7,9 +7,7 @@ describe('PythonIndexComponent', () => {
   let fixture: ComponentFixture<PythonIndexComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [PythonIndexComponent],
-    }).compileComponents();
+    await TestBed.configureTestingModule({}).compileComponents();
   });
 
   beforeEach(() => {

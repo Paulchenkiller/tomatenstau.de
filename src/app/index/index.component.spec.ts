@@ -7,9 +7,7 @@ describe('IndexComponent', () => {
   let fixture: ComponentFixture<IndexComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [IndexComponent],
-    }).compileComponents();
+    await TestBed.configureTestingModule({}).compileComponents();
   });
 
   beforeEach(() => {

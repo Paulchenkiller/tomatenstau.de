@@ -6,9 +6,7 @@ describe('ContentComponent', () => {
   let fixture: ComponentFixture<ContentComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ContentComponent],
-    }).compileComponents();
+    await TestBed.configureTestingModule({}).compileComponents();
   });
 
   beforeEach(() => {

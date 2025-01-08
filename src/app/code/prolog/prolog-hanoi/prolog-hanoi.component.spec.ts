@@ -7,9 +7,7 @@ describe('PrologHanoiComponent', () => {
   let fixture: ComponentFixture<PrologHanoiComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [PrologHanoiComponent],
-    }).compileComponents();
+    await TestBed.configureTestingModule({}).compileComponents();
   });
 
   beforeEach(() => {
