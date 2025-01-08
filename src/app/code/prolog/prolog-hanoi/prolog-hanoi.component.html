@@ -8,9 +8,9 @@
       Es darf immer nur eine Scheibe bewegt werden und es darf nie eine größere Scheibe auf einer kleineren liegen. </p>
 
     <p>Ausgangszustand (bei 3 Ringen):</p>
-    <pre><code [highlight]="code1" [language]=""></code></pre>
+    <pre><code [highlight]="code1" language="text"></code></pre>
     <p>Zielzustand (bei 3 Ringen):</p>
-    <pre><code [highlight]="code11" [language]=""></code></pre>
+    <pre><code [highlight]="code11" language="text"></code></pre>
 
     <p>Um das Ganze in Prolog zu lösen kann folgende Strategie verfolgt werden</p>
     Im besten Falle muss eine Scheibe von einem Turm zum Zielturm verschoben werden.
@@ -19,15 +19,15 @@
     Die letzte Scheibe wird dabei vom Turm X zum Turm Y verschoben. Anschließend werden die N-1 Scheiben von X nach Y
     verschoben:
 
-    <pre><code [highlight]="code2" [language]=""></code></pre>
+    <pre><code [highlight]="code2" language="prolog"></code></pre>
 
     <p>Ein beispielhafter Aufruf mit 3 Scheiben sieht wie folgt aus:</p>
 
-    <pre><code [highlight]="code3" language=""></code></pre>
+    <pre><code [highlight]="code3" language="prolog"></code></pre>
 
     <p>Die Ausgabe liefert die notwendigen Züge:</p>
 
-    <pre><code [highlight]="code4" [language]=""></code></pre>
+    <pre><code [highlight]="code4" language="text"></code></pre>
 
     <p>Das Spiel kann mit unendlich vielen Scheiben gelöst werden
       <a href="https://isbnsearch.org/isbn/9780821848142" target="_blank">[Mi09]</a>. Meistens werden zwischen 7 und 9
