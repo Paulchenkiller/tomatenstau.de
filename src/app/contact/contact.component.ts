@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeadlineComponent } from '../headline/headline.component';
 import { Highlight } from 'ngx-highlightjs';
 
@@ -8,7 +8,7 @@ import { Highlight } from 'ngx-highlightjs';
   styleUrls: ['./contact.component.css'],
   imports: [HeadlineComponent, Highlight],
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent {
   code = `#!/usr/bin/perl
 use strict;
 print "Hello World!"; `;
@@ -16,6 +16,4 @@ print "Hello World!"; `;
   constructor() {
     // do nothing
   }
-
-  ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FaIconComponent,
   FaIconLibrary,
@@ -12,12 +12,10 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
   styleUrls: ['./footer.component.css'],
   imports: [FaIconComponent],
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
   currentYear: number = new Date().getFullYear();
 
   constructor(private library: FaIconLibrary) {
     this.library.addIconPacks(fas, fab);
   }
-
-  ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import {
   FaIconComponent,
@@ -14,7 +14,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
   styleUrls: ['./header.component.css'],
   imports: [RouterLink, FaIconComponent, NgForOf],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   socialMedia = [
     { icon: ['fab', 'github'], link: 'https://github.com/Paulchenkiller' },
     {
@@ -42,6 +42,4 @@ export class HeaderComponent implements OnInit {
   clickEvent(): void {
     this.nav = !this.nav;
   }
-
-  ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HeadlineComponent } from '../headline/headline.component';
 import { NgForOf } from '@angular/common';
@@ -9,12 +9,10 @@ import { NgForOf } from '@angular/common';
   styleUrls: ['./code.component.css'],
   imports: [RouterLink, HeadlineComponent, NgForOf],
 })
-export class CodeComponent implements OnInit {
+export class CodeComponent {
   codeComponents = [{ name: 'Perl' }, { name: 'Python' }, { name: 'Prolog' }];
 
   constructor() {
     // do nothing
   }
-
-  ngOnInit(): void {}
 }

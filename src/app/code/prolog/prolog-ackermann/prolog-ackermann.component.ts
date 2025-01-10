@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
 
@@ -8,7 +8,7 @@ import { HeadlineComponent } from '../../../headline/headline.component';
   styleUrls: ['./prolog-ackermann.component.css'],
   imports: [Highlight, HeadlineComponent],
 })
-export class PrologAckermannComponent implements OnInit {
+export class PrologAckermannComponent {
   code1 = `f(n', x', y') = f(n, f(n', x, y), x)`;
   code2 = `a(0,m) = m + 1\na(n,0) = a(n - 1, 1)\na(n,m) = a(n - 1, a(n, m - 1))`;
   code3 = `% Basisfall
@@ -50,6 +50,4 @@ ERROR: ?- set_prolog_flag(stack_limit, 2_147_483_648). to double the limit.`;
   constructor() {
     // do nothing
   }
-
-  ngOnInit(): void {}
 }

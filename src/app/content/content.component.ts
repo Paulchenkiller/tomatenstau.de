@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,14 +7,12 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./content.component.css'],
   imports: [RouterOutlet],
 })
-export class ContentComponent implements OnInit {
+export class ContentComponent {
   constructor() {
     // do nothing
   }
 
-  ngOnInit(): void {}
-
-  onActivate(event): void {
+  onActivate(_event): void {
     const scrollToTop = window.setInterval(() => {
       const pos = window.pageYOffset;
       if (pos > 0) {

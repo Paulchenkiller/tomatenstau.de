@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
 
@@ -8,12 +8,10 @@ import { HeadlineComponent } from '../../../headline/headline.component';
   styleUrls: ['./python-index.component.css'],
   imports: [Highlight, HeadlineComponent],
 })
-export class PythonIndexComponent implements OnInit {
+export class PythonIndexComponent {
   helloWorld = `#!/usr/bin/python\nprint "Hello World";`;
 
   constructor() {
     // do nothing
   }
-
-  ngOnInit(): void {}
 }

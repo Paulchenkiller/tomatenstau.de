@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Breadcrumb } from './breadcrumb';
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 import {
@@ -26,7 +26,7 @@ import { Observable } from 'rxjs';
     NgForOf,
   ],
 })
-export class BreadcrumbComponent implements OnInit {
+export class BreadcrumbComponent {
   breadcrumbs$: Observable<Breadcrumb[]>;
 
   // Build your breadcrumb starting with the root route of your current activated route
@@ -37,17 +37,15 @@ export class BreadcrumbComponent implements OnInit {
     this.breadcrumbs$ = this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       distinctUntilChanged(),
-      map((event) => this.buildBreadCrumb(this.activatedRoute.root)),
+      map((_event) => this.buildBreadCrumb(this.activatedRoute.root)),
     );
   }
 
-  ngOnInit() {}
-
   buildBreadCrumb(
     route: ActivatedRoute,
-    givenUrl: string = '',
-    breadcrumbs: Array<Breadcrumb> = [],
-  ): Array<Breadcrumb> {
+    givenUrl = '',
+    breadcrumbs: Breadcrumb[] = [],
+  ): Breadcrumb[] {
     const label = route?.routeConfig?.data?.breadcrumb ?? 'Home';
     const logo = route?.routeConfig?.data?.logo ?? 'home';
     const path = route?.routeConfig?.path ?? '';
@@ -61,6 +59,7 @@ export class BreadcrumbComponent implements OnInit {
     ) {
       return this.buildBreadCrumb(route.firstChild, url, newBreadcrumbs);
     }
+
     return newBreadcrumbs;
   }
 }

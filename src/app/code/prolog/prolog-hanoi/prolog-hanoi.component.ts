@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeadlineComponent } from '../../../headline/headline.component';
 import { Highlight } from 'ngx-highlightjs';
 
@@ -8,7 +8,7 @@ import { Highlight } from 'ngx-highlightjs';
   styleUrls: ['./prolog-hanoi.component.css'],
   imports: [HeadlineComponent, Highlight],
 })
-export class PrologHanoiComponent implements OnInit {
+export class PrologHanoiComponent {
   languages = [];
   code1 = `   |        |         |\n  xxx       |         |\n xxxxx      |         |\nxxxxxxx     |         |`;
   code11 = `   |         |    |   \n   |         |   xxx  \n   |         |  xxxxx \n   |         | xxxxxxx`;
@@ -19,6 +19,4 @@ export class PrologHanoiComponent implements OnInit {
   constructor() {
     // do nothing
   }
-
-  ngOnInit(): void {}
 }

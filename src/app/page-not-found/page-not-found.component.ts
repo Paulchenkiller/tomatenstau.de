@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeadlineComponent } from '../headline/headline.component';
 
 @Component({
@@ -7,10 +7,8 @@ import { HeadlineComponent } from '../headline/headline.component';
   styleUrls: ['./page-not-found.component.css'],
   imports: [HeadlineComponent],
 })
-export class PageNotFoundComponent implements OnInit {
+export class PageNotFoundComponent {
   constructor() {
     // do nothing
   }
-
-  ngOnInit(): void {}
 }

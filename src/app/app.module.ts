@@ -26,14 +26,9 @@ import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   {
-    path: 'index',
+    path: '',
     component: IndexComponent,
     data: { breadcrumb: 'Home', logo: 'home' },
-  },
-  {
-    path: '',
-    redirectTo: 'index',
-    pathMatch: 'full',
   },
   {
     path: 'code',

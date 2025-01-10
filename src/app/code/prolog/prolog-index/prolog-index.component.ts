@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeadlineComponent } from '../../../headline/headline.component';
 import { RouterLink } from '@angular/router';
 import { Highlight } from 'ngx-highlightjs';
@@ -9,12 +9,10 @@ import { Highlight } from 'ngx-highlightjs';
   styleUrls: ['./prolog-index.component.css'],
   imports: [HeadlineComponent, RouterLink, Highlight],
 })
-export class PrologIndexComponent implements OnInit {
+export class PrologIndexComponent {
   helloWorld = `write('Hello World').`;
 
   constructor() {
     // do nothing
   }
-
-  ngOnInit(): void {}
 }
