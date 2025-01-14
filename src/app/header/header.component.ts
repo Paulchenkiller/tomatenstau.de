@@ -34,7 +34,7 @@ export class HeaderComponent {
     private library: FaIconLibrary,
   ) {
     this.library.addIconPacks(fas, fab);
-    this.router.events.subscribe((__) => {
+    this.router.events.subscribe(() => {
       this.menu = false;
     });
   }

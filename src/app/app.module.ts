@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
@@ -68,7 +67,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
@@ -99,7 +98,7 @@ const routes: Routes = [
       },
     },
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [],
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
