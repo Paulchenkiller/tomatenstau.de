@@ -17,9 +17,6 @@ if (environment.production) {
   enableProdMode();
 }
 
-// platformBrowserDynamic()
-//   .bootstrapModule(AppModule)
-//   .catch((err) => console.error(err));
 bootstrapApplication(AppComponent, {
   providers: [
     {
@@ -32,8 +29,6 @@ bootstrapApplication(AppComponent, {
           python: () => import('highlight.js/lib/languages/python'),
           prolog: () => import('highlight.js/lib/languages/prolog'),
           text: () => import('highlight.js/lib/languages/plaintext'),
-          // matlab: () => import('highlight.js/lib/languages/matlab'),
-          // shell : () => import('highlight.js/lib/languages/shell'),
         },
       },
     },
