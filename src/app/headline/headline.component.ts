@@ -6,7 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./headline.component.css'],
 })
 export class HeadlineComponent {
-  @Input() h1: string;
   @Input() subtitle: string;
 
   constructor() {
