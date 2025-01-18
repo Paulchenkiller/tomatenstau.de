@@ -5,7 +5,6 @@ import { Highlight } from 'ngx-highlightjs';
 @Component({
   selector: 'app-prolog-hanoi',
   templateUrl: './prolog-hanoi.component.html',
-  styleUrls: ['./prolog-hanoi.component.css'],
   imports: [HeadlineComponent, Highlight],
 })
 export class PrologHanoiComponent {

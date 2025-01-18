@@ -9,7 +9,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css'],
+  styleUrls: ['./footer.component.scss'],
   imports: [FaIconComponent],
 })
 export class FooterComponent {

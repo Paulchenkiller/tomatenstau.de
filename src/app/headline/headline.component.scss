@@ -1,16 +1,18 @@
+@import "../colors";
+
 h1 {
   font: 15px/30px 'Raleway', sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: #ffffff;
+  color: $white;
   margin-bottom: 30px;
   margin-top: 18px;
-}
 
-h1 span {
-  color: #2e7d32;
-  position: relative;
-  left: 3px;
+  span {
+    color: $green;
+    position: relative;
+    left: 3px;
+  }
 }
 
 p {
@@ -18,25 +20,35 @@ p {
   width: 95%;
 }
 
-.row:hover h1 + hr {
-  border-color: #2e7d32;
-  width: 120px;
-  text-align: left;
+.row {
+  &:hover {
+    h1 {
+      + {
+        hr {
+          border-color: $green;
+          width: 120px;
+          text-align: left;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .row {
     text-align: center;
   }
-
   p {
     font: 18px/36px 'Merriweather', serif;
     width: auto;
   }
-
-  h1 + hr {
-    margin-left: auto;
-    margin-right: auto;
+  h1 {
+    + {
+      hr {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
   }
 }
 

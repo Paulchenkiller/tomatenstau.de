@@ -5,7 +5,7 @@ import { Highlight } from 'ngx-highlightjs';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css'],
+  styleUrls: ['./contact.component.scss'],
   imports: [HeadlineComponent, Highlight],
 })
 export class ContactComponent {

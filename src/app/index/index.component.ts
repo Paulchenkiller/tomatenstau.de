@@ -4,7 +4,7 @@ import { HeadlineComponent } from '../headline/headline.component';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css'],
+  styleUrls: ['./index.component.scss'],
   imports: [HeadlineComponent],
 })
 export class IndexComponent {

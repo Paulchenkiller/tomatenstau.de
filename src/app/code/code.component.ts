@@ -6,7 +6,6 @@ import { NgForOf } from '@angular/common';
 @Component({
   selector: 'app-code',
   templateUrl: './code.component.html',
-  styleUrls: ['./code.component.css'],
   imports: [RouterLink, HeadlineComponent, NgForOf],
 })
 export class CodeComponent {

@@ -5,7 +5,6 @@ import { Highlight } from 'ngx-highlightjs';
 @Component({
   selector: 'app-perl-index',
   templateUrl: './perl-index.component.html',
-  styleUrls: ['./perl-index.component.css'],
   imports: [HeadlineComponent, Highlight],
 })
 export class PerlIndexComponent {

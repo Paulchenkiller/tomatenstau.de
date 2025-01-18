@@ -1,9 +1,5 @@
 @use "sass:color";
-
-$green: #2e7d32;
-$green-dark: #000000;
-$size: 50px;
-
+@import "../colors";
 
 ul.breadcrumb {
   margin-left: $size;
@@ -13,7 +9,7 @@ ul.breadcrumb {
   li {
     float: right;
     padding: calc($size / 10);
-    background-color: $green-dark;
+    background-color: $black;
     border-radius: $size;
     position: relative;
     margin-left: -$size;
@@ -24,7 +20,7 @@ ul.breadcrumb {
       border-radius: $size;
       text-decoration: none;
       height: $size;
-      color: color.adjust($green-dark, $lightness: -5%);
+      color: color.adjust($black, $lightness: -5%);
       background-color: $green;
       text-align: center;
       min-width: $size;

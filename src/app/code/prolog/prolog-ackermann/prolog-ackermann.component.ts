@@ -5,7 +5,7 @@ import { HeadlineComponent } from '../../../headline/headline.component';
 @Component({
   selector: 'app-prolog-ackermann',
   templateUrl: './prolog-ackermann.component.html',
-  styleUrls: ['./prolog-ackermann.component.css'],
+  styleUrls: ['./prolog-ackermann.component.scss'],
   imports: [Highlight, HeadlineComponent],
 })
 export class PrologAckermannComponent {

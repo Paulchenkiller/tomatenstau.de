@@ -11,7 +11,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.scss'],
   imports: [RouterLink, FaIconComponent, NgForOf],
 })
 export class HeaderComponent {
