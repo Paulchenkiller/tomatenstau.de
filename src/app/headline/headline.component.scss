@@ -1,15 +1,15 @@
-@import "../colors";
+@use "../colors";
 
 h1 {
   font: 15px/30px 'Raleway', sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: $white;
+  color: colors.$white;
   margin-bottom: 30px;
   margin-top: 18px;
 
   span {
-    color: $green;
+    color: colors.$green;
     position: relative;
     left: 3px;
   }
@@ -25,7 +25,7 @@ p {
     h1 {
       + {
         hr {
-          border-color: $green;
+          border-color: colors.$green;
           width: 120px;
           text-align: left;
         }

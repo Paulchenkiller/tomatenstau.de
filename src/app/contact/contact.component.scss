@@ -1,4 +1,4 @@
-@import "../colors";
+@use "../colors";
 
 #contact {
   background: #12151b;
@@ -9,7 +9,7 @@
 
   h3 {
     font: 18px/36px 'Raleway', sans-serif;
-    color: $green;
+    color: colors.$green;
     padding: 0;
     margin-bottom: 6px;
   }
@@ -51,7 +51,7 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         padding: 0 20px;
-        color: $warning;
+        color: colors.$warning;
       }
     }
   }
@@ -100,7 +100,7 @@ input[type="email"] {
   padding: 24px;
   margin-bottom: 36px;
   width: 100%;
-  color: $warning;
+  color: colors.$warning;
 
   i {
     margin-right: 10px;
@@ -114,7 +114,7 @@ input[type="email"] {
   padding: 24px;
   margin-bottom: 36px;
   width: 100%;
-  color: $green;
+  color: colors.$green;
 
   i {
     margin-right: 10px;

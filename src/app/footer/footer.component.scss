@@ -1,23 +1,23 @@
-@import "../colors";
+@use "../colors";
 
 footer {
   padding-bottom: 24px;
   position: relative;
-  color: $alpha_015;
+  color: colors.$alpha_015;
 
   .content {
     margin-bottom: 12px;
   }
 
   a {
-    color: $link_color;
+    color: colors.$link_color;
 
     &:visited {
-      color: $link_color;
+      color: colors.$link_color;
     }
 
     &:hover, &:focus {
-      color: $green;
+      color: colors.$green;
     }
   }
 
@@ -77,10 +77,10 @@ footer {
       margin: 0 0 0 32px;
 
       a {
-        color: $alpha_01;
+        color: colors.$alpha_01;
 
         &:hover {
-          color: $white;
+          color: colors.$white;
         }
       }
 
