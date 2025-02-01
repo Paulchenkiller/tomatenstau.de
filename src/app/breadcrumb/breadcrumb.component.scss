@@ -1,34 +1,34 @@
 @use "sass:color";
-@import "../colors";
+@use "../colors";
 
 ul.breadcrumb {
-  margin-left: $size;
+  margin-left: colors.$size;
   display: inline-block;
   list-style: none;
 
   li {
     float: right;
-    padding: calc($size / 10);
-    background-color: $black;
-    border-radius: $size;
+    padding: calc(colors.$size / 10);
+    background-color: colors.$black;
+    border-radius: colors.$size;
     position: relative;
-    margin-left: -$size;
+    margin-left: -(colors.$size);
     margin-top: 3px;
 
     a {
       overflow: hidden;
-      border-radius: $size;
+      border-radius: colors.$size;
       text-decoration: none;
-      height: $size;
-      color: color.adjust($black, $lightness: -5%);
-      background-color: $green;
+      height: colors.$size;
+      color: color.adjust(colors.$black, $lightness: -5%);
+      background-color: colors.$green;
       text-align: center;
-      min-width: $size;
+      min-width: colors.$size;
       display: block;
-      line-height: $size;
-      padding-left: $size + 2;
-      padding-right: calc($size / 2 + $size / 6);
-      width: $size;
+      line-height: colors.$size;
+      padding-left: colors.$size + 2;
+      padding-right: calc(colors.$size / 2 + colors.$size / 6);
+      width: colors.$size;
 
       .icon {
         display: inline-block;
@@ -41,7 +41,7 @@ ul.breadcrumb {
 
       &:hover {
         width: 220px;
-        background-color: color.adjust($green, $lightness: 5%);
+        background-color: color.adjust(colors.$green, $lightness: 5%);
 
         .text {
           display: inline-block;
@@ -57,13 +57,13 @@ ul.breadcrumb {
       }
 
       &:hover {
-        padding: calc(($size / 10) - 2px);
+        padding: calc((colors.$size / 10) - 2px);
         margin-top: 0;
 
         a {
-          width: $size + 10;
-          height: $size + 10;
-          line-height: $size + 10;
+          width: colors.$size + 10;
+          height: colors.$size + 10;
+          line-height: colors.$size + 10;
         }
       }
     }

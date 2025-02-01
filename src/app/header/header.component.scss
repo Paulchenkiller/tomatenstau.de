@@ -1,11 +1,4 @@
-@import "../colors";
-
-
-$color_4: #cacbcb;
-$background-color_1: rgba(17, 20, 23, 0.8);
-$background-color_4: inherit;
-$background-color_6: #eceff1;
-$background-color_7: #cfd8dc;
+@use "../colors";
 
 header {
   height: 66px;
@@ -14,7 +7,7 @@ header {
   left: 0;
   top: 0;
   z-index: 600;
-  background-color: $background-color_1;
+  background-color: colors.$header-background-color;
 
   .logo {
     float: left;
@@ -53,104 +46,16 @@ header {
       margin-right: 15px;
 
       a {
-        color: $white;
+        color: colors.$white;
 
         &:hover {
-          color: $green;
+          color: colors.$green;
         }
       }
     }
   }
 }
 
-header.opaque {
-  background: $black;
-  border-bottom: 1px solid $alpha_01;
-}
-
-.bar-left {
-  border-left: 1px solid rgba(150, 150, 150, 0.2);
-  padding-left: 36px;
-}
-
-#nav-wrap {
-  margin: 0;
-  padding: 0;
-  font: 13px 'Raleway', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  float: left;
-
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    margin: 0;
-    padding: 0;
-  }
-
-  a {
-    margin: 0;
-    padding: 0;
-  }
-
-  > a {
-    display: none;
-  }
-}
-
-ul#nav {
-  min-height: 66px;
-  display: inline-block;
-  width: auto;
-  text-align: left;
-
-  li {
-    position: relative;
-    list-style: none;
-    display: inline-block;
-    height: 66px;
-
-    &:hover {
-      color: $green;
-    }
-
-    &:active {
-      background-color: transparent !important;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  > li {
-    padding: 14px 12px;
-    line-height: 38px;
-    text-decoration: none;
-    text-align: left;
-    color: $white;
-    position: relative;
-  }
-
-  li.current {
-    color: $green;
-
-    &:after {
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      width: 40px;
-      height: 2px;
-      margin-left: -23px;
-      background-color: $white;
-      content: '\0020';
-      display: block;
-    }
-  }
-}
 
 @media only screen and (max-width: 880px) {
   header {
@@ -162,8 +67,8 @@ ul#nav {
 
 @media only screen and (max-width: 768px) {
   header {
-    background: $black;
-    border-bottom: 1px solid $alpha_01;
+    background: colors.$black;
+    border-bottom: 1px solid colors.$alpha_01;
 
     .row {
       width: 100%;
@@ -173,259 +78,5 @@ ul#nav {
       margin-left: -30px;
     }
   }
-  #nav-wrap {
-    z-index: 700;
-    display: block;
-    width: 100%;
-    float: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    > a {
-      border: none;
-      color: $white;
-      height: 40px;
-      min-width: 40px;
-      font-size: 12px;
-      text-align: left;
-      float: right;
-      display: block;
-      padding: 0;
-      position: relative;
-      top: 13px;
-      right: 20px;
-
-      &:hover {
-        .menu-icon {
-          background: #ffffff;
-        }
-      }
-    }
-
-    .menu-icon {
-      display: inline-block;
-      width: 24px;
-      height: 3px;
-      margin-top: -3px;
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      bottom: auto;
-      left: auto;
-      background: #2e7d32;
-      text-shadow: none;
-      color: transparent;
-
-      &:before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-color: $background-color_4;
-        left: 0;
-        bottom: 8px;
-      }
-
-      &:after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-color: $background-color_4;
-        left: 0;
-        top: 8px;
-      }
-    }
-
-    ul#nav {
-      background: #1c212a;
-      padding: 30px;
-      margin: 0;
-      height: auto;
-      clear: both;
-      width: 100%;
-      float: none;
-      position: absolute;
-      top: 66px;
-      right: 0;
-
-      > li {
-        display: block;
-        float: none;
-        height: auto;
-        text-align: left;
-        border-bottom: 1px dotted rgba(200, 200, 200, 0.1);
-        padding: 6px 0;
-
-        &:first-child {
-          border-top: 1px dotted rgba(200, 200, 200, 0.1);
-        }
-      }
-
-      li {
-        display: block;
-        width: auto;
-        color: $color_4;
-        padding: 20px 0;
-        line-height: 10px;
-
-        &:hover {
-          color: $white;
-        }
-      }
-
-      li.current {
-        background: none;
-        color: $green;
-
-        &:after {
-          display: none;
-        }
-      }
-    }
-
-    a.mobile-btn {
-      display: block;
-    }
-  }
-  .js {
-    #nav-wrap {
-      a#toggle-btn {
-        display: block;
-      }
-    }
-  }
-  .no-js {
-    #nav-wrap {
-      &:not(:target) {
-        > a {
-          &:first-of-type {
-            display: block;
-          }
-        }
-      }
-
-      &:target {
-        > a {
-          &:last-of-type {
-            display: block;
-          }
-        }
-
-        ul#nav {
-          display: block;
-        }
-      }
-    }
-  }
-  #menu__toggle {
-    opacity: 0;
-
-    &:checked {
-      ~ {
-        .menu__btn {
-          > span {
-            transform: rotate(45deg);
-
-            &::before {
-              top: 0;
-              transform: rotate(0);
-            }
-
-            &::after {
-              top: 0;
-              transform: rotate(90deg);
-            }
-          }
-        }
-
-        .menu__box {
-          visibility: visible;
-          right: 0;
-        }
-      }
-    }
-  }
-  .menu__btn {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 26px;
-    cursor: pointer;
-    z-index: 1;
-
-    > span {
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      background-color: $green;
-
-      &::before {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background-color: $green;
-        content: '';
-        top: -8px;
-      }
-
-      &::after {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background-color: $green;
-        content: '';
-        top: 8px;
-      }
-    }
-  }
-  .menu__box {
-    display: block;
-    position: fixed;
-    visibility: hidden;
-    top: 0;
-    right: -100%;
-    width: 300px;
-    height: 100%;
-    margin: 0;
-    padding: 80px 0;
-    list-style: none;
-    background-color: $background-color_6;
-    box-shadow: 1px 0 6px rgba(0, 0, 0, .2);
-  }
-  .menu__item {
-    display: block;
-    padding: 12px 24px;
-    color: $green;
-    font: 12px 'Raleway', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 600;
-    outline: none;
-    text-decoration: none;
-
-    &:hover {
-      background-color: $background-color_7;
-    }
-  }
 }
 
-@media only screen and (min-width: 769px) {
-  #nav-wrap {
-    ul#nav {
-      display: block !important;
-    }
-  }
-  #menu__toggle {
-    display: none;
-  }
-  .menu__btn {
-    display: none;
-  }
-}
