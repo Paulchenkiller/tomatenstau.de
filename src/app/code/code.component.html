@@ -7,7 +7,7 @@
 
     <ul>
       <li *ngFor="let codeComponent of codeComponents">
-        <a [routerLink]="codeComponent.name.toLowerCase()">{{ codeComponent.name }}</a>
+        <a [routerLink]="codeComponent.route">{{ codeComponent.name }}</a>
       </li>
     </ul>
 

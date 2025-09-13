@@ -1,0 +1,15 @@
+<app-headline>equals() & hashCode(): Vertragsfallen</app-headline>
+<div class="row">
+  <div class="twelve columns">
+    <p>
+      In Java muss der Vertrag zwischen <code>equals()</code> und <code>hashCode()</code> eingehalten werden: Wenn zwei
+      Objekte gleich sind (<code>equals()</code> gibt true zurück), müssen sie den gleichen Hashcode besitzen. Andernfalls
+      verhalten sich Hash-basierten Collections (z.B. <code>HashSet</code>, <code>HashMap</code>) unerwartet.
+    </p>
+    <p>Fehlerhaftes Beispiel:</p>
+    <pre><code [highlight]="badCode" language="java"></code></pre>
+
+    <p>Korrektes Beispiel:</p>
+    <pre><code [highlight]="goodCode" language="java"></code></pre>
+  </div>
+</div>

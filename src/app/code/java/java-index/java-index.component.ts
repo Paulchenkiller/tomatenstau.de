@@ -4,12 +4,12 @@ import { HeadlineComponent } from '../../../headline/headline.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-python-index',
-  templateUrl: './python-index.component.html',
+  selector: 'app-java-index',
+  templateUrl: './java-index.component.html',
   imports: [Highlight, HeadlineComponent, RouterLink],
 })
-export class PythonIndexComponent {
-  helloWorld = `#!/usr/bin/python\nprint "Hello World";`;
+export class JavaIndexComponent {
+  helloWorld = `public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println("Hello World");\n    }\n}`;
 
   constructor() {
     // do nothing

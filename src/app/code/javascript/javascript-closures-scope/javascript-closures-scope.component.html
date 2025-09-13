@@ -1,0 +1,19 @@
+<app-headline>Closures & Scope – typische Fallen</app-headline>
+<div class="row">
+  <div class="twelve columns">
+    <p>
+      In JavaScript sind <code>var</code>-Deklarationen funktions- statt block-skopiert. Das führt häufig zu
+      Überraschungen in Kombination mit Closures. <code>let</code>/<code>const</code> sind block-skopiert und meist die
+      bessere Wahl.
+    </p>
+
+    <p>Problem mit <code>var</code>:</p>
+    <pre><code [highlight]="codeVar" language="javascript"></code></pre>
+
+    <p>Lösung mit <code>let</code>:</p>
+    <pre><code [highlight]="codeLet" language="javascript"></code></pre>
+
+    <p>Closure-Beispiel:</p>
+    <pre><code [highlight]="codeClosure" language="javascript"></code></pre>
+  </div>
+</div>

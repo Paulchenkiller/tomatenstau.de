@@ -8,7 +8,5 @@ import { HeadlineComponent } from '../headline/headline.component';
   imports: [HeadlineComponent],
 })
 export class IndexComponent {
-  constructor() {
-    // do nothing
-  }
+  constructor() {}
 }

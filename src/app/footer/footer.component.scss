@@ -81,8 +81,8 @@ footer {
       a {
         color: colors.$white_muted; /* slightly muted icons */
 
-        &:hover {
-          color: colors.$white_full;
+        &:hover, &:focus {
+          color: colors.$green;
         }
       }
 

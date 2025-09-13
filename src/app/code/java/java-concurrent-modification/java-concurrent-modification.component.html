@@ -1,0 +1,17 @@
+<app-headline>ConcurrentModificationException – warum und wie vermeiden?</app-headline>
+<div class="row">
+  <div class="twelve columns">
+    <p>
+      Die <code>ConcurrentModificationException</code> tritt auf, wenn während einer Iteration über eine Collection
+      dieselbe Collection strukturell verändert wird. Das Fail-Fast-Verhalten von Iteratoren soll logische Fehler früh
+      sichtbar machen.
+    </p>
+
+    <p>Fehlerhaftes Beispiel:</p>
+    <pre><code [highlight]="badCode" language="java"></code></pre>
+
+    <p>Korrekte Varianten:</p>
+    <pre><code [highlight]="goodCode1" language="java"></code></pre>
+    <pre><code [highlight]="goodCode2" language="java"></code></pre>
+  </div>
+</div>

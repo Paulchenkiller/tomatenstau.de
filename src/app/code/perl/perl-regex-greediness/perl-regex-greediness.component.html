@@ -1,0 +1,15 @@
+<app-headline>Regex: Greedy vs. Lazy</app-headline>
+<div class="row">
+  <div class="twelve columns">
+    <p>
+      Reguläre Ausdrücke in Perl sind per Default gierig (greedy), d.h. sie matchen so viel wie möglich. Mit einem
+      Fragezeichen (<code>?</code>) kann man Quantifizierer faul (lazy) machen, so dass sie so wenig wie möglich matchen.
+    </p>
+
+    <p>Greedy:</p>
+    <pre><code [highlight]="codeGreedy" language="perl"></code></pre>
+
+    <p>Lazy:</p>
+    <pre><code [highlight]="codeLazy" language="perl"></code></pre>
+  </div>
+</div>

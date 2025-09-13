@@ -1,77 +1,57 @@
-@use "sass:color";
 @use "../colors";
 
+/* Breadcrumb/Nav: redesigned to fit the site's overall look */
 ul.breadcrumb {
-  margin-left: colors.$size;
-  display: inline-block;
+  margin: 12px 0;
+  padding: 0;
   list-style: none;
-
-  li {
-    float: right;
-    padding: calc(colors.$size / 10);
-    background-color: colors.$black;
-    border-radius: colors.$size;
-    position: relative;
-    margin-left: -(colors.$size);
-    margin-top: 3px;
-
-    a {
-      overflow: hidden;
-      border-radius: colors.$size;
-      text-decoration: none;
-      height: colors.$size;
-      color: color.adjust(colors.$black, $lightness: -5%);
-      background-color: colors.$green;
-      text-align: center;
-      min-width: colors.$size;
-      display: block;
-      line-height: colors.$size;
-      padding-left: colors.$size + 2;
-      padding-right: calc(colors.$size / 2 + colors.$size / 6);
-      width: colors.$size;
-
-      .icon {
-        display: inline-block;
-      }
-
-      .text {
-        display: none;
-        opacity: 0;
-      }
-
-      &:hover {
-        width: 220px;
-        background-color: color.adjust(colors.$green, $lightness: 5%);
-
-        .text {
-          display: inline-block;
-          opacity: 1;
-          margin-left: 10px;
-        }
-      }
-    }
-
-    &:last-child {
-      a {
-        padding: 0;
-      }
-
-      &:hover {
-        padding: calc((colors.$size / 10) - 2px);
-        margin-top: 0;
-
-        a {
-          width: colors.$size + 10;
-          height: colors.$size + 10;
-          line-height: colors.$size + 10;
-        }
-      }
-    }
-  }
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 
+ul.breadcrumb li {
+  display: inline-flex;
+}
+
+ul.breadcrumb li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid colors.$border;
+  color: colors.$white_muted;
+  text-decoration: none;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.03);
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+ul.breadcrumb li a:hover,
+ul.breadcrumb li a:focus {
+  color: colors.$green;
+  border-color: colors.$green;
+  background-color: rgba(46, 125, 50, 0.08); /* subtle green tint */
+}
+
+/* Ensure icon and text are always visible (no expand-on-hover) */
+ul.breadcrumb li a .icon {
+  display: inline-flex;
+}
+
+ul.breadcrumb li a .text {
+  display: inline;
+  opacity: 1;
+}
+
+/* Compact variant for small screens: keep visible but slightly reduce padding */
 @media only screen and (max-width: 768px) {
-  nav .breadcrumb {
-    display: none;
+  ul.breadcrumb {
+    gap: 8px;
+  }
+  ul.breadcrumb li a {
+    padding: 5px 8px;
   }
 }

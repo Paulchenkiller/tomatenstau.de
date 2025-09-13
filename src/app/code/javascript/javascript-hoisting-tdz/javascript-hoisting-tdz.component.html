@@ -1,0 +1,16 @@
+<app-headline>Hoisting & Temporal Dead Zone</app-headline>
+<div class="row">
+  <div class="twelve columns">
+    <p>
+      Variablen mit <code>var</code> werden an den Funktionsanfang „gehoistet“ und initialisieren implizit mit
+      <code>undefined</code>. <code>let</code>/<code>const</code> besitzen dagegen eine Temporal Dead Zone (TDZ), in der
+      sie nicht benutzt werden dürfen.
+    </p>
+
+    <p>Hoisting mit <code>var</code>:</p>
+    <pre><code [highlight]="codeHoist" language="javascript"></code></pre>
+
+    <p>Temporal Dead Zone bei <code>let</code>/<code>const</code>:</p>
+    <pre><code [highlight]="codeTDZ" language="javascript"></code></pre>
+  </div>
+</div>

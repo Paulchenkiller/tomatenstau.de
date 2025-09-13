@@ -9,7 +9,7 @@
 .intro .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 24px 64px;
+  padding: 24px;
   display: grid;
   grid-template-columns: 220px 1fr;
   grid-gap: 32px;
@@ -58,8 +58,15 @@ app-headline h2 {
 
 .intro__highlights {
   margin: 16px 0 24px;
-  padding-left: 18px;
+  padding-left: 20px;
   color: colors.$text_secondary;
+  list-style: disc;
+  list-style-position: outside;
+  text-align: left;
+}
+
+.intro__highlights li {
+  margin: 6px 0;
 }
 
 .btn {
@@ -87,6 +94,8 @@ app-headline h2 {
     grid-template-columns: 1fr;
     text-align: center;
   }
+  /* Keep highlights left-aligned on small screens */
+  .intro__highlights { text-align: left; margin-left: auto; margin-right: auto; }
   .intro__media { order: -1; }
   .intro__photo { margin: 0 auto 16px; }
 }

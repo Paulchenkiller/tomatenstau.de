@@ -4,12 +4,13 @@ import { HeadlineComponent } from '../../../headline/headline.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-python-index',
-  templateUrl: './python-index.component.html',
+  selector: 'app-javascript-index',
+  templateUrl: './javascript-index.component.html',
   imports: [Highlight, HeadlineComponent, RouterLink],
 })
-export class PythonIndexComponent {
-  helloWorld = `#!/usr/bin/python\nprint "Hello World";`;
+export class JavascriptIndexComponent {
+  helloWorldJs = `console.log('Hello World');`;
+  helloWorldTs = `function greet(name: string): void {\n  console.log('Hello ' + name);\n}\n\ngreet('World');`;
 
   constructor() {
     // do nothing

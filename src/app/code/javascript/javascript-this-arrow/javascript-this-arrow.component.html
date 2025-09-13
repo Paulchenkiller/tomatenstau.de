@@ -1,0 +1,15 @@
+<app-headline>this-Bindung vs. Arrow Functions</app-headline>
+<div class="row">
+  <div class="twelve columns">
+    <p>
+      Arrow Functions besitzen kein eigenes <code>this</code>, sondern erben es lexikalisch. Methoden in Objekten sollten
+      daher meist als normale Funktionen definiert werden.
+    </p>
+
+    <p>Unterschied zwischen Methode und Arrow Function:</p>
+    <pre><code [highlight]="codeThis" language="typescript"></code></pre>
+
+    <p><code>this</code> verlieren und korrekt binden:</p>
+    <pre><code [highlight]="codeBind" language="typescript"></code></pre>
+  </div>
+</div>

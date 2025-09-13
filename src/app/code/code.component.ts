@@ -9,7 +9,14 @@ import { NgForOf } from '@angular/common';
   imports: [RouterLink, HeadlineComponent, NgForOf],
 })
 export class CodeComponent {
-  codeComponents = [{ name: 'Perl' }, { name: 'Python' }, { name: 'Prolog' }];
+  codeComponents = [
+    { name: 'Perl', route: 'perl' },
+    { name: 'Python', route: 'python' },
+    { name: 'Java', route: 'java' },
+    { name: 'Prolog', route: 'prolog' },
+    { name: 'JavaScript/TypeScript', route: 'javascript' },
+    { name: 'Haskell', route: 'haskell' },
+  ];
 
   constructor() {
     // do nothing
