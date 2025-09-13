@@ -1,10 +1,27 @@
+// Core palette
 $header-background-color: rgba(17, 20, 23, 0.8);
-$black: black;
-$white: #f4f1de;
-$green: #2e7d32;
-$size: 50px;
-$tomatored: #e63946;
+$black: #000000;
+$white: #f4f1de; // legacy white used in some places
+$white_full: #ffffff;
+$white_muted: #ffffffcc;
 
+// Brand & accents
+$green: #2e7d32;
+$green_hover: #3f8f43;
+$tomatored: #e63946;
+$accent_muted: #9db69e; // subtle greenish accent for titles/subtitles
+
+// Layout neutrals
+$bg: #111417;           // primary background
+$border: #575859;       // divider/borders
+$text: #575859;         // body text default
+$text_muted: #b7b8b9;   // muted paragraph text
+$text_secondary: #d0d1d2; // list/highlight text
+$heading: #ffffff;      // headings color
+$link: #ffffff;         // default link color
+
+// Misc
+$size: 50px;
 $warning: #e64e04;
 $alpha_015: rgba(255, 255, 255, 0.15);
 $alpha_01: rgba(255, 255, 255, 0.1);

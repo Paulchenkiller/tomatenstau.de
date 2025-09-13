@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Raleway:wght@800&display=swap');
+@use "../app/colors" as colors;
+/* inlined former main.css (was previously imported) */
 
 html, body {
   height: 100%;
 }
 
 body {
-  background: #0f1215;
+  background: #111417;
   font: 16px/30px 'Merriweather', serif;
   font-weight: normal;
   color: #575859;
@@ -222,11 +223,7 @@ img.pull-left {
   margin: 12px 18px 0 0;
 }
 
-::-webkit-input-placeholder {
-  color: #12151b;
-}
-
-:-moz-placeholder {
+:::-webkit-input-placeholder {
   color: #12151b;
 }
 
@@ -234,7 +231,11 @@ img.pull-left {
   color: #12151b;
 }
 
-:-ms-input-placeholder {
+:::-moz-placeholder {
+  color: #12151b;
+}
+
+::-ms-input-placeholder {
   color: #12151b;
 }
 
@@ -396,4 +397,31 @@ td.hljs-ln-numbers {
 /* for block of code */
 td.hljs-ln-code {
   padding-left: 8px !important;
+}
+
+/* Overrides using central color variables */
+html, body {
+  height: 100%;
+}
+
+body {
+  background: colors.$bg;
+  color: colors.$text;
+}
+
+a, a:visited {
+  color: colors.$link;
+  transition: all 0.3s ease-in-out;
+}
+
+a:hover, a:focus {
+  color: colors.$green;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: colors.$heading;
+}
+
+p.lead {
+  color: colors.$text_muted;
 }

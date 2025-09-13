@@ -33,7 +33,7 @@
               "src/styles.css",
               "src/css/base.css",
               "src/css/vendor.min.css",
-              "src/css/main.css",
+              "src/css/main.scss",
               "node_modules/highlight.js/styles/monokai.css"
             ],
             "scripts": [],
@@ -102,7 +102,7 @@
               "src/styles.css",
               "src/css/base.css",
               "src/css/vendor.min.css",
-              "src/css/main.css"
+              "src/css/main.scss"
             ],
             "scripts": []
           }

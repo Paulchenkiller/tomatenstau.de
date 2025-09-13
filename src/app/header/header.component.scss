@@ -1,7 +1,7 @@
 @use "../colors";
 
 header {
-  height: 66px;
+  height: 90px;
   width: 100%;
   position: fixed;
   left: 0;
@@ -19,27 +19,26 @@ header {
 
     a {
       display: block;
-      margin: 0;
+      margin: 15px 0 0 0; /* use margin-top instead of background-position shift */
       padding: 0;
       border: none;
       text-shadow: none;
       color: transparent;
-      width: 114px;
-      height: 66px;
-      background: url("../../assets/images/2088144-trans.png") no-repeat center;
-      background-size: 50%;
+      width: 160px;
+      height: 75px; /* 75px height + 15px top margin keeps total 90px */
+      background: url("../../assets/images/tomatenstau_logo.png") no-repeat center;
+      background-size: contain;
     }
   }
 
   .header-social {
     font-size: 20px;
     font-weight: normal;
-    line-height: 66px;
-    margin-top: 0;
+    line-height: 75px; /* match logo visual height for vertical centering */
+    margin-top: 15px;  /* align with logo's top margin */
     margin-left: 30px;
     float: left;
     position: relative;
-    top: -1px;
 
     li {
       display: inline-block;

@@ -1,5 +1,7 @@
+@use "../colors" as colors;
+
 section {
-  background: #111417;
-  padding-top: 120px;
-  border-bottom: 1px solid #15191d;
+  background: colors.$bg;
+  padding-top: 84px;
+  border-bottom: 1px solid colors.$border;
 }
