@@ -3,5 +3,6 @@
 section {
   background: colors.$bg;
   padding-top: 84px;
+  padding-bottom: 72px; /* prevent content being hidden under fixed footer */
   border-bottom: 1px solid colors.$border;
 }

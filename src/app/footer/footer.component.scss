@@ -2,7 +2,11 @@
 
 footer {
   padding: 8px 0 12px;
-  position: relative;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 600;
   background: colors.$bg;
   border-top: 1px solid colors.$border;
   color: colors.$text_muted;
