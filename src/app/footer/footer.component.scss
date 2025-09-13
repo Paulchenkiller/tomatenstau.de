@@ -1,14 +1,14 @@
 @use "../colors";
 
 footer {
-  padding-bottom: 24px;
+  padding: 8px 0 12px;
   position: relative;
   background: colors.$bg;
   border-top: 1px solid colors.$border;
   color: colors.$text_muted;
 
   .content {
-    margin-bottom: 12px;
+    margin-bottom: 0;
   }
 
   a {
@@ -24,41 +24,24 @@ footer {
   }
 
   hr {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
-    max-width: 400px;
-    width: 80%;
-    border-top: 1px solid colors.$border;
+    display: none;
   }
 
   .info {
-    width: 90%;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    clear: both;
+    display: none;
   }
 
   .footer-logo {
-    width: 100%;
-    height: 56px;
-    background: url("../../assets/images/2088144-trans.png") no-repeat center;
-    background-size: 10%;
-    margin: 0 auto 0;
-    display: block;
-    filter: alpha(opacity=60);
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
-    opacity: 0.6;
-    zoom: 1;
+    display: none;
   }
 
   .copyright {
     clear: both;
-    margin: 0;
+    margin: 4px 0 0;
     padding: 0;
-    font: 14px/24px 'Raleway', sans-serif;
-    letter-spacing: 1px;
+    font: 12px/18px 'Raleway', sans-serif;
+    letter-spacing: 0.5px;
+    color: colors.$text_muted;
     text-align: center;
 
     li {
@@ -68,15 +51,15 @@ footer {
   }
 
   .social-links {
-    margin: 42px auto;
+    margin: 6px auto 2px;
     padding: 0;
-    font-size: 38px;
+    font-size: 24px;
     text-align: center;
 
     li {
       display: inline-block;
       padding: 0;
-      margin: 0 0 0 32px;
+      margin: 0 0 0 16px;
 
       a {
         color: colors.$white_muted; /* slightly muted icons */
@@ -96,31 +79,7 @@ footer {
 @media only screen and (max-width: 600px) {
   footer {
     .social-links {
-      font-size: 32px;
-
-      li {
-        margin-left: 18px;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 450px) {
-  footer {
-    .social-links {
-      font-size: 28px;
-
-      li {
-        margin-left: 14px;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  footer {
-    .social-links {
-      font-size: 25px;
+      font-size: 22px;
 
       li {
         margin-left: 12px;
@@ -129,13 +88,37 @@ footer {
   }
 }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 450px) {
   footer {
     .social-links {
-      font-size: 22px;
+      font-size: 20px;
 
       li {
         margin-left: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  footer {
+    .social-links {
+      font-size: 18px;
+
+      li {
+        margin-left: 8px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  footer {
+    .social-links {
+      font-size: 16px;
+
+      li {
+        margin-left: 6px;
       }
     }
   }

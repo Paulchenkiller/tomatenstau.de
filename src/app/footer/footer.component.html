@@ -1,27 +1,31 @@
 <footer>
   <div class="row">
-    <div class="twelve columns content group">
+    <div class="twelve columns content footer-compact">
       <ul class="social-links">
-        <li><a href="mailto:meik@tomatenstau.de" target="_blank">
-          <fa-icon icon="envelope"></fa-icon>
-        </a></li>
-        <li><a href="https://github.com/Paulchenkiller" target="_blank">
-          <fa-icon [icon]="['fab','github-square']"></fa-icon>
-        </a></li>
-        <li><a href="https://www.linkedin.com/in/meik-geldmacher" target="_blank">
-          <fa-icon [icon]="['fab','linkedin']"></fa-icon>
-        </a></li>
-        <li><a href="https://www.xing.com/profile/Meik_Geldmacher" target="_blank">
-          <fa-icon [icon]="['fab','xing-square']"></fa-icon>
-        </a></li>
+        <li>
+          <a href="mailto:meik@tomatenstau.de" target="_blank" aria-label="E-Mail">
+            <fa-icon icon="envelope"></fa-icon>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Paulchenkiller" target="_blank" rel="noopener" aria-label="GitHub">
+            <fa-icon [icon]="['fab','github-square']"></fa-icon>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/meik-geldmacher" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <fa-icon [icon]="['fab','linkedin']"></fa-icon>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.xing.com/profile/Meik_Geldmacher" target="_blank" rel="noopener" aria-label="Xing">
+            <fa-icon [icon]="['fab','xing-square']"></fa-icon>
+          </a>
+        </li>
       </ul>
-      <hr/>
-      <div class="info">
-        <div class="footer-logo"></div>
-      </div>
+      <ul class="copyright">
+        <li>&copy; {{ currentYear }} Tomatenstau.de</li>
+      </ul>
     </div>
-    <ul class="copyright">
-      <li>Copyright &copy; Tomatenstau.de {{ currentYear }}</li>
-    </ul>
   </div>
 </footer>
