@@ -2,6 +2,7 @@
 
 section {
   background: colors.$bg;
-  padding-top: 84px;
-  padding-bottom: 72px; /* prevent content being hidden under fixed footer */
+  /* add small gaps to avoid touching fixed header/footer */
+  padding-top: 100px; /* header is 90px => 10px breathing room */
+  padding-bottom: 88px; /* footer safe area (~72px) + ~16px gap */
 }
