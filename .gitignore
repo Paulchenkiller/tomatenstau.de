@@ -46,3 +46,35 @@ testem.log
 Thumbs.db
 
 .angular
+
+
+# Additional ignores
+# Output files
+.output.txt
+
+# Logs & debug
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Jest cache
+.jest
+.jest-cache
+
+# Angular cache (subset already covered by .angular)
+.angular/cache
+
+# OS-specific
+Desktop.ini
