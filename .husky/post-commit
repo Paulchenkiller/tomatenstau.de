@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Local check: validate the last commit message with commitlint
+# If it fails, print helpful instructions to amend the message.
+
+last_msg=$(git log -1 --pretty=%B)
+printf "%s" "$last_msg" | npx --no commitlint --color
+status=$?
+
+if [ $status -ne 0 ]; then
+  cat <<'EOF'
+[commitlint] The last commit message does NOT follow Conventional Commits.
+You can amend it with a proper message, for example:
+
+  git commit --amend -m "feat(scope): short imperative description"
+
+Common types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
+Examples:
+  feat(header): add language switcher
+  fix(breadcrumb): avoid double slashes in URLs
+
+After amending, if already pushed, update the remote:
+  git push --force-with-lease
+EOF
+  exit 1
+fi
