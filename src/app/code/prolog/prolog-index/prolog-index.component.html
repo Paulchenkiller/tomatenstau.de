@@ -1,15 +1,25 @@
 <app-headline>{{ 'Prolog' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
-    <pre><code [highlight]="helloWorld" language="prolog"></code></pre>
     <p>
       {{ 'PROLOG.INDEX.INTRO' | translate }}
     </p>
+
+    <h3>{{ 'CODE.COMMON.SAMPLE_HEADING' | translate }}</h3>
+    <p>{{ 'CODE.COMMON.SAMPLE_INTRO' | translate }}</p>
+    <pre><code [highlight]="helloWorld" language="prolog"></code></pre>
+
     <div>
       <ul>
         <li><a routerLink="ackermann">{{ 'Ackermann' | translate }}</a></li>
         <li><a routerLink="hanoi">{{ 'Hanoi' | translate }}</a></li>
       </ul>
     </div>
+
+    <h3>{{ 'CODE.COMMON.CROSSREF_HEADING' | translate }}</h3>
+    <ul>
+      <li><a routerLink="/code/haskell">{{ 'NAV.HASKELL' | translate }}</a></li>
+      <li><a routerLink="/code/python">{{ 'NAV.PYTHON' | translate }}</a></li>
+    </ul>
   </div>
 </div>

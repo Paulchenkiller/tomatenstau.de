@@ -1,13 +1,23 @@
 <app-headline>{{ 'Perl' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
-    <pre><code [highlight]="helloWorld" language="perl"></code></pre>
     <p>{{ 'PERL.INDEX.INTRO' | translate }}</p>
+
+    <h3>{{ 'CODE.COMMON.SAMPLE_HEADING' | translate }}</h3>
+    <p>{{ 'CODE.COMMON.SAMPLE_INTRO' | translate }}</p>
+    <pre><code [highlight]="helloWorld" language="perl"></code></pre>
+
     <div>
       <ul>
         <li><a routerLink="regex-greediness">{{ 'Regex Greedy/Lazy' | translate }}</a></li>
         <li><a routerLink="context">{{ 'Kontext' | translate }}</a></li>
       </ul>
     </div>
+
+    <h3>{{ 'CODE.COMMON.CROSSREF_HEADING' | translate }}</h3>
+    <ul>
+      <li><a routerLink="/code/python">{{ 'NAV.PYTHON' | translate }}</a></li>
+      <li><a routerLink="/code/javascript">{{ 'NAV.JAVASCRIPT' | translate }}</a></li>
+    </ul>
   </div>
 </div>

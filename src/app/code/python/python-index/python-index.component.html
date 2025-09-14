@@ -1,15 +1,23 @@
 <app-headline>{{ 'Python' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
+    <p>{{ 'PYTHON.INDEX.INTRO' | translate }}</p>
+
+    <h3>{{ 'CODE.COMMON.SAMPLE_HEADING' | translate }}</h3>
+    <p>{{ 'CODE.COMMON.SAMPLE_INTRO' | translate }}</p>
     <pre><code [highlight]="helloWorld" language="python"></code></pre>
-    <p>
-      {{ 'PYTHON.INDEX.INTRO' | translate }}
-    </p>
+
     <div>
       <ul>
         <li><a routerLink="mutable-default">{{ 'Mutable Default' | translate }}</a></li>
         <li><a routerLink="gil-threads">{{ 'GIL & Threads' | translate }}</a></li>
       </ul>
     </div>
+
+    <h3>{{ 'CODE.COMMON.CROSSREF_HEADING' | translate }}</h3>
+    <ul>
+      <li><a routerLink="/code/javascript">{{ 'NAV.JAVASCRIPT' | translate }}</a></li>
+      <li><a routerLink="/code/java">{{ 'NAV.JAVA' | translate }}</a></li>
+    </ul>
   </div>
 </div>

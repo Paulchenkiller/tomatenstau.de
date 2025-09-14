@@ -1,15 +1,23 @@
 <app-headline>{{ 'Java' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
+    <p>{{ 'JAVA.INDEX.INTRO' | translate }}</p>
+
+    <h3>{{ 'CODE.COMMON.SAMPLE_HEADING' | translate }}</h3>
+    <p>{{ 'CODE.COMMON.SAMPLE_INTRO' | translate }}</p>
     <pre><code [highlight]="helloWorld" language="java"></code></pre>
-    <p>
-      {{ 'JAVA.INDEX.INTRO' | translate }}
-    </p>
+
     <div>
       <ul>
         <li><a routerLink="equals-hashcode">{{ 'equals & hashCode' | translate }}</a></li>
         <li><a routerLink="concurrent-modification">{{ 'ConcurrentModification' | translate }}</a></li>
       </ul>
     </div>
+
+    <h3>{{ 'CODE.COMMON.CROSSREF_HEADING' | translate }}</h3>
+    <ul>
+      <li><a routerLink="/code/python">{{ 'NAV.PYTHON' | translate }}</a></li>
+      <li><a routerLink="/code/javascript">{{ 'NAV.JAVASCRIPT' | translate }}</a></li>
+    </ul>
   </div>
 </div>

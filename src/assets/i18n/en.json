@@ -92,7 +92,12 @@
   },
 
   "CODE": {
-    "INTRO": "I want to provide some tips and tricks for different programming languages."
+    "INTRO": "I want to provide some tips and tricks for different programming languages.",
+    "COMMON": {
+      "SAMPLE_HEADING": "Quick example",
+      "SAMPLE_INTRO": "To get started, here is a short \"Hello World\" example:",
+      "CROSSREF_HEADING": "See also in other languages"
+    }
   },
 
   "PERL": {

@@ -4,8 +4,8 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
 
 - Inhalt & Struktur
   - [ ] Startseite: Teaser-Abschnitte mit „Mehr erfahren“-Links strukturieren (Hero → Highlights → ausgewählte Code-Themen).
-  - [ ] Code-Bereiche: Einleitungstexte vereinheitlichen, Beispiele mit kurzen Erklärungen einleiten und Querverweise zwischen Sprachen ergänzen.
-  - [ ] Breadcrumb/Navigation: Einheitliche Schreibweise und ggf. neutrales Key-Schema für Navigationslabels (z. B. NAV.*) vorbereiten, ohne bestehende Routen zu brechen.
+  - [x] Code-Bereiche: Einleitungstexte vereinheitlichen, Beispiele mit kurzen Erklärungen einleiten und Querverweise zwischen Sprachen ergänzen.
+  - [x] Breadcrumb/Navigation: Einheitliche Schreibweise und ggf. neutrales Key-Schema für Navigationslabels (z. B. NAV.*) vorbereiten, ohne bestehende Routen zu brechen.
   - [x] 404-Seite ausbauen: Link zur Startseite, ggf. Suchfeld oder Themenübersicht.
 
 - Internationalisierung (i18n)
