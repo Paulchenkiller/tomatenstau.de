@@ -29,10 +29,10 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
   - [ ] Angular build budgets in angular.json schärfen und regelmäßig überwachen.
 
 - SEO & Meta
-  - [ ] Dynamische Title- und Meta-Descriptions pro Route (inkl. Sprache).
-  - [ ] robots.txt und sitemap.xml erzeugen; Canonical-URLs setzen.
-  - [ ] hreflang-Tags für DE/EN ausliefern.
-  - [ ] Strukturierte Daten (JSON-LD), z. B. Person (Homepage) und BreadcrumbList.
+  - [x] Dynamische Title- und Meta-Descriptions pro Route (inkl. Sprache).
+  - [x] robots.txt und sitemap.xml erzeugen; Canonical-URLs setzen.
+  - [x] hreflang-Tags für DE/EN ausliefern.
+  - [x] Strukturierte Daten (JSON-LD), z. B. Person (Homepage) und BreadcrumbList.
 
 - UI/Design & Responsiveness
   - [ ] Mobile Navigation (Burger-Menü) fertigstellen und zugänglich machen; Header-Verhalten < 768px verfeinern.

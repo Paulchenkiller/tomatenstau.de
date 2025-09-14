@@ -1,0 +1,5 @@
+# robots.txt for tomatenstau.de
+User-agent: *
+Allow: /
+
+Sitemap: https://tomatenstau.de/sitemap.xml

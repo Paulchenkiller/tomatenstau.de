@@ -55,10 +55,19 @@ bootstrapApplication(AppComponent, {
       useFactory: (translate: TranslateService) => () => {
         translate.addLangs(['en', 'de']);
         translate.setDefaultLang('en');
+
+        const params = new URLSearchParams(window.location.search);
+        const urlLang = params.get('lang');
+        const normalizedUrlLang = (urlLang && ['en', 'de'].includes(urlLang.toLowerCase())) ? urlLang.toLowerCase() : null;
+
         const saved = localStorage.getItem('lang');
         const browserLang = navigator.language && navigator.language.toLowerCase().startsWith('de') ? 'de' : 'en';
-        const lang = saved || browserLang || 'en';
+        const lang = normalizedUrlLang || saved || browserLang || 'en';
+
         translate.use(lang);
+        if (lang !== saved) {
+          localStorage.setItem('lang', lang);
+        }
       },
       deps: [TranslateService],
       multi: true,

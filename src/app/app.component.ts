@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';
 import { FooterComponent } from './footer/footer.component';
@@ -18,6 +19,7 @@ export class AppComponent {
     private router: Router,
     private title: Title,
     private meta: Meta,
+    @Inject(DOCUMENT) private doc: Document,
   ) {
     // Update meta on navigation and language changes
     this.router.events
@@ -42,6 +44,9 @@ export class AppComponent {
     if (description) {
       this.meta.updateTag({ name: 'description', content: description });
     }
+
+    // Canonical, hreflang, and structured data
+    this.updateLinkTagsAndStructuredData();
   }
 
   private getTranslatedLabelForCurrentRoute(): string {
@@ -121,5 +126,120 @@ export class AppComponent {
       '/404': '404.SUBTITLE',
     };
     return map[clean] || 'INDEX.INTRO';
+  }
+
+  private updateLinkTagsAndStructuredData(): void {
+    const fullUrl = this.doc?.location?.href || '';
+    const origin = this.doc?.location?.origin || '';
+    const path = this.normalizePath(this.router.url || '/');
+
+    // Canonical URL (no query, no hash)
+    const canonical = origin + path;
+    this.ensureLinkTag('canonical-link', 'canonical', canonical);
+
+    // hreflang alternates using ?lang parameter
+    const enHref = `${canonical}?lang=en`;
+    const deHref = `${canonical}?lang=de`;
+    this.ensureLinkTag('hreflang-en', 'alternate', enHref, 'en');
+    this.ensureLinkTag('hreflang-de', 'alternate', deHref, 'de');
+    this.ensureLinkTag('hreflang-x-default', 'alternate', canonical, 'x-default');
+
+    // JSON-LD: Breadcrumbs for all routes
+    const breadcrumbJson = this.buildBreadcrumbJsonLd(origin, path);
+    this.ensureJsonLd('ld-breadcrumb', breadcrumbJson);
+
+    // JSON-LD: Person only on homepage
+    if (this.isHome(path)) {
+      const person = {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: this.translate.instant('INDEX.NAME'),
+        jobTitle: this.translate.instant('INDEX.TITLE'),
+        url: origin + '/',
+        sameAs: [
+          'https://github.com/Paulchenkiller',
+          'https://www.linkedin.com/in/meik-geldmacher',
+          'https://www.xing.com/profile/Meik_Geldmacher'
+        ],
+      };
+      this.ensureJsonLd('ld-person', person);
+    } else {
+      this.removeTagById('ld-person');
+    }
+  }
+
+  private ensureLinkTag(id: string, rel: string, href: string, hreflang?: string): void {
+    let el = this.doc.getElementById(id) as HTMLLinkElement | null;
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.id = id;
+      el.rel = rel;
+      if (hreflang) {
+        el.hreflang = hreflang;
+      }
+      this.doc.head.appendChild(el);
+    }
+    el.rel = rel; // keep updated
+    if (hreflang) {
+      el.setAttribute('hreflang', hreflang);
+    } else {
+      el.removeAttribute('hreflang');
+    }
+    el.href = href;
+  }
+
+  private ensureJsonLd(id: string, data: any): void {
+    let script = this.doc.getElementById(id) as HTMLScriptElement | null;
+    if (!script) {
+      script = this.doc.createElement('script');
+      script.id = id;
+      script.type = 'application/ld+json';
+      this.doc.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(data);
+  }
+
+  private removeTagById(id: string): void {
+    const el = this.doc.getElementById(id);
+    if (el && el.parentNode) {
+      el.parentNode.removeChild(el);
+    }
+  }
+
+  private buildBreadcrumbJsonLd(origin: string, path: string): any {
+    // Build cumulative paths: '/', '/code', '/code/xyz', ...
+    const parts = path.split('/').filter(Boolean);
+    const cumulative: string[] = [''];
+    let current = '';
+    for (const p of parts) {
+      current += '/' + p;
+      cumulative.push(current);
+    }
+    const itemListElement = cumulative.map((p, idx) => {
+      const key = this.getTitleKeyForUrl(p || '/');
+      const name = this.translate.instant(key);
+      const item = origin + (p || '/');
+      return { '@type': 'ListItem', position: idx + 1, name, item };
+    });
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement,
+    };
+  }
+
+  private isHome(path: string): boolean {
+    return path === '/' || path === '';
+  }
+
+  private normalizePath(url: string): string {
+    // remove query/hash, ensure leading slash, no trailing slash except for root
+    const u = url.split('#')[0].split('?')[0];
+    if (!u || u === '/') return '/';
+    let result = u.startsWith('/') ? u : '/' + u;
+    if (result.length > 1 && result.endsWith('/')) {
+      result = result.slice(0, -1);
+    }
+    return result;
   }
 }
