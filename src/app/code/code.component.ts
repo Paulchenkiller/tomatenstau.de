@@ -11,12 +11,12 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class CodeComponent {
   codeComponents = [
-    { name: 'Perl', route: 'perl' },
-    { name: 'Python', route: 'python' },
-    { name: 'Java', route: 'java' },
-    { name: 'Prolog', route: 'prolog' },
-    { name: 'JavaScript/TypeScript', route: 'javascript' },
-    { name: 'Haskell', route: 'haskell' },
+    { name: 'NAV.PERL', route: 'perl' },
+    { name: 'NAV.PYTHON', route: 'python' },
+    { name: 'NAV.JAVA', route: 'java' },
+    { name: 'NAV.PROLOG', route: 'prolog' },
+    { name: 'NAV.JAVASCRIPT', route: 'javascript' },
+    { name: 'NAV.HASKELL', route: 'haskell' },
   ];
 
   constructor() {

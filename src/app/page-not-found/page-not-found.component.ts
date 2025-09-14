@@ -13,13 +13,13 @@ import { FormsModule } from '@angular/forms';
 export class PageNotFoundComponent {
   query = '';
   topics = [
-    { name: 'Code', route: '/code' },
-    { name: 'Perl', route: '/code/perl' },
-    { name: 'Python', route: '/code/python' },
-    { name: 'Java', route: '/code/java' },
-    { name: 'JavaScript/TypeScript', route: '/code/javascript' },
-    { name: 'Haskell', route: '/code/haskell' },
-    { name: 'Prolog', route: '/code/prolog' },
+    { name: 'NAV.CODE', route: '/code' },
+    { name: 'NAV.PERL', route: '/code/perl' },
+    { name: 'NAV.PYTHON', route: '/code/python' },
+    { name: 'NAV.JAVA', route: '/code/java' },
+    { name: 'NAV.JAVASCRIPT', route: '/code/javascript' },
+    { name: 'NAV.HASKELL', route: '/code/haskell' },
+    { name: 'NAV.PROLOG', route: '/code/prolog' },
   ];
 
   get filteredTopics() {
