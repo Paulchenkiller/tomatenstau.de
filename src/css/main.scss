@@ -5,6 +5,12 @@ html, body {
   height: 100%;
 }
 
+/* Prevent layout shift when vertical scrollbar appears/disappears */
+html {
+  overflow-y: scroll; /* always reserve scrollbar space */
+  scrollbar-gutter: stable; /* modern browsers: keep layout stable */
+}
+
 body {
   background: #111417;
   font: 16px/30px 'Merriweather', serif;
@@ -402,6 +408,12 @@ td.hljs-ln-code {
 /* Overrides using central color variables */
 html, body {
   height: 100%;
+}
+
+/* Prevent layout shift when vertical scrollbar appears/disappears */
+html {
+  overflow-y: scroll; /* always reserve scrollbar space */
+  scrollbar-gutter: stable; /* modern browsers: keep layout stable */
 }
 
 body {
