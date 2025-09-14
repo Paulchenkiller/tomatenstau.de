@@ -7,13 +7,13 @@ import {
 import { NgForOf } from '@angular/common';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [RouterLink, FaIconComponent, NgForOf],
+  imports: [RouterLink, FaIconComponent, NgForOf, TranslateModule],
 })
 export class HeaderComponent {
   socialMedia = [

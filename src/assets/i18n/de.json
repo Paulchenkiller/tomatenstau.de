@@ -3,6 +3,11 @@
     "LANG": {
       "EN": "Englisch",
       "DE": "Deutsch"
+    },
+    "ARIA": {
+      "LANG_SWITCHER": "Sprachauswahl",
+      "SWITCH_EN": "Auf Englisch umschalten",
+      "SWITCH_DE": "Auf Deutsch umschalten"
     }
   },
   "Home": "Startseite",
