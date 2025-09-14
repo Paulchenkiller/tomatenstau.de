@@ -45,9 +45,9 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
   - [ ] E2E-Tests (Playwright/Cypress) für Kernpfade (Startseite → Code → Unterseiten, Sprachwechsel, 404).
 
 - Build/Deploy & Automatisierung
-  - [ ] GitHub Actions (CI) mit Lint, Build und Test.
-  - [ ] Conventional Commits per commitlint + husky erzwingen.
-  - [ ] Dependency-Updates automatisieren (Dependabot/Renovate).
+  - [x] GitHub Actions (CI) mit Lint, Build und Test.
+  - [x] Conventional Commits per commitlint + husky erzwingen.
+  - [x] Dependency-Updates automatisieren (Dependabot/Renovate).
 
 - PWA & Offline
   - [ ] Web App Manifest und Icons ergänzen; ng add @angular/pwa prüfen.
