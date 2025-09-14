@@ -93,7 +93,14 @@ export class BreadcrumbComponent {
     const label = this.translate.instant(keyOrLabel);
     const logo = route?.routeConfig?.data?.logo ?? 'home';
     const path = route?.routeConfig?.path ?? '';
-    const url = `${givenUrl}${path}/`;
+    // Avoid generating double slashes when encountering empty path segments
+    let url = givenUrl;
+    if (path) {
+      url = `${givenUrl}${path}/`;
+    } else if (!givenUrl) {
+      // root
+      url = '/';
+    }
     const breadcrumb = { label, logo, url };
     const newBreadcrumbs = [breadcrumb, ...breadcrumbs];
     if (

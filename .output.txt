@@ -1,0 +1,542 @@
+
+> tomatenstaude@0.0.0 test
+> ng test
+(node:21200) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ PASS  src/app/content/content.component.spec.ts (7.971 s)
+ PASS  src/app/page-not-found/page-not-found.component.spec.ts (8.19 s)
+(node:57920) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:56824) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ PASS  src/app/breadcrumb/breadcrumb.component.spec.ts (7.809 s)
+ PASS  src/app/code/code.component.spec.ts (8.199 s)
+(node:47692) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ PASS  src/app/page-not-found/page-not-found.filter.spec.ts (8.272 s)
+(node:56180) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ PASS  src/app/header/header.component.spec.ts (8.402 s)
+(node:21832) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ PASS  src/app/code/prolog/prolog-index/prolog-index.component.spec.ts (8.619 s)
+  ● Console
+    console.error
+      [HLJS]  Highlight.js library was not imported!
+      at node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:56:29
+      at node_modules/rxjs/src/internal/operators/catchError.ts:115:35
+      at OperatorSubscriber._this._error (node_modules/rxjs/src/internal/operators/OperatorSubscriber.ts:79:13)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber._error (node_modules/rxjs/src/internal/Subscriber.ts:118:24)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at Observable.init [as _subscribe] (node_modules/rxjs/src/internal/observable/throwError.ts:123:62)
+      at Observable.Object.<anonymous>.Observable._trySubscribe (node_modules/rxjs/src/internal/Observable.ts:235:19)
+      at node_modules/rxjs/src/internal/Observable.ts:225:18
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/switchMap.ts:99:12
+      at OperatorSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/catchError.ts:113:23
+      at SafeSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at new _HighlightLoader (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:59:21)
+      at Object._HighlightLoader_Factory [as factory] (ng:\_HighlightLoader\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:1125:32)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightJS (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:160:23)
+      at Object._HighlightJS_Factory [as factory] (ng:\_HighlightJS\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2159:33)
+      at ChainedInjector.get (node_modules/@angular/core/fesm2022/core.mjs:17337:36)
+      at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2022/core.mjs:5081:39)
+      at getOrCreateInjectable (node_modules/@angular/core/fesm2022/core.mjs:5129:12)
+      at ɵɵdirectiveInject (node_modules/@angular/core/fesm2022/core.mjs:17388:19)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightBase (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:314:22)
+      at new _Highlight (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:350:9)
+      at _HighlightBase_Factory (ng:\_HighlightBase\ɵfac.js:5:10)
+      at NodeInjectorFactory._Highlight_Factory [as factory] (ng:\_Highlight\ɵfac.js:7:114)
+      at getNodeInjectable (node_modules/@angular/core/fesm2022/core.mjs:5341:44)
+      at instantiateAllDirectives (node_modules/@angular/core/fesm2022/core.mjs:12653:27)
+      at createDirectivesInstances (node_modules/@angular/core/fesm2022/core.mjs:12443:5)
+      at ɵɵelementStart (node_modules/@angular/core/fesm2022/core.mjs:28012:9)
+      at ɵɵelement (node_modules/@angular/core/fesm2022/core.mjs:28067:5)
+      at PrologIndexComponent_Template (ng:/PrologIndexComponent.js:27:9)
+      at executeTemplate (node_modules/@angular/core/fesm2022/core.mjs:12429:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12935:13)
+      at renderComponent (node_modules/@angular/core/fesm2022/core.mjs:12880:5)
+      at renderChildComponents (node_modules/@angular/core/fesm2022/core.mjs:12983:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12963:13)
+      at ComponentFactory2.create (node_modules/@angular/core/fesm2022/core.mjs:18053:17)
+      at initComponent (node_modules/@angular/core/fesm2022/testing.mjs:2053:51)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at Object.onInvoke (node_modules/@angular/core/fesm2022/core.mjs:6568:33)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at NgZone.run (node_modules/@angular/core/fesm2022/core.mjs:6414:28)
+      at _TestBedImpl.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:2058:41)
+      at Function.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:1844:37)
+      at src/app/code/prolog/prolog-index/prolog-index.component.spec.ts:17:23
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at Object.wrappedFunc (node_modules/zone.js/bundles/zone-testing.umd.js:449:38)
+ PASS  src/app/contact/contact.component.spec.ts (8.508 s)
+  ● Console
+    console.error
+      [HLJS]  Highlight.js library was not imported!
+      at node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:56:29
+      at node_modules/rxjs/src/internal/operators/catchError.ts:115:35
+      at OperatorSubscriber._this._error (node_modules/rxjs/src/internal/operators/OperatorSubscriber.ts:79:13)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber._error (node_modules/rxjs/src/internal/Subscriber.ts:118:24)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at Observable.init [as _subscribe] (node_modules/rxjs/src/internal/observable/throwError.ts:123:62)
+      at Observable.Object.<anonymous>.Observable._trySubscribe (node_modules/rxjs/src/internal/Observable.ts:235:19)
+      at node_modules/rxjs/src/internal/Observable.ts:225:18
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/switchMap.ts:99:12
+      at OperatorSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/catchError.ts:113:23
+      at SafeSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at new _HighlightLoader (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:59:21)
+      at Object._HighlightLoader_Factory [as factory] (ng:\_HighlightLoader\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:1125:32)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightJS (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:160:23)
+      at Object._HighlightJS_Factory [as factory] (ng:\_HighlightJS\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at ChainedInjector.get (node_modules/@angular/core/fesm2022/core.mjs:17337:36)
+      at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2022/core.mjs:5081:39)
+      at getOrCreateInjectable (node_modules/@angular/core/fesm2022/core.mjs:5129:12)
+      at ɵɵdirectiveInject (node_modules/@angular/core/fesm2022/core.mjs:17388:19)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightBase (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:314:22)
+      at new _Highlight (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:350:9)
+      at _HighlightBase_Factory (ng:\_HighlightBase\ɵfac.js:5:10)
+      at NodeInjectorFactory._Highlight_Factory [as factory] (ng:\_Highlight\ɵfac.js:7:114)
+      at getNodeInjectable (node_modules/@angular/core/fesm2022/core.mjs:5341:44)
+      at instantiateAllDirectives (node_modules/@angular/core/fesm2022/core.mjs:12653:27)
+      at createDirectivesInstances (node_modules/@angular/core/fesm2022/core.mjs:12443:5)
+      at ɵɵelementStart (node_modules/@angular/core/fesm2022/core.mjs:28012:9)
+      at ɵɵelement (node_modules/@angular/core/fesm2022/core.mjs:28067:5)
+      at ContactComponent_Template (ng:/ContactComponent.js:12:9)
+      at executeTemplate (node_modules/@angular/core/fesm2022/core.mjs:12429:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12935:13)
+      at renderComponent (node_modules/@angular/core/fesm2022/core.mjs:12880:5)
+      at renderChildComponents (node_modules/@angular/core/fesm2022/core.mjs:12983:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12963:13)
+      at ComponentFactory2.create (node_modules/@angular/core/fesm2022/core.mjs:18053:17)
+      at initComponent (node_modules/@angular/core/fesm2022/testing.mjs:2053:51)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at Object.onInvoke (node_modules/@angular/core/fesm2022/core.mjs:6568:33)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at NgZone.run (node_modules/@angular/core/fesm2022/core.mjs:6414:28)
+      at _TestBedImpl.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:2058:41)
+      at Function.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:1844:37)
+      at src/app/contact/contact.component.spec.ts:16:23
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at Object.wrappedFunc (node_modules/zone.js/bundles/zone-testing.umd.js:449:38)
+(node:47436) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:54060) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ PASS  src/app/app.component.spec.ts (8.802 s)
+ PASS  src/app/code/python/python-index/python-index.component.spec.ts (8.685 s)
+  ● Console
+    console.error
+      [HLJS]  Highlight.js library was not imported!
+      at node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:56:29
+      at node_modules/rxjs/src/internal/operators/catchError.ts:115:35
+      at OperatorSubscriber._this._error (node_modules/rxjs/src/internal/operators/OperatorSubscriber.ts:79:13)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber._error (node_modules/rxjs/src/internal/Subscriber.ts:118:24)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at Observable.init [as _subscribe] (node_modules/rxjs/src/internal/observable/throwError.ts:123:62)
+      at Observable.Object.<anonymous>.Observable._trySubscribe (node_modules/rxjs/src/internal/Observable.ts:235:19)
+      at node_modules/rxjs/src/internal/Observable.ts:225:18
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/switchMap.ts:99:12
+      at OperatorSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/catchError.ts:113:23
+      at SafeSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at new _HighlightLoader (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:59:21)
+      at Object._HighlightLoader_Factory [as factory] (ng:\_HighlightLoader\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:1125:32)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightJS (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:160:23)
+      at Object._HighlightJS_Factory [as factory] (ng:\_HighlightJS\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2159:33)
+      at ChainedInjector.get (node_modules/@angular/core/fesm2022/core.mjs:17337:36)
+      at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2022/core.mjs:5081:39)
+      at getOrCreateInjectable (node_modules/@angular/core/fesm2022/core.mjs:5129:12)
+      at ɵɵdirectiveInject (node_modules/@angular/core/fesm2022/core.mjs:17388:19)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightBase (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:314:22)
+      at new _Highlight (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:350:9)
+      at _HighlightBase_Factory (ng:\_HighlightBase\ɵfac.js:5:10)
+      at NodeInjectorFactory._Highlight_Factory [as factory] (ng:\_Highlight\ɵfac.js:7:114)
+      at getNodeInjectable (node_modules/@angular/core/fesm2022/core.mjs:5341:44)
+      at instantiateAllDirectives (node_modules/@angular/core/fesm2022/core.mjs:12653:27)
+      at createDirectivesInstances (node_modules/@angular/core/fesm2022/core.mjs:12443:5)
+      at ɵɵelementStart (node_modules/@angular/core/fesm2022/core.mjs:28012:9)
+      at ɵɵelement (node_modules/@angular/core/fesm2022/core.mjs:28067:5)
+      at PythonIndexComponent_Template (ng:/PythonIndexComponent.js:27:9)
+      at executeTemplate (node_modules/@angular/core/fesm2022/core.mjs:12429:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12935:13)
+      at renderComponent (node_modules/@angular/core/fesm2022/core.mjs:12880:5)
+      at renderChildComponents (node_modules/@angular/core/fesm2022/core.mjs:12983:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12963:13)
+      at ComponentFactory2.create (node_modules/@angular/core/fesm2022/core.mjs:18053:17)
+      at initComponent (node_modules/@angular/core/fesm2022/testing.mjs:2053:51)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at Object.onInvoke (node_modules/@angular/core/fesm2022/core.mjs:6568:33)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at NgZone.run (node_modules/@angular/core/fesm2022/core.mjs:6414:28)
+      at _TestBedImpl.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:2058:41)
+      at Function.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:1844:37)
+      at src/app/code/python/python-index/python-index.component.spec.ts:14:23
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at Object.wrappedFunc (node_modules/zone.js/bundles/zone-testing.umd.js:449:38)
+(node:56520) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ PASS  src/app/app.component.meta.spec.ts (9.021 s)
+ PASS  src/app/code/prolog/prolog-hanoi/prolog-hanoi.component.spec.ts (8.921 s)
+  ● Console
+    console.error
+      [HLJS]  Highlight.js library was not imported!
+      at node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:56:29
+      at node_modules/rxjs/src/internal/operators/catchError.ts:115:35
+      at OperatorSubscriber._this._error (node_modules/rxjs/src/internal/operators/OperatorSubscriber.ts:79:13)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber._error (node_modules/rxjs/src/internal/Subscriber.ts:118:24)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at Observable.init [as _subscribe] (node_modules/rxjs/src/internal/observable/throwError.ts:123:62)
+      at Observable.Object.<anonymous>.Observable._trySubscribe (node_modules/rxjs/src/internal/Observable.ts:235:19)
+      at node_modules/rxjs/src/internal/Observable.ts:225:18
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/switchMap.ts:99:12
+      at OperatorSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/catchError.ts:113:23
+      at SafeSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at new _HighlightLoader (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:59:21)
+      at Object._HighlightLoader_Factory [as factory] (ng:\_HighlightLoader\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:1125:32)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightJS (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:160:23)
+      at Object._HighlightJS_Factory [as factory] (ng:\_HighlightJS\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2159:33)
+      at ChainedInjector.get (node_modules/@angular/core/fesm2022/core.mjs:17337:36)
+      at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2022/core.mjs:5081:39)
+      at getOrCreateInjectable (node_modules/@angular/core/fesm2022/core.mjs:5129:12)
+      at ɵɵdirectiveInject (node_modules/@angular/core/fesm2022/core.mjs:17388:19)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightBase (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:314:22)
+      at new _Highlight (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:350:9)
+      at _HighlightBase_Factory (ng:\_HighlightBase\ɵfac.js:5:10)
+      at NodeInjectorFactory._Highlight_Factory [as factory] (ng:\_Highlight\ɵfac.js:7:114)
+      at getNodeInjectable (node_modules/@angular/core/fesm2022/core.mjs:5341:44)
+      at instantiateAllDirectives (node_modules/@angular/core/fesm2022/core.mjs:12653:27)
+      at createDirectivesInstances (node_modules/@angular/core/fesm2022/core.mjs:12443:5)
+      at ɵɵelementStart (node_modules/@angular/core/fesm2022/core.mjs:28012:9)
+      at ɵɵelement (node_modules/@angular/core/fesm2022/core.mjs:28067:5)
+      at PrologHanoiComponent_Template (ng:/PrologHanoiComponent.js:22:9)
+      at executeTemplate (node_modules/@angular/core/fesm2022/core.mjs:12429:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12935:13)
+      at renderComponent (node_modules/@angular/core/fesm2022/core.mjs:12880:5)
+      at renderChildComponents (node_modules/@angular/core/fesm2022/core.mjs:12983:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12963:13)
+      at ComponentFactory2.create (node_modules/@angular/core/fesm2022/core.mjs:18053:17)
+      at initComponent (node_modules/@angular/core/fesm2022/testing.mjs:2053:51)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at Object.onInvoke (node_modules/@angular/core/fesm2022/core.mjs:6568:33)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at NgZone.run (node_modules/@angular/core/fesm2022/core.mjs:6414:28)
+      at _TestBedImpl.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:2058:41)
+      at Function.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:1844:37)
+      at src/app/code/prolog/prolog-hanoi/prolog-hanoi.component.spec.ts:14:23
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at Object.wrappedFunc (node_modules/zone.js/bundles/zone-testing.umd.js:449:38)
+(node:55104) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:33516) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:53800) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ PASS  src/app/footer/footer.component.spec.ts (8.939 s)
+(node:55224) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ PASS  src/app/code/perl/perl-index/perl-index.component.spec.ts (8.922 s)
+  ● Console
+    console.error
+      [HLJS]  Highlight.js library was not imported!
+      at node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:56:29
+      at node_modules/rxjs/src/internal/operators/catchError.ts:115:35
+      at OperatorSubscriber._this._error (node_modules/rxjs/src/internal/operators/OperatorSubscriber.ts:79:13)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber._error (node_modules/rxjs/src/internal/Subscriber.ts:118:24)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at Observable.init [as _subscribe] (node_modules/rxjs/src/internal/observable/throwError.ts:123:62)
+      at Observable.Object.<anonymous>.Observable._trySubscribe (node_modules/rxjs/src/internal/Observable.ts:235:19)
+      at node_modules/rxjs/src/internal/Observable.ts:225:18
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/switchMap.ts:99:12
+      at OperatorSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/catchError.ts:113:23
+      at SafeSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at new _HighlightLoader (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:59:21)
+      at Object._HighlightLoader_Factory [as factory] (ng:\_HighlightLoader\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:1125:32)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightJS (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:160:23)
+      at Object._HighlightJS_Factory [as factory] (ng:\_HighlightJS\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2159:33)
+      at ChainedInjector.get (node_modules/@angular/core/fesm2022/core.mjs:17337:36)
+      at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2022/core.mjs:5081:39)
+      at getOrCreateInjectable (node_modules/@angular/core/fesm2022/core.mjs:5129:12)
+      at ɵɵdirectiveInject (node_modules/@angular/core/fesm2022/core.mjs:17388:19)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightBase (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:314:22)
+      at new _Highlight (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:350:9)
+      at _HighlightBase_Factory (ng:\_HighlightBase\ɵfac.js:5:10)
+      at NodeInjectorFactory._Highlight_Factory [as factory] (ng:\_Highlight\ɵfac.js:7:114)
+      at getNodeInjectable (node_modules/@angular/core/fesm2022/core.mjs:5341:44)
+      at instantiateAllDirectives (node_modules/@angular/core/fesm2022/core.mjs:12653:27)
+      at createDirectivesInstances (node_modules/@angular/core/fesm2022/core.mjs:12443:5)
+      at ɵɵelementStart (node_modules/@angular/core/fesm2022/core.mjs:28012:9)
+      at ɵɵelement (node_modules/@angular/core/fesm2022/core.mjs:28067:5)
+      at PerlIndexComponent_Template (ng:/PerlIndexComponent.js:27:9)
+      at executeTemplate (node_modules/@angular/core/fesm2022/core.mjs:12429:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12935:13)
+      at renderComponent (node_modules/@angular/core/fesm2022/core.mjs:12880:5)
+      at renderChildComponents (node_modules/@angular/core/fesm2022/core.mjs:12983:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12963:13)
+      at ComponentFactory2.create (node_modules/@angular/core/fesm2022/core.mjs:18053:17)
+      at initComponent (node_modules/@angular/core/fesm2022/testing.mjs:2053:51)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at Object.onInvoke (node_modules/@angular/core/fesm2022/core.mjs:6568:33)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at NgZone.run (node_modules/@angular/core/fesm2022/core.mjs:6414:28)
+      at _TestBedImpl.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:2058:41)
+      at Function.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:1844:37)
+      at src/app/code/perl/perl-index/perl-index.component.spec.ts:14:23
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at Object.wrappedFunc (node_modules/zone.js/bundles/zone-testing.umd.js:449:38)
+ PASS  src/app/code/prolog/prolog-ackermann/prolog-ackermann.component.spec.ts (8.942 s)
+  ● Console
+    console.error
+      [HLJS]  Highlight.js library was not imported!
+      at node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:56:29
+      at node_modules/rxjs/src/internal/operators/catchError.ts:115:35
+      at OperatorSubscriber._this._error (node_modules/rxjs/src/internal/operators/OperatorSubscriber.ts:79:13)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber._error (node_modules/rxjs/src/internal/Subscriber.ts:118:24)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at Observable.init [as _subscribe] (node_modules/rxjs/src/internal/observable/throwError.ts:123:62)
+      at Observable.Object.<anonymous>.Observable._trySubscribe (node_modules/rxjs/src/internal/Observable.ts:235:19)
+      at node_modules/rxjs/src/internal/Observable.ts:225:18
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/switchMap.ts:99:12
+      at OperatorSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/catchError.ts:113:23
+      at SafeSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at new _HighlightLoader (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:59:21)
+      at Object._HighlightLoader_Factory [as factory] (ng:\_HighlightLoader\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:1125:32)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightJS (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:160:23)
+      at Object._HighlightJS_Factory [as factory] (ng:\_HighlightJS\ɵfac.js:5:10)
+      at node_modules/@angular/core/fesm2022/core.mjs:2282:47
+      at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:884:9)
+      at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:2281:21)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2149:33)
+      at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:2159:33)
+      at ChainedInjector.get (node_modules/@angular/core/fesm2022/core.mjs:17337:36)
+      at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2022/core.mjs:5081:39)
+      at getOrCreateInjectable (node_modules/@angular/core/fesm2022/core.mjs:5129:12)
+      at ɵɵdirectiveInject (node_modules/@angular/core/fesm2022/core.mjs:17388:19)
+      at ɵɵinject (node_modules/@angular/core/fesm2022/core.mjs:1131:42)
+      at inject (node_modules/@angular/core/fesm2022/core.mjs:1217:12)
+      at new _HighlightBase (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:314:22)
+      at new _Highlight (node_modules/ngx-highlightjs/fesm2022/ngx-highlightjs.mjs:350:9)
+      at _HighlightBase_Factory (ng:\_HighlightBase\ɵfac.js:5:10)
+      at NodeInjectorFactory._Highlight_Factory [as factory] (ng:\_Highlight\ɵfac.js:7:114)
+      at getNodeInjectable (node_modules/@angular/core/fesm2022/core.mjs:5341:44)
+      at instantiateAllDirectives (node_modules/@angular/core/fesm2022/core.mjs:12653:27)
+      at createDirectivesInstances (node_modules/@angular/core/fesm2022/core.mjs:12443:5)
+      at ɵɵelementStart (node_modules/@angular/core/fesm2022/core.mjs:28012:9)
+      at ɵɵelement (node_modules/@angular/core/fesm2022/core.mjs:28067:5)
+      at PrologAckermannComponent_Template (ng:/PrologAckermannComponent.js:17:9)
+      at executeTemplate (node_modules/@angular/core/fesm2022/core.mjs:12429:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12935:13)
+      at renderComponent (node_modules/@angular/core/fesm2022/core.mjs:12880:5)
+      at renderChildComponents (node_modules/@angular/core/fesm2022/core.mjs:12983:9)
+      at renderView (node_modules/@angular/core/fesm2022/core.mjs:12963:13)
+      at ComponentFactory2.create (node_modules/@angular/core/fesm2022/core.mjs:18053:17)
+      at initComponent (node_modules/@angular/core/fesm2022/testing.mjs:2053:51)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at Object.onInvoke (node_modules/@angular/core/fesm2022/core.mjs:6568:33)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at NgZone.run (node_modules/@angular/core/fesm2022/core.mjs:6414:28)
+      at _TestBedImpl.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:2058:41)
+      at Function.createComponent (node_modules/@angular/core/fesm2022/testing.mjs:1844:37)
+      at src/app/code/prolog/prolog-ackermann/prolog-ackermann.component.spec.ts:14:23
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at Object.wrappedFunc (node_modules/zone.js/bundles/zone-testing.umd.js:449:38)
+(node:57756) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:30564) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ PASS  src/app/index/index.component.spec.ts
+ PASS  src/app/headline/headline.component.spec.ts
+ PASS  src/test.ts
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   93.67 |    73.33 |   82.75 |   94.57 |
+ app               |   93.93 |    68.42 |   93.75 |   95.83 |
+  app.component.ts |   93.93 |    68.42 |   93.75 |   95.83 | 153-165,205,241
+ app/breadcrumb    |   91.42 |    77.96 |      60 |   91.17 |
+  ....component.ts |   91.42 |    77.96 |      60 |   91.17 | 65,80-82
+ app/header        |   91.66 |    66.66 |      60 |    91.3 |
+  ....component.ts |   91.66 |    66.66 |      60 |    91.3 | 41,55
+ ...page-not-found |     100 |      100 |     100 |     100 |
+  ....component.ts |     100 |      100 |     100 |     100 |
+-------------------|---------|----------|---------|---------|-------------------
+=============================== Coverage summary ===============================
+Statements   : 93.67% ( 163/174 )
+Branches     : 73.33% ( 88/120 )
+Functions    : 82.75% ( 24/29 )
+Lines        : 94.57% ( 157/166 )
+================================================================================
+Test Suites: 18 passed, 18 total
+Tests:       24 passed, 24 total
+Snapshots:   0 total
+Time:        17.387 s
+Ran all test suites.

@@ -40,7 +40,7 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
   - [ ] Typografische Skala, Lesbarkeit (Zeilenlänge/Zeilenhöhe) konsistent abstimmen.
 
 - Testing & Code-Quality
-  - [ ] Unit-Tests für Breadcrumb-Berechnung und Sprachumschalter (Persistenz, Events, aria-Attribute).
+  - [x] Unit-Tests für Breadcrumb-Berechnung und Sprachumschalter (Persistenz, Events, aria-Attribute) erweitern; Abdeckung ≥ 80% für Kernkomponenten.
   - [ ] Linting-Regeln (eslint) prüfen/erweitern; Prettier-Setup vereinheitlichen.
   - [ ] E2E-Tests (Playwright/Cypress) für Kernpfade (Startseite → Code → Unterseiten, Sprachwechsel, 404).
 
