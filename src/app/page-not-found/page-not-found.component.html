@@ -1,1 +1,21 @@
 <app-headline [subtitle]="'404.SUBTITLE' | translate">{{ '404.TITLE' | translate }}</app-headline>
+
+<div class="row">
+  <div class="twelve columns">
+    <p>
+      <a routerLink="/" class="button">{{ '404.CTA_HOME' | translate }}</a>
+    </p>
+
+    <div>
+      <label for="search404">{{ '404.SEARCH_LABEL' | translate }}</label>
+      <input id="search404" type="text" [(ngModel)]="query" [placeholder]="('404.SEARCH_PLACEHOLDER' | translate)" />
+    </div>
+
+    <h3>{{ '404.EXPLORE' | translate }}</h3>
+    <ul>
+      <li *ngFor="let t of filteredTopics">
+        <a [routerLink]="t.route">{{ t.name | translate }}</a>
+      </li>
+    </ul>
+  </div>
+</div>

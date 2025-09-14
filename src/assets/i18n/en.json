@@ -38,7 +38,11 @@
   "Hanoi": "Hanoi",
   "404": {
     "TITLE": "Page not found",
-    "SUBTITLE": "The page you requested could not be found."
+    "SUBTITLE": "The page you requested could not be found.",
+    "CTA_HOME": "Back to home",
+    "SEARCH_LABEL": "Search",
+    "SEARCH_PLACEHOLDER": "Search topics...",
+    "EXPLORE": "Browse topics"
   },
 
   "INDEX": {
