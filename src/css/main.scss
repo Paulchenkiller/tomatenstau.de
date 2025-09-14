@@ -7,8 +7,7 @@ html, body {
 
 /* Prevent layout shift when vertical scrollbar appears/disappears */
 html {
-  overflow-y: scroll; /* always reserve scrollbar space */
-  scrollbar-gutter: stable; /* modern browsers: keep layout stable */
+  scrollbar-gutter: stable both-edges; /* reserve gutter without forcing a visible scrollbar */
 }
 
 body {
@@ -412,8 +411,7 @@ html, body {
 
 /* Prevent layout shift when vertical scrollbar appears/disappears */
 html {
-  overflow-y: scroll; /* always reserve scrollbar space */
-  scrollbar-gutter: stable; /* modern browsers: keep layout stable */
+  scrollbar-gutter: stable both-edges; /* reserve gutter without forcing a visible scrollbar */
 }
 
 body {
