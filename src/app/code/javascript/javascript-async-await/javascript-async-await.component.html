@@ -1,18 +1,17 @@
-<app-headline>async/await & Promise-Fallen</app-headline>
+<app-headline [subtitle]="'JAVASCRIPT.ASYNC.SUBTITLE' | translate">{{ 'async/await' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <p>
-      <code>async/await</code> vereinfacht asynchrone Logik. Achte darauf, unabhängige Promises parallel auszuführen und
-      Fehler korrekt zu behandeln.
+      {{ 'JAVASCRIPT.ASYNC.INTRO' | translate }}
     </p>
 
-    <p>Anti-Pattern: sequenzielles Warten:</p>
+    <p>{{ 'JAVASCRIPT.ASYNC.BAD' | translate }}</p>
     <pre><code [highlight]="codeBad" language="javascript"></code></pre>
 
-    <p>Korrekt: parallel mit <code>Promise.all</code>:</p>
+    <p>{{ 'JAVASCRIPT.ASYNC.GOOD' | translate }}</p>
     <pre><code [highlight]="codeGood" language="javascript"></code></pre>
 
-    <p>Fehlerbehandlung mit <code>try/catch</code>:</p>
+    <p>{{ 'JAVASCRIPT.ASYNC.ERROR' | translate }}</p>
     <pre><code [highlight]="codeError" language="javascript"></code></pre>
   </div>
 </div>

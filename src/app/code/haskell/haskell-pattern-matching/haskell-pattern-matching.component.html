@@ -1,14 +1,14 @@
-<app-headline>Pattern Matching & Guards</app-headline>
+<app-headline [subtitle]="'HASKELL.PATTERN.SUBTITLE' | translate">{{ 'Pattern Matching' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <p>
-      Pattern Matching erlaubt elegantes Zerlegen von Datenstrukturen; Guards ergänzen ausdrucksstarke Bedingungen.
+      {{ 'HASKELL.PATTERN.INTRO' | translate }}
     </p>
 
-    <p>Pattern Matching auf einer List-ähnlichen Struktur:</p>
+    <p>{{ 'HASKELL.PATTERN.MATCH' | translate }}</p>
     <pre><code [highlight]="codeMatch" language="haskell"></code></pre>
 
-    <p>Guards zur Fallunterscheidung:</p>
+    <p>{{ 'HASKELL.PATTERN.GUARDS' | translate }}</p>
     <pre><code [highlight]="codeGuards" language="haskell"></code></pre>
   </div>
 </div>

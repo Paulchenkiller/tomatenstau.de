@@ -19,7 +19,7 @@ header {
 
     a {
       display: block;
-      margin: 15px 0 0 0; /* use margin-top instead of background-position shift */
+      margin: 8px 0; /* use margin-top instead of background-position shift */
       padding: 0;
       border: none;
       text-shadow: none;
@@ -53,6 +53,39 @@ header {
       }
     }
   }
+
+  .header-lang {
+    line-height: 75px;
+    margin-top: 15px;
+    margin-right: 20px;
+    float: right;
+    position: relative;
+
+    li {
+      display: inline-block;
+      margin-left: 8px;
+
+      button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 22px;
+        color: colors.$white;
+        opacity: 0.75;
+        transition: opacity 0.2s ease, transform 0.1s ease;
+
+        &.active {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+
+        &:hover {
+          opacity: 1;
+          color: colors.$green;
+        }
+      }
+    }
+  }
 }
 
 
@@ -66,8 +99,7 @@ header {
 
 @media only screen and (max-width: 768px) {
   header {
-    background: colors.$black;
-    border-bottom: 1px solid colors.$alpha_01;
+    background-color: colors.$header-background-color;
 
     .row {
       width: 100%;
@@ -79,3 +111,23 @@ header {
   }
 }
 
+
+
+/* Local minimal flag styles to avoid bundling large external assets */
+.header-lang .flag {
+  display: inline-block;
+  width: 22px; /* matches button font-size visual scale */
+  height: 16px;
+  border-radius: 2px;
+  background-size: cover;
+  background-position: center;
+  vertical-align: -2px;
+}
+
+.header-lang .flag-gb {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 36'><rect width='60' height='36' fill='%23012169'/><path stroke='%23FFF' stroke-width='8' d='M0,0 L60,36 M60,0 L0,36'/><path stroke='%23C8102E' stroke-width='4' d='M0,0 L60,36 M60,0 L0,36'/><rect x='0' y='14' width='60' height='8' fill='%23FFF'/><rect x='26' y='0' width='8' height='36' fill='%23FFF'/><rect x='0' y='16' width='60' height='4' fill='%23C8102E'/><rect x='28' y='0' width='4' height='36' fill='%23C8102E'/></svg>");
+}
+
+.header-lang .flag-de {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 18'><rect width='30' height='18' fill='%23000'/><rect y='6' width='30' height='6' fill='%23dd0000'/><rect y='12' width='30' height='6' fill='%23ffce00'/></svg>");
+}

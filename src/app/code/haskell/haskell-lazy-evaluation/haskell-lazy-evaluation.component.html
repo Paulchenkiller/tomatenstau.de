@@ -1,15 +1,14 @@
-<app-headline>Lazy Evaluation & Space Leaks</app-headline>
+<app-headline [subtitle]="'HASKELL.LAZY.SUBTITLE' | translate">{{ 'Lazy Evaluation' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <p>
-      Haskell wertet lazy aus: Ausdrücke werden erst berechnet, wenn sie benötigt werden. Das ermöglicht unendliche
-      Strukturen, kann aber bei unbedachtem Falten zu Space Leaks führen.
+      {{ 'HASKELL.LAZY.INTRO' | translate }}
     </p>
 
-    <p>Unendliche Liste dank Lazy Evaluation:</p>
+    <p>{{ 'HASKELL.LAZY.LAZY_LIST' | translate }}</p>
     <pre><code [highlight]="codeLazy" language="haskell"></code></pre>
 
-    <p>Space Leak vs. strikt falten:</p>
+    <p>{{ 'HASKELL.LAZY.SPACE_VS_STRICT' | translate }}</p>
     <pre><code [highlight]="codeSpaceLeak" language="haskell"></code></pre>
   </div>
 </div>

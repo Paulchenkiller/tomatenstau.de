@@ -10,5 +10,17 @@
         </a>
       </li>
     </ul>
+    <ul class="header-lang" aria-label="Language switcher">
+      <li>
+        <button type="button" (click)="setLang('en')" [class.active]="currentLang==='en'" title="English" aria-label="Switch to English">
+          <span class="flag flag-gb" aria-hidden="true"></span>
+        </button>
+      </li>
+      <li>
+        <button type="button" (click)="setLang('de')" [class.active]="currentLang==='de'" title="Deutsch" aria-label="Auf Deutsch umschalten">
+          <span class="flag flag-de" aria-hidden="true"></span>
+        </button>
+      </li>
+    </ul>
   </div>
 </header>

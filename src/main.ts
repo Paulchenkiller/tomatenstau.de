@@ -1,9 +1,12 @@
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { environment } from './environments/environment';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient, HttpClient } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IndexComponent } from './app/index/index.component';
 import { CodeComponent } from './app/code/code.component';
 import { PerlIndexComponent } from './app/code/perl/perl-index/perl-index.component';
@@ -32,12 +35,21 @@ import { HaskellTypeclassesComponent } from './app/code/haskell/haskell-typeclas
 import { HaskellMonadsComponent } from './app/code/haskell/haskell-monads/haskell-monads.component';
 import { HaskellPatternMatchingComponent } from './app/code/haskell/haskell-pattern-matching/haskell-pattern-matching.component';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 if (environment.production) {
   enableProdMode();
 }
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideHttpClient(),
+    importProvidersFrom(TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: { provide: TranslateLoader, useFactory: HttpLoaderFactory, deps: [HttpClient] }
+    })),
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {

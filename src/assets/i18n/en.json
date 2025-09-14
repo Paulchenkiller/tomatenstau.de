@@ -1,0 +1,212 @@
+{
+  "HEADER": {
+    "LANG": {
+      "EN": "English",
+      "DE": "German"
+    }
+  },
+  "Home": "Home",
+  "Code": "Code",
+  "Python": "Python",
+  "Perl": "Perl",
+  "Regex Greedy/Lazy": "Regex Greedy/Lazy",
+  "Kontext": "Context",
+  "Mutable Default": "Mutable Default",
+  "GIL & Threads": "GIL & Threads",
+  "Java": "Java",
+  "equals & hashCode": "equals & hashCode",
+  "ConcurrentModification": "Concurrent Modification",
+  "JavaScript/TypeScript": "JavaScript/TypeScript",
+  "Closures & Scope": "Closures & Scope",
+  "Hoisting & TDZ": "Hoisting & TDZ",
+  "async/await": "async/await",
+  "this & Arrow": "this & Arrow",
+  "TS Structural Typing": "TS Structural Typing",
+  "Haskell": "Haskell",
+  "Purity & IO": "Purity & IO",
+  "Lazy Evaluation": "Lazy Evaluation",
+  "Typeclasses": "Typeclasses",
+  "Monaden": "Monads",
+  "Pattern Matching": "Pattern Matching",
+  "Prolog": "Prolog",
+  "Ackermann": "Ackermann",
+  "Hanoi": "Hanoi",
+  "404": {
+    "TITLE": "Page not found",
+    "SUBTITLE": "The page you requested could not be found."
+  },
+
+  "INDEX": {
+    "NAME": "Meik Geldmacher",
+    "TITLE": "Software & Solution Architect · Team Lead Manager",
+    "INTRO": "I work as a Team Lead Manager as well as a Software and Solution Architect. My focus is on designing and evolving scalable system and software architectures, defining target pictures and roadmaps, technical leadership and coaching of teams, including leading an AI team, as well as stakeholder management across product, business, and IT. Additionally, I am responsible for architecture reviews, security and quality gates, integration and interface strategies (APIs, messaging/IoT), and establishing efficient delivery processes (CI/CD, observability).",
+    "HIGHLIGHTS": {
+      "FOCUS": "Focus areas:",
+      "FOCUS_TEXT": "Software & solution architecture, project leadership, roadmaps & stakeholder management",
+      "TECH": "Tech:",
+      "TECH_TEXT": "Angular, TypeScript/JavaScript, Node.js, Python, Java (Spring Boot 2.x/3.x), Perl",
+      "PLATFORMS": "Platforms & data:",
+      "PLATFORMS_TEXT": "RESTful APIs, MQTT/IoT, CI/CD, MySQL, MongoDB, Redis",
+      "DOMAINS": "Domains:",
+      "DOMAINS_TEXT": "Industry/IoT, manufacturing, enterprise applications, e-commerce/SEO",
+      "CERTS": "Certifications:",
+      "CERTS_TEXT": "iSAQB CPSA-A (06/2023), modules DDD, CLOUDINFRA, ARCEVAL; CPSA-F (12/2016)"
+    }
+  },
+
+  "CODE": {
+    "INTRO": "I want to provide some tips and tricks for different programming languages."
+  },
+
+  "PERL": {
+    "INDEX": {
+      "INTRO": "Perl is a scripting language developed in 1987 by Larry Wall. Perl is an interpreted language known for its versatility and ability to process text. Perl is often used for system administration, network programming, web development, and other tasks focused on text processing."
+    },
+    "CONTEXT": {
+      "TITLE": "List vs. scalar context in Perl",
+      "INTRO": "In Perl, the context (list or scalar) determines what an expression returns. This often leads to surprises – and is also very powerful.",
+      "LIST_VS_SCALAR": "Global regex match in list vs. scalar context:",
+      "WANTARRAY": "to detect the caller's context:"
+    },
+    "REGEX": {
+      "INTRO": "Regular expressions in Perl are greedy by default, meaning they match as much as possible. Using a question mark (?) makes quantifiers lazy, so they match as little as possible.",
+      "GREEDY": "Greedy:",
+      "LAZY": "Lazy:"
+    }
+  },
+
+  "PROLOG": {
+    "INDEX": {
+      "INTRO": "Prolog is considered one of the most important logic programming languages. I gained my first experience with the language during my studies."
+    },
+    "HANOI": {
+      "P1": "The Towers of Hanoi is a mathematical puzzle and patience game. One of the towers consists of several discs, where the smaller discs lie on the larger ones. The new tower must again contain the same order of discs. The following rules apply: Only one disc may be moved at a time and a larger disc may never lie on a smaller one.",
+      "P2": "Initial state (with 3 rings):",
+      "P3": "Target state (with 3 rings):",
+      "P4": "To solve this in Prolog, the following strategy can be pursued",
+      "P5": "In the best case, a single disc must be moved from one tower to the destination tower. X is moved to Y. In the recursive case, N discs are moved from X to Y. To achieve this, the first N-1 discs are moved to another peg X. The last disc is moved from tower X to tower Y. Then the N-1 discs are moved from X to Y:",
+      "P6": "An example call with 3 discs looks as follows:",
+      "P7": "The output provides the required moves:",
+      "P8": "The game can be solved with infinitely many discs. Most often, between 7 and 9 discs are used."
+    },
+    "ACKERMANN": {
+      "P1": "The Ackermann function is a prominent example of a recursive function. It is named after Wilhelm Ackermann (1886–1962). Many functions in mathematical practice are primitive recursive. In 1926, David Hilbert asked whether all functions whose arguments and values are natural numbers are primitive recursive. The Ackermann function grows extremely fast and serves as an example that there are computable functions that are not primitive recursive. In 1928, Ackermann demonstrated this using the Ackermann function. It grows faster than substitution and recursion allow. Only for small arguments can the function values still be calculated without recursion. This was also the idea behind Ackermann's proof. The original version is given by the following functional equation:",
+      "P2": "Instead, the variant by Hans Hermes is used, which is derived directly from the original. The function maps two integers to an integer a(n,m). It is defined mathematically by the following rules:",
+      "P3": "The Ackermann function is famous for exhausting computational resources very quickly. The definition according to Hermes can be translated almost 1:1 into Prolog:",
+      "P4": "It can then be executed with:",
+      "P5": "The result would be stored in the variable L. However, this leads to the following error:",
+      "P6": "With a smaller function call you get a result:",
+      "P7": "This clearly shows that even with small values the Ackermann function can run into memory limits."
+    }
+  },
+
+  "PYTHON": {
+    "INDEX": {
+      "INTRO": "Python is a versatile, easy-to-learn language with clear, readable syntax. It is suitable for scripting and automation as well as for web development, data science and AI. Below, I collect common pitfalls and useful topics around Python."
+    },
+    "MUTABLE_DEFAULT": {
+      "INTRO": "In Python, default arguments are evaluated once — when the function is defined. Mutable defaults like [] or {} are therefore shared between calls.",
+      "BAD": "Buggy example:",
+      "GOOD": "Correct pattern:"
+    },
+    "GIL_THREADS": {
+      "INTRO": "The Global Interpreter Lock (GIL) in CPython allows only one thread to execute Python bytecode at a time. For CPU-bound tasks, threads usually provide no speedup. Processes bypass the GIL.",
+      "THREADS": "Threads (often no speedup for CPU-bound):",
+      "ALT": "Alternative: Multiprocessing:"
+    }
+  },
+
+  "JAVA": {
+    "INDEX": {
+      "INTRO": "Java is a widely used, statically typed programming language that runs on the JVM. It is known for its platform independence (\"Write once, run anywhere\"), extensive standard library, and strong tooling support."
+    },
+    "EQUALS_HASHCODE": {
+      "SUBTITLE": "Contracts of equals and hashCode",
+      "INTRO": "In Java, equals and hashCode must be consistent: equal objects must have the same hash code. Violating this breaks hash-based collections like HashSet or HashMap.",
+      "BAD": "Anti-pattern: equals overridden without hashCode:",
+      "GOOD": "Correct: implement both equals and hashCode:"
+    },
+    "CONCURRENT": {
+      "SUBTITLE": "ConcurrentModificationException",
+      "INTRO": "Modifying a collection while iterating with the enhanced for-loop causes ConcurrentModificationException. Use the Iterator's remove or bulk operations.",
+      "BAD": "Anti-pattern: remove inside enhanced for-loop:",
+      "GOOD1": "Correct: use Iterator and its remove():",
+      "GOOD2": "Preferred since Java 8: bulk operation removeIf():"
+    }
+  },
+
+  "JAVASCRIPT": {
+    "INDEX": {
+      "INTRO": "JavaScript powers the web, while TypeScript adds types on top. Below are common pitfalls and best practices.",
+      "JS_HELLO": "JavaScript: Hello World",
+      "TS_HELLO": "TypeScript: Hello World"
+    },
+    "CLOSURES": {
+      "INTRO": "In JavaScript, var is function-scoped, not block-scoped. This often causes surprises with closures. Prefer let/const.",
+      "BAD": "Problem with var:",
+      "GOOD": "Solution with let:",
+      "EX": "Closure example:"
+    },
+    "HOISTING": {
+      "INTRO": "Variables declared with var are hoisted to the top of their function and initialized with undefined. let/const have a temporal dead zone (TDZ) where they cannot be used.",
+      "VAR": "Hoisting with var:",
+      "TDZ": "Temporal Dead Zone with let/const:"
+    },
+    "ASYNC": {
+      "SUBTITLE": "async/await & Promise pitfalls",
+      "INTRO": "async/await simplifies asynchronous logic. Be careful to run independent promises in parallel and handle errors properly.",
+      "BAD": "Anti-pattern: waiting sequentially:",
+      "GOOD": "Correct: in parallel with Promise.all:",
+      "ERROR": "Error handling with try/catch:"
+    },
+    "THIS": {
+      "SUBTITLE": "this binding vs. arrow functions",
+      "INTRO": "Arrow functions do not have their own this; they inherit it lexically. Methods on objects should usually be normal functions.",
+      "DIFF": "Difference between method and arrow function:",
+      "BIND": "Losing this and binding correctly:"
+    },
+    "TS": {
+      "SUBTITLE": "Structural typing & excess property checks",
+      "INTRO": "TypeScript uses structural typing: compatibility is based on shape, not name. Inline object literals are subject to excess property checks.",
+      "STRUCTURAL": "Structural typing:",
+      "EXCESS": "Excess property checks:"
+    }
+  },
+
+  "HASKELL": {
+    "INDEX": {
+      "INTRO": "Haskell is a purely functional, lazily evaluated, statically typed language. Here I collect typical concepts and pitfalls."
+    },
+    "PURITY": {
+      "SUBTITLE": "Encapsulating side effects",
+      "INTRO": "Haskell strictly separates pure functions from side effects. Effects are encapsulated in types like IO. Pure functions remain testable and predictable.",
+      "IO_MAIN": "IO in the main function:",
+      "PURE": "Pure function without effects:"
+    },
+    "LAZY": {
+      "SUBTITLE": "Space leaks",
+      "INTRO": "Haskell evaluates lazily: expressions are computed only when needed. This allows infinite structures, but careless folding can cause space leaks.",
+      "LAZY_LIST": "Infinite list thanks to lazy evaluation:",
+      "SPACE_VS_STRICT": "Space leak vs. strict fold:"
+    },
+    "TYPECLASSES": {
+      "SUBTITLE": "Derivations",
+      "INTRO": "Typeclasses describe interfaces (e.g., Show, Eq, Ord). Many standard instances can be generated automatically via deriving — or implemented manually.",
+      "DERIVE": "Automatic deriving:",
+      "CUSTOM": "Define a custom instance:"
+    },
+    "MONADS": {
+      "SUBTITLE": "Maybe & Either",
+      "INTRO": "Monads model computations with context (e.g., errors or absence of value). Maybe represents optional values; Either e a represents error e or result a.",
+      "MAYBE": "Maybe example:",
+      "EITHER": "Either example:"
+    },
+    "PATTERN": {
+      "SUBTITLE": "& Guards",
+      "INTRO": "Pattern matching allows elegant deconstruction of data structures; guards provide expressive conditions.",
+      "MATCH": "Pattern matching on a list-like structure:",
+      "GUARDS": "Guards for case distinction:"
+    }
+  }
+
+}

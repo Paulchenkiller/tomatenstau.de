@@ -1,15 +1,14 @@
-<app-headline>GIL: Threads vs. Prozesse</app-headline>
+<app-headline>{{ 'GIL & Threads' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <p>
-      Der Global Interpreter Lock (GIL) in CPython erlaubt nur einem Thread gleichzeitig Python-Bytecode auszuführen.
-      Für CPU-bound Aufgaben bringen Threads daher meist keinen Speedup. Prozesse umgehen das GIL.
+      {{ 'PYTHON.GIL_THREADS.INTRO' | translate }}
     </p>
 
-    <p>Threads (oft ohne Speedup bei CPU-bound):</p>
+    <p>{{ 'PYTHON.GIL_THREADS.THREADS' | translate }}</p>
     <pre><code [highlight]="codeThreads" language="python"></code></pre>
 
-    <p>Alternative: Multiprocessing:</p>
+    <p>{{ 'PYTHON.GIL_THREADS.ALT' | translate }}</p>
     <pre><code [highlight]="codeProcesses" language="python"></code></pre>
   </div>
 </div>

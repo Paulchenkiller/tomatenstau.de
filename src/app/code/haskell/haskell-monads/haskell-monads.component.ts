@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-haskell-monads',
   templateUrl: './haskell-monads.component.html',
-  imports: [Highlight, HeadlineComponent],
+  imports: [Highlight, HeadlineComponent, TranslateModule],
 })
 export class HaskellMonadsComponent {
   codeMaybe = `safeHead :: [a] -> Maybe a

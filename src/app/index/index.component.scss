@@ -12,7 +12,7 @@
   display: grid;
   grid-template-columns: 220px 1fr;
   grid-gap: 32px;
-  align-items: center;
+  align-items: start;
 }
 
 .intro__photo {
@@ -20,6 +20,7 @@
   max-width: 220px;
   border-radius: 8px;
   display: block;
+  margin-top: 10px; /* align with h1 top margin to keep photo and text level */
   border: 1px solid colors.$border;
   box-shadow: 0 10px 20px rgba(0,0,0,0.25);
 }
@@ -28,7 +29,7 @@
 .intro__content h1 {
   font-size: 26px;
   line-height: 32px;
-  margin: 4px 0 6px;
+  margin: 6px 0 6px;
 }
 
 /* Make the small welcome headline compact */
@@ -96,5 +97,5 @@ app-headline h2 {
   /* Keep highlights left-aligned on small screens */
   .intro__highlights { text-align: left; margin-left: auto; margin-right: auto; }
   .intro__media { order: -1; }
-  .intro__photo { margin: 0 auto 16px; }
+  .intro__photo { margin: 10px auto 16px; }
 }

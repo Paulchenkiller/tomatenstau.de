@@ -1,15 +1,14 @@
-<app-headline>TypeScript: Strukturelle Typisierung & Excess-Property-Checks</app-headline>
+<app-headline [subtitle]="'JAVASCRIPT.TS.SUBTITLE' | translate">{{ 'TS Structural Typing' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <p>
-      TypeScript ist strukturell typisiert: Entscheidend ist die Form eines Typs, nicht sein Name. Inline-Objektliterale
-      unterliegen außerdem den Excess-Property-Checks.
+      {{ 'JAVASCRIPT.TS.INTRO' | translate }}
     </p>
 
-    <p>Strukturelle Typisierung:</p>
+    <p>{{ 'JAVASCRIPT.TS.STRUCTURAL' | translate }}</p>
     <pre><code [highlight]="codeStructural" language="typescript"></code></pre>
 
-    <p>Excess-Property-Checks:</p>
+    <p>{{ 'JAVASCRIPT.TS.EXCESS' | translate }}</p>
     <pre><code [highlight]="codeExcess" language="typescript"></code></pre>
   </div>
 </div>

@@ -11,6 +11,7 @@ import {
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -33,6 +34,7 @@ export class BreadcrumbComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private translate: TranslateService,
   ) {
     this.breadcrumbs$ = this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
@@ -46,7 +48,8 @@ export class BreadcrumbComponent {
     givenUrl = '',
     breadcrumbs: Breadcrumb[] = [],
   ): Breadcrumb[] {
-    const label = route?.routeConfig?.data?.breadcrumb ?? 'Home';
+    const rawLabel = route?.routeConfig?.data?.breadcrumb ?? 'Home';
+    const label = this.translate.instant(rawLabel);
     const logo = route?.routeConfig?.data?.logo ?? 'home';
     const path = route?.routeConfig?.path ?? '';
     const url = `${givenUrl}${path}/`;

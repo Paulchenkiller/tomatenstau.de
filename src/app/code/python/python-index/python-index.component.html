@@ -1,16 +1,14 @@
-<app-headline>Python</app-headline>
+<app-headline>{{ 'Python' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <pre><code [highlight]="helloWorld" language="python"></code></pre>
     <p>
-      Python ist eine vielseitige, leicht zu erlernende Sprache mit klarem, gut lesbarem Syntax.
-      Sie eignet sich sowohl für Skripting und Automatisierung als auch für Web, Data Science und KI.
-      Nachfolgend sammle ich typische Fallstricke und wissenswerte Themen rund um Python.
+      {{ 'PYTHON.INDEX.INTRO' | translate }}
     </p>
     <div>
       <ul>
-        <li><a routerLink="mutable-default">Mutable Default Argumente – warum sie gefährlich sind</a></li>
-        <li><a routerLink="gil-threads">GIL & Threads – was parallel wirklich passiert</a></li>
+        <li><a routerLink="mutable-default">{{ 'Mutable Default' | translate }}</a></li>
+        <li><a routerLink="gil-threads">{{ 'GIL & Threads' | translate }}</a></li>
       </ul>
     </div>
   </div>

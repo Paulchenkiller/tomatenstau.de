@@ -1,15 +1,14 @@
-<app-headline>Monaden: Maybe & Either</app-headline>
+<app-headline [subtitle]="'HASKELL.MONADS.SUBTITLE' | translate">{{ 'Monaden' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <p>
-      Monaden modellieren Berechnungen mit Kontext (z.B. Fehler oder Abwesenheit eines Werts). <code>Maybe</code> steht
-      für optional, <code>Either e a</code> für Fehler <code>e</code> oder Ergebnis <code>a</code>.
+      {{ 'HASKELL.MONADS.INTRO' | translate }}
     </p>
 
-    <p><code>Maybe</code>-Beispiel:</p>
+    <p>{{ 'HASKELL.MONADS.MAYBE' | translate }}</p>
     <pre><code [highlight]="codeMaybe" language="haskell"></code></pre>
 
-    <p><code>Either</code>-Beispiel:</p>
+    <p>{{ 'HASKELL.MONADS.EITHER' | translate }}</p>
     <pre><code [highlight]="codeEither" language="haskell"></code></pre>
   </div>
 </div>

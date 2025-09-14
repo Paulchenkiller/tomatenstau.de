@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-java-concurrent-modification',
   templateUrl: './java-concurrent-modification.component.html',
-  imports: [Highlight, HeadlineComponent],
+  imports: [Highlight, HeadlineComponent, TranslateModule],
 })
 export class JavaConcurrentModificationComponent {
   badCode = `var list = new java.util.ArrayList<>(java.util.List.of(1,2,3));\nfor (Integer i : list) {\n    if (i % 2 == 0) {\n        list.remove(i); // java.util.ConcurrentModificationException\n    }\n}`;

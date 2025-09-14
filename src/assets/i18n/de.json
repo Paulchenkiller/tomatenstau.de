@@ -1,0 +1,211 @@
+{
+  "HEADER": {
+    "LANG": {
+      "EN": "Englisch",
+      "DE": "Deutsch"
+    }
+  },
+  "Home": "Startseite",
+  "Code": "Code",
+  "Python": "Python",
+  "Perl": "Perl",
+  "Regex Greedy/Lazy": "Regex Gierig/Faul",
+  "Kontext": "Kontext",
+  "Mutable Default": "Veränderlicher Standardwert",
+  "GIL & Threads": "GIL & Threads",
+  "Java": "Java",
+  "equals & hashCode": "equals & hashCode",
+  "ConcurrentModification": "Gleichzeitige Modifikation",
+  "JavaScript/TypeScript": "JavaScript/TypeScript",
+  "Closures & Scope": "Closures & Scope",
+  "Hoisting & TDZ": "Hoisting & TDZ",
+  "async/await": "async/await",
+  "this & Arrow": "this & Arrow",
+  "TS Structural Typing": "TS Strukturelle Typisierung",
+  "Haskell": "Haskell",
+  "Purity & IO": "Purity & IO",
+  "Lazy Evaluation": "Lazy Evaluation",
+  "Typeclasses": "Typeklassen",
+  "Monaden": "Monaden",
+  "Pattern Matching": "Pattern Matching",
+  "Prolog": "Prolog",
+  "Ackermann": "Ackermann",
+  "Hanoi": "Hanoi",
+  "404": {
+    "TITLE": "Seite nicht gefunden",
+    "SUBTITLE": "Die angeforderte Seite konnte nicht gefunden werden."
+  },
+
+  "INDEX": {
+    "NAME": "Meik Geldmacher",
+    "TITLE": "Software‑ & Solution‑Architekt · Team Lead Manager",
+    "INTRO": "Ich bin in den Rollen Team Lead Manager sowie Software- und Solution-Architekt tätig. Mein Fokus liegt auf der Konzeption und Weiterentwicklung skalierbarer System- und Softwarearchitekturen, der Ausarbeitung von Zielbildern und Roadmaps, technischer Leitung und Coaching von Teams, einschließlich der Leitung eines KI-Teams, sowie dem Stakeholder-Management über Produkt-, Fach- und IT-Bereiche hinweg. Darüber hinaus verantworte ich Architektur-Reviews, Security- und Quality-Gates, Integrations- und Schnittstellenstrategien (APIs, Messaging/IoT) sowie die Umsetzung effizienter Delivery-Prozesse (CI/CD, Observability).",
+    "HIGHLIGHTS": {
+      "FOCUS": "Schwerpunkte:",
+      "FOCUS_TEXT": "Software- & Solution-Architektur, Projektleitung, Roadmaps & Stakeholder-Management",
+      "TECH": "Tech:",
+      "TECH_TEXT": "Angular, TypeScript/JavaScript, Node.js, Python, Java (Spring Boot 2.x/3.x), Perl",
+      "PLATFORMS": "Plattformen & Daten:",
+      "PLATFORMS_TEXT": "RESTful APIs, MQTT/IoT, CI/CD, MySQL, MongoDB, Redis",
+      "DOMAINS": "Domänen:",
+      "DOMAINS_TEXT": "Industrie/IoT, Manufacturing, Enterprise-Anwendungen, E-Commerce/SEO",
+      "CERTS": "Zertifizierungen:",
+      "CERTS_TEXT": "iSAQB CPSA-A (06/2023), Module DDD, CLOUDINFRA, ARCEVAL; CPSA-F (12/2016)"
+    }
+  },
+
+  "CODE": {
+    "INTRO": "Ich möchte zu unterschiedlichen Programmiersprachen ein paar Tipps und Tricks bereitstellen."
+  },
+
+  "PERL": {
+    "INDEX": {
+      "INTRO": "Perl ist eine Skriptsprache, die 1987 von Larry Wall entwickelt wurde. Perl ist eine interpretierte Sprache, die für ihre Vielseitigkeit und ihre Fähigkeit, Texte zu verarbeiten, bekannt ist. Perl wird oft für Systemadministration, Netzwerkprogrammierung, Webentwicklung und andere Aufgaben verwendet, bei denen es darum geht, Text zu verarbeiten."
+    },
+    "CONTEXT": {
+      "TITLE": "Listen- vs. Skalar-Kontext in Perl",
+      "INTRO": "In Perl entscheidet der Kontext (Listen- oder Skalar-Kontext) darüber, was ein Ausdruck zurückgibt. Das führt häufig zu Überraschungen – und ist gleichzeitig sehr mächtig.",
+      "LIST_VS_SCALAR": "Globaler Regex-Match im Listen- vs. Skalar-Kontext:",
+      "WANTARRAY": "zum Erkennen des aufrufenden Kontexts:"
+    },
+    "REGEX": {
+      "INTRO": "Reguläre Ausdrücke in Perl sind per Default gierig (greedy), d.h. sie matchen so viel wie möglich. Mit einem Fragezeichen (?) kann man Quantifizierer faul (lazy) machen, sodass sie so wenig wie möglich matchen.",
+      "GREEDY": "Greedy:",
+      "LAZY": "Lazy:"
+    }
+  },
+
+  "PROLOG": {
+    "INDEX": {
+      "INTRO": "Prolog gilt als einer der wichtigsten logischen Programmiersprachen. Erste Erfahrungen mit der Sprache durfte ich während meines Studiums sammeln."
+    },
+    "HANOI": {
+      "P1": "Die Türme von Hanoi sind ein mathematisches Knobel- und Geduldsspiel. Einer der Türme ist dabei aus mehreren Scheiben aufgebaut, wobei die jeweils kleineren auf den größeren liegen. Der neue Turm muss wieder dieselbe Reihenfolge der Scheiben enthalten. Dabei gelten folgende Regeln: Es darf immer nur eine Scheibe bewegt werden und es darf nie eine größere Scheibe auf einer kleineren liegen.",
+      "P2": "Ausgangszustand (bei 3 Ringen):",
+      "P3": "Zielzustand (bei 3 Ringen):",
+      "P4": "Um das Ganze in Prolog zu lösen kann folgende Strategie verfolgt werden",
+      "P5": "Im besten Falle muss eine Scheibe von einem Turm zum Zielturm verschoben werden. Dabei wird X nach Y verschoben. Im rekursiven Fall werden N Scheiben von X nach Y verschoben. Um dies zu erreichen, werden die ersten N-1 Scheiben zu einer anderen Scheibe X verschoben. Die letzte Scheibe wird dabei vom Turm X zum Turm Y verschoben. Anschließend werden die N-1 Scheiben von X nach Y verschoben:",
+      "P6": "Ein beispielhafter Aufruf mit 3 Scheiben sieht wie folgt aus:",
+      "P7": "Die Ausgabe liefert die notwendigen Züge:",
+      "P8": "Das Spiel kann mit unendlich vielen Scheiben gelöst werden. Meistens werden zwischen 7 und 9 Scheiben verwendet."
+    },
+    "ACKERMANN": {
+      "P1": "Die Ackermann-Funktion ist ein prominentes Beispiel für eine rekursive Funktion. Sie ist nach F. Wilhelm Ackermann (1886–1962) benannt. Viele Funktionen der mathematischen Praxis sind primitiv rekursiv. David Hilbert stellte 1926 die Frage, ob alle Funktionen, deren Argumente und Werte natürliche Zahlen sind, primitiv rekursiv sind. Die Ackermann-Funktion steigt sehr stark an und ist ein Beispiel dafür, dass es berechenbare Funktionen gibt, die nicht primitiv rekursiv sind. 1928 zeigte Ackermann dies am Beispiel der Ackermann-Funktion. Sie wächst stärker, als es Substitution und Rekursion erlauben. Nur für kleine Argumente lassen sich die Funktionswerte noch ohne Rekursion berechnen. Darin bestand auch die Beweisidee von Ackermann. Die originale Version wird durch folgende Funktionalgleichung ausgedrückt:",
+      "P2": "Stattdessen wird die Variante von Hans Hermes verwendet, die direkt aus dem Original gewonnen wird. Dabei ist die Funktion eine Abbildung von zwei ganzen Zahlen auf eine ganze Zahl a(n,m). Sie ist mathematisch durch folgende Gesetzmäßigkeit definiert:",
+      "P3": "Die Ackermann-Funktion ist dafür berühmt, die Rechenkapazität sehr schnell zu erschöpfen. Die Definition nach Hermes lässt sich dabei quasi 1:1 in Prolog überführen:",
+      "P4": "Ausgeführt werden kann dann mittels:",
+      "P5": "Das Ergebnis würde in der Variable L stehen. Allerdings kommt es zu folgendem Fehler:",
+      "P6": "Bei kleinerem Funktionsaufruf erhält man ein Ergebnis:",
+      "P7": "Dies zeigt deutlich, dass es bei der Ackermann-Funktion bereits bei geringen Werten zu Speicherengpässen kommen kann."
+    }
+  },
+
+  "PYTHON": {
+    "INDEX": {
+      "INTRO": "Python ist eine vielseitige, leicht zu erlernende Sprache mit klarem, gut lesbarem Syntax. Sie eignet sich sowohl für Skripting und Automatisierung als auch für Web, Data Science und KI. Nachfolgend sammle ich typische Fallstricke und wissenswerte Themen rund um Python."
+    },
+    "MUTABLE_DEFAULT": {
+      "INTRO": "In Python werden Standardargumente nur einmal — beim Definieren der Funktion — ausgewertet. Mutable Defaults wie [] oder {} werden daher zwischen Aufrufen geteilt.",
+      "BAD": "Fehlerhaftes Beispiel:",
+      "GOOD": "Korrektes Muster:"
+    },
+    "GIL_THREADS": {
+      "INTRO": "Der Global Interpreter Lock (GIL) in CPython erlaubt nur einem Thread gleichzeitig, Python-Bytecode auszuführen. Für CPU-bound Aufgaben bringen Threads daher meist keinen Speedup. Prozesse umgehen das GIL.",
+      "THREADS": "Threads (oft ohne Speedup bei CPU-bound):",
+      "ALT": "Alternative: Multiprocessing:"
+    }
+  },
+
+  "JAVA": {
+    "INDEX": {
+      "INTRO": "Java ist eine weit verbreitete, statisch typisierte Programmiersprache, die auf der JVM läuft. Sie ist bekannt für ihre Plattformunabhängigkeit (\"Write once, run anywhere\"), umfangreiche Standardbibliothek und starke Tooling-Unterstützung."
+    },
+    "EQUALS_HASHCODE": {
+      "SUBTITLE": "Verträge von equals und hashCode",
+      "INTRO": "In Java müssen equals und hashCode konsistent sein: Gleiche Objekte müssen denselben Hashcode besitzen. Ein Verstoß bricht hash-basierte Collections wie HashSet oder HashMap.",
+      "BAD": "Anti-Pattern: equals überschrieben ohne hashCode:",
+      "GOOD": "Korrekt: sowohl equals als auch hashCode implementieren:"
+    },
+    "CONCURRENT": {
+      "SUBTITLE": "ConcurrentModificationException",
+      "INTRO": "Eine Collection während der Iteration mit der For-Each-Schleife zu ändern, führt zur ConcurrentModificationException. Nutze den Iterator mit remove oder Bulk-Operationen.",
+      "BAD": "Anti-Pattern: remove in der For-Each-Schleife:",
+      "GOOD1": "Korrekt: Iterator verwenden und remove():",
+      "GOOD2": "Bevorzugt seit Java 8: Bulk-Operation removeIf():"
+    }
+  },
+
+  "JAVASCRIPT": {
+    "INDEX": {
+      "INTRO": "JavaScript treibt das Web, TypeScript ergänzt Typen obendrauf. Nachfolgend typische Fallstricke und Best Practices.",
+      "JS_HELLO": "JavaScript: Hello World",
+      "TS_HELLO": "TypeScript: Hello World"
+    },
+    "CLOSURES": {
+      "INTRO": "In JavaScript ist var funktions-, nicht block-skopiert. Das führt oft zu Überraschungen mit Closures. Bevorzuge let/const.",
+      "BAD": "Problem mit var:",
+      "GOOD": "Lösung mit let:",
+      "EX": "Closure-Beispiel:"
+    },
+    "HOISTING": {
+      "INTRO": "Variablen mit var werden an den Funktionsanfang gehoistet und mit undefined initialisiert. let/const besitzen eine Temporal Dead Zone (TDZ), in der sie nicht verwendet werden dürfen.",
+      "VAR": "Hoisting mit var:",
+      "TDZ": "Temporal Dead Zone bei let/const:"
+    },
+    "ASYNC": {
+      "SUBTITLE": "async/await & Promise-Fallen",
+      "INTRO": "async/await vereinfacht asynchrone Logik. Führe unabhängige Promises parallel aus und behandle Fehler korrekt.",
+      "BAD": "Anti-Pattern: sequenzielles Warten:",
+      "GOOD": "Korrekt: parallel mit Promise.all:",
+      "ERROR": "Fehlerbehandlung mit try/catch:"
+    },
+    "THIS": {
+      "SUBTITLE": "this-Bindung vs. Arrow Functions",
+      "INTRO": "Arrow Functions besitzen kein eigenes this, sondern erben es lexikalisch. Methoden in Objekten sollten meist normale Funktionen sein.",
+      "DIFF": "Unterschied zwischen Methode und Arrow Function:",
+      "BIND": "this verlieren und korrekt binden:"
+    },
+    "TS": {
+      "SUBTITLE": "Strukturelle Typisierung & Excess-Property-Checks",
+      "INTRO": "TypeScript ist strukturell typisiert: Entscheidend ist die Form, nicht der Name. Inline-Objektliterale unterliegen Excess-Property-Checks.",
+      "STRUCTURAL": "Strukturelle Typisierung:",
+      "EXCESS": "Excess-Property-Checks:"
+    }
+  },
+
+  "HASKELL": {
+    "INDEX": {
+      "INTRO": "Haskell ist eine rein funktionale, lazy ausgewertete, statisch typisierte Sprache. Hier sammle ich typische Konzepte und Stolperfallen."
+    },
+    "PURITY": {
+      "SUBTITLE": "Nebenwirkungen kapseln",
+      "INTRO": "Haskell trennt reine Funktionen strikt von Seiteneffekten. Effekte werden in Typen wie IO gekapselt. Reine Funktionen bleiben dadurch testbar und vorhersagbar.",
+      "IO_MAIN": "IO in der main-Funktion:",
+      "PURE": "Reine Funktion ohne Effekte:"
+    },
+    "LAZY": {
+      "SUBTITLE": "Space Leaks",
+      "INTRO": "Haskell wertet lazy aus: Ausdrücke werden erst berechnet, wenn sie benötigt werden. Das ermöglicht unendliche Strukturen, kann aber bei unbedachtem Falten zu Space Leaks führen.",
+      "LAZY_LIST": "Unendliche Liste dank Lazy Evaluation:",
+      "SPACE_VS_STRICT": "Space Leak vs. strikt falten:"
+    },
+    "TYPECLASSES": {
+      "SUBTITLE": "Ableitungen",
+      "INTRO": "Typeclasses beschreiben Schnittstellen (z.B. Show, Eq, Ord). Viele Standardinstanzen können automatisch via deriving erzeugt werden – oder man implementiert sie selbst.",
+      "DERIVE": "Automatisches deriving:",
+      "CUSTOM": "Eigene Instanz definieren:"
+    },
+    "MONADS": {
+      "SUBTITLE": "Maybe & Either",
+      "INTRO": "Monaden modellieren Berechnungen mit Kontext (z.B. Fehler oder Abwesenheit eines Werts). Maybe steht für optional, Either e a für Fehler e oder Ergebnis a.",
+      "MAYBE": "Maybe-Beispiel:",
+      "EITHER": "Either-Beispiel:"
+    },
+    "PATTERN": {
+      "SUBTITLE": "& Guards",
+      "INTRO": "Pattern Matching erlaubt elegantes Zerlegen von Datenstrukturen; Guards ergänzen ausdrucksstarke Bedingungen.",
+      "MATCH": "Pattern Matching auf einer Listen-ähnlichen Struktur:",
+      "GUARDS": "Guards zur Fallunterscheidung:"
+    }
+  }
+}

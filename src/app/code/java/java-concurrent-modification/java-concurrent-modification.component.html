@@ -1,17 +1,16 @@
-<app-headline>ConcurrentModificationException – warum und wie vermeiden?</app-headline>
+<app-headline [subtitle]="'JAVA.CONCURRENT.SUBTITLE' | translate">{{ 'ConcurrentModification' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <p>
-      Die <code>ConcurrentModificationException</code> tritt auf, wenn während einer Iteration über eine Collection
-      dieselbe Collection strukturell verändert wird. Das Fail-Fast-Verhalten von Iteratoren soll logische Fehler früh
-      sichtbar machen.
+      {{ 'JAVA.CONCURRENT.INTRO' | translate }}
     </p>
 
-    <p>Fehlerhaftes Beispiel:</p>
+    <p>{{ 'JAVA.CONCURRENT.BAD' | translate }}</p>
     <pre><code [highlight]="badCode" language="java"></code></pre>
 
-    <p>Korrekte Varianten:</p>
+    <p>{{ 'JAVA.CONCURRENT.GOOD1' | translate }}</p>
     <pre><code [highlight]="goodCode1" language="java"></code></pre>
+    <p>{{ 'JAVA.CONCURRENT.GOOD2' | translate }}</p>
     <pre><code [highlight]="goodCode2" language="java"></code></pre>
   </div>
 </div>

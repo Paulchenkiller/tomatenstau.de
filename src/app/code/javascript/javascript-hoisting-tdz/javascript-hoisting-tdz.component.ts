@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-javascript-hoisting-tdz',
   templateUrl: './javascript-hoisting-tdz.component.html',
-  imports: [Highlight, HeadlineComponent],
+  imports: [Highlight, HeadlineComponent, TranslateModule],
 })
 export class JavascriptHoistingTdzComponent {
   codeHoist = `console.log(a); // undefined (var wird „gehoistet“)

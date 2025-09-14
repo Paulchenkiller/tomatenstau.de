@@ -1,15 +1,14 @@
-<app-headline>Prolog</app-headline>
+<app-headline>{{ 'Prolog' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <pre><code [highlight]="helloWorld" language="prolog"></code></pre>
     <p>
-      Prolog gilt als einer der wichtigsten logischen Programmiersprachen. Erste Erfahrungen mit der Sprache durfte ich
-      während meines Studiums sammeln.
+      {{ 'PROLOG.INDEX.INTRO' | translate }}
     </p>
     <div>
       <ul>
-        <li><a routerLink="ackermann">Ackermann</a></li>
-        <li><a routerLink="hanoi">Türme von Hanoi</a></li>
+        <li><a routerLink="ackermann">{{ 'Ackermann' | translate }}</a></li>
+        <li><a routerLink="hanoi">{{ 'Hanoi' | translate }}</a></li>
       </ul>
     </div>
   </div>

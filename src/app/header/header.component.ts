@@ -7,6 +7,7 @@ import {
 import { NgForOf } from '@angular/common';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -28,15 +29,26 @@ export class HeaderComponent {
   ];
   nav: any;
   menu = false;
+  currentLang = 'en';
 
   constructor(
     private router: Router,
     private library: FaIconLibrary,
+    private translate: TranslateService,
   ) {
     this.library.addIconPacks(fas, fab);
     this.router.events.subscribe(() => {
       this.menu = false;
     });
+    this.currentLang = this.translate.currentLang || this.translate.getDefaultLang() || 'en';
+    this.translate.onLangChange.subscribe((event) => {
+      this.currentLang = event.lang;
+    });
+  }
+
+  setLang(lang: 'en' | 'de'): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
   }
 
   clickEvent(): void {

@@ -1,15 +1,12 @@
-<app-headline>Perl</app-headline>
+<app-headline>{{ 'Perl' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <pre><code [highlight]="helloWorld" language="perl"></code></pre>
-    <p> Perl ist eine Skriptsprache, die 1987 von Larry Wall entwickelt wurde. Perl ist eine interpretierte Sprache, die
-      für ihre Vielseitigkeit und ihre Fähigkeit, Texte zu verarbeiten, bekannt ist. Perl wird oft für
-      Systemadministration, Netzwerkprogrammierung, Webentwicklung und andere Aufgaben verwendet, bei denen es darum
-      geht, Text zu verarbeiten.</p>
+    <p>{{ 'PERL.INDEX.INTRO' | translate }}</p>
     <div>
       <ul>
-        <li><a routerLink="regex-greediness">Regex: Greedy vs. Lazy</a></li>
-        <li><a routerLink="context">Listen- vs. Skalar-Kontext</a></li>
+        <li><a routerLink="regex-greediness">{{ 'Regex Greedy/Lazy' | translate }}</a></li>
+        <li><a routerLink="context">{{ 'Kontext' | translate }}</a></li>
       </ul>
     </div>
   </div>

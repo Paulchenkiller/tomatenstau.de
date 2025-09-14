@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-prolog-ackermann',
   templateUrl: './prolog-ackermann.component.html',
   styleUrls: ['./prolog-ackermann.component.scss'],
-  imports: [Highlight, HeadlineComponent],
+  imports: [Highlight, HeadlineComponent, TranslateModule],
 })
 export class PrologAckermannComponent {
   code1 = `f(n', x', y') = f(n, f(n', x, y), x)`;

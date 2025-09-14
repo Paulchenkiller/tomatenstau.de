@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-javascript-async-await',
   templateUrl: './javascript-async-await.component.html',
-  imports: [Highlight, HeadlineComponent],
+  imports: [Highlight, HeadlineComponent, TranslateModule],
 })
 export class JavascriptAsyncAwaitComponent {
   codeBad = `async function run() {

@@ -1,15 +1,14 @@
-<app-headline>Typeclasses & Ableitungen</app-headline>
+<app-headline [subtitle]="'HASKELL.TYPECLASSES.SUBTITLE' | translate">{{ 'Typeclasses' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <p>
-      Typeclasses beschreiben Schnittstellen (z.B. <code>Show</code>, <code>Eq</code>, <code>Ord</code>). Viele
-      Standardinstanzen können automatisch via <code>deriving</code> erzeugt werden – oder man implementiert sie selbst.
+      {{ 'HASKELL.TYPECLASSES.INTRO' | translate }}
     </p>
 
-    <p>Automatisches <code>deriving</code>:</p>
+    <p>{{ 'HASKELL.TYPECLASSES.DERIVE' | translate }}</p>
     <pre><code [highlight]="codeDerive" language="haskell"></code></pre>
 
-    <p>Eigene Instanz definieren:</p>
+    <p>{{ 'HASKELL.TYPECLASSES.CUSTOM' | translate }}</p>
     <pre><code [highlight]="codeCustom" language="haskell"></code></pre>
   </div>
 </div>

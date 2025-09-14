@@ -1,13 +1,13 @@
-<app-headline>Code</app-headline>
+<app-headline>{{ 'Code' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <p>
-      Ich möchte zu unterschiedlichen Programmiersprachen ein paar Tipps und Tricks bereitstellen.
+      {{ 'CODE.INTRO' | translate }}
     </p>
 
     <ul>
       <li *ngFor="let codeComponent of codeComponents">
-        <a [routerLink]="codeComponent.route">{{ codeComponent.name }}</a>
+        <a [routerLink]="codeComponent.route">{{ codeComponent.name | translate }}</a>
       </li>
     </ul>
 

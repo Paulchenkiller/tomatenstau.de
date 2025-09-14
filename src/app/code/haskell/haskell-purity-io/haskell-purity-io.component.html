@@ -1,15 +1,14 @@
-<app-headline>Purity & IO – Nebenwirkungen kapseln</app-headline>
+<app-headline [subtitle]="'HASKELL.PURITY.SUBTITLE' | translate">{{ 'Purity & IO' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <p>
-      Haskell trennt reine Funktionen strikt von Seiteneffekten. Effekte werden in Typen wie <code>IO</code>
-      gekapselt. Reine Funktionen bleiben dadurch testbar und vorhersagbar.
+      {{ 'HASKELL.PURITY.INTRO' | translate }}
     </p>
 
-    <p>IO in der <code>main</code>-Funktion:</p>
+    <p>{{ 'HASKELL.PURITY.IO_MAIN' | translate }}</p>
     <pre><code [highlight]="codeIo" language="haskell"></code></pre>
 
-    <p>Reine Funktion ohne Effekte:</p>
+    <p>{{ 'HASKELL.PURITY.PURE' | translate }}</p>
     <pre><code [highlight]="codePure" language="haskell"></code></pre>
   </div>
 </div>

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-perl-context',
   templateUrl: './perl-context.component.html',
-  imports: [Highlight, HeadlineComponent],
+  imports: [Highlight, HeadlineComponent, TranslateModule],
 })
 export class PerlContextComponent {
   codeListVsScalar = `my $text = 'foo 42 bar 7 baz';

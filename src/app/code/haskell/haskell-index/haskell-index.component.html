@@ -1,20 +1,19 @@
-<app-headline>Haskell</app-headline>
+<app-headline>{{ 'Haskell' | translate }}</app-headline>
 <div class="row">
   <div class="twelve columns">
     <p>
-      Haskell ist eine rein funktionale, lazy ausgewertete, statisch typisierte Programmiersprache. Hier sammle ich
-      typische Konzepte und Stolperfallen.
+      {{ 'HASKELL.INDEX.INTRO' | translate }}
     </p>
 
     <pre><code [highlight]="helloWorld" language="haskell"></code></pre>
 
     <div>
       <ul>
-        <li><a routerLink="purity-io">Purity & IO – Nebenwirkungen kapseln</a></li>
-        <li><a routerLink="lazy-evaluation">Lazy Evaluation & Space Leaks</a></li>
-        <li><a routerLink="typeclasses">Typeclasses & Ableitungen</a></li>
-        <li><a routerLink="monads">Monaden: Maybe & Either</a></li>
-        <li><a routerLink="pattern-matching">Pattern Matching & Guards</a></li>
+        <li><a routerLink="purity-io">{{ 'Purity & IO' | translate }} – {{ 'HASKELL.PURITY.SUBTITLE' | translate }}</a></li>
+        <li><a routerLink="lazy-evaluation">{{ 'Lazy Evaluation' | translate }} & {{ 'HASKELL.LAZY.SUBTITLE' | translate }}</a></li>
+        <li><a routerLink="typeclasses">{{ 'Typeclasses' | translate }} & {{ 'HASKELL.TYPECLASSES.SUBTITLE' | translate }}</a></li>
+        <li><a routerLink="monads">{{ 'Monaden' | translate }}: {{ 'HASKELL.MONADS.SUBTITLE' | translate }}</a></li>
+        <li><a routerLink="pattern-matching">{{ 'Pattern Matching' | translate }} & {{ 'HASKELL.PATTERN.SUBTITLE' | translate }}</a></li>
       </ul>
     </div>
   </div>
