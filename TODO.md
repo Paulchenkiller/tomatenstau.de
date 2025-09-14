@@ -9,10 +9,10 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
   - [x] 404-Seite ausbauen: Link zur Startseite, ggf. Suchfeld oder Themenübersicht.
 
 - Internationalisierung (i18n)
-  - [ ] Einheitliche Keys für Navigations-/Breadcrumb‑Labels konzipieren (z. B. NAV.HOME, NAV.CODE, NAV.JAVASCRIPT), behutsam migrieren.
-  - [ ] Fehlende/abweichende Übersetzungen prüfen (z. B. deutsche Begriffe als Schlüssel vs. neutrale Schlüssel).
-  - [ ] Initialsprache beim App-Start aus localStorage/Browser ermitteln (APP_INITIALIZER), Fallback sauber definieren.
-  - [ ] Title/Meta pro Route ebenfalls internationalisieren (TitleService + TranslateService).
+  - [x] Einheitliche Keys für Navigations-/Breadcrumb‑Labels konzipieren (z. B. NAV.HOME, NAV.CODE, NAV.JAVASCRIPT), behutsam migrieren.
+  - [x] Fehlende/abweichende Übersetzungen prüfen (z. B. deutsche Begriffe als Schlüssel vs. neutrale Schlüssel).
+  - [x] Initialsprache beim App-Start aus localStorage/Browser ermitteln (APP_INITIALIZER), Fallback sauber definieren.
+  - [x] Title/Meta pro Route ebenfalls internationalisieren (TitleService + TranslateService).
 
 - Barrierefreiheit (A11y)
   - [ ] Sichtbarer Tastaturfokus für alle interaktiven Elemente (Buttons, Links, Sprachumschalter).

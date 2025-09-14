@@ -1,11 +1,11 @@
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { enableProdMode, importProvidersFrom, APP_INITIALIZER } from '@angular/core';
 import { environment } from './environments/environment';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, HttpClient } from '@angular/common/http';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IndexComponent } from './app/index/index.component';
 import { CodeComponent } from './app/code/code.component';
@@ -50,6 +50,19 @@ bootstrapApplication(AppComponent, {
       defaultLanguage: 'en',
       loader: { provide: TranslateLoader, useFactory: HttpLoaderFactory, deps: [HttpClient] }
     })),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (translate: TranslateService) => () => {
+        translate.addLangs(['en', 'de']);
+        translate.setDefaultLang('en');
+        const saved = localStorage.getItem('lang');
+        const browserLang = navigator.language && navigator.language.toLowerCase().startsWith('de') ? 'de' : 'en';
+        const lang = saved || browserLang || 'en';
+        translate.use(lang);
+      },
+      deps: [TranslateService],
+      multi: true,
+    },
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {
