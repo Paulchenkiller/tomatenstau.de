@@ -73,6 +73,13 @@
     "EXPLORE": "Browse topics"
   },
 
+  "A11Y": {
+    "COPY_CODE": "Copy code to clipboard",
+    "COPIED": "Copied!",
+    "HIGH_CONTRAST": "High contrast",
+    "TOGGLE_HIGH_CONTRAST": "Toggle high-contrast mode"
+  },
+
   "INDEX": {
     "NAME": "Meik Geldmacher",
     "TITLE": "Software & Solution Architect · Team Lead Manager",

@@ -79,15 +79,35 @@ header {
           transform: scale(1.05);
         }
 
-        &:hover {
+        &:hover,
+        &:focus {
           opacity: 1;
           color: colors.$green;
+          outline: 2px solid transparent; /* reserve for focus styles elsewhere */
         }
       }
     }
   }
 }
 
+/* High-contrast adjustments */
+:host-context(body[data-theme='hc']) header {
+  background-color: #000 !important;
+
+  .header-social li a,
+  .header-lang li button {
+    color: #fff !important;
+    opacity: 1 !important;
+  }
+
+  .header-social li a:hover,
+  .header-social li a:focus,
+  .header-lang li button:hover,
+  .header-lang li button:focus {
+    color: #fff !important;
+    text-decoration: underline;
+  }
+}
 
 @media only screen and (max-width: 880px) {
   header {

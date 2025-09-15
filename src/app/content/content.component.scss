@@ -6,3 +6,9 @@ section {
   padding-top: 100px; /* header is 90px => 10px breathing room */
   padding-bottom: 88px; /* footer safe area (~72px) + ~16px gap */
 }
+
+/* High-contrast: ensure body content area is black with high-contrast text */
+:host-context(body[data-theme='hc']) section {
+  background: #000 !important;
+  color: #fff !important;
+}

@@ -18,8 +18,8 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
   - [ ] Sichtbarer Tastaturfokus für alle interaktiven Elemente (Buttons, Links, Sprachumschalter).
   - [ ] Skip-Link („Zum Inhalt springen“) einführen.
   - [ ] aria-current für aktiven Menüpunkt/Breadcrumb setzen.
-  - [ ] Kontrast-Check (WCAG AA) für Farben; ggf. Alternativthema für hohen Kontrast.
-  - [ ] Codeblöcke: „Copy“-Button mit aussagekräftigem aria-label und Tastaturbedienbarkeit.
+  - [x] Kontrast-Check (WCAG AA) für Farben; ggf. Alternativthema für hohen Kontrast.
+  - [x] Codeblöcke: „Copy“-Button mit aussagekräftigem aria-label und Tastaturbedienbarkeit.
 
 - Performance
   - [ ] Routen-Lazy-Loading prüfen/aktivieren, falls noch nicht überall genutzt.

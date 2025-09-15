@@ -16,6 +16,15 @@ class FaIconLibraryStub {
   addIconPacks() {/* noop */}
 }
 
+function createMockBody() {
+  const attrs: Record<string, string> = {};
+  return {
+    setAttribute: (n: string, v: string) => { attrs[n] = v; },
+    removeAttribute: (n: string) => { delete attrs[n]; },
+    getAttribute: (n: string) => attrs[n] ?? null,
+  } as any;
+}
+
 describe('HeaderComponent', () => {
   let router: Partial<Router> & { events: Subject<any> };
   let translate: TranslateStub;
@@ -49,7 +58,8 @@ describe('HeaderComponent', () => {
   });
 
   it('should initialize with current language and react to language changes', () => {
-    const cmp = new HeaderComponent(router as any, lib as any, translate as any);
+    const mockDoc = { body: createMockBody() } as any as Document;
+    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
     expect(cmp.currentLang).toBe('en');
 
     translate.use('de');
@@ -57,7 +67,8 @@ describe('HeaderComponent', () => {
   });
 
   it('setLang should call translate.use and persist to localStorage', () => {
-    const cmp = new HeaderComponent(router as any, lib as any, translate as any);
+    const mockDoc = { body: createMockBody() } as any as Document;
+    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
 
     cmp.setLang('de');
     expect(translate.use).toHaveBeenCalledWith('de');

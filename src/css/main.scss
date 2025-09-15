@@ -435,3 +435,57 @@ h1, h2, h3, h4, h5, h6 {
 p.lead {
   color: colors.$text_muted;
 }
+
+
+/* High-contrast overrides for code blocks and copy button */
+body[data-theme='hc'] pre {
+  background: #000 !important;
+  color: #fff !important;
+  border: 1px solid #666 !important;
+  box-shadow: none !important;
+}
+
+/* Ensure code text inside pre is high-contrast */
+body[data-theme='hc'] pre code {
+  background: transparent !important;
+  color: #fff !important;
+}
+
+/* Inline code outside of pre */
+body[data-theme='hc'] code {
+  background: #000 !important;
+  color: #fff !important;
+  border: 1px solid #666 !important;
+}
+
+/* highlight.js default classes */
+body[data-theme='hc'] .hljs,
+body[data-theme='hc'] pre .hljs {
+  background: transparent !important;
+  color: #fff !important;
+}
+
+/* Optional: dim line numbers a bit while keeping contrast */
+body[data-theme='hc'] td.hljs-ln-numbers {
+  color: #bbb !important;
+  border-right: 1px solid #666 !important;
+}
+body[data-theme='hc'] td.hljs-ln-code {
+  color: #fff !important;
+}
+
+/* Copy button inside code blocks */
+body[data-theme='hc'] pre .copy-btn {
+  background: #000 !important;
+  color: #fff !important;
+  border: 1px solid #fff !important;
+  border-radius: 4px !important;
+  padding: 4px 8px !important;
+}
+body[data-theme='hc'] pre .copy-btn:hover,
+body[data-theme='hc'] pre .copy-btn:focus {
+  background: #111 !important;
+  color: #fff !important;
+  outline: 2px solid #fff !important;
+  outline-offset: 2px !important;
+}

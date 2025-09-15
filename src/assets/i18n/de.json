@@ -73,6 +73,13 @@
     "EXPLORE": "Themenübersicht"
   },
 
+  "A11Y": {
+    "COPY_CODE": "Code in Zwischenablage kopieren",
+    "COPIED": "Kopiert!",
+    "HIGH_CONTRAST": "Hoher Kontrast",
+    "TOGGLE_HIGH_CONTRAST": "Kontrastmodus umschalten"
+  },
+
   "INDEX": {
     "NAME": "Meik Geldmacher",
     "TITLE": "Software‑ & Solution‑Architekt · Team Lead Manager",

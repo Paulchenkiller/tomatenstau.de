@@ -21,6 +21,15 @@
           <span class="flag flag-de" aria-hidden="true"></span>
         </button>
       </li>
+      <li>
+        <button type="button"
+                (click)="toggleHighContrast()"
+                [attr.title]="('A11Y.HIGH_CONTRAST' | translate)"
+                [attr.aria-label]="('A11Y.TOGGLE_HIGH_CONTRAST' | translate)"
+                [attr.aria-pressed]="highContrast">
+          <fa-icon [icon]="['fas','universal-access']" aria-hidden="true"></fa-icon>
+        </button>
+      </li>
     </ul>
   </div>
 </header>

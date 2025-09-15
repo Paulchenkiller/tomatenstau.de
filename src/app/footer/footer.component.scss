@@ -80,6 +80,26 @@ footer {
   }
 }
 
+/* High-contrast overrides */
+:host-context(body[data-theme='hc']) footer {
+  background: #000 !important;
+  border-top: 1px solid #666 !important;
+  color: #fff !important;
+
+  a {
+    color: #fff !important;
+    text-decoration: underline;
+  }
+
+  .copyright {
+    color: #e0e0e0 !important;
+  }
+
+  .social-links li a {
+    color: #fff !important;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   footer {
     .social-links {

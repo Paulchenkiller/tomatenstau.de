@@ -89,6 +89,24 @@ app-headline h2 {
   color: colors.$white_full;
 }
 
+/* High-contrast overrides for AA compliance */
+:host-context(body[data-theme='hc']) .intro {
+  background: #000 !important;
+  color: #fff !important;
+}
+:host-context(body[data-theme='hc']) app-headline,
+:host-context(body[data-theme='hc']) app-headline h1,
+:host-context(body[data-theme='hc']) app-headline h2,
+:host-context(body[data-theme='hc']) .intro__title,
+:host-context(body[data-theme='hc']) .lead,
+:host-context(body[data-theme='hc']) .intro__highlights {
+  color: #fff !important;
+}
+:host-context(body[data-theme='hc']) .btn {
+  /* keep accessible contrast, but add clearer focus/hover signals */
+  box-shadow: 0 0 0 2px #000, 0 0 0 3px #fff;
+}
+
 @media (max-width: 800px) {
   .intro .container {
     grid-template-columns: 1fr;
