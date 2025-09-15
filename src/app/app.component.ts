@@ -72,7 +72,7 @@ export class AppComponent implements AfterViewInit {
 
   private getTitleKeyForUrl(url: string): string {
     // Map URLs to NAV.* or specific 404 title
-    const clean = url.replace(/\/?$/,'');
+    const clean = url.replace(/\/?$/, '');
     const map: Record<string, string> = {
       '': 'NAV.HOME',
       '/': 'NAV.HOME',
@@ -107,7 +107,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   private getDescriptionKeyForUrl(url: string): string {
-    const clean = url.replace(/\/?$/,'');
+    const clean = url.replace(/\/?$/, '');
     const map: Record<string, string> = {
       '': 'INDEX.INTRO',
       '/': 'INDEX.INTRO',
@@ -172,7 +172,7 @@ export class AppComponent implements AfterViewInit {
         sameAs: [
           'https://github.com/Paulchenkiller',
           'https://www.linkedin.com/in/meik-geldmacher',
-          'https://www.xing.com/profile/Meik_Geldmacher'
+          'https://www.xing.com/profile/Meik_Geldmacher',
         ],
       };
       this.ensureJsonLd('ld-person', person);
@@ -215,43 +215,51 @@ export class AppComponent implements AfterViewInit {
   // Enhance code blocks: add accessible "Copy" buttons with i18n labels and keyboard support
   private enhanceCodeBlocks(): void {
     try {
-      const tCopy = this.translate.instant('A11Y.COPY_CODE');
-      const tCopied = this.translate.instant('A11Y.COPIED');
-      const pres = Array.from(this.doc.querySelectorAll('pre')) as HTMLPreElement[];
-      for (const pre of pres) {
-        const code = pre.querySelector('code');
-        if (!code) continue;
+      this.translate.get(['A11Y.COPY_CODE', 'A11Y.COPIED']).subscribe((dict) => {
+        const tCopy = dict['A11Y.COPY_CODE'] || 'Copy code to clipboard';
+        const tCopied = dict['A11Y.COPIED'] || 'Copied!';
+        const pres = Array.from(this.doc.querySelectorAll('pre')) as HTMLPreElement[];
+        for (const pre of pres) {
+          const code = pre.querySelector('code');
+          if (!code) continue;
 
-        // Ensure pre is relatively positioned for optional button positioning via CSS (non-destructive)
-        if (!pre.style.position) {
-          // don't override existing author styles
-          pre.style.position = 'relative';
-        }
+          // Ensure pre is relatively positioned for optional button positioning via CSS (non-destructive)
+          if (!pre.style.position) {
+            // don't override existing author styles
+            pre.style.position = 'relative';
+          }
 
-        let btn = pre.querySelector('button.copy-btn') as HTMLButtonElement | null;
-        if (!btn) {
-          btn = this.doc.createElement('button');
-          btn.type = 'button';
-          btn.className = 'copy-btn';
-          // default placement can be adjusted via CSS
-          btn.style.position = 'absolute';
-          btn.style.top = '0.5rem';
-          btn.style.right = '0.5rem';
-          btn.addEventListener('click', () => this.copyCode(pre, code, btn!, tCopy, tCopied));
-          // Key accessibility: button already handles Enter/Space by default; no extra needed
-          pre.appendChild(btn);
+          let btn = pre.querySelector('button.copy-btn') as HTMLButtonElement | null;
+          if (!btn) {
+            btn = this.doc.createElement('button');
+            btn.type = 'button';
+            btn.className = 'copy-btn';
+            // default placement can be adjusted via CSS
+            btn.style.position = 'absolute';
+            btn.style.top = '0.5rem';
+            btn.style.right = '0.5rem';
+            btn.addEventListener('click', () => this.copyCode(pre, code, btn!, tCopy, tCopied));
+            // Key accessibility: button already handles Enter/Space by default; no extra needed
+            pre.appendChild(btn);
+          }
+          // Always update labels/text on language change
+          btn.setAttribute('aria-label', tCopy);
+          btn.title = tCopy;
+          btn.textContent = tCopy;
         }
-        // Always update labels/text on language change
-        btn.setAttribute('aria-label', tCopy);
-        btn.title = tCopy;
-        btn.textContent = tCopy;
-      }
+      });
     } catch {
       // no-op: DOM not ready or no document (SSR)
     }
   }
 
-  private async copyCode(pre: HTMLPreElement, codeEl: Element, btn: HTMLButtonElement, tCopy: string, tCopied: string): Promise<void> {
+  private async copyCode(
+    pre: HTMLPreElement,
+    codeEl: Element,
+    btn: HTMLButtonElement,
+    tCopy: string,
+    tCopied: string,
+  ): Promise<void> {
     const text = codeEl.textContent || '';
     try {
       if (navigator && 'clipboard' in navigator && (navigator as any).clipboard?.writeText) {
@@ -265,19 +273,21 @@ export class AppComponent implements AfterViewInit {
         this.doc.body.appendChild(ta);
         ta.focus();
         ta.select();
-        try { this.doc.execCommand('copy'); } catch {}
+        try {
+          this.doc.execCommand('copy');
+        } catch {}
         this.doc.body.removeChild(ta);
       }
-      // Feedback
+    } catch {
+      // ignore copy errors
+    } finally {
+      // Always provide user feedback regardless of copy API availability
       btn.setAttribute('aria-label', tCopied);
       btn.textContent = tCopied;
-      // announce polite via aria-live region if present? keep simple
       setTimeout(() => {
         btn.setAttribute('aria-label', tCopy);
         btn.textContent = tCopy;
       }, 1500);
-    } catch {
-      // ignore copy errors
     }
   }
 

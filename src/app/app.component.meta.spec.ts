@@ -7,8 +7,12 @@ import { Router, NavigationEnd } from '@angular/router';
 
 class TranslateStub {
   public onLangChange = new Subject<{ lang: string }>();
-  instant(key: string): string { return key; }
-  getDefaultLang() { return 'en'; }
+  instant(key: string): string {
+    return key;
+  }
+  getDefaultLang() {
+    return 'en';
+  }
 }
 
 class RouterStub {
@@ -85,7 +89,8 @@ describe('AppComponent meta and links', () => {
   it('should inject BreadcrumbList JSON-LD on non-home routes and not inject Person', () => {
     const ldBreadcrumb = document.getElementById('ld-breadcrumb') as HTMLScriptElement | null;
     expect(ldBreadcrumb).toBeTruthy();
-    const data = ldBreadcrumb && ldBreadcrumb.textContent ? JSON.parse(ldBreadcrumb.textContent) : null;
+    const data =
+      ldBreadcrumb && ldBreadcrumb.textContent ? JSON.parse(ldBreadcrumb.textContent) : null;
     expect(data && data['@type']).toBe('BreadcrumbList');
 
     const ldPerson = document.getElementById('ld-person');

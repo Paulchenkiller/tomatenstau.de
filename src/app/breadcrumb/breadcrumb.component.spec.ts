@@ -89,25 +89,29 @@ describe('BreadcrumbComponent', () => {
     const crumbs = comp.buildBreadCrumb(makeRouteTree());
     // Expect four crumbs due to intermediate empty-path nodes: Home, Code, Code (''), Python
     expect(crumbs.length).toBe(4);
-    const labels = crumbs.map(c => c.label);
+    const labels = crumbs.map((c) => c.label);
     expect(labels).toContain('NAV.HOME');
     expect(labels).toContain('NAV.CODE');
     expect(labels).toContain('NAV.PYTHON');
 
     // And URLs should be cumulative with trailing slashes (order-agnostic)
-    const urls = crumbs.map(c => c.url);
+    const urls = crumbs.map((c) => c.url);
     expect(urls).toContain('/');
     expect(urls).toContain('/code/');
     expect(urls).toContain('/code/python/');
   });
 
   it('should accept already normalized NAV.* breadcrumb keys as-is', () => {
-    const comp = new BreadcrumbComponent(makeRouteTreeWithNavKey(), router as any, translate as any);
+    const comp = new BreadcrumbComponent(
+      makeRouteTreeWithNavKey(),
+      router as any,
+      translate as any,
+    );
 
     const crumbs = comp.buildBreadCrumb(makeRouteTreeWithNavKey());
     // Expect three crumbs here (root, code, java). Leaf with empty path is not included by recursion condition
     expect(crumbs.length).toBe(3);
-    const labels = crumbs.map(c => c.label);
+    const labels = crumbs.map((c) => c.label);
     expect(labels).toContain('NAV.JAVA');
   });
 });

@@ -78,3 +78,8 @@ lerna-debug.log*
 
 # OS-specific
 Desktop.ini
+
+
+# Playwright artifacts
+/playwright-report
+/test-results

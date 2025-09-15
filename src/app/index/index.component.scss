@@ -1,4 +1,4 @@
-@use "../colors" as colors;
+@use '../colors' as colors;
 
 .intro {
   background: colors.$bg;
@@ -22,7 +22,7 @@
   display: block;
   margin-top: 10px; /* align with h1 top margin to keep photo and text level */
   border: 1px solid colors.$border;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* Reduce headline sizes locally for the intro section */
@@ -104,7 +104,9 @@ app-headline h2 {
 }
 :host-context(body[data-theme='hc']) .btn {
   /* keep accessible contrast, but add clearer focus/hover signals */
-  box-shadow: 0 0 0 2px #000, 0 0 0 3px #fff;
+  box-shadow:
+    0 0 0 2px #000,
+    0 0 0 3px #fff;
 }
 
 @media (max-width: 800px) {
@@ -113,7 +115,15 @@ app-headline h2 {
     text-align: center;
   }
   /* Keep highlights left-aligned on small screens */
-  .intro__highlights { text-align: left; margin-left: auto; margin-right: auto; }
-  .intro__media { order: -1; }
-  .intro__photo { margin: 10px auto 16px; }
+  .intro__highlights {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .intro__media {
+    order: -1;
+  }
+  .intro__photo {
+    margin: 10px auto 16px;
+  }
 }

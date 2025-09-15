@@ -8,7 +8,12 @@
 
     <div>
       <label for="search404">{{ '404.SEARCH_LABEL' | translate }}</label>
-      <input id="search404" type="text" [(ngModel)]="query" [placeholder]="('404.SEARCH_PLACEHOLDER' | translate)" />
+      <input
+        id="search404"
+        type="text"
+        [(ngModel)]="query"
+        [placeholder]="'404.SEARCH_PLACEHOLDER' | translate"
+      />
     </div>
 
     <h3>{{ '404.EXPLORE' | translate }}</h3>

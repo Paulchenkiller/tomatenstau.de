@@ -1,4 +1,4 @@
-@use "../colors";
+@use '../colors';
 
 footer {
   padding: 8px 0 12px;
@@ -22,7 +22,8 @@ footer {
       color: colors.$white_full;
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: colors.$green;
     }
   }
@@ -43,7 +44,9 @@ footer {
     clear: both;
     margin: 4px 0 0;
     padding: 0;
-    font: 12px/18px 'Raleway', sans-serif;
+    font:
+      12px/18px 'Raleway',
+      sans-serif;
     letter-spacing: 0.5px;
     color: colors.$text_muted;
     text-align: center;
@@ -68,7 +71,8 @@ footer {
       a {
         color: colors.$white_muted; /* slightly muted icons */
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           color: colors.$green;
         }
       }

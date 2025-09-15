@@ -1,4 +1,4 @@
-@use "../colors";
+@use '../colors';
 
 header {
   height: 90px;
@@ -26,7 +26,7 @@ header {
       color: transparent;
       width: 160px;
       height: 75px; /* 75px height + 15px top margin keeps total 90px */
-      background: url("../../assets/images/tomatenstau_logo.png") no-repeat center;
+      background: url('../../assets/images/tomatenstau_logo.png') no-repeat center;
       background-size: contain;
     }
   }
@@ -35,7 +35,7 @@ header {
     font-size: 20px;
     font-weight: normal;
     line-height: 75px; /* match logo visual height for vertical centering */
-    margin-top: 15px;  /* align with logo's top margin */
+    margin-top: 15px; /* align with logo's top margin */
     margin-left: 30px;
     float: left;
     position: relative;
@@ -72,7 +72,9 @@ header {
         font-size: 22px;
         color: colors.$white;
         opacity: 0.75;
-        transition: opacity 0.2s ease, transform 0.1s ease;
+        transition:
+          opacity 0.2s ease,
+          transform 0.1s ease;
 
         &.active {
           opacity: 1;
@@ -130,8 +132,6 @@ header {
     }
   }
 }
-
-
 
 /* Local minimal flag styles to avoid bundling large external assets */
 .header-lang .flag {

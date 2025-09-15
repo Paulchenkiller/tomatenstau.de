@@ -10,24 +10,38 @@
         </a>
       </li>
     </ul>
-    <ul class="header-lang" [attr.aria-label]="('HEADER.ARIA.LANG_SWITCHER' | translate)">
+    <ul class="header-lang" [attr.aria-label]="'HEADER.ARIA.LANG_SWITCHER' | translate">
       <li>
-        <button type="button" (click)="setLang('en')" [class.active]="currentLang==='en'" [attr.title]="('HEADER.LANG.EN' | translate)" [attr.aria-label]="('HEADER.ARIA.SWITCH_EN' | translate)">
+        <button
+          type="button"
+          (click)="setLang('en')"
+          [class.active]="currentLang === 'en'"
+          [attr.title]="'HEADER.LANG.EN' | translate"
+          [attr.aria-label]="'HEADER.ARIA.SWITCH_EN' | translate"
+        >
           <span class="flag flag-gb" aria-hidden="true"></span>
         </button>
       </li>
       <li>
-        <button type="button" (click)="setLang('de')" [class.active]="currentLang==='de'" [attr.title]="('HEADER.LANG.DE' | translate)" [attr.aria-label]="('HEADER.ARIA.SWITCH_DE' | translate)">
+        <button
+          type="button"
+          (click)="setLang('de')"
+          [class.active]="currentLang === 'de'"
+          [attr.title]="'HEADER.LANG.DE' | translate"
+          [attr.aria-label]="'HEADER.ARIA.SWITCH_DE' | translate"
+        >
           <span class="flag flag-de" aria-hidden="true"></span>
         </button>
       </li>
       <li>
-        <button type="button"
-                (click)="toggleHighContrast()"
-                [attr.title]="('A11Y.HIGH_CONTRAST' | translate)"
-                [attr.aria-label]="('A11Y.TOGGLE_HIGH_CONTRAST' | translate)"
-                [attr.aria-pressed]="highContrast">
-          <fa-icon [icon]="['fas','universal-access']" aria-hidden="true"></fa-icon>
+        <button
+          type="button"
+          (click)="toggleHighContrast()"
+          [attr.title]="'A11Y.HIGH_CONTRAST' | translate"
+          [attr.aria-label]="'A11Y.TOGGLE_HIGH_CONTRAST' | translate"
+          [attr.aria-pressed]="highContrast"
+        >
+          <fa-icon [icon]="['fas', 'universal-access']" aria-hidden="true"></fa-icon>
         </button>
       </li>
     </ul>

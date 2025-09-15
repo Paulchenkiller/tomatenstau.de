@@ -5,7 +5,7 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
 - Inhalt & Struktur
   - [ ] Startseite: Teaser-Abschnitte mit „Mehr erfahren“-Links strukturieren (Hero → Highlights → ausgewählte Code-Themen).
   - [x] Code-Bereiche: Einleitungstexte vereinheitlichen, Beispiele mit kurzen Erklärungen einleiten und Querverweise zwischen Sprachen ergänzen.
-  - [x] Breadcrumb/Navigation: Einheitliche Schreibweise und ggf. neutrales Key-Schema für Navigationslabels (z. B. NAV.*) vorbereiten, ohne bestehende Routen zu brechen.
+  - [x] Breadcrumb/Navigation: Einheitliche Schreibweise und ggf. neutrales Key-Schema für Navigationslabels (z. B. NAV.\*) vorbereiten, ohne bestehende Routen zu brechen.
   - [x] 404-Seite ausbauen: Link zur Startseite, ggf. Suchfeld oder Themenübersicht.
 
 - Internationalisierung (i18n)
@@ -41,8 +41,8 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
 
 - Testing & Code-Quality
   - [x] Unit-Tests für Breadcrumb-Berechnung und Sprachumschalter (Persistenz, Events, aria-Attribute) erweitern; Abdeckung ≥ 80% für Kernkomponenten.
-  - [ ] Linting-Regeln (eslint) prüfen/erweitern; Prettier-Setup vereinheitlichen.
-  - [ ] E2E-Tests (Playwright/Cypress) für Kernpfade (Startseite → Code → Unterseiten, Sprachwechsel, 404).
+  - [x] Linting-Regeln (eslint) prüfen/erweitern; Prettier-Setup vereinheitlichen.
+  - [x] E2E-Tests (Playwright/Cypress) für Kernpfade (Startseite → Code → Unterseiten, Sprachwechsel, 404).
 
 - Build/Deploy & Automatisierung
   - [x] GitHub Actions (CI) mit Lint, Build und Test.

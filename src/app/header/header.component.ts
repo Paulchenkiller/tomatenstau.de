@@ -1,9 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import {
-  FaIconComponent,
-  FaIconLibrary,
-} from '@fortawesome/angular-fontawesome';
+import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { NgForOf } from '@angular/common';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -49,24 +46,32 @@ export class HeaderComponent {
       this.currentLang = event.lang;
     });
 
-    // Initialize high-contrast from user preference or OS setting
+    // Initialize high-contrast from cookie/localStorage or OS setting
     try {
-      const saved = localStorage.getItem('pref:high-contrast');
-      if (saved === 'on') {
+      const cookieVal = this.readCookie('pref:high-contrast');
+      if (cookieVal === 'on') {
         this.highContrast = true;
-      } else if (saved === 'off') {
+      } else if (cookieVal === 'off') {
         this.highContrast = false;
-      } else if (typeof window !== 'undefined' && 'matchMedia' in window) {
-        this.prefersContrastMql = window.matchMedia('(prefers-contrast: more)');
-        this.highContrast = !!this.prefersContrastMql.matches;
-        // React to OS changes only if no explicit preference saved
-        this.prefersContrastMql.addEventListener?.('change', (e: MediaQueryListEvent) => {
-          const explicit = localStorage.getItem('pref:high-contrast');
-          if (!explicit) {
-            this.highContrast = e.matches;
-            this.applyHighContrast();
-          }
-        });
+      } else {
+        const saved = localStorage.getItem('pref:high-contrast');
+        if (saved === 'on') {
+          this.highContrast = true;
+        } else if (saved === 'off') {
+          this.highContrast = false;
+        } else if (typeof window !== 'undefined' && 'matchMedia' in window) {
+          this.prefersContrastMql = window.matchMedia('(prefers-contrast: more)');
+          this.highContrast = !!this.prefersContrastMql.matches;
+          // React to OS changes only if no explicit preference saved
+          this.prefersContrastMql.addEventListener?.('change', (e: MediaQueryListEvent) => {
+            const explicit = localStorage.getItem('pref:high-contrast');
+            const cookieExplicit = this.readCookie('pref:high-contrast');
+            if (!explicit && !cookieExplicit) {
+              this.highContrast = e.matches;
+              this.applyHighContrast();
+            }
+          });
+        }
       }
     } catch {}
     this.applyHighContrast();
@@ -74,13 +79,32 @@ export class HeaderComponent {
 
   setLang(lang: 'en' | 'de'): void {
     this.translate.use(lang);
-    localStorage.setItem('lang', lang);
+    try {
+      localStorage.setItem('lang', lang);
+    } catch {}
+    // Also persist in a cookie to better survive environments resetting localStorage
+    try {
+      this.writeCookie('lang', lang, 365);
+    } catch {}
+    // Reflect chosen language in the URL (?lang=xx) so reloads honor the selection
+    try {
+      this.router.navigate([], {
+        queryParams: { lang },
+        queryParamsHandling: 'merge',
+        replaceUrl: true,
+      });
+    } catch {}
   }
 
   toggleHighContrast(): void {
     this.highContrast = !this.highContrast;
+    const val = this.highContrast ? 'on' : 'off';
     try {
-      localStorage.setItem('pref:high-contrast', this.highContrast ? 'on' : 'off');
+      localStorage.setItem('pref:high-contrast', val);
+    } catch {}
+    // Also persist in a cookie to survive aggressive localStorage resets (e.g., in certain environments)
+    try {
+      this.writeCookie('pref:high-contrast', val, 365);
     } catch {}
     this.applyHighContrast();
   }
@@ -94,6 +118,27 @@ export class HeaderComponent {
           this.doc.body.removeAttribute('data-theme');
         }
       }
+    } catch {}
+  }
+
+  private readCookie(name: string): string | null {
+    try {
+      const nameEQ = name + '=';
+      const parts = (this.doc.cookie || '').split(';');
+      for (let c of parts) {
+        c = c.trim();
+        if (c.startsWith(nameEQ)) {
+          return decodeURIComponent(c.substring(nameEQ.length));
+        }
+      }
+    } catch {}
+    return null;
+  }
+
+  private writeCookie(name: string, value: string, days: number): void {
+    try {
+      const maxAge = days > 0 ? `; max-age=${days * 24 * 60 * 60}` : '';
+      this.doc.cookie = `${name}=${encodeURIComponent(value)}; path=/${maxAge}`;
     } catch {}
   }
 

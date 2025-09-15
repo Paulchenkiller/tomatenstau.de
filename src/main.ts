@@ -46,28 +46,62 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),
-    importProvidersFrom(TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: { provide: TranslateLoader, useFactory: HttpLoaderFactory, deps: [HttpClient] }
-    })),
+    importProvidersFrom(
+      TranslateModule.forRoot({
+        defaultLanguage: 'en',
+        loader: { provide: TranslateLoader, useFactory: HttpLoaderFactory, deps: [HttpClient] },
+      }),
+    ),
     {
       provide: APP_INITIALIZER,
       useFactory: (translate: TranslateService) => () => {
         translate.addLangs(['en', 'de']);
         translate.setDefaultLang('en');
 
+        // Helpers to read/write a simple cookie
+        const readCookie = (name: string): string | null => {
+          try {
+            const nameEQ = name + '=';
+            const parts = (document.cookie || '').split(';');
+            for (let c of parts) {
+              c = c.trim();
+              if (c.startsWith(nameEQ)) {
+                return decodeURIComponent(c.substring(nameEQ.length));
+              }
+            }
+          } catch {}
+          return null;
+        };
+        const writeCookie = (name: string, value: string, days: number) => {
+          try {
+            const maxAge = days > 0 ? `; max-age=${days * 24 * 60 * 60}` : '';
+            document.cookie = `${name}=${encodeURIComponent(value)}; path=/${maxAge}`;
+          } catch {}
+        };
+
         const params = new URLSearchParams(window.location.search);
         const urlLang = params.get('lang');
-        const normalizedUrlLang = (urlLang && ['en', 'de'].includes(urlLang.toLowerCase())) ? urlLang.toLowerCase() : null;
+        const normalizedUrlLang =
+          urlLang && ['en', 'de'].includes(urlLang.toLowerCase()) ? urlLang.toLowerCase() : null;
 
+        const cookieSaved = (readCookie('lang') || '').toLowerCase();
+        const cookieLang = ['en', 'de'].includes(cookieSaved) ? cookieSaved : null;
         const saved = localStorage.getItem('lang');
-        const browserLang = navigator.language && navigator.language.toLowerCase().startsWith('de') ? 'de' : 'en';
-        const lang = normalizedUrlLang || saved || browserLang || 'en';
+        const browserLang =
+          navigator.language && navigator.language.toLowerCase().startsWith('de') ? 'de' : 'en';
+        const lang = normalizedUrlLang || cookieLang || saved || browserLang || 'en';
 
         translate.use(lang);
-        if (lang !== saved) {
-          localStorage.setItem('lang', lang);
-        }
+        try {
+          if (lang !== saved) {
+            localStorage.setItem('lang', lang);
+          }
+        } catch {}
+        try {
+          if (cookieLang !== lang) {
+            writeCookie('lang', lang, 365);
+          }
+        } catch {}
       },
       deps: [TranslateService],
       multi: true,

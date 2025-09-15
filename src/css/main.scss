@@ -1,7 +1,8 @@
-@use "../app/colors" as colors;
+@use '../app/colors' as colors;
 /* inlined former main.css (was previously imported) */
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -12,12 +13,15 @@ html {
 
 body {
   background: #111417;
-  font: 16px/30px 'Merriweather', serif;
+  font:
+    16px/30px 'Merriweather',
+    serif;
   font-weight: normal;
   color: #575859;
 }
 
-a, a:visited {
+a,
+a:visited {
   outline: none;
   color: white;
   -moz-transition: all 0.3s ease-in-out;
@@ -27,11 +31,17 @@ a, a:visited {
   transition: all 0.3s ease-in-out;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: #2e7d32;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Raleway', sans-serif;
   color: #ffffff;
   font-style: normal;
@@ -39,7 +49,12 @@ h1, h2, h3, h4, h5, h6 {
   margin: 18px 0 15px;
 }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
   font-weight: inherit;
 }
 
@@ -90,17 +105,24 @@ p img {
 }
 
 p.lead {
-  font: 20px/36px 'Merriweather', serif;
+  font:
+    20px/36px 'Merriweather',
+    serif;
   color: #707273;
 }
 
 em {
-  font: 16px/30px 'Merriweather', serif;
+  font:
+    16px/30px 'Merriweather',
+    serif;
   font-style: normal;
 }
 
-strong, b {
-  font: 16px/30px 'Merriweather', serif;
+strong,
+b {
+  font:
+    16px/30px 'Merriweather',
+    serif;
   font-weight: normal;
 }
 
@@ -116,7 +138,7 @@ blockquote {
 }
 
 blockquote:before {
-  content: "\201C";
+  content: '\201C';
   opacity: 0.45;
   font-size: 80px;
   line-height: 0;
@@ -143,10 +165,11 @@ blockquote cite {
 }
 
 blockquote cite:before {
-  content: "\2014 \0020";
+  content: '\2014 \0020';
 }
 
-blockquote cite a, blockquote cite a:visited {
+blockquote cite a,
+blockquote cite a:visited {
   color: #707273;
   border: none;
 }
@@ -159,8 +182,9 @@ abbr {
   color: #707273;
 }
 
-pre, code {
-  font-family: Consolas, "Andale Mono", Courier, "Courier New", monospace;
+pre,
+code {
+  font-family: Consolas, 'Andale Mono', Courier, 'Courier New', monospace;
 }
 
 pre {
@@ -179,7 +203,8 @@ del {
   text-decoration: line-through;
 }
 
-abbr[title], dfn[title] {
+abbr[title],
+dfn[title] {
   border-bottom: 1px dotted;
   cursor: help;
 }
@@ -197,7 +222,8 @@ hr {
   height: 0;
 }
 
-ul, ol {
+ul,
+ol {
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -286,11 +312,16 @@ fieldset {
   border: none;
 }
 
-input, button {
+input,
+button {
   -webkit-font-smoothing: antialiased;
 }
 
-input[type="text"], input[type="password"], input[type="email"], textarea, select {
+input[type='text'],
+input[type='password'],
+input[type='email'],
+textarea,
+select {
   display: block;
   padding: 18px 20px;
   margin: 0 0 12px 0;
@@ -315,14 +346,25 @@ textarea {
   min-height: 252px;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+select:focus,
+textarea:focus {
   color: #000000;
   background: #ffffff;
 }
 
-.button, .button:visited, button, input[type="submit"], input[type="reset"], input[type="button"] {
+.button,
+.button:visited,
+button,
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
   display: inline-block;
-  font: 16px/30px 'Raleway', sans-serif;
+  font:
+    16px/30px 'Raleway',
+    sans-serif;
   padding: 9px 16px;
   margin: 0 3px 6px 0;
   background: #2e7d32;
@@ -342,29 +384,40 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   transition: all 0.3s ease-in-out;
 }
 
-.button:hover, button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
+.button:hover,
+button:hover,
+input[type='submit']:hover,
+input[type='reset']:hover,
+input[type='button']:hover {
   color: #ffffff;
   background: #e64e04;
 }
 
-label, legend {
-  font: 15px/30px 'Raleway', sans-serif;
+label,
+legend {
+  font:
+    15px/30px 'Raleway',
+    sans-serif;
   margin: 12px 0;
   color: #252525;
   display: block;
 }
 
-label span, legend span {
+label span,
+legend span {
   color: #575859;
-  font: 16px/30px 'Raleway', sans-serif;
+  font:
+    16px/30px 'Raleway',
+    sans-serif;
 }
 
-input[type="checkbox"], input[type="radio"] {
+input[type='checkbox'],
+input[type='radio'] {
   font-size: 15px;
   color: #575859;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   display: inline;
 }
 
@@ -385,7 +438,7 @@ hr {
 
 .show {
   filter: alpha(opacity=100);
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
   opacity: 1;
   zoom: 1;
 }
@@ -405,7 +458,8 @@ td.hljs-ln-code {
 }
 
 /* Overrides using central color variables */
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -419,23 +473,29 @@ body {
   color: colors.$text;
 }
 
-a, a:visited {
+a,
+a:visited {
   color: colors.$link;
   transition: all 0.3s ease-in-out;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: colors.$green;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: colors.$heading;
 }
 
 p.lead {
   color: colors.$text_muted;
 }
-
 
 /* High-contrast overrides for code blocks and copy button */
 body[data-theme='hc'] pre {

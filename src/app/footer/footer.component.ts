@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  FaIconComponent,
-  FaIconLibrary,
-} from '@fortawesome/angular-fontawesome';
+import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 

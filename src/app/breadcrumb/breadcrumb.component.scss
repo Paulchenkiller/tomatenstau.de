@@ -1,4 +1,4 @@
-@use "../colors";
+@use '../colors';
 
 /* Breadcrumb/Nav: redesigned to fit the site's overall look */
 ul.breadcrumb {
@@ -26,7 +26,10 @@ ul.breadcrumb li a {
   text-decoration: none;
   line-height: 1;
   background: rgba(255, 255, 255, 0.03);
-  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 ul.breadcrumb li a:hover,
