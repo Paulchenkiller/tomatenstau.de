@@ -96,7 +96,7 @@ export class BreadcrumbComponent {
     }
     const breadcrumb = { label, logo, url };
     const newBreadcrumbs = [breadcrumb, ...breadcrumbs];
-    if (route.firstChild && route.children.length && route.children[0].firstChild) {
+    if (route.firstChild && route.children.length && route.children[0]?.firstChild) {
       return this.buildBreadCrumb(route.firstChild, url, newBreadcrumbs);
     }
 

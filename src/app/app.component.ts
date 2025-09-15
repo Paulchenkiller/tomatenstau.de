@@ -345,7 +345,7 @@ export class AppComponent implements AfterViewInit {
 
   private normalizePath(url: string): string {
     // remove query/hash, ensure leading slash, no trailing slash except for root
-    const u = url.split('#')[0].split('?')[0];
+    const u = url.split('#')[0]?.split('?')[0];
     if (!u || u === '/') return '/';
     let result = u.startsWith('/') ? u : '/' + u;
     if (result.length > 1 && result.endsWith('/')) {

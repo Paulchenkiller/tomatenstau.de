@@ -40,9 +40,16 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
   - [ ] Typografische Skala, Lesbarkeit (Zeilenlänge/Zeilenhöhe) konsistent abstimmen.
 
 - Testing & Code-Quality
-  - [x] Unit-Tests für Breadcrumb-Berechnung und Sprachumschalter (Persistenz, Events, aria-Attribute) erweitern; Abdeckung ≥ 80% für Kernkomponenten.
-  - [x] Linting-Regeln (eslint) prüfen/erweitern; Prettier-Setup vereinheitlichen.
-  - [x] E2E-Tests (Playwright/Cypress) für Kernpfade (Startseite → Code → Unterseiten, Sprachwechsel, 404).
+  - [x] Unit-Tests für Breadcrumb-Berechnung und Sprachumschalter (Persistenz, Events, aria-Attribute) erweitern; aktuelle Abdeckung: 96,86% Statements (Ziel: ≥ 80% für Kernkomponenten erreicht).
+  - [x] Jest als Test-Runner eingerichtet mit TypeScript-Support und Coverage-Reports (lcov, text).
+  - [x] Linting-Regeln (ESLint 8 + TypeScript-ESLint 8) mit Angular-spezifischen Regeln und Prettier-Integration.
+  - [x] Playwright E2E-Tests für Kernpfade (Navigation, Sprachwechsel, 404) mit GitHub Actions CI-Integration.
+  - [ ] Test-Performance optimieren: Highlight.js-Mocks für Unit-Tests implementieren (reduziert Console-Warnings).
+  - [ ] Mutation Testing mit Stryker.js einführen für Qualitätsbewertung der Test-Suite.
+  - [ ] Visual Regression Tests für kritische UI-Komponenten (Chromatic/Percy) evaluieren.
+  - [ ] Bundle-Analyzer und Lighthouse CI in Pipeline integrieren für Performance-Monitoring.
+  - [ ] TypeScript strict-Modus aktivieren und schrittweise Code-Qualität erhöhen.
+  - [ ] SonarQube/SonarCloud für Code-Quality-Metriken und Security-Scans konfigurieren.
 
 - Build/Deploy & Automatisierung
   - [x] GitHub Actions (CI) mit Lint, Build und Test.

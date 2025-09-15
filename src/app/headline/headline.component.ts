@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./headline.component.scss'],
 })
 export class HeadlineComponent {
-  @Input() subtitle: string;
+  @Input() subtitle: string = '';
 
   constructor() {
     // do nothing

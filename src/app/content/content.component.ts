@@ -12,7 +12,7 @@ export class ContentComponent {
     // do nothing
   }
 
-  onActivate(_event): void {
+  onActivate(_event: any): void {
     const scrollToTop = window.setInterval(() => {
       const pos = window.pageYOffset;
       if (pos > 0) {

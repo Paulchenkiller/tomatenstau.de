@@ -83,3 +83,9 @@ Desktop.ini
 # Playwright artifacts
 /playwright-report
 /test-results
+
+# Stryker mutation testing
+/reports
+
+# Lighthouse CI reports
+/lighthouse-reports
