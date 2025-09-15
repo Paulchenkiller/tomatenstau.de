@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tomatenstau.de/</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -16,19 +16,19 @@
   <!-- Perl -->
   <url>
     <loc>https://tomatenstau.de/code/perl</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/perl/regex-greediness</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/perl/context</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -36,19 +36,19 @@
   <!-- Python -->
   <url>
     <loc>https://tomatenstau.de/code/python</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/python/mutable-default</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/python/gil-threads</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -56,19 +56,19 @@
   <!-- Java -->
   <url>
     <loc>https://tomatenstau.de/code/java</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/java/equals-hashcode</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/java/concurrent-modification</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -76,37 +76,37 @@
   <!-- JavaScript/TypeScript -->
   <url>
     <loc>https://tomatenstau.de/code/javascript</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/javascript/closures-scope</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/javascript/hoisting-tdz</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/javascript/async-await</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/javascript/this-arrow</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/javascript/ts-structural-typing</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -114,37 +114,37 @@
   <!-- Haskell -->
   <url>
     <loc>https://tomatenstau.de/code/haskell</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/haskell/purity-io</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/haskell/lazy-evaluation</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/haskell/typeclasses</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/haskell/monads</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/haskell/pattern-matching</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -152,19 +152,19 @@
   <!-- Prolog -->
   <url>
     <loc>https://tomatenstau.de/code/prolog</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/prolog/ackermann</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://tomatenstau.de/code/prolog/hanoi</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

@@ -87,8 +87,11 @@ bootstrapApplication(AppComponent, {
         const cookieSaved = (readCookie('lang') || '').toLowerCase();
         const cookieLang = ['en', 'de'].includes(cookieSaved) ? cookieSaved : null;
         const saved = localStorage.getItem('lang');
+        const browserLangs = navigator.languages || [navigator.language];
         const browserLang =
-          navigator.language && navigator.language.toLowerCase().startsWith('de') ? 'de' : 'en';
+          browserLangs
+            .map((lang) => lang?.toLowerCase().split('-')[0])
+            .find((lang) => ['de', 'en'].includes(lang || '')) || 'en';
         const lang = normalizedUrlLang || cookieLang || saved || browserLang || 'en';
 
         translate.use(lang);

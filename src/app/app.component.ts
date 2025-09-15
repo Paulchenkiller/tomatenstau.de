@@ -45,6 +45,10 @@ export class AppComponent implements AfterViewInit {
   private updateMeta(): void {
     const url = this.router.url || '/';
 
+    // Update document language attribute dynamically
+    const currentLang = this.translate.currentLang || 'en';
+    this.doc.documentElement.lang = currentLang;
+
     // Title: "<SiteName> – <Section>"
     const siteName = this.translate.instant('INDEX.NAME');
     const label = this.getTranslatedLabelForCurrentRoute();
@@ -57,6 +61,21 @@ export class AppComponent implements AfterViewInit {
     if (description) {
       this.meta.updateTag({ name: 'description', content: description });
     }
+
+    // Open Graph meta tags for better social sharing
+    this.meta.updateTag({ property: 'og:title', content: title });
+    this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({
+      property: 'og:type',
+      content: url === '/' || url === '' ? 'profile' : 'article',
+    });
+    this.meta.updateTag({ property: 'og:url', content: this.doc?.location?.href || '' });
+    this.meta.updateTag({ property: 'og:site_name', content: siteName });
+
+    // Twitter Card meta tags
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+    this.meta.updateTag({ name: 'twitter:title', content: title });
+    this.meta.updateTag({ name: 'twitter:description', content: description });
 
     // Canonical, hreflang, and structured data
     this.updateLinkTagsAndStructuredData();
