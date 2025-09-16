@@ -5,7 +5,7 @@
     </div>
     <ul class="header-social">
       <li *ngFor="let sm of socialMedia">
-        <a [href]="sm.link" target="_blank">
+        <a [href]="sm.link" target="_blank" rel="noopener noreferrer">
           <fa-icon [icon]="sm.icon"></fa-icon>
         </a>
       </li>
