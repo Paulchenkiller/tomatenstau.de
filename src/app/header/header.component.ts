@@ -1,11 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { NgForOf } from '@angular/common';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
+import { IconService } from '../services/icon.service';
 
 @Component({
   selector: 'app-header',
@@ -39,11 +38,11 @@ export class HeaderComponent {
 
   constructor(
     private router: Router,
-    private library: FaIconLibrary,
+    private iconService: IconService,
     private translate: TranslateService,
     @Inject(DOCUMENT) private doc: Document,
   ) {
-    this.library.addIconPacks(fas, fab);
+    // Icons are now loaded via the IconService
     this.router.events.subscribe(() => {
       this.menu = false;
     });

@@ -89,6 +89,7 @@ Desktop.ini
 
 # Lighthouse CI reports
 /lighthouse-reports
+/lighthouse-reports-prod
 /.lighthouseci
 
 # Claude Code settings

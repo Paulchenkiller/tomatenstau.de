@@ -1,14 +1,21 @@
 <section class="intro" role="main" aria-labelledby="main-heading">
   <div class="container">
     <div class="intro__media">
-      <!-- Place your photo at: src/assets/profilbild.jpg -->
-      <img
-        src="assets/images/profilbild.jpg"
-        alt="{{ 'INDEX.ARIA.PROFILE_PHOTO' | translate }}"
-        class="intro__photo"
-        width="300"
-        height="300"
-      />
+      <!-- Optimized profile photo with WebP support -->
+      <picture>
+        <source
+          srcset="assets/images/optimized/profilbild.webp"
+          type="image/webp"
+        />
+        <img
+          src="assets/images/optimized/profilbild.jpg"
+          alt="{{ 'INDEX.ARIA.PROFILE_PHOTO' | translate }}"
+          class="intro__photo"
+          width="300"
+          height="300"
+          loading="lazy"
+        />
+      </picture>
     </div>
     <div class="intro__content">
       <h1 id="main-heading">{{ 'INDEX.NAME' | translate }}</h1>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { IconService } from '../services/icon.service';
 
 @Component({
   selector: 'app-footer',
@@ -12,7 +11,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 export class FooterComponent {
   currentYear: number = new Date().getFullYear();
 
-  constructor(private library: FaIconLibrary) {
-    this.library.addIconPacks(fas, fab);
+  constructor(private iconService: IconService) {
+    // Icons are now loaded via the IconService
   }
 }

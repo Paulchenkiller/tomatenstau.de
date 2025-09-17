@@ -1,11 +1,11 @@
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: 'npm start', // Development server (ng serve)
+      startServerCommand: 'npx http-server dist/tomatenstaude -p 4201 --cors --silent',
       url: [
-        'http://localhost:4200',
-        'http://localhost:4200/code',
-        'http://localhost:4200/code/javascript',
+        'http://localhost:4201',
+        'http://localhost:4201/code',
+        'http://localhost:4201/code/javascript',
       ],
       numberOfRuns: 3,
     },
@@ -19,7 +19,7 @@ module.exports = {
     },
     upload: {
       target: 'filesystem',
-      outputDir: './lighthouse-reports',
+      outputDir: './lighthouse-reports-prod',
     },
   },
 };

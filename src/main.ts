@@ -34,6 +34,7 @@ import { HaskellLazyEvaluationComponent } from './app/code/haskell/haskell-lazy-
 import { HaskellTypeclassesComponent } from './app/code/haskell/haskell-typeclasses/haskell-typeclasses.component';
 import { HaskellMonadsComponent } from './app/code/haskell/haskell-monads/haskell-monads.component';
 import { HaskellPatternMatchingComponent } from './app/code/haskell/haskell-pattern-matching/haskell-pattern-matching.component';
+import { IconService } from './app/services/icon.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -52,6 +53,15 @@ bootstrapApplication(AppComponent, {
         loader: { provide: TranslateLoader, useFactory: HttpLoaderFactory, deps: [HttpClient] },
       }),
     ),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (iconService: IconService) => () => {
+        // Initialize icons first
+        return Promise.resolve();
+      },
+      deps: [IconService],
+      multi: true,
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: (translate: TranslateService) => () => {
