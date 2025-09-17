@@ -1,8 +1,12 @@
 <header id="main-header" role="banner">
   <div class="row">
     <div class="logo">
-      <a routerLink="" [attr.aria-label]="'HEADER.ARIA.HOME_LINK' | translate">
-        <span class="visually-hidden">{{ 'SITE.NAME' | translate }}</span>
+      <a
+        routerLink="/"
+        [attr.aria-label]="('HEADER.ARIA.HOME_LINK' | translate) || 'Go to homepage'"
+        [title]="('HEADER.ARIA.HOME_LINK' | translate) || 'Go to homepage'"
+      >
+        <span class="visually-hidden">{{ ('SITE.NAME' | translate) || 'tomatenstau.de' }}</span>
       </a>
     </div>
     <nav

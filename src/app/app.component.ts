@@ -267,10 +267,9 @@ export class AppComponent implements AfterViewInit {
           btn.setAttribute('role', 'button');
 
           btn.addEventListener('click', () => {
-            // Get current translations or use fallback
+            // Use direct fallbacks to ensure feedback always works
             const currentCopy = btn!.getAttribute('aria-label') || fallbackCopy;
-            const currentCopied = this.translate.instant('A11Y.COPIED') || fallbackCopied;
-            this.copyCode(pre, code, btn!, currentCopy, currentCopied);
+            this.copyCode(pre, code, btn!, currentCopy, fallbackCopied);
           });
 
           // Key accessibility: button already handles Enter/Space by default; no extra needed
@@ -287,10 +286,11 @@ export class AppComponent implements AfterViewInit {
           this.doc.querySelectorAll('button.copy-btn'),
         ) as HTMLButtonElement[];
         for (const btn of buttons) {
-          // Update with translated labels
-          btn.setAttribute('aria-label', tCopy);
-          btn.title = tCopy;
-          btn.textContent = tCopy;
+          // Ensure button always has text - use fallback if translation is empty
+          const finalCopy = tCopy && tCopy.trim() ? tCopy : fallbackCopy;
+          btn.setAttribute('aria-label', finalCopy);
+          btn.title = finalCopy;
+          btn.textContent = finalCopy;
         }
       });
     } catch {

@@ -15,6 +15,10 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
   test('Code section overview should be accessible', async ({ page }) => {
     await page.goto('/code');
 
+    // Wait for page to fully load and translations to be applied
+    await page.waitForTimeout(2000);
+    await page.waitForSelector('a[routerLink]', { timeout: 5000 });
+
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
       .analyze();
@@ -35,6 +39,10 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
   test('Contact page should be accessible', async ({ page }) => {
     await page.goto('/contact');
 
+    // Wait for page to fully load and translations to be applied
+    await page.waitForTimeout(2000);
+    await page.waitForLoadState('networkidle');
+
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
       .analyze();
@@ -44,6 +52,10 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
 
   test('404 page should be accessible', async ({ page }) => {
     await page.goto('/non-existent-page');
+
+    // Wait for page to fully load and translations to be applied
+    await page.waitForTimeout(2000);
+    await page.waitForLoadState('networkidle');
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])

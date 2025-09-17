@@ -7,7 +7,13 @@
 
     <ul role="list">
       <li *ngFor="let codeComponent of codeComponents" role="listitem">
-        <a [routerLink]="codeComponent.route">{{ codeComponent.name | translate }}</a>
+        <a
+          [routerLink]="codeComponent.route"
+          [attr.aria-label]="(codeComponent.name | translate) || codeComponent.fallback"
+          [title]="(codeComponent.name | translate) || codeComponent.fallback"
+        >
+          {{ (codeComponent.name | translate) || codeComponent.fallback }}
+        </a>
       </li>
     </ul>
   </div>
