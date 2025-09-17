@@ -1,4 +1,7 @@
 {
+  "SITE": {
+    "NAME": "tomatenstau.de - Programmier-Tutorials"
+  },
   "HEADER": {
     "LANG": {
       "EN": "Englisch",
@@ -7,7 +10,29 @@
     "ARIA": {
       "LANG_SWITCHER": "Sprachauswahl",
       "SWITCH_EN": "Auf Englisch umschalten",
-      "SWITCH_DE": "Auf Deutsch umschalten"
+      "SWITCH_DE": "Auf Deutsch umschalten",
+      "HOME_LINK": "Zur Startseite",
+      "MAIN_NAVIGATION": "Hauptnavigation",
+      "OPENS_NEW_WINDOW": "öffnet in neuem Fenster"
+    }
+  },
+  "A11Y": {
+    "SKIP_TO_MAIN": "Zum Hauptinhalt springen",
+    "SKIP_TO_NAV": "Zur Navigation springen",
+    "HIGH_CONTRAST": "Hoher Kontrast",
+    "TOGGLE_HIGH_CONTRAST": "Hohen Kontrast umschalten"
+  },
+  "CONTENT": {
+    "ARIA": {
+      "MAIN_CONTENT": "Hauptinhaltsbereich"
+    }
+  },
+  "BREADCRUMB": {
+    "ARIA": {
+      "LABEL": "Breadcrumb-Navigation",
+      "BREADCRUMB_LINK": "Breadcrumb-Link",
+      "CURRENT_PAGE": "Aktuelle Seite",
+      "HOME_LINK": "Zur Startseite"
     }
   },
   "NAV": {
@@ -71,6 +96,10 @@
   },
 
   "INDEX": {
+    "ARIA": {
+      "PROFILE_PHOTO": "Profilbild von Meik Geldmacher",
+      "HIGHLIGHTS_HEADING": "Berufliche Highlights und Fähigkeiten"
+    },
     "NAME": "Meik Geldmacher",
     "TITLE": "Software‑ & Solution‑Architekt · Team Lead Manager",
     "INTRO": "Ich bin in den Rollen Team Lead Manager sowie Software- und Solution-Architekt tätig. Mein Fokus liegt auf der Konzeption und Weiterentwicklung skalierbarer System- und Softwarearchitekturen, der Ausarbeitung von Zielbildern und Roadmaps, technischer Leitung und Coaching von Teams, einschließlich der Leitung eines KI-Teams, sowie dem Stakeholder-Management über Produkt-, Fach- und IT-Bereiche hinweg. Darüber hinaus verantworte ich Architektur-Reviews, Security- und Quality-Gates, Integrations- und Schnittstellenstrategien (APIs, Messaging/IoT) sowie die Umsetzung effizienter Delivery-Prozesse (CI/CD, Observability).",

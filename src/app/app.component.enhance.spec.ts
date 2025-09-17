@@ -9,8 +9,16 @@ class TranslateStub {
   public onLangChange = new Subject<{ lang: string }>();
   private lang: 'en' | 'de' = 'en';
   instant(key: string): string {
-    // Return key for meta/title calls
-    return key;
+    const dictEn: any = {
+      'A11Y.COPY_CODE': 'Copy code to clipboard',
+      'A11Y.COPIED': 'Copied!',
+    };
+    const dictDe: any = {
+      'A11Y.COPY_CODE': 'Code in Zwischenablage kopieren',
+      'A11Y.COPIED': 'Kopiert!',
+    };
+    const src = this.lang === 'en' ? dictEn : dictDe;
+    return src[key] || key;
   }
   get(keys: string[]) {
     const dictEn: any = {

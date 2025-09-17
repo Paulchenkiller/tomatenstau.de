@@ -15,11 +15,7 @@
     "src/app/app.component.ts",
     "src/app/page-not-found/**/*.ts"
   ],
-  "testPathIgnorePatterns": [
-    "e2e/",
-    "playwright-report/",
-    "test-results/"
-  ],
+  "testPathIgnorePatterns": ["e2e/", "playwright-report/", "test-results/"],
   "checkers": ["typescript"],
   "tsconfigFile": "tsconfig.json",
   "thresholds": {

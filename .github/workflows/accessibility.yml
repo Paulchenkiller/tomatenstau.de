@@ -1,0 +1,104 @@
+name: Accessibility Audit (WCAG 2.1 AA)
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  accessibility-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Accessibility E2E Tests
+        run: npm run a11y:test
+
+      - name: Start server and run axe-core audit
+        run: npm run a11y:ci
+
+      - name: Upload accessibility report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-report
+          path: |
+            accessibility-report.json
+            test-results/
+          retention-days: 30
+
+      - name: Comment PR with accessibility results
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            try {
+              const report = JSON.parse(fs.readFileSync('accessibility-report.json', 'utf8'));
+              const violations = report.violations || [];
+
+              if (violations.length > 0) {
+                let comment = '## ❌ Accessibility Issues Found (WCAG 2.1 AA)\n\n';
+                violations.forEach(violation => {
+                  comment += `### ${violation.id}\n`;
+                  comment += `**Impact**: ${violation.impact}\n`;
+                  comment += `**Description**: ${violation.description}\n`;
+                  comment += `**Help**: ${violation.help}\n`;
+                  comment += `**Tags**: ${violation.tags.join(', ')}\n\n`;
+                });
+
+                github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: comment
+                });
+              }
+            } catch (error) {
+              console.log('No accessibility report found or error reading it:', error);
+            }
+
+  unit-accessibility-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run accessibility unit tests
+        run: npm run test:ci -- --testNamePattern="WCAG 2.1 AA Compliance"
+
+      - name: Upload test coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-unit-test-coverage
+          path: coverage/
+          retention-days: 30

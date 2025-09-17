@@ -1,14 +1,15 @@
 @use '../colors' as colors;
 
-section {
+main {
   background: colors.$bg;
-  /* add small gaps to avoid touching fixed header/footer */
-  padding-top: 100px; /* header is 90px => 10px breathing room */
+  /* add adequate spacing to avoid touching fixed header/footer */
+  padding-top: 120px; /* header is 90px => 30px breathing room (more since breadcrumb is gone) */
   padding-bottom: 88px; /* footer safe area (~72px) + ~16px gap */
+  min-height: calc(100vh - 90px); /* Ensure main takes up remaining viewport height */
 }
 
 /* High-contrast: ensure body content area is black with high-contrast text */
-:host-context(body[data-theme='hc']) section {
+:host-context(body[data-theme='hc']) main {
   background: #000 !important;
   color: #fff !important;
 }

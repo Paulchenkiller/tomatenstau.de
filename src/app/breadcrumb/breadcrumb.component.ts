@@ -1,24 +1,18 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Breadcrumb } from './breadcrumb';
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router,
-  RouterLink,
-  RouterLinkActive,
-} from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { Observable } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  imports: [RouterLink, NgIf, FaIconComponent, AsyncPipe, RouterLinkActive, NgForOf],
+  imports: [RouterLink, NgIf, FaIconComponent, AsyncPipe, NgForOf, TranslateModule],
 })
 export class BreadcrumbComponent {
   breadcrumbs$: Observable<Breadcrumb[]>;

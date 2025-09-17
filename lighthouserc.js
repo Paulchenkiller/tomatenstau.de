@@ -2,7 +2,11 @@ module.exports = {
   ci: {
     collect: {
       startServerCommand: 'npm start',
-      url: ['http://localhost:4200', 'http://localhost:4200/code', 'http://localhost:4200/code/javascript'],
+      url: [
+        'http://localhost:4200',
+        'http://localhost:4200/code',
+        'http://localhost:4200/code/javascript',
+      ],
       numberOfRuns: 3,
     },
     assert: {

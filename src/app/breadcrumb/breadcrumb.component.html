@@ -1,21 +1,53 @@
 <div class="row">
-  <nav class="twelve columns">
-    <ul class="breadcrumb">
-      <li *ngFor="let breadcrumb of breadcrumbs$ | async; last as isLast">
+  <nav
+    class="twelve columns"
+    [attr.aria-label]="'BREADCRUMB.ARIA.LABEL' | translate"
+    role="navigation"
+  >
+    <ol class="breadcrumb" role="list">
+      <li
+        *ngFor="let breadcrumb of breadcrumbs$ | async; let i = index; let isLast = last"
+        role="listitem"
+      >
         <a
-          *ngIf="!isLast; else lastRoute"
+          *ngIf="!isLast; else currentPage"
           [routerLink]="[breadcrumb.url]"
-          routerLinkActive="active"
+          [attr.aria-label]="
+            breadcrumb.label + ' - ' + ('BREADCRUMB.ARIA.BREADCRUMB_LINK' | translate)
+          "
         >
-          <span class="icon icon-file"><fa-icon [icon]="breadcrumb.logo"></fa-icon></span>
+          <span class="icon icon-file" aria-hidden="true">
+            <fa-icon [icon]="breadcrumb.logo" aria-hidden="true"></fa-icon>
+          </span>
           <span class="text">{{ breadcrumb.label }}</span>
         </a>
-        <ng-template #lastRoute>
-          <a routerLink="/"
-            ><span><fa-icon icon="home"></fa-icon></span
-          ></a>
+        <ng-template #currentPage>
+          <span
+            class="current-page"
+            aria-current="page"
+            [attr.aria-label]="
+              ('BREADCRUMB.ARIA.CURRENT_PAGE' | translate) + ': ' + breadcrumb.label
+            "
+          >
+            <span class="icon icon-file" aria-hidden="true">
+              <fa-icon [icon]="breadcrumb.logo" aria-hidden="true"></fa-icon>
+            </span>
+            <span class="text">{{ breadcrumb.label }}</span>
+          </span>
         </ng-template>
+        <span *ngIf="!isLast" class="separator" aria-hidden="true"> / </span>
       </li>
-    </ul>
+      <!-- Home link -->
+      <li role="listitem">
+        <a
+          routerLink="/"
+          [attr.aria-label]="'BREADCRUMB.ARIA.HOME_LINK' | translate"
+          class="home-link"
+        >
+          <span aria-hidden="true"><fa-icon icon="home" aria-hidden="true"></fa-icon></span>
+          <span class="visually-hidden">{{ 'NAV.HOME' | translate }}</span>
+        </a>
+      </li>
+    </ol>
   </nav>
 </div>

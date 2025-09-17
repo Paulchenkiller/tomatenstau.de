@@ -3,7 +3,7 @@ import { DOCUMENT } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';
 import { FooterComponent } from './footer/footer.component';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { filter } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  imports: [HeaderComponent, ContentComponent, FooterComponent],
+  imports: [HeaderComponent, ContentComponent, FooterComponent, TranslateModule],
 })
 export class AppComponent implements AfterViewInit {
   constructor(
@@ -234,34 +234,60 @@ export class AppComponent implements AfterViewInit {
   // Enhance code blocks: add accessible "Copy" buttons with i18n labels and keyboard support
   private enhanceCodeBlocks(): void {
     try {
+      // Fallback labels for immediate accessibility, even before translations load
+      const fallbackCopy = 'Copy code to clipboard';
+      const fallbackCopied = 'Copied!';
+
+      const pres = Array.from(this.doc.querySelectorAll('pre')) as HTMLPreElement[];
+      for (const pre of pres) {
+        const code = pre.querySelector('code');
+        if (!code) continue;
+
+        // Ensure pre is relatively positioned for optional button positioning via CSS (non-destructive)
+        if (!pre.style.position) {
+          // don't override existing author styles
+          pre.style.position = 'relative';
+        }
+
+        let btn = pre.querySelector('button.copy-btn') as HTMLButtonElement | null;
+        if (!btn) {
+          btn = this.doc.createElement('button');
+          btn.type = 'button';
+          btn.className = 'copy-btn';
+          // default placement can be adjusted via CSS
+          btn.style.position = 'absolute';
+          btn.style.top = '0.5rem';
+          btn.style.right = '0.5rem';
+
+          // Set immediate accessibility attributes with fallback values
+          btn.setAttribute('aria-label', fallbackCopy);
+          btn.title = fallbackCopy;
+          btn.textContent = fallbackCopy;
+          btn.setAttribute('type', 'button');
+          btn.setAttribute('role', 'button');
+
+          btn.addEventListener('click', () => {
+            // Get current translations or use fallback
+            const currentCopy = btn!.getAttribute('aria-label') || fallbackCopy;
+            const currentCopied = this.translate.instant('A11Y.COPIED') || fallbackCopied;
+            this.copyCode(pre, code, btn!, currentCopy, currentCopied);
+          });
+
+          // Key accessibility: button already handles Enter/Space by default; no extra needed
+          pre.appendChild(btn);
+        }
+      }
+
+      // After initial setup, try to get translations and update labels
       this.translate.get(['A11Y.COPY_CODE', 'A11Y.COPIED']).subscribe((dict) => {
-        const tCopy = dict['A11Y.COPY_CODE'] || 'Copy code to clipboard';
-        const tCopied = dict['A11Y.COPIED'] || 'Copied!';
-        const pres = Array.from(this.doc.querySelectorAll('pre')) as HTMLPreElement[];
-        for (const pre of pres) {
-          const code = pre.querySelector('code');
-          if (!code) continue;
+        const tCopy = dict['A11Y.COPY_CODE'] || fallbackCopy;
+        const tCopied = dict['A11Y.COPIED'] || fallbackCopied;
 
-          // Ensure pre is relatively positioned for optional button positioning via CSS (non-destructive)
-          if (!pre.style.position) {
-            // don't override existing author styles
-            pre.style.position = 'relative';
-          }
-
-          let btn = pre.querySelector('button.copy-btn') as HTMLButtonElement | null;
-          if (!btn) {
-            btn = this.doc.createElement('button');
-            btn.type = 'button';
-            btn.className = 'copy-btn';
-            // default placement can be adjusted via CSS
-            btn.style.position = 'absolute';
-            btn.style.top = '0.5rem';
-            btn.style.right = '0.5rem';
-            btn.addEventListener('click', () => this.copyCode(pre, code, btn!, tCopy, tCopied));
-            // Key accessibility: button already handles Enter/Space by default; no extra needed
-            pre.appendChild(btn);
-          }
-          // Always update labels/text on language change
+        const buttons = Array.from(
+          this.doc.querySelectorAll('button.copy-btn'),
+        ) as HTMLButtonElement[];
+        for (const btn of buttons) {
+          // Update with translated labels
           btn.setAttribute('aria-label', tCopy);
           btn.title = tCopy;
           btn.textContent = tCopy;

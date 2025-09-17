@@ -1,4 +1,7 @@
 {
+  "SITE": {
+    "NAME": "tomatenstau.de - Programming Tutorials"
+  },
   "HEADER": {
     "LANG": {
       "EN": "English",
@@ -7,7 +10,29 @@
     "ARIA": {
       "LANG_SWITCHER": "Language switcher",
       "SWITCH_EN": "Switch to English",
-      "SWITCH_DE": "Switch to German"
+      "SWITCH_DE": "Switch to German",
+      "HOME_LINK": "Go to homepage",
+      "MAIN_NAVIGATION": "Main navigation",
+      "OPENS_NEW_WINDOW": "opens in new window"
+    }
+  },
+  "A11Y": {
+    "SKIP_TO_MAIN": "Skip to main content",
+    "SKIP_TO_NAV": "Skip to navigation",
+    "HIGH_CONTRAST": "High contrast mode",
+    "TOGGLE_HIGH_CONTRAST": "Toggle high contrast mode"
+  },
+  "CONTENT": {
+    "ARIA": {
+      "MAIN_CONTENT": "Main content area"
+    }
+  },
+  "BREADCRUMB": {
+    "ARIA": {
+      "LABEL": "Breadcrumb navigation",
+      "BREADCRUMB_LINK": "breadcrumb link",
+      "CURRENT_PAGE": "Current page",
+      "HOME_LINK": "Go to homepage"
     }
   },
   "NAV": {
@@ -71,6 +96,10 @@
   },
 
   "INDEX": {
+    "ARIA": {
+      "PROFILE_PHOTO": "Profile photo of Meik Geldmacher",
+      "HIGHLIGHTS_HEADING": "Professional highlights and skills"
+    },
     "NAME": "Meik Geldmacher",
     "TITLE": "Software & Solution Architect · Team Lead Manager",
     "INTRO": "I work as a Team Lead Manager as well as a Software and Solution Architect. My focus is on designing and evolving scalable system and software architectures, defining target pictures and roadmaps, technical leadership and coaching of teams, including leading an AI team, as well as stakeholder management across product, business, and IT. Additionally, I am responsible for architecture reviews, security and quality gates, integration and interface strategies (APIs, messaging/IoT), and establishing efficient delivery processes (CI/CD, observability).",

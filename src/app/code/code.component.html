@@ -5,8 +5,8 @@
       {{ 'CODE.INTRO' | translate }}
     </p>
 
-    <ul>
-      <li *ngFor="let codeComponent of codeComponents">
+    <ul role="list">
+      <li *ngFor="let codeComponent of codeComponents" role="listitem">
         <a [routerLink]="codeComponent.route">{{ codeComponent.name | translate }}</a>
       </li>
     </ul>

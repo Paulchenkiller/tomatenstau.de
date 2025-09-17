@@ -1,36 +1,47 @@
-<section class="intro">
+<section class="intro" role="main" aria-labelledby="main-heading">
   <div class="container">
     <div class="intro__media">
       <!-- Place your photo at: src/assets/profilbild.jpg -->
-      <img src="assets/images/profilbild.jpg" alt="Portrait photo" class="intro__photo" />
+      <img
+        src="assets/images/profilbild.jpg"
+        alt="{{ 'INDEX.ARIA.PROFILE_PHOTO' | translate }}"
+        class="intro__photo"
+        width="300"
+        height="300"
+      />
     </div>
     <div class="intro__content">
-      <h1>{{ 'INDEX.NAME' | translate }}</h1>
+      <h1 id="main-heading">{{ 'INDEX.NAME' | translate }}</h1>
       <h2 class="intro__title">{{ 'INDEX.TITLE' | translate }}</h2>
       <p class="lead">{{ 'INDEX.INTRO' | translate }}</p>
 
-      <ul class="intro__highlights">
-        <li>
-          <strong>{{ 'INDEX.HIGHLIGHTS.FOCUS' | translate }}</strong>
-          {{ 'INDEX.HIGHLIGHTS.FOCUS_TEXT' | translate }}
-        </li>
-        <li>
-          <strong>{{ 'INDEX.HIGHLIGHTS.TECH' | translate }}</strong>
-          {{ 'INDEX.HIGHLIGHTS.TECH_TEXT' | translate }}
-        </li>
-        <li>
-          <strong>{{ 'INDEX.HIGHLIGHTS.PLATFORMS' | translate }}</strong>
-          {{ 'INDEX.HIGHLIGHTS.PLATFORMS_TEXT' | translate }}
-        </li>
-        <li>
-          <strong>{{ 'INDEX.HIGHLIGHTS.DOMAINS' | translate }}</strong>
-          {{ 'INDEX.HIGHLIGHTS.DOMAINS_TEXT' | translate }}
-        </li>
-        <li>
-          <strong>{{ 'INDEX.HIGHLIGHTS.CERTS' | translate }}</strong>
-          {{ 'INDEX.HIGHLIGHTS.CERTS_TEXT' | translate }}
-        </li>
-      </ul>
+      <section aria-labelledby="highlights-heading">
+        <h3 id="highlights-heading" class="visually-hidden">
+          {{ 'INDEX.ARIA.HIGHLIGHTS_HEADING' | translate }}
+        </h3>
+        <ul class="intro__highlights" role="list">
+          <li role="listitem">
+            <strong>{{ 'INDEX.HIGHLIGHTS.FOCUS' | translate }}</strong>
+            {{ 'INDEX.HIGHLIGHTS.FOCUS_TEXT' | translate }}
+          </li>
+          <li role="listitem">
+            <strong>{{ 'INDEX.HIGHLIGHTS.TECH' | translate }}</strong>
+            {{ 'INDEX.HIGHLIGHTS.TECH_TEXT' | translate }}
+          </li>
+          <li role="listitem">
+            <strong>{{ 'INDEX.HIGHLIGHTS.PLATFORMS' | translate }}</strong>
+            {{ 'INDEX.HIGHLIGHTS.PLATFORMS_TEXT' | translate }}
+          </li>
+          <li role="listitem">
+            <strong>{{ 'INDEX.HIGHLIGHTS.DOMAINS' | translate }}</strong>
+            {{ 'INDEX.HIGHLIGHTS.DOMAINS_TEXT' | translate }}
+          </li>
+          <li role="listitem">
+            <strong>{{ 'INDEX.HIGHLIGHTS.CERTS' | translate }}</strong>
+            {{ 'INDEX.HIGHLIGHTS.CERTS_TEXT' | translate }}
+          </li>
+        </ul>
+      </section>
     </div>
   </div>
 </section>

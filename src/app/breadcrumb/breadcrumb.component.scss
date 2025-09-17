@@ -9,6 +9,8 @@ ul.breadcrumb {
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
+  position: relative;
+  z-index: 10; /* Ensure breadcrumb appears above images and other content */
 }
 
 ul.breadcrumb li {

@@ -1,17 +1,30 @@
-<header id="main-header">
+<header id="main-header" role="banner">
   <div class="row">
     <div class="logo">
-      <a routerLink="">&nbsp;</a>
+      <a routerLink="" [attr.aria-label]="'HEADER.ARIA.HOME_LINK' | translate">
+        <span class="visually-hidden">{{ 'SITE.NAME' | translate }}</span>
+      </a>
     </div>
-    <ul class="header-social">
-      <li *ngFor="let sm of socialMedia">
-        <a [href]="sm.link" target="_blank" rel="noopener noreferrer">
-          <fa-icon [icon]="sm.icon"></fa-icon>
-        </a>
-      </li>
-    </ul>
-    <ul class="header-lang" [attr.aria-label]="'HEADER.ARIA.LANG_SWITCHER' | translate">
-      <li>
+    <nav
+      id="main-nav"
+      role="navigation"
+      [attr.aria-label]="'HEADER.ARIA.MAIN_NAVIGATION' | translate"
+    >
+      <ul class="header-social" role="list">
+        <li *ngFor="let sm of socialMedia" role="listitem">
+          <a
+            [href]="sm.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="sm.name + ' - ' + ('HEADER.ARIA.OPENS_NEW_WINDOW' | translate)"
+          >
+            <fa-icon [icon]="sm.icon" [attr.aria-hidden]="true"></fa-icon>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <ul class="header-lang" [attr.aria-label]="'HEADER.ARIA.LANG_SWITCHER' | translate" role="list">
+      <li role="listitem">
         <button
           type="button"
           (click)="setLang('en')"
@@ -22,7 +35,7 @@
           <span class="flag flag-gb" aria-hidden="true"></span>
         </button>
       </li>
-      <li>
+      <li role="listitem">
         <button
           type="button"
           (click)="setLang('de')"
@@ -33,7 +46,7 @@
           <span class="flag flag-de" aria-hidden="true"></span>
         </button>
       </li>
-      <li>
+      <li role="listitem">
         <button
           type="button"
           (click)="toggleHighContrast()"

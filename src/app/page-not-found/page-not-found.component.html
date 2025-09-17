@@ -17,8 +17,8 @@
     </div>
 
     <h3>{{ '404.EXPLORE' | translate }}</h3>
-    <ul>
-      <li *ngFor="let t of filteredTopics">
+    <ul role="list">
+      <li *ngFor="let t of filteredTopics" role="listitem">
         <a [routerLink]="t.route">{{ t.name | translate }}</a>
       </li>
     </ul>

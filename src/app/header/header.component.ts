@@ -15,14 +15,20 @@ import { DOCUMENT } from '@angular/common';
 })
 export class HeaderComponent {
   socialMedia = [
-    { icon: ['fab', 'github'], link: 'https://github.com/Paulchenkiller' },
+    {
+      icon: ['fab', 'github'],
+      link: 'https://github.com/Paulchenkiller',
+      name: 'GitHub',
+    },
     {
       icon: ['fab', 'linkedin'],
       link: 'https://www.linkedin.com/in/meik-geldmacher',
+      name: 'LinkedIn',
     },
     {
       icon: ['fab', 'xing'],
       link: 'https://www.xing.com/profile/Meik_Geldmacher',
+      name: 'XING',
     },
   ];
   nav: any;
