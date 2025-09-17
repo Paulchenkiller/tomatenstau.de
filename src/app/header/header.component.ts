@@ -10,6 +10,7 @@ import { IconService } from '../services/icon.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  standalone: true,
   imports: [RouterLink, FaIconComponent, NgForOf, TranslateModule],
 })
 export class HeaderComponent {

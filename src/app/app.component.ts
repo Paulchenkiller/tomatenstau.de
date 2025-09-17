@@ -11,6 +11,7 @@ import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  standalone: true,
   imports: [HeaderComponent, ContentComponent, FooterComponent, TranslateModule],
 })
 export class AppComponent implements AfterViewInit {

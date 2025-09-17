@@ -6,6 +6,7 @@ import { IconService } from '../services/icon.service';
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
+  standalone: true,
   imports: [FaIconComponent],
 })
 export class FooterComponent {
