@@ -55,6 +55,7 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
   - [x] GitHub Actions (CI) mit Lint, Build und Test.
   - [x] Conventional Commits per commitlint + husky erzwingen.
   - [x] Dependency-Updates automatisieren (Dependabot/Renovate).
+  - [x] Pre-commit hook für automatisches linting, formatting und commitlint.
 
 - PWA & Offline
   - [ ] Web App Manifest und Icons ergänzen; ng add @angular/pwa prüfen.

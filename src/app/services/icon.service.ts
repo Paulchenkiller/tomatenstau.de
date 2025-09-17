@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 // Import only specific icons instead of entire icon packs
-import {
-  faHome,
-  faEnvelope,
-  faUniversalAccess
-} from '@fortawesome/free-solid-svg-icons';
+import { faHome, faEnvelope, faUniversalAccess } from '@fortawesome/free-solid-svg-icons';
 
 import {
   faGithub,
@@ -14,11 +10,11 @@ import {
   faXing,
   faGithubSquare,
   faXingSquare,
-  faLinkedin as faLinkedinSquare
+  faLinkedin as faLinkedinSquare,
 } from '@fortawesome/free-brands-svg-icons';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IconService {
   constructor(private library: FaIconLibrary) {
@@ -39,7 +35,7 @@ export class IconService {
       faXing,
       faGithubSquare,
       faXingSquare,
-      faLinkedinSquare
+      faLinkedinSquare,
     );
   }
 
@@ -53,7 +49,7 @@ export class IconService {
       'fab:linkedin',
       'fab:xing',
       'fab:github-square',
-      'fab:xing-square'
+      'fab:xing-square',
     ];
   }
 }

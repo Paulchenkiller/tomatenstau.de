@@ -1,7 +1,8 @@
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: 'npx http-server dist/tomatenstaude -p 4201 --cors --silent',
+      startServerCommand:
+        'npx http-server dist/tomatenstaude -p 4201 --cors --silent --gzip --brotli',
       url: [
         'http://localhost:4201',
         'http://localhost:4201/code',
