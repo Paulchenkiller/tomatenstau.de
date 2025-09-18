@@ -149,13 +149,16 @@ describe('HeaderComponent', () => {
   });
 
   it('reacts to OS prefers-contrast changes when no explicit preference is saved', () => {
+    // Clear any existing localStorage values to ensure clean test state
+    (globalThis as any).localStorage.removeItem('pref:high-contrast');
+
     // Provide a matchMedia stub with change listener capture
     let changeCb: ((e: any) => void) | undefined;
     (window as any).matchMedia = jest.fn().mockImplementation((_q: string) => ({
       matches: true,
-      addEventListener: (_: string, cb: (e: any) => void) => {
+      addEventListener: jest.fn((_: string, cb: (e: any) => void) => {
         changeCb = cb;
-      },
+      }),
     }));
 
     const mockDoc = createMockDocument();
