@@ -18,6 +18,7 @@
     "analyze": "ng build --stats-json && npx webpack-bundle-analyzer dist/tomatenstaude/stats.json",
     "lighthouse": "lhci autorun",
     "lighthouse:prod": "npm run build:compressed && lhci autorun --config lighthouserc.prod.js",
+    "lighthouse:live": "lhci autorun --config lighthouserc.live.js",
     "start:prod": "ng build --configuration=production && npx http-server dist/tomatenstaude -p 4201 --cors",
     "a11y:audit": "axe --config axe.config.js --tags wcag2a,wcag2aa,wcag21aa http://localhost:4200",
     "a11y:test": "npm run e2e -- accessibility.spec.ts",

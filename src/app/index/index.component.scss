@@ -15,9 +15,15 @@
   align-items: start;
 }
 
+.intro__media {
+  contain: layout style;
+}
+
 .intro__photo {
-  width: 100%;
+  width: 220px;
+  height: 220px;
   max-width: 220px;
+  aspect-ratio: 1;
   border-radius: 8px;
   display: block;
   margin-top: 10px; /* align with h1 top margin to keep photo and text level */
@@ -124,6 +130,8 @@ app-headline h2 {
     order: -1;
   }
   .intro__photo {
+    width: 200px;
+    height: 200px;
     margin: 10px auto 16px;
   }
 }
