@@ -15,5 +15,6 @@ jobs:
           github_access_token: ${{ secrets.ACCESS_TOKEN }} # see the Configuration section for how you can create secrets
           deploy_branch: gh-pages # The branch the action should deploy to.
           angular_dist_build_folder: dist/tomatenstaude/browser
+          build_configuration: production
 permissions:
   contents: write
