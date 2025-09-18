@@ -93,7 +93,7 @@ jobs:
         run: npm ci
 
       - name: Run accessibility unit tests
-        run: npm run test:ci -- --testNamePattern="WCAG 2.1 AA Compliance"
+        run: npm run test:ci
 
       - name: Upload test coverage
         if: always()
