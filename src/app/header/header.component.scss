@@ -139,6 +139,45 @@ header {
   }
 }
 
+@media only screen and (max-width: 454px) {
+  header {
+    .row {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .logo {
+      width: 100px; /* smaller logo width */
+      margin-left: 5px;
+      margin-right: 5px;
+
+      a {
+        width: 100px;
+        height: 65px; /* smaller logo height */
+        margin: 12px 0; /* more top margin to keep total 90px */
+      }
+    }
+
+    .header-lang {
+      margin-left: 0;
+      margin-right: 0;
+
+      li {
+        margin-left: 4px; /* reduced spacing between language buttons */
+      }
+
+      li button {
+        font-size: 20px; /* slightly smaller buttons */
+      }
+
+      .flag {
+        width: 20px;
+        height: 14px;
+      }
+    }
+  }
+}
+
 /* Local minimal flag styles to avoid bundling large external assets */
 .header-lang .flag {
   display: inline-block;

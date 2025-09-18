@@ -1,9 +1,7 @@
 module.exports = {
   ci: {
     collect: {
-      url: [
-        'https://tomatenstau.de',
-      ],
+      url: ['https://tomatenstau.de'],
       numberOfRuns: 3,
     },
     assert: {

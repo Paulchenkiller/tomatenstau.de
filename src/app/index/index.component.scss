@@ -17,13 +17,15 @@
 
 .intro__media {
   contain: layout style;
+  width: 220px;
+  height: 250px;
 }
 
 .intro__photo {
-  width: 220px;
-  height: 220px;
+  width: 100%;
+  height: 100%;
   max-width: 220px;
-  aspect-ratio: 1;
+  object-fit: cover;
   border-radius: 8px;
   display: block;
   margin-top: 10px; /* align with h1 top margin to keep photo and text level */
@@ -128,10 +130,11 @@ app-headline h2 {
   }
   .intro__media {
     order: -1;
+    width: 200px;
+    height: 230px;
+    margin: 0 auto;
   }
   .intro__photo {
-    width: 200px;
-    height: 200px;
     margin: 10px auto 16px;
   }
 }
