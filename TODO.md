@@ -49,7 +49,6 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
   - [ ] Visual Regression Tests für kritische UI-Komponenten (Chromatic/Percy) evaluieren.
   - [ ] Bundle-Analyzer und Lighthouse CI in Pipeline integrieren für Performance-Monitoring.
   - [ ] TypeScript strict-Modus aktivieren und schrittweise Code-Qualität erhöhen.
-  - [ ] SonarQube/SonarCloud für Code-Quality-Metriken und Security-Scans konfigurieren.
 
 - Build/Deploy & Automatisierung
   - [x] GitHub Actions (CI) mit Lint, Build und Test.
