@@ -1,5 +1,5 @@
-import { Component, Inject, AfterViewInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, Inject, AfterViewInit, DOCUMENT } from '@angular/core';
+
 import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';
 import { FooterComponent } from './footer/footer.component';

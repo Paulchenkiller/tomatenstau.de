@@ -1,9 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, DOCUMENT } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { NgForOf } from '@angular/common';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { DOCUMENT } from '@angular/common';
+
 import { IconService } from '../services/icon.service';
 
 @Component({
