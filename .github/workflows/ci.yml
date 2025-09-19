@@ -107,7 +107,9 @@ jobs:
           path: node_modules
 
       - name: Lint
-        run: npm run lint
+        run: |
+          npx eslint "src/**/*.ts" --max-warnings=0
+          npx prettier --check .
 
   test:
     runs-on: ubuntu-latest
@@ -129,7 +131,7 @@ jobs:
           path: node_modules
 
       - name: Run unit tests (Jest)
-        run: npm test -- --coverage --watch=false
+        run: npx ng test --coverage --watch=false
         env:
           CI: true
 
@@ -163,7 +165,7 @@ jobs:
             ${{ runner.os }}-angular-build-
 
       - name: Build (production)
-        run: npm run build -- --configuration=production
+        run: npx ng build --configuration=production
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
