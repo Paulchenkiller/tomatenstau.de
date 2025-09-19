@@ -79,8 +79,7 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Upload node_modules cache
-        if: steps.npm-cache.outputs.cache-hit != 'true'
+      - name: Upload node_modules artifact
         uses: actions/upload-artifact@v4
         with:
           name: node_modules
