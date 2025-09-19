@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 # Local check: validate the last commit message with commitlint
 # If it fails, print helpful instructions to amend the message.
 
