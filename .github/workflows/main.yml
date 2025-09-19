@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - name: All things angular
         uses: AhsanAyaz/angular-deploy-gh-pages-actions@2272ef32f364bc80d8680ee03d8e58f126156c31
         with:
