@@ -1,4 +1,11 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Check for Co-Authored-By in commit message
+if grep -i "co-authored-by" "$1" > /dev/null; then
+  echo "❌ Commit message contains 'Co-Authored-By' which is not allowed."
+  echo "Please remove the Co-Authored-By line from your commit message."
+  exit 1
+fi
+
 npx --no -- commitlint --edit "$1"

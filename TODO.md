@@ -317,3 +317,37 @@ Sammlung sinnvoller Verbesserungen und offener Punkte für die Weiterentwicklung
   - [ ] Zero-downtime Deployments implementieren.
   - [ ] Infrastructure Monitoring mit Prometheus/Grafana.
   - [ ] Log Aggregation mit ELK Stack (Elasticsearch/Logstash/Kibana).
+
+- Pipeline-Verbesserungen & fehlende Komponenten (Analyse-Ergebnisse)
+
+  **Kritische fehlende Komponenten:**
+  - [ ] Dependency Vulnerability Scanning (npm audit, Snyk) in CI-Pipeline integrieren
+  - [ ] Secret Detection (GitLeaks, TruffleHog) für versehentlich committete Geheimnisse
+  - [ ] Code Coverage Enforcement mit Mindest-Threshold (aktuell nur Reports)
+  
+  **Workflow-Optimierungen:**
+  - [x] Job-Parallelisierung verbessern (Lint/Test/Build parallel ausführen)
+  - [x] Erweiterte Caching-Strategien für node_modules und Build-Artifacts
+  - [x] Conditional Execution (Skip Jobs bei Documentation-only Changes)
+  
+  **Monitoring & Qualitätssicherung:**
+  - [ ] Lighthouse CI Trends und historische Performance-Daten verfolgen
+  - [ ] Accessibility Regression Detection über Zeit tracken
+  - [ ] Bundle Size Monitoring mit automatischen Alerts bei Überschreitung
+  - [ ] Visual Regression Testing für kritische UI-Komponenten
+  - [ ] Smoke Tests nach Production-Deployment implementieren
+  
+  **Sicherheit & Compliance:**
+  - [ ] Compliance Checks (GDPR/Datenschutz-Validierung) automatisieren
+  - [ ] Security Headers Validation (CSP, HSTS, X-Frame-Options)
+  - [ ] Dependency License Compliance Checks
+
+  **Development Experience:**
+  - [ ] Automated Dependency Updates mit Risk Assessment erweitern
+  - [ ] Integration Tests gegen tatsächlich deployte Version
+  - [ ] Auto-Generated Documentation aus Code und Workflows
+  - [ ] Automated Changelog Generation aus Conventional Commits
+
+  **Deployment-Strategien:**
+  - [ ] Feature Flag Deployment für schrittweise Rollouts
+  
