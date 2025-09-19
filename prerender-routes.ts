@@ -24,5 +24,5 @@ export const prerenderRoutes = [
   '/code/haskell/pattern-matching',
   '/code/prolog',
   '/code/prolog/ackermann',
-  '/code/prolog/hanoi'
+  '/code/prolog/hanoi',
 ];

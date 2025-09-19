@@ -52,7 +52,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
   lint:
     runs-on: ubuntu-latest
     needs: setup
