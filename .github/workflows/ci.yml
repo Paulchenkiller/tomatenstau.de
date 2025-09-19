@@ -17,7 +17,7 @@ jobs:
       is-docs-only: ${{ steps.changes.outputs.docs-only }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -43,7 +43,7 @@ jobs:
     if: needs.setup.outputs.should-skip != 'true'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Check Conventional Commits
         uses: wagoid/commitlint-github-action@v6
@@ -59,7 +59,7 @@ jobs:
     if: needs.setup.outputs.should-skip != 'true' && needs.setup.outputs.is-docs-only != 'true'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Use Node.js
         uses: actions/setup-node@v5
@@ -79,7 +79,7 @@ jobs:
     if: needs.setup.outputs.should-skip != 'true' && needs.setup.outputs.is-docs-only != 'true'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Use Node.js
         uses: actions/setup-node@v5
@@ -101,7 +101,7 @@ jobs:
     if: needs.setup.outputs.should-skip != 'true' && needs.setup.outputs.is-docs-only != 'true'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Use Node.js
         uses: actions/setup-node@v5
