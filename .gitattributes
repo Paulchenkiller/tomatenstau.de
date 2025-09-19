@@ -2,6 +2,9 @@
 # and leave all files detected as binary untouched.
 * text=auto
 
+# Force LF for gitattributes itself
+.gitattributes text eol=lf
+
 # Force LF for specific files
 *.js text eol=lf
 *.ts text eol=lf
