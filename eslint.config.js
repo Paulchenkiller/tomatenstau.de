@@ -5,11 +5,7 @@ const angular = require('angular-eslint');
 
 module.exports = tseslint.config(
   {
-    ignores: [
-      'src/jest.setup.ts',
-      'dist/**/*',
-      'node_modules/**/*',
-    ],
+    ignores: ['src/jest.setup.ts', 'dist/**/*', 'node_modules/**/*'],
   },
 
   // Base configs
