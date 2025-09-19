@@ -52,7 +52,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  install:
+
+  lint:
     runs-on: ubuntu-latest
     needs: setup
     if: needs.setup.outputs.should-skip != 'true' && needs.setup.outputs.is-docs-only != 'true'
@@ -66,53 +67,15 @@ jobs:
           node-version: 20.x
           cache: 'npm'
 
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        id: npm-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-
       - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Upload node_modules artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: node_modules
-          path: node_modules
-          retention-days: 1
-
-  lint:
-    runs-on: ubuntu-latest
-    needs: [setup, install]
-    if: needs.setup.outputs.should-skip != 'true' && needs.setup.outputs.is-docs-only != 'true'
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules
-          path: node_modules
-
       - name: Lint
-        run: |
-          npx eslint "src/**/*.ts" --max-warnings=0
-          npx prettier --check .
+        run: npm run lint
 
   test:
     runs-on: ubuntu-latest
-    needs: [setup, install]
+    needs: setup
     if: needs.setup.outputs.should-skip != 'true' && needs.setup.outputs.is-docs-only != 'true'
     steps:
       - name: Checkout repository
@@ -122,21 +85,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
+          cache: 'npm'
 
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules
-          path: node_modules
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run unit tests (Jest)
-        run: npx ng test --coverage --watch=false
+        run: npm run test:ci
         env:
           CI: true
 
   build:
     runs-on: ubuntu-latest
-    needs: [setup, install]
+    needs: setup
     if: needs.setup.outputs.should-skip != 'true' && needs.setup.outputs.is-docs-only != 'true'
     steps:
       - name: Checkout repository
@@ -146,12 +107,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
+          cache: 'npm'
 
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules
-          path: node_modules
+      - name: Install dependencies
+        run: npm ci
 
       - name: Cache Angular build
         uses: actions/cache@v4
@@ -164,7 +123,7 @@ jobs:
             ${{ runner.os }}-angular-build-
 
       - name: Build (production)
-        run: npx ng build --configuration=production
+        run: npm run build -- --configuration=production
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
