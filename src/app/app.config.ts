@@ -13,6 +13,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
+import { of } from 'rxjs';
 
 // Components
 import { IndexComponent } from './index/index.component';
@@ -44,7 +45,14 @@ import { HaskellMonadsComponent } from './code/haskell/haskell-monads/haskell-mo
 import { HaskellPatternMatchingComponent } from './code/haskell/haskell-pattern-matching/haskell-pattern-matching.component';
 import { IconService } from './services/icon.service';
 
-export function HttpLoaderFactory(http: HttpClient) {
+export function HttpLoaderFactory(http: HttpClient, platformId: Object) {
+  // During SSR, don't try to load translations via HTTP
+  if (!isPlatformBrowser(platformId)) {
+    // Return a loader that doesn't make HTTP requests during SSR
+    return {
+      getTranslation: () => of({}),
+    } as any;
+  }
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -54,7 +62,11 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       TranslateModule.forRoot({
         defaultLanguage: 'en',
-        loader: { provide: TranslateLoader, useFactory: HttpLoaderFactory, deps: [HttpClient] },
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient, PLATFORM_ID],
+        },
       }),
     ),
     {
