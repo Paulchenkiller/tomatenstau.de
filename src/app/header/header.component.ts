@@ -60,7 +60,8 @@ export class HeaderComponent {
       } else if (cookieVal === 'off') {
         this.highContrast = false;
       } else {
-        const saved = localStorage.getItem('pref:high-contrast');
+        const saved =
+          typeof window !== 'undefined' ? localStorage.getItem('pref:high-contrast') : null;
         if (saved === 'on') {
           this.highContrast = true;
         } else if (saved === 'off') {
@@ -70,7 +71,8 @@ export class HeaderComponent {
           this.highContrast = !!this.prefersContrastMql.matches;
           // React to OS changes only if no explicit preference saved
           this.prefersContrastMql.addEventListener?.('change', (e: MediaQueryListEvent) => {
-            const explicit = localStorage.getItem('pref:high-contrast');
+            const explicit =
+              typeof window !== 'undefined' ? localStorage.getItem('pref:high-contrast') : null;
             const cookieExplicit = this.readCookie('pref:high-contrast');
             if (!explicit && !cookieExplicit) {
               this.highContrast = e.matches;
