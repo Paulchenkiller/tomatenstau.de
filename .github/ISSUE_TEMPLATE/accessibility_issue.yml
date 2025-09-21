@@ -1,0 +1,200 @@
+name: ♿ Accessibility Issue
+description: Report an accessibility barrier or WCAG compliance issue
+title: '[A11y]: '
+labels: ['accessibility', 'bug', 'triage']
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping us maintain WCAG 2.1 AA compliance! Accessibility issues are high priority for this project.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm you have done the following.
+      options:
+        - label: I have searched existing issues to ensure this accessibility issue hasn't already been reported
+          required: true
+        - label: I have tested this issue across different browsers/devices where applicable
+          required: true
+
+  - type: dropdown
+    id: accessibility-category
+    attributes:
+      label: Accessibility Category
+      description: What type of accessibility issue is this?
+      options:
+        - Keyboard Navigation
+        - Screen Reader Compatibility
+        - Color Contrast
+        - Focus Management
+        - ARIA Labels/Attributes
+        - Semantic HTML
+        - Alternative Text
+        - Form Accessibility
+        - Animation/Motion
+        - Text/Content
+        - Other WCAG Compliance Issue
+    validations:
+      required: true
+
+  - type: dropdown
+    id: wcag-level
+    attributes:
+      label: WCAG Level
+      description: What WCAG conformance level does this affect?
+      options:
+        - Level A
+        - Level AA
+        - Level AAA
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: wcag-guideline
+    attributes:
+      label: WCAG Success Criteria
+      description: |
+        If you know which WCAG success criteria this relates to, please specify.
+        You can reference the [WCAG 2.1 Quick Reference](https://www.w3.org/WAI/WCAG21/quickref/).
+      placeholder: |
+        Example: 2.1.1 Keyboard (Level A)
+        Example: 1.4.3 Contrast (Minimum) (Level AA)
+
+  - type: textarea
+    id: accessibility-description
+    attributes:
+      label: Accessibility Barrier Description
+      description: Describe the accessibility barrier in detail.
+      placeholder: |
+        What accessibility barrier did you encounter?
+        How does this affect users with disabilities?
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected-users
+    attributes:
+      label: Affected Users
+      description: Which groups of users are affected by this issue?
+      placeholder: |
+        Check all that apply or describe:
+        - Users who navigate with keyboard only
+        - Users who use screen readers
+        - Users with low vision
+        - Users with motor disabilities
+        - Users with cognitive disabilities
+        - Other: [specify]
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this accessibility issue?
+      placeholder: |
+        1. Using [assistive technology/method]
+        2. Navigate to [page/section]
+        3. Try to [action]
+        4. Observe [accessibility barrier]
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: Current (Inaccessible) Behavior
+      description: What happens currently that creates an accessibility barrier?
+      placeholder: Describe what currently happens that prevents accessible use...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected (Accessible) Behavior
+      description: What should happen to make this accessible?
+      placeholder: Describe what should happen to make this accessible according to WCAG guidelines...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: assistive-technology
+    attributes:
+      label: Assistive Technology Used
+      description: What assistive technology did you use to identify this issue?
+      options:
+        - Screen Reader (NVDA)
+        - Screen Reader (JAWS)
+        - Screen Reader (VoiceOver)
+        - Screen Reader (Dragon/Voice Control)
+        - Keyboard Navigation Only
+        - Voice Control Software
+        - Switch Navigation
+        - Magnification Software
+        - axe-core DevTools
+        - Lighthouse Accessibility Audit
+        - Other Manual Testing
+        - Other (specify in additional context)
+      multiple: true
+
+  - type: dropdown
+    id: browsers-tested
+    attributes:
+      label: Browsers/Devices Tested
+      description: Which browsers or devices have you tested this on?
+      options:
+        - Chrome (Desktop)
+        - Firefox (Desktop)
+        - Safari (Desktop)
+        - Edge (Desktop)
+        - Chrome (Mobile)
+        - Safari (Mobile)
+        - Other (specify in additional context)
+      multiple: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this accessibility barrier?
+      options:
+        - Critical - Complete barrier, feature unusable
+        - High - Major barrier, difficult to use
+        - Medium - Moderate barrier, workaround exists
+        - Low - Minor barrier, slight inconvenience
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots-evidence
+    attributes:
+      label: Screenshots/Evidence
+      description: |
+        Please provide screenshots, screen recordings, or other evidence of the accessibility issue.
+        For screen reader issues, consider providing audio recordings or detailed descriptions.
+      placeholder: Drag and drop screenshots here or paste URLs
+
+  - type: textarea
+    id: suggested-fix
+    attributes:
+      label: Suggested Fix
+      description: If you have suggestions for how to fix this accessibility issue, please share them.
+      placeholder: |
+        Any suggestions for implementing an accessible solution?
+        Links to relevant WCAG techniques or examples?
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information about this accessibility issue.
+      placeholder: |
+        - Links to relevant WCAG documentation
+        - Examples of accessible implementations
+        - Related accessibility issues
+        - Testing tools used

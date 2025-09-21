@@ -1,0 +1,141 @@
+name: ✨ Feature Request
+description: Suggest a new feature or improvement
+title: '[Feature]: '
+labels: ['enhancement', 'triage']
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature! Please fill out the form below to help us understand your request.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm you have done the following before submitting this feature request.
+      options:
+        - label: I have searched existing issues to ensure this feature hasn't already been requested
+          required: true
+        - label: I have checked the [documentation](https://github.com/Paulchenkiller/tomatenstau.de/blob/master/README.md)
+          required: true
+        - label: This feature request aligns with the project's goals and scope
+
+  - type: textarea
+    id: problem-statement
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve? What is the current limitation?
+      placeholder: |
+        Is your feature request related to a problem? Please describe.
+        A clear description of what the problem is. Ex. I'm always frustrated when [...]
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like to see implemented.
+      placeholder: |
+        A clear and concise description of what you want to happen.
+        How should this feature work?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Have you considered any alternative solutions or workarounds?
+      placeholder: |
+        A clear description of any alternative solutions or features you've considered.
+        Are there existing workarounds for this issue?
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: Feature Category
+      description: What category does this feature belong to?
+      options:
+        - User Interface/Design
+        - Accessibility
+        - Performance
+        - Internationalization
+        - Testing
+        - Documentation
+        - Developer Experience
+        - Content/Programming Examples
+        - SEO/Meta
+        - Security
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Low - Nice to have
+        - Medium - Would improve user experience
+        - High - Important for usability
+        - Critical - Essential for the project
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: considerations
+    attributes:
+      label: Implementation Considerations
+      description: Please check all that apply to this feature request.
+      options:
+        - label: This feature should maintain WCAG 2.1 AA accessibility compliance
+        - label: This feature should work across different browsers and devices
+        - label: This feature should support both German and English languages
+        - label: This feature should not negatively impact performance
+        - label: This feature should include appropriate tests
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: User Story
+      description: |
+        Write a user story to help us understand the feature from a user's perspective.
+      placeholder: |
+        As a [type of user], I want [goal] so that [benefit].
+
+        Example:
+        As a developer reading code examples, I want syntax highlighting for Rust code so that I can better understand the code structure.
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What conditions must be met for this feature to be considered complete?
+      placeholder: |
+        - [ ] Feature works on desktop browsers (Chrome, Firefox, Safari, Edge)
+        - [ ] Feature works on mobile devices
+        - [ ] Feature includes proper accessibility attributes
+        - [ ] Feature supports both German and English
+        - [ ] Feature includes unit tests
+        - [ ] Feature is documented
+
+  - type: textarea
+    id: mockups-designs
+    attributes:
+      label: Mockups or Designs
+      description: If you have any mockups, wireframes, or design ideas, please share them here.
+      placeholder: Drag and drop images here or paste image URLs
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: |
+        Add any other context, links, or examples related to the feature request.
+        - Are there similar implementations on other websites?
+        - Any technical considerations or constraints?
+        - Links to related resources or documentation?
+      placeholder: Any additional information that would help us understand and implement this feature...

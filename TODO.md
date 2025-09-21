@@ -46,3 +46,13 @@ Sammlung sinnvoller Verbesserungen für die Selbstdarstellungs-Website. Fokus au
 ## Performance & Bundle-Optimierung
 
 - [ ] Critical CSS inline ausliefern, Rest defer laden
+
+## Community Standards & Conventions
+
+- [x] README mit Projektbeschreibung, Setup-Anleitung, Mitwirkungsrichtlinien ergänzen
+- [ ] Code of conduct
+- [x] Contributing
+- [x] License
+- [x] Security policy
+- [x] Issue templates
+- [x] Pull request template
