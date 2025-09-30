@@ -9,7 +9,7 @@ import {
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
@@ -46,18 +46,13 @@ import { HaskellMonadsComponent } from './code/haskell/haskell-monads/haskell-mo
 import { HaskellPatternMatchingComponent } from './code/haskell/haskell-pattern-matching/haskell-pattern-matching.component';
 import { IconService } from './services/icon.service';
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
 export function TranslateLoaderFactory(
   transferState: TransferState,
-  http: HttpClient,
   platformId: Object,
 ) {
   // Use SSR-compatible loader on server, HTTP loader on client
   return isPlatformBrowser(platformId)
-    ? new TranslateHttpLoader(http, './assets/i18n/', '.json')
+    ? provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' })
     : new TranslateFsLoader(transferState, './assets/i18n/', '.json');
 }
 
@@ -70,7 +65,7 @@ export const appConfig: ApplicationConfig = {
         loader: {
           provide: TranslateLoader,
           useFactory: TranslateLoaderFactory,
-          deps: [TransferState, HttpClient, PLATFORM_ID],
+          deps: [TransferState, PLATFORM_ID],
         },
       }),
     ),
