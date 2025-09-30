@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Check for Co-Authored-By in commit message
 if grep -i "co-authored-by" "$1" > /dev/null; then
   echo "❌ Commit message contains 'Co-Authored-By' which is not allowed."
