@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-content',
@@ -10,11 +11,16 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [RouterOutlet, TranslateModule],
 })
 export class ContentComponent {
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
     // do nothing
   }
 
   onActivate(_event: any): void {
+    // Only run scroll animation in browser environment
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     const scrollToTop = window.setInterval(() => {
       const pos = window.pageYOffset;
       if (pos > 0) {
