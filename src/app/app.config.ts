@@ -46,10 +46,7 @@ import { HaskellMonadsComponent } from './code/haskell/haskell-monads/haskell-mo
 import { HaskellPatternMatchingComponent } from './code/haskell/haskell-pattern-matching/haskell-pattern-matching.component';
 import { IconService } from './services/icon.service';
 
-export function TranslateLoaderFactory(
-  transferState: TransferState,
-  platformId: Object,
-) {
+export function TranslateLoaderFactory(transferState: TransferState, platformId: Object) {
   // Use SSR-compatible loader on server, HTTP loader on client
   return isPlatformBrowser(platformId)
     ? provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' })
