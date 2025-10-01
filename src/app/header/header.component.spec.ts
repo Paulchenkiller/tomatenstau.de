@@ -121,6 +121,55 @@ describe('HeaderComponent', () => {
     });
   });
 
+  it('setLang switches from German to English', () => {
+    const mockDoc = createMockDocument();
+    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
+
+    // Switch to German first
+    cmp.setLang('de');
+    expect(translate.use).toHaveBeenCalledWith('de');
+    expect((globalThis as any).localStorage.getItem('lang')).toBe('de');
+
+    // Switch back to English
+    cmp.setLang('en');
+    expect(translate.use).toHaveBeenCalledWith('en');
+    expect((globalThis as any).localStorage.getItem('lang')).toBe('en');
+    expect((mockDoc as any).cookie).toContain('lang=en');
+  });
+
+  it('currentLang updates when language changes via onLangChange subscription', () => {
+    const mockDoc = createMockDocument();
+    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
+
+    expect(cmp.currentLang).toBe('en');
+
+    // Simulate language change from external source
+    translate.onLangChange.next({ lang: 'de' });
+    expect(cmp.currentLang).toBe('de');
+
+    translate.onLangChange.next({ lang: 'en' });
+    expect(cmp.currentLang).toBe('en');
+  });
+
+  it('setLang persists language choice across multiple switches', () => {
+    const mockDoc = createMockDocument();
+    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
+
+    // Multiple language switches
+    cmp.setLang('de');
+    expect((globalThis as any).localStorage.getItem('lang')).toBe('de');
+
+    cmp.setLang('en');
+    expect((globalThis as any).localStorage.getItem('lang')).toBe('en');
+
+    cmp.setLang('de');
+    expect((globalThis as any).localStorage.getItem('lang')).toBe('de');
+
+    // Verify final state
+    expect(translate.currentLang).toBe('de');
+    expect((mockDoc as any).cookie).toContain('lang=de');
+  });
+
   it('toggleHighContrast toggles body attribute and persists preference', () => {
     const mockDoc = createMockDocument();
     const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);

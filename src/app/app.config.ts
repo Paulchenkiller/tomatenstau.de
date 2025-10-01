@@ -1,17 +1,9 @@
-import {
-  ApplicationConfig,
-  importProvidersFrom,
-  APP_INITIALIZER,
-  PLATFORM_ID,
-  Inject,
-  inject,
-} from '@angular/core';
+import { ApplicationConfig, APP_INITIALIZER, PLATFORM_ID } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { provideTranslateService, TranslateModule } from '@ngx-translate/core';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
 import { TransferState } from '@angular/core';
 import { TranslateFsLoader } from './translate-fs.loader';
@@ -49,23 +41,21 @@ import { IconService } from './services/icon.service';
 export function TranslateLoaderFactory(transferState: TransferState, platformId: Object) {
   // Use SSR-compatible loader on server, HTTP loader on client
   return isPlatformBrowser(platformId)
-    ? provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' })
+    ? new TranslateFsLoader(transferState, './assets/i18n/', '.json')
     : new TranslateFsLoader(transferState, './assets/i18n/', '.json');
 }
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch()),
-    importProvidersFrom(
-      TranslateModule.forRoot({
-        defaultLanguage: 'en',
-        loader: {
-          provide: TranslateLoader,
-          useFactory: TranslateLoaderFactory,
-          deps: [TransferState, PLATFORM_ID],
-        },
-      }),
-    ),
+    provideTranslateService({
+      fallbackLang: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: TranslateLoaderFactory,
+        deps: [TransferState, PLATFORM_ID],
+      },
+    }),
     {
       provide: APP_INITIALIZER,
       useFactory: (iconService: IconService) => () => {

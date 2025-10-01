@@ -1,12 +1,17 @@
 import { TranslateLoader } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 import { makeStateKey, TransferState } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject } from '@angular/core';
 
 /**
  * TranslateLoader that works with Server-Side Rendering
  * Pre-loads translations on the server and transfers them to the client
+ * Falls back to HTTP requests when TransferState data is not available
  */
 export class TranslateFsLoader implements TranslateLoader {
+  private http = inject(HttpClient);
+
   constructor(
     private transferState: TransferState,
     private prefix: string = './assets/i18n/',
@@ -22,8 +27,7 @@ export class TranslateFsLoader implements TranslateLoader {
       return of(data);
     }
 
-    // This should not happen in production SSR, but fallback to empty object
-    // The actual loading happens in the server config
-    return of({});
+    // Fallback to HTTP request for client-side navigation
+    return this.http.get(`${this.prefix}${lang}${this.suffix}`);
   }
 }

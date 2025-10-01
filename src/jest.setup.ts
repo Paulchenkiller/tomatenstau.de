@@ -45,7 +45,7 @@ beforeEach(() => {
       RouterTestingModule,
       TranslateModule.forRoot({
         loader: { provide: TranslateLoader, useClass: FakeLoader },
-        defaultLanguage: 'en',
+        fallbackLang: 'en',
       }),
     ],
   });
