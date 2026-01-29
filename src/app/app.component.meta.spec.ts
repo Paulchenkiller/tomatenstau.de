@@ -22,9 +22,7 @@ class RouterStub {
 
 describe('AppComponent meta and links', () => {
   let fixture: ComponentFixture<AppComponent>;
-  let component: AppComponent;
   let router: RouterStub;
-  let title: Title;
   let meta: Meta;
 
   beforeEach(async () => {
@@ -43,13 +41,12 @@ describe('AppComponent meta and links', () => {
     // Override template to avoid rendering child components with RouterLink, etc.
     TestBed.overrideComponent(AppComponent, { set: { template: '<div></div>' } });
     fixture = TestBed.createComponent(AppComponent);
-    component = fixture.componentInstance;
 
     // Trigger initial navigation end to update meta
     router.events.next(new NavigationEnd(1, router.url, router.url));
     fixture.detectChanges();
 
-    title = TestBed.inject(Title);
+    TestBed.inject(Title);
     meta = TestBed.inject(Meta);
   });
 

@@ -50,7 +50,6 @@ class RouterStub {
 
 describe('AppComponent enhanceCodeBlocks and language change', () => {
   let fixture: ComponentFixture<AppComponent>;
-  let component: AppComponent;
   let router: RouterStub;
   let translate: TranslateStub;
 
@@ -77,7 +76,6 @@ describe('AppComponent enhanceCodeBlocks and language change', () => {
     });
 
     fixture = TestBed.createComponent(AppComponent);
-    component = fixture.componentInstance;
   });
 
   afterEach(() => {

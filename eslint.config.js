@@ -11,11 +11,11 @@ module.exports = tseslint.config(
   // Base configs
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
-  ...angular.configs.tsRecommended,
 
   // TypeScript files configuration
   {
     files: ['**/*.ts'],
+    extends: [...angular.configs.tsRecommended],
     rules: {
       '@angular-eslint/directive-selector': [
         'error',
@@ -34,13 +34,15 @@ module.exports = tseslint.config(
       '@typescript-eslint/ban-ts-comment': 'off',
       'no-var': 'error',
       'prefer-const': 'error',
+      '@angular-eslint/prefer-inject': 'off',
+      'no-empty': 'off',
     },
   },
 
   // Angular template configuration - separate from TypeScript files
-  ...angular.configs.templateRecommended,
   {
     files: ['**/*.html'],
+    extends: [...angular.configs.templateRecommended],
     rules: {
       // Template-specific rules
     },

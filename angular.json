@@ -87,17 +87,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "main": ["src/test.ts"],
-            "polyfills": ["src/polyfills.ts"],
-            "tsConfig": "tsconfig.spec.json",
-            "assets": ["src/favicon", "src/assets"],
-            "styles": [
-              "src/styles.css",
-              "src/css/base.css",
-              "src/css/vendor.min.css",
-              "src/css/main.scss"
-            ],
-            "scripts": []
+            "tsConfig": "tsconfig.spec.json"
           }
         },
         "lint": {

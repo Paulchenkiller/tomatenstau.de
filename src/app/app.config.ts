@@ -2,7 +2,7 @@ import { ApplicationConfig, APP_INITIALIZER, PLATFORM_ID } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateLoader, TranslateService } from '@ngx-translate/core';
-import { provideTranslateService, TranslateModule } from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { isPlatformBrowser } from '@angular/common';
 import { TransferState } from '@angular/core';
@@ -38,7 +38,7 @@ import { HaskellMonadsComponent } from './code/haskell/haskell-monads/haskell-mo
 import { HaskellPatternMatchingComponent } from './code/haskell/haskell-pattern-matching/haskell-pattern-matching.component';
 import { IconService } from './services/icon.service';
 
-export function TranslateLoaderFactory(transferState: TransferState, platformId: Object) {
+export function TranslateLoaderFactory(transferState: TransferState, platformId: object) {
   // Use SSR-compatible loader on server, HTTP loader on client
   return isPlatformBrowser(platformId)
     ? new TranslateFsLoader(transferState, './assets/i18n/', '.json')
@@ -58,7 +58,7 @@ export const appConfig: ApplicationConfig = {
     }),
     {
       provide: APP_INITIALIZER,
-      useFactory: (iconService: IconService) => () => {
+      useFactory: (_iconService: IconService) => () => {
         // Initialize icons first
         return Promise.resolve();
       },
@@ -67,7 +67,7 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: APP_INITIALIZER,
-      useFactory: (translate: TranslateService, platformId: Object) => () => {
+      useFactory: (translate: TranslateService, platformId: object) => () => {
         translate.addLangs(['en', 'de']);
         translate.setDefaultLang('en');
 
