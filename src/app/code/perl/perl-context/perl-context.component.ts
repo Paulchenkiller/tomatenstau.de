@@ -10,8 +10,8 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class PerlContextComponent {
   codeListVsScalar = `my $text = 'foo 42 bar 7 baz';
-my @matches = ($text =~ /(\d+)/g);   # List-Kontext: @matches = (42, 7)
-my $count   = () = ($text =~ /(\d+)/g); # Skalar-Kontext-Trick: Anzahl = 2
+my @matches = ($text =~ /(\\d+)/g);   # List-Kontext: @matches = (42, 7)
+my $count   = () = ($text =~ /(\\d+)/g); # Skalar-Kontext-Trick: Anzahl = 2
 print scalar(@matches), " Treffer\n"; # 2
 print $count, " Treffer\n";          # 2`;
 

@@ -162,7 +162,6 @@ export class AppComponent implements AfterViewInit {
   }
 
   private updateLinkTagsAndStructuredData(): void {
-    const fullUrl = this.doc?.location?.href || '';
     const origin = this.doc?.location?.origin || '';
     const path = this.normalizePath(this.router.url || '/');
 
@@ -281,7 +280,7 @@ export class AppComponent implements AfterViewInit {
       // After initial setup, try to get translations and update labels
       this.translate.get(['A11Y.COPY_CODE', 'A11Y.COPIED']).subscribe((dict) => {
         const tCopy = dict['A11Y.COPY_CODE'] || fallbackCopy;
-        const tCopied = dict['A11Y.COPIED'] || fallbackCopied;
+        const _tCopied = dict['A11Y.COPIED'] || fallbackCopied;
 
         const buttons = Array.from(
           this.doc.querySelectorAll('button.copy-btn'),

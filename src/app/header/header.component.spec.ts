@@ -218,7 +218,9 @@ describe('HeaderComponent', () => {
     expect((cmp as any).highContrast).toBe(true);
 
     // Simulate OS change to false; since no explicit prefs saved, component should update
-    changeCb && changeCb({ matches: false });
+    if (changeCb) {
+      changeCb({ matches: false });
+    }
     expect((cmp as any).highContrast).toBe(false);
     expect((mockDoc.body as any).getAttribute('data-theme')).toBeNull();
   });

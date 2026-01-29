@@ -32,7 +32,6 @@ class RouterStub {
 
 describe('AppComponent person JSON-LD and normalizePath', () => {
   let fixture: ComponentFixture<AppComponent>;
-  let component: AppComponent;
   let router: RouterStub;
 
   beforeEach(async () => {
@@ -54,7 +53,6 @@ describe('AppComponent person JSON-LD and normalizePath', () => {
     });
 
     fixture = TestBed.createComponent(AppComponent);
-    component = fixture.componentInstance;
   });
 
   it('injects Person JSON-LD on home and removes it on non-home; canonical normalizes trailing slash', () => {

@@ -48,11 +48,7 @@ describe('Language Initialization (app.config.ts)', () => {
   describe('URL Parameter Language Selection', () => {
     it('should use language from URL parameter ?lang=de', () => {
       // Mock window.location.search
-      Object.defineProperty(window, 'location', {
-        value: { search: '?lang=de' },
-        writable: true,
-        configurable: true,
-      });
+      window.history.pushState({}, '', '/?lang=de');
 
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot()],
@@ -74,11 +70,7 @@ describe('Language Initialization (app.config.ts)', () => {
     });
 
     it('should use language from URL parameter ?lang=en', () => {
-      Object.defineProperty(window, 'location', {
-        value: { search: '?lang=en' },
-        writable: true,
-        configurable: true,
-      });
+      window.history.pushState({}, '', '/?lang=en');
 
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot()],
@@ -99,11 +91,7 @@ describe('Language Initialization (app.config.ts)', () => {
     });
 
     it('should ignore invalid URL language parameter', () => {
-      Object.defineProperty(window, 'location', {
-        value: { search: '?lang=fr' },
-        writable: true,
-        configurable: true,
-      });
+      window.history.pushState({}, '', '/?lang=fr');
 
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot()],
@@ -132,11 +120,7 @@ describe('Language Initialization (app.config.ts)', () => {
   describe('Cookie Language Selection', () => {
     it('should use language from cookie when URL parameter is not set', () => {
       mockDocument.cookie = 'lang=de; path=/';
-      Object.defineProperty(window, 'location', {
-        value: { search: '' },
-        writable: true,
-        configurable: true,
-      });
+      window.history.pushState({}, '', '/');
 
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot()],
@@ -175,11 +159,7 @@ describe('Language Initialization (app.config.ts)', () => {
     it('should use language from localStorage when URL and cookie are not set', () => {
       mockLocalStorage['lang'] = 'de';
       mockDocument.cookie = '';
-      Object.defineProperty(window, 'location', {
-        value: { search: '' },
-        writable: true,
-        configurable: true,
-      });
+      window.history.pushState({}, '', '/');
 
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot()],
@@ -202,11 +182,7 @@ describe('Language Initialization (app.config.ts)', () => {
   describe('Browser Language Detection', () => {
     it('should use browser language when no other preference is set', () => {
       mockDocument.cookie = '';
-      Object.defineProperty(window, 'location', {
-        value: { search: '' },
-        writable: true,
-        configurable: true,
-      });
+      window.history.pushState({}, '', '/');
       Object.defineProperty(navigator, 'languages', {
         value: ['de-DE', 'de'],
         writable: true,
@@ -235,11 +211,7 @@ describe('Language Initialization (app.config.ts)', () => {
 
     it('should default to English when browser language is not supported', () => {
       mockDocument.cookie = '';
-      Object.defineProperty(window, 'location', {
-        value: { search: '' },
-        writable: true,
-        configurable: true,
-      });
+      window.history.pushState({}, '', '/');
       Object.defineProperty(navigator, 'languages', {
         value: ['fr-FR', 'fr'],
         writable: true,
@@ -271,11 +243,7 @@ describe('Language Initialization (app.config.ts)', () => {
     it('should prioritize URL parameter over cookie and localStorage', () => {
       mockLocalStorage['lang'] = 'de';
       mockDocument.cookie = 'lang=de; path=/';
-      Object.defineProperty(window, 'location', {
-        value: { search: '?lang=en' },
-        writable: true,
-        configurable: true,
-      });
+      window.history.pushState({}, '', '/?lang=en');
 
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot()],
@@ -301,11 +269,7 @@ describe('Language Initialization (app.config.ts)', () => {
     it('should prioritize cookie over localStorage', () => {
       mockLocalStorage['lang'] = 'en';
       mockDocument.cookie = 'lang=de; path=/';
-      Object.defineProperty(window, 'location', {
-        value: { search: '' },
-        writable: true,
-        configurable: true,
-      });
+      window.history.pushState({}, '', '/');
 
       TestBed.configureTestingModule({
         imports: [TranslateModule.forRoot()],
