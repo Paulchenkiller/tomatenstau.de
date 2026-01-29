@@ -23,7 +23,13 @@ const switchDeLink = "/de";
         aria-label={t("HEADER.ARIA.HOME_LINK")}
         title={t("HEADER.ARIA.HOME_LINK")}
       >
-        <Image src={logoImg} alt={t("SITE.NAME")} width={72} height={72} loading="eager" />
+        <Image
+          src={logoImg}
+          alt={t("SITE.NAME")}
+          width={160}
+          height={75}
+          loading="eager"
+        />
       </a>
     </div>
     <nav
@@ -114,20 +120,44 @@ const switchDeLink = "/de";
 </header>
 
 <script>
-  const btn = document.getElementById("high-contrast-toggle");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      const body = document.body;
-      const isHc = body.getAttribute("data-theme") === "hc";
-      if (isHc) {
-        body.removeAttribute("data-theme");
-        btn.setAttribute("aria-pressed", "false");
-      } else {
-        body.setAttribute("data-theme", "hc");
-        btn.setAttribute("aria-pressed", "true");
+  function initHighContrast() {
+    const btn = document.getElementById("high-contrast-toggle");
+    const body = document.body;
+    const STORAGE_KEY = "high-contrast-enabled";
+
+    // Apply saved preference
+    const isEnabled = localStorage.getItem(STORAGE_KEY) === "true";
+    if (isEnabled) {
+      body.setAttribute("data-theme", "hc");
+      btn?.setAttribute("aria-pressed", "true");
+    }
+
+    if (btn) {
+      // Remove old listener to avoid duplicates if re-initialized
+      const newBtn = btn.cloneNode(true);
+      if (btn.parentNode) {
+        btn.parentNode.replaceChild(newBtn, btn);
       }
-    });
+
+      newBtn.addEventListener("click", () => {
+        const isHc = body.getAttribute("data-theme") === "hc";
+        if (isHc) {
+          body.removeAttribute("data-theme");
+          // @ts-ignore
+          newBtn.setAttribute("aria-pressed", "false");
+          localStorage.setItem(STORAGE_KEY, "false");
+        } else {
+          body.setAttribute("data-theme", "hc");
+          // @ts-ignore
+          newBtn.setAttribute("aria-pressed", "true");
+          localStorage.setItem(STORAGE_KEY, "true");
+        }
+      });
+    }
   }
+
+  // Run on initial load
+  initHighContrast();
 </script>
 
 <style>
