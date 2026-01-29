@@ -122,7 +122,7 @@ select {
 .content p,
 .intro p,
 app-code p,
-[class*='component'] p {
+[class*="component"] p {
   color: #ffffff !important; /* Force high contrast for all paragraph text */
 }
 

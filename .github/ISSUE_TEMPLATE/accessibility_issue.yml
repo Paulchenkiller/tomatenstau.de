@@ -1,7 +1,7 @@
 name: ♿ Accessibility Issue
 description: Report an accessibility barrier or WCAG compliance issue
-title: '[A11y]: '
-labels: ['accessibility', 'bug', 'triage']
+title: "[A11y]: "
+labels: ["accessibility", "bug", "triage"]
 assignees: []
 body:
   - type: markdown

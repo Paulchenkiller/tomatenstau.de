@@ -1,25 +1,25 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Headline from '../components/Headline.astro';
-import { useTranslations } from '../i18n/ui';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Headline from "../components/Headline.astro";
+import { useTranslations } from "../i18n/ui";
 
-const lang = 'en';
+const lang = "en";
 const t = useTranslations(lang);
 ---
 
-<Layout title={t('404.TITLE')} lang={lang}>
+<Layout title={t("404.TITLE")} lang={lang}>
   <Header lang={lang} />
   <main class="container" id="main-content">
-      <Headline subtitle={t('404.SUBTITLE')}>{t('404.TITLE')}</Headline>
-      <div class="row">
-        <div class="twelve columns">
-            <p>
-                <a href="/" class="button">{t('404.CTA_HOME')}</a>
-            </p>
-        </div>
+    <Headline subtitle={t("404.SUBTITLE")}>{t("404.TITLE")}</Headline>
+    <div class="row">
+      <div class="twelve columns">
+        <p>
+          <a href="/" class="button">{t("404.CTA_HOME")}</a>
+        </p>
       </div>
+    </div>
   </main>
   <Footer lang={lang} />
 </Layout>

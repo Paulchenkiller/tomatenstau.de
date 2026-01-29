@@ -1,18 +1,18 @@
 ---
-import { useTranslations } from '../i18n/ui';
-import { Image } from 'astro:assets';
-import logoImg from '../assets/images/optimized/tomatenstau_logo.png';
+import { useTranslations } from "../i18n/ui";
+import { Image } from "astro:assets";
+import logoImg from "../assets/images/optimized/tomatenstau_logo.png";
 
 interface Props {
-  lang: 'en' | 'de';
+  lang: "en" | "de";
 }
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-const homeLink = lang === 'en' ? '/' : '/de';
-const switchEnLink = '/';
-const switchDeLink = '/de';
+const homeLink = lang === "en" ? "/" : "/de";
+const switchEnLink = "/";
+const switchDeLink = "/de";
 ---
 
 <header id="main-header" role="banner">
@@ -20,47 +20,71 @@ const switchDeLink = '/de';
     <div class="logo">
       <a
         href={homeLink}
-        aria-label={t('HEADER.ARIA.HOME_LINK')}
-        title={t('HEADER.ARIA.HOME_LINK')}
+        aria-label={t("HEADER.ARIA.HOME_LINK")}
+        title={t("HEADER.ARIA.HOME_LINK")}
       >
-        <Image src={logoImg} alt={t('SITE.NAME')} width={72} height={72} />
+        <Image src={logoImg} alt={t("SITE.NAME")} width={72} height={72} />
       </a>
     </div>
     <nav
       id="main-nav"
       role="navigation"
-      aria-label={t('HEADER.ARIA.MAIN_NAVIGATION')}
+      aria-label={t("HEADER.ARIA.MAIN_NAVIGATION")}
     >
       <ul class="header-social" role="list">
         <li role="listitem">
-          <a href="mailto:meik@tomatenstau.de" target="_blank" rel="noopener noreferrer" aria-label={`E-Mail - ${t('HEADER.ARIA.OPENS_NEW_WINDOW')}`}>
+          <a
+            href="mailto:meik@tomatenstau.de"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`E-Mail - ${t("HEADER.ARIA.OPENS_NEW_WINDOW")}`}
+          >
             <i class="fas fa-envelope" aria-hidden="true"></i>
           </a>
         </li>
         <li role="listitem">
-           <a href="https://github.com/Paulchenkiller" target="_blank" rel="noopener noreferrer" aria-label={`GitHub - ${t('HEADER.ARIA.OPENS_NEW_WINDOW')}`}>
+          <a
+            href="https://github.com/Paulchenkiller"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`GitHub - ${t("HEADER.ARIA.OPENS_NEW_WINDOW")}`}
+          >
             <i class="fab fa-github-square" aria-hidden="true"></i>
           </a>
         </li>
         <li role="listitem">
-            <a href="https://www.linkedin.com/in/meik-geldmacher" target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn - ${t('HEADER.ARIA.OPENS_NEW_WINDOW')}`}>
+          <a
+            href="https://www.linkedin.com/in/meik-geldmacher"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`LinkedIn - ${t("HEADER.ARIA.OPENS_NEW_WINDOW")}`}
+          >
             <i class="fab fa-linkedin" aria-hidden="true"></i>
           </a>
         </li>
         <li role="listitem">
-            <a href="https://www.xing.com/profile/Meik_Geldmacher" target="_blank" rel="noopener noreferrer" aria-label={`Xing - ${t('HEADER.ARIA.OPENS_NEW_WINDOW')}`}>
+          <a
+            href="https://www.xing.com/profile/Meik_Geldmacher"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Xing - ${t("HEADER.ARIA.OPENS_NEW_WINDOW")}`}
+          >
             <i class="fab fa-xing-square" aria-hidden="true"></i>
           </a>
         </li>
       </ul>
     </nav>
-    <ul class="header-lang" aria-label={t('HEADER.ARIA.LANG_SWITCHER')} role="list">
+    <ul
+      class="header-lang"
+      aria-label={t("HEADER.ARIA.LANG_SWITCHER")}
+      role="list"
+    >
       <li role="listitem">
         <a
           href={switchEnLink}
-          class:list={{ active: lang === 'en' }}
-          title={t('HEADER.LANG.EN')}
-          aria-label={t('HEADER.ARIA.SWITCH_EN')}
+          class:list={{ active: lang === "en" }}
+          title={t("HEADER.LANG.EN")}
+          aria-label={t("HEADER.ARIA.SWITCH_EN")}
         >
           <span class="fi fi-gb" aria-hidden="true"></span>
         </a>
@@ -68,19 +92,19 @@ const switchDeLink = '/de';
       <li role="listitem">
         <a
           href={switchDeLink}
-          class:list={{ active: lang === 'de' }}
-          title={t('HEADER.LANG.DE')}
-          aria-label={t('HEADER.ARIA.SWITCH_DE')}
+          class:list={{ active: lang === "de" }}
+          title={t("HEADER.LANG.DE")}
+          aria-label={t("HEADER.ARIA.SWITCH_DE")}
         >
           <span class="fi fi-de" aria-hidden="true"></span>
         </a>
       </li>
-       <li role="listitem">
+      <li role="listitem">
         <button
           type="button"
           id="high-contrast-toggle"
-          title={t('A11Y.HIGH_CONTRAST')}
-          aria-label={t('A11Y.TOGGLE_HIGH_CONTRAST')}
+          title={t("A11Y.HIGH_CONTRAST")}
+          aria-label={t("A11Y.TOGGLE_HIGH_CONTRAST")}
         >
           <i class="fas fa-universal-access" aria-hidden="true"></i>
         </button>
@@ -90,17 +114,17 @@ const switchDeLink = '/de';
 </header>
 
 <script>
-  const btn = document.getElementById('high-contrast-toggle');
+  const btn = document.getElementById("high-contrast-toggle");
   if (btn) {
-    btn.addEventListener('click', () => {
+    btn.addEventListener("click", () => {
       const body = document.body;
-      const isHc = body.getAttribute('data-theme') === 'hc';
+      const isHc = body.getAttribute("data-theme") === "hc";
       if (isHc) {
-        body.removeAttribute('data-theme');
-        btn.setAttribute('aria-pressed', 'false');
+        body.removeAttribute("data-theme");
+        btn.setAttribute("aria-pressed", "false");
       } else {
-        body.setAttribute('data-theme', 'hc');
-        btn.setAttribute('aria-pressed', 'true');
+        body.setAttribute("data-theme", "hc");
+        btn.setAttribute("aria-pressed", "true");
       }
     });
   }

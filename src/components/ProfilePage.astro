@@ -1,71 +1,78 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from './Header.astro';
-import Footer from './Footer.astro';
-import Headline from './Headline.astro';
-import { useTranslations } from '../i18n/ui';
-import { Image } from 'astro:assets';
-import profileImg from '../assets/images/optimized/profilbild.jpg';
+import Layout from "../layouts/Layout.astro";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import { useTranslations } from "../i18n/ui";
+import { Image } from "astro:assets";
+import profileImg from "../assets/images/optimized/profilbild.jpg";
 
 interface Props {
-  lang: 'en' | 'de';
+  lang: "en" | "de";
 }
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<Layout title={t('INDEX.NAME') + ' – ' + t('INDEX.TITLE')} description={t('INDEX.INTRO')} lang={lang}>
+<Layout
+  title={t("INDEX.NAME") + " – " + t("INDEX.TITLE")}
+  description={t("INDEX.INTRO")}
+  lang={lang}
+>
   <Header lang={lang} />
 
-  <main id="main-content" role="main" aria-label={t('CONTENT.ARIA.MAIN_CONTENT')}>
-      <section class="intro" aria-labelledby="main-heading">
-        <div class="container">
-          <div class="intro__media">
-            <Image
-                src={profileImg}
-                alt={t('INDEX.ARIA.PROFILE_PHOTO')}
-                class="intro__photo"
-                width={300}
-                height={300}
-                loading="eager"
-            />
-          </div>
-          <div class="intro__content">
-            <h1 id="main-heading">{t('INDEX.NAME')}</h1>
-            <h2 class="intro__title">{t('INDEX.TITLE')}</h2>
-            <p class="lead">{t('INDEX.INTRO')}</p>
-
-            <section aria-labelledby="highlights-heading">
-              <h3 id="highlights-heading" class="visually-hidden">
-                {t('INDEX.ARIA.HIGHLIGHTS_HEADING')}
-              </h3>
-              <ul class="intro__highlights" role="list">
-                <li role="listitem">
-                  <strong>{t('INDEX.HIGHLIGHTS.FOCUS')}</strong>
-                  {' '}{t('INDEX.HIGHLIGHTS.FOCUS_TEXT')}
-                </li>
-                <li role="listitem">
-                  <strong>{t('INDEX.HIGHLIGHTS.TECH')}</strong>
-                  {' '}{t('INDEX.HIGHLIGHTS.TECH_TEXT')}
-                </li>
-                <li role="listitem">
-                  <strong>{t('INDEX.HIGHLIGHTS.PLATFORMS')}</strong>
-                  {' '}{t('INDEX.HIGHLIGHTS.PLATFORMS_TEXT')}
-                </li>
-                <li role="listitem">
-                  <strong>{t('INDEX.HIGHLIGHTS.DOMAINS')}</strong>
-                  {' '}{t('INDEX.HIGHLIGHTS.DOMAINS_TEXT')}
-                </li>
-                <li role="listitem">
-                  <strong>{t('INDEX.HIGHLIGHTS.CERTS')}</strong>
-                  {' '}{t('INDEX.HIGHLIGHTS.CERTS_TEXT')}
-                </li>
-              </ul>
-            </section>
-          </div>
+  <main
+    id="main-content"
+    role="main"
+    aria-label={t("CONTENT.ARIA.MAIN_CONTENT")}
+  >
+    <section class="intro" aria-labelledby="main-heading">
+      <div class="container">
+        <div class="intro__media">
+          <Image
+            src={profileImg}
+            alt={t("INDEX.ARIA.PROFILE_PHOTO")}
+            class="intro__photo"
+            width={300}
+            height={300}
+            loading="eager"
+          />
         </div>
-      </section>
+        <div class="intro__content">
+          <h1 id="main-heading">{t("INDEX.NAME")}</h1>
+          <h2 class="intro__title">{t("INDEX.TITLE")}</h2>
+          <p class="lead">{t("INDEX.INTRO")}</p>
+
+          <section aria-labelledby="highlights-heading">
+            <h3 id="highlights-heading" class="visually-hidden">
+              {t("INDEX.ARIA.HIGHLIGHTS_HEADING")}
+            </h3>
+            <ul class="intro__highlights" role="list">
+              <li role="listitem">
+                <strong>{t("INDEX.HIGHLIGHTS.FOCUS")}</strong>
+                {" "}{t("INDEX.HIGHLIGHTS.FOCUS_TEXT")}
+              </li>
+              <li role="listitem">
+                <strong>{t("INDEX.HIGHLIGHTS.TECH")}</strong>
+                {" "}{t("INDEX.HIGHLIGHTS.TECH_TEXT")}
+              </li>
+              <li role="listitem">
+                <strong>{t("INDEX.HIGHLIGHTS.PLATFORMS")}</strong>
+                {" "}{t("INDEX.HIGHLIGHTS.PLATFORMS_TEXT")}
+              </li>
+              <li role="listitem">
+                <strong>{t("INDEX.HIGHLIGHTS.DOMAINS")}</strong>
+                {" "}{t("INDEX.HIGHLIGHTS.DOMAINS_TEXT")}
+              </li>
+              <li role="listitem">
+                <strong>{t("INDEX.HIGHLIGHTS.CERTS")}</strong>
+                {" "}{t("INDEX.HIGHLIGHTS.CERTS_TEXT")}
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer lang={lang} />

@@ -1,9 +1,9 @@
 ---
-import '../styles/css/base.css';
-import '../styles/css/vendor.min.css';
-import '../styles/css/main.scss';
-import '../styles/global.css';
-import 'flag-icons/css/flag-icons.min.css';
+import "../styles/css/base.css";
+import "../styles/css/vendor.min.css";
+import "../styles/css/main.scss";
+import "../styles/global.css";
+import "flag-icons/css/flag-icons.min.css";
 
 interface Props {
   title: string;
@@ -11,10 +11,10 @@ interface Props {
   lang?: string;
 }
 
-const { title, description, lang = 'en' } = Astro.props;
+const { title, description, lang = "en" } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />

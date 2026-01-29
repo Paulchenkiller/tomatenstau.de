@@ -1,13 +1,9 @@
 ---
-import { useTranslations } from '../i18n/ui';
-
 interface Props {
-  lang: 'en' | 'de';
+  lang: "en" | "de";
 }
 
-const { lang } = Astro.props;
 const currentYear = new Date().getFullYear();
-const t = useTranslations(lang);
 ---
 
 <footer>
