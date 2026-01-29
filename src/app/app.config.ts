@@ -10,32 +10,6 @@ import { TranslateFsLoader } from './translate-fs.loader';
 
 // Components
 import { IndexComponent } from './index/index.component';
-import { CodeComponent } from './code/code.component';
-import { PerlIndexComponent } from './code/perl/perl-index/perl-index.component';
-import { PythonIndexComponent } from './code/python/python-index/python-index.component';
-import { PrologIndexComponent } from './code/prolog/prolog-index/prolog-index.component';
-import { PrologAckermannComponent } from './code/prolog/prolog-ackermann/prolog-ackermann.component';
-import { PrologHanoiComponent } from './code/prolog/prolog-hanoi/prolog-hanoi.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { JavaIndexComponent } from './code/java/java-index/java-index.component';
-import { JavaEqualsHashcodeComponent } from './code/java/java-equals-hashcode/java-equals-hashcode.component';
-import { JavaConcurrentModificationComponent } from './code/java/java-concurrent-modification/java-concurrent-modification.component';
-import { PerlRegexGreedinessComponent } from './code/perl/perl-regex-greediness/perl-regex-greediness.component';
-import { PerlContextComponent } from './code/perl/perl-context/perl-context.component';
-import { PythonMutableDefaultComponent } from './code/python/python-mutable-default/python-mutable-default.component';
-import { PythonGilThreadsComponent } from './code/python/python-gil-threads/python-gil-threads.component';
-import { JavascriptIndexComponent } from './code/javascript/javascript-index/javascript-index.component';
-import { JavascriptClosuresScopeComponent } from './code/javascript/javascript-closures-scope/javascript-closures-scope.component';
-import { JavascriptHoistingTdzComponent } from './code/javascript/javascript-hoisting-tdz/javascript-hoisting-tdz.component';
-import { JavascriptAsyncAwaitComponent } from './code/javascript/javascript-async-await/javascript-async-await.component';
-import { JavascriptThisArrowComponent } from './code/javascript/javascript-this-arrow/javascript-this-arrow.component';
-import { TypescriptStructuralTypingComponent } from './code/javascript/typescript-structural-typing/typescript-structural-typing.component';
-import { HaskellIndexComponent } from './code/haskell/haskell-index/haskell-index.component';
-import { HaskellPurityIoComponent } from './code/haskell/haskell-purity-io/haskell-purity-io.component';
-import { HaskellLazyEvaluationComponent } from './code/haskell/haskell-lazy-evaluation/haskell-lazy-evaluation.component';
-import { HaskellTypeclassesComponent } from './code/haskell/haskell-typeclasses/haskell-typeclasses.component';
-import { HaskellMonadsComponent } from './code/haskell/haskell-monads/haskell-monads.component';
-import { HaskellPatternMatchingComponent } from './code/haskell/haskell-pattern-matching/haskell-pattern-matching.component';
 import { IconService } from './services/icon.service';
 
 export function TranslateLoaderFactory(transferState: TransferState, platformId: object) {
@@ -155,21 +129,46 @@ export const appConfig: ApplicationConfig = {
         path: 'code',
         data: { breadcrumb: 'Code', logo: 'terminal' },
         children: [
-          { path: '', component: CodeComponent },
+          {
+            path: '',
+            loadComponent: () => import('./code/code.component').then((m) => m.CodeComponent),
+          },
           {
             path: 'perl',
             data: { breadcrumb: 'Perl', logo: 'keyboard' },
             children: [
-              { path: '', component: PerlIndexComponent },
+              {
+                path: '',
+                loadComponent: () =>
+                  import('./code/perl/perl-index/perl-index.component').then(
+                    (m) => m.PerlIndexComponent,
+                  ),
+              },
               {
                 path: 'regex-greediness',
                 data: { breadcrumb: 'Regex Greedy/Lazy', logo: 'arrows-left-right' },
-                children: [{ path: '', component: PerlRegexGreedinessComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import('./code/perl/perl-regex-greediness/perl-regex-greediness.component').then(
+                        (m) => m.PerlRegexGreedinessComponent,
+                      ),
+                  },
+                ],
               },
               {
                 path: 'context',
                 data: { breadcrumb: 'Kontext', logo: 'list' },
-                children: [{ path: '', component: PerlContextComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import('./code/perl/perl-context/perl-context.component').then(
+                        (m) => m.PerlContextComponent,
+                      ),
+                  },
+                ],
               },
             ],
           },
@@ -177,16 +176,38 @@ export const appConfig: ApplicationConfig = {
             path: 'python',
             data: { breadcrumb: 'Python', logo: ['fab', 'python'] },
             children: [
-              { path: '', component: PythonIndexComponent },
+              {
+                path: '',
+                loadComponent: () =>
+                  import('./code/python/python-index/python-index.component').then(
+                    (m) => m.PythonIndexComponent,
+                  ),
+              },
               {
                 path: 'mutable-default',
                 data: { breadcrumb: 'Mutable Default', logo: 'exclamation' },
-                children: [{ path: '', component: PythonMutableDefaultComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import(
+                        './code/python/python-mutable-default/python-mutable-default.component'
+                      ).then((m) => m.PythonMutableDefaultComponent),
+                  },
+                ],
               },
               {
                 path: 'gil-threads',
                 data: { breadcrumb: 'GIL & Threads', logo: 'spinner' },
-                children: [{ path: '', component: PythonGilThreadsComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import('./code/python/python-gil-threads/python-gil-threads.component').then(
+                        (m) => m.PythonGilThreadsComponent,
+                      ),
+                  },
+                ],
               },
             ],
           },
@@ -194,16 +215,38 @@ export const appConfig: ApplicationConfig = {
             path: 'java',
             data: { breadcrumb: 'Java', logo: 'mug-hot' },
             children: [
-              { path: '', component: JavaIndexComponent },
+              {
+                path: '',
+                loadComponent: () =>
+                  import('./code/java/java-index/java-index.component').then(
+                    (m) => m.JavaIndexComponent,
+                  ),
+              },
               {
                 path: 'equals-hashcode',
                 data: { breadcrumb: 'equals & hashCode', logo: 'equals' },
-                children: [{ path: '', component: JavaEqualsHashcodeComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import('./code/java/java-equals-hashcode/java-equals-hashcode.component').then(
+                        (m) => m.JavaEqualsHashcodeComponent,
+                      ),
+                  },
+                ],
               },
               {
                 path: 'concurrent-modification',
                 data: { breadcrumb: 'ConcurrentModification', logo: 'code-branch' },
-                children: [{ path: '', component: JavaConcurrentModificationComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import(
+                        './code/java/java-concurrent-modification/java-concurrent-modification.component'
+                      ).then((m) => m.JavaConcurrentModificationComponent),
+                  },
+                ],
               },
             ],
           },
@@ -211,31 +254,77 @@ export const appConfig: ApplicationConfig = {
             path: 'javascript',
             data: { breadcrumb: 'JavaScript/TypeScript', logo: 'code' },
             children: [
-              { path: '', component: JavascriptIndexComponent },
+              {
+                path: '',
+                loadComponent: () =>
+                  import('./code/javascript/javascript-index/javascript-index.component').then(
+                    (m) => m.JavascriptIndexComponent,
+                  ),
+              },
               {
                 path: 'closures-scope',
                 data: { breadcrumb: 'Closures & Scope', logo: 'code' },
-                children: [{ path: '', component: JavascriptClosuresScopeComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import(
+                        './code/javascript/javascript-closures-scope/javascript-closures-scope.component'
+                      ).then((m) => m.JavascriptClosuresScopeComponent),
+                  },
+                ],
               },
               {
                 path: 'hoisting-tdz',
                 data: { breadcrumb: 'Hoisting & TDZ', logo: 'code' },
-                children: [{ path: '', component: JavascriptHoistingTdzComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import(
+                        './code/javascript/javascript-hoisting-tdz/javascript-hoisting-tdz.component'
+                      ).then((m) => m.JavascriptHoistingTdzComponent),
+                  },
+                ],
               },
               {
                 path: 'async-await',
                 data: { breadcrumb: 'async/await', logo: 'code' },
-                children: [{ path: '', component: JavascriptAsyncAwaitComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import(
+                        './code/javascript/javascript-async-await/javascript-async-await.component'
+                      ).then((m) => m.JavascriptAsyncAwaitComponent),
+                  },
+                ],
               },
               {
                 path: 'this-arrow',
                 data: { breadcrumb: 'this & Arrow', logo: 'code' },
-                children: [{ path: '', component: JavascriptThisArrowComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import(
+                        './code/javascript/javascript-this-arrow/javascript-this-arrow.component'
+                      ).then((m) => m.JavascriptThisArrowComponent),
+                  },
+                ],
               },
               {
                 path: 'ts-structural-typing',
                 data: { breadcrumb: 'TS Structural Typing', logo: 'code' },
-                children: [{ path: '', component: TypescriptStructuralTypingComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import(
+                        './code/javascript/typescript-structural-typing/typescript-structural-typing.component'
+                      ).then((m) => m.TypescriptStructuralTypingComponent),
+                  },
+                ],
               },
             ],
           },
@@ -243,31 +332,77 @@ export const appConfig: ApplicationConfig = {
             path: 'haskell',
             data: { breadcrumb: 'Haskell', logo: 'code' },
             children: [
-              { path: '', component: HaskellIndexComponent },
+              {
+                path: '',
+                loadComponent: () =>
+                  import('./code/haskell/haskell-index/haskell-index.component').then(
+                    (m) => m.HaskellIndexComponent,
+                  ),
+              },
               {
                 path: 'purity-io',
                 data: { breadcrumb: 'Purity & IO', logo: 'code' },
-                children: [{ path: '', component: HaskellPurityIoComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import('./code/haskell/haskell-purity-io/haskell-purity-io.component').then(
+                        (m) => m.HaskellPurityIoComponent,
+                      ),
+                  },
+                ],
               },
               {
                 path: 'lazy-evaluation',
                 data: { breadcrumb: 'Lazy Evaluation', logo: 'code' },
-                children: [{ path: '', component: HaskellLazyEvaluationComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import(
+                        './code/haskell/haskell-lazy-evaluation/haskell-lazy-evaluation.component'
+                      ).then((m) => m.HaskellLazyEvaluationComponent),
+                  },
+                ],
               },
               {
                 path: 'typeclasses',
                 data: { breadcrumb: 'Typeclasses', logo: 'code' },
-                children: [{ path: '', component: HaskellTypeclassesComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import('./code/haskell/haskell-typeclasses/haskell-typeclasses.component').then(
+                        (m) => m.HaskellTypeclassesComponent,
+                      ),
+                  },
+                ],
               },
               {
                 path: 'monads',
                 data: { breadcrumb: 'Monaden', logo: 'code' },
-                children: [{ path: '', component: HaskellMonadsComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import('./code/haskell/haskell-monads/haskell-monads.component').then(
+                        (m) => m.HaskellMonadsComponent,
+                      ),
+                  },
+                ],
               },
               {
                 path: 'pattern-matching',
                 data: { breadcrumb: 'Pattern Matching', logo: 'code' },
-                children: [{ path: '', component: HaskellPatternMatchingComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import(
+                        './code/haskell/haskell-pattern-matching/haskell-pattern-matching.component'
+                      ).then((m) => m.HaskellPatternMatchingComponent),
+                  },
+                ],
               },
             ],
           },
@@ -275,22 +410,48 @@ export const appConfig: ApplicationConfig = {
             path: 'prolog',
             data: { breadcrumb: 'Prolog', logo: 'brain' },
             children: [
-              { path: '', component: PrologIndexComponent },
+              {
+                path: '',
+                loadComponent: () =>
+                  import('./code/prolog/prolog-index/prolog-index.component').then(
+                    (m) => m.PrologIndexComponent,
+                  ),
+              },
               {
                 path: 'ackermann',
                 data: { breadcrumb: 'Ackermann', logo: 'superscript' },
-                children: [{ path: '', component: PrologAckermannComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import('./code/prolog/prolog-ackermann/prolog-ackermann.component').then(
+                        (m) => m.PrologAckermannComponent,
+                      ),
+                  },
+                ],
               },
               {
                 path: 'hanoi',
                 data: { breadcrumb: 'Hanoi', logo: 'gopuram' },
-                children: [{ path: '', component: PrologHanoiComponent }],
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () =>
+                      import('./code/prolog/prolog-hanoi/prolog-hanoi.component').then(
+                        (m) => m.PrologHanoiComponent,
+                      ),
+                  },
+                ],
               },
             ],
           },
         ],
       },
-      { path: '**', component: PageNotFoundComponent },
+      {
+        path: '**',
+        loadComponent: () =>
+          import('./page-not-found/page-not-found.component').then((m) => m.PageNotFoundComponent),
+      },
     ]),
   ],
 };
