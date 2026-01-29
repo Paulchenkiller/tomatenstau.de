@@ -2,7 +2,7 @@ import { provideServerRendering } from '@angular/ssr';
 import { mergeApplicationConfig, ApplicationConfig, APP_INITIALIZER } from '@angular/core';
 import { appConfig } from './app.config';
 import { TransferState, makeStateKey } from '@angular/core';
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
 const serverConfig: ApplicationConfig = {
@@ -18,10 +18,12 @@ const serverConfig: ApplicationConfig = {
         languages.forEach((lang) => {
           try {
             const filePath = join(distPath, 'assets', 'i18n', `${lang}.json`);
-            const content = readFileSync(filePath, 'utf8');
-            const data = JSON.parse(content);
-            const key = makeStateKey<any>(`transfer-translate-${lang}`);
-            transferState.set(key, data);
+            if (existsSync(filePath)) {
+              const content = readFileSync(filePath, 'utf8');
+              const data = JSON.parse(content);
+              const key = makeStateKey<any>(`transfer-translate-${lang}`);
+              transferState.set(key, data);
+            }
           } catch (error) {
             console.warn(`Could not load translation file for ${lang}:`, error);
           }
