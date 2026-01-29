@@ -1,4 +1,4 @@
-import { Component, Inject, AfterViewInit, DOCUMENT } from '@angular/core';
+import { Component, Inject, DOCUMENT } from '@angular/core';
 
 import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';
@@ -14,7 +14,7 @@ import { filter } from 'rxjs/operators';
   standalone: true,
   imports: [HeaderComponent, ContentComponent, FooterComponent, TranslateModule],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   constructor(
     private translate: TranslateService,
     private router: Router,
@@ -27,20 +27,11 @@ export class AppComponent implements AfterViewInit {
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe(() => {
         this.updateMeta();
-        // Defer enhancement to allow content rendering
-        setTimeout(() => this.enhanceCodeBlocks(), 0);
       });
 
     this.translate.onLangChange.subscribe(() => {
       this.updateMeta();
-      // Update button labels when language changes
-      setTimeout(() => this.enhanceCodeBlocks(), 0);
     });
-  }
-
-  ngAfterViewInit(): void {
-    // Initial enhancement after the first view is ready
-    setTimeout(() => this.enhanceCodeBlocks(), 0);
   }
 
   private updateMeta(): void {
@@ -96,31 +87,6 @@ export class AppComponent implements AfterViewInit {
     const map: Record<string, string> = {
       '': 'NAV.HOME',
       '/': 'NAV.HOME',
-      '/code': 'NAV.CODE',
-      '/code/perl': 'NAV.PERL',
-      '/code/perl/regex-greediness': 'NAV.REGEX_GREEDY_LAZY',
-      '/code/perl/context': 'NAV.CONTEXT',
-      '/code/python': 'NAV.PYTHON',
-      '/code/python/mutable-default': 'NAV.MUTABLE_DEFAULT',
-      '/code/python/gil-threads': 'NAV.GIL_THREADS',
-      '/code/java': 'NAV.JAVA',
-      '/code/java/equals-hashcode': 'NAV.EQUALS_HASHCODE',
-      '/code/java/concurrent-modification': 'NAV.CONCURRENT_MODIFICATION',
-      '/code/javascript': 'NAV.JAVASCRIPT',
-      '/code/javascript/closures-scope': 'NAV.CLOSURES_SCOPE',
-      '/code/javascript/hoisting-tdz': 'NAV.HOISTING_TDZ',
-      '/code/javascript/async-await': 'NAV.ASYNC_AWAIT',
-      '/code/javascript/this-arrow': 'NAV.THIS_ARROW',
-      '/code/javascript/ts-structural-typing': 'NAV.TS_STRUCTURAL_TYPING',
-      '/code/haskell': 'NAV.HASKELL',
-      '/code/haskell/purity-io': 'NAV.PURITY_IO',
-      '/code/haskell/lazy-evaluation': 'NAV.LAZY_EVALUATION',
-      '/code/haskell/typeclasses': 'NAV.TYPECLASSES',
-      '/code/haskell/monads': 'NAV.MONADS',
-      '/code/haskell/pattern-matching': 'NAV.PATTERN_MATCHING',
-      '/code/prolog': 'NAV.PROLOG',
-      '/code/prolog/ackermann': 'NAV.ACKERMANN',
-      '/code/prolog/hanoi': 'NAV.HANOI',
       '/404': '404.TITLE',
     };
     return map[clean] || 'NAV.HOME';
@@ -131,31 +97,6 @@ export class AppComponent implements AfterViewInit {
     const map: Record<string, string> = {
       '': 'INDEX.INTRO',
       '/': 'INDEX.INTRO',
-      '/code': 'CODE.INTRO',
-      '/code/perl': 'PERL.INDEX.INTRO',
-      '/code/perl/regex-greediness': 'PERL.REGEX.INTRO',
-      '/code/perl/context': 'PERL.CONTEXT.INTRO',
-      '/code/python': 'PYTHON.INDEX.INTRO',
-      '/code/python/mutable-default': 'PYTHON.MUTABLE_DEFAULT.INTRO',
-      '/code/python/gil-threads': 'PYTHON.GIL_THREADS.INTRO',
-      '/code/java': 'JAVA.INDEX.INTRO',
-      '/code/java/equals-hashcode': 'JAVA.EQUALS_HASHCODE.INTRO',
-      '/code/java/concurrent-modification': 'JAVA.CONCURRENT.INTRO',
-      '/code/javascript': 'JAVASCRIPT.INDEX.INTRO',
-      '/code/javascript/closures-scope': 'JAVASCRIPT.CLOSURES.INTRO',
-      '/code/javascript/hoisting-tdz': 'JAVASCRIPT.HOISTING.INTRO',
-      '/code/javascript/async-await': 'JAVASCRIPT.ASYNC.INTRO',
-      '/code/javascript/this-arrow': 'JAVASCRIPT.THIS.INTRO',
-      '/code/javascript/ts-structural-typing': 'JAVASCRIPT.TS.INTRO',
-      '/code/haskell': 'HASKELL.INDEX.INTRO',
-      '/code/haskell/purity-io': 'HASKELL.PURITY.INTRO',
-      '/code/haskell/lazy-evaluation': 'HASKELL.LAZY.INTRO',
-      '/code/haskell/typeclasses': 'HASKELL.TYPECLASSES.INTRO',
-      '/code/haskell/monads': 'HASKELL.MONADS.INTRO',
-      '/code/haskell/pattern-matching': 'HASKELL.PATTERN.INTRO',
-      '/code/prolog': 'PROLOG.INDEX.INTRO',
-      '/code/prolog/ackermann': 'PROLOG.ACKERMANN.P1',
-      '/code/prolog/hanoi': 'PROLOG.HANOI.P1',
       '/404': '404.SUBTITLE',
     };
     return map[clean] || 'INDEX.INTRO';
@@ -229,111 +170,6 @@ export class AppComponent implements AfterViewInit {
       this.doc.head.appendChild(script);
     }
     script.textContent = JSON.stringify(data);
-  }
-
-  // Enhance code blocks: add accessible "Copy" buttons with i18n labels and keyboard support
-  private enhanceCodeBlocks(): void {
-    try {
-      // Fallback labels for immediate accessibility, even before translations load
-      const fallbackCopy = 'Copy code to clipboard';
-      const fallbackCopied = 'Copied!';
-
-      const pres = Array.from(this.doc.querySelectorAll('pre')) as HTMLPreElement[];
-      for (const pre of pres) {
-        const code = pre.querySelector('code');
-        if (!code) continue;
-
-        // Ensure pre is relatively positioned for optional button positioning via CSS (non-destructive)
-        if (!pre.style.position) {
-          // don't override existing author styles
-          pre.style.position = 'relative';
-        }
-
-        let btn = pre.querySelector('button.copy-btn') as HTMLButtonElement | null;
-        if (!btn) {
-          btn = this.doc.createElement('button');
-          btn.type = 'button';
-          btn.className = 'copy-btn';
-          // default placement can be adjusted via CSS
-          btn.style.position = 'absolute';
-          btn.style.top = '0.5rem';
-          btn.style.right = '0.5rem';
-
-          // Set immediate accessibility attributes with fallback values
-          btn.setAttribute('aria-label', fallbackCopy);
-          btn.title = fallbackCopy;
-          btn.textContent = fallbackCopy;
-          btn.setAttribute('type', 'button');
-          btn.setAttribute('role', 'button');
-
-          btn.addEventListener('click', () => {
-            // Use direct fallbacks to ensure feedback always works
-            const currentCopy = btn!.getAttribute('aria-label') || fallbackCopy;
-            this.copyCode(pre, code, btn!, currentCopy, fallbackCopied);
-          });
-
-          // Key accessibility: button already handles Enter/Space by default; no extra needed
-          pre.appendChild(btn);
-        }
-      }
-
-      // After initial setup, try to get translations and update labels
-      this.translate.get(['A11Y.COPY_CODE', 'A11Y.COPIED']).subscribe((dict) => {
-        const tCopy = dict['A11Y.COPY_CODE'] || fallbackCopy;
-        const _tCopied = dict['A11Y.COPIED'] || fallbackCopied;
-
-        const buttons = Array.from(
-          this.doc.querySelectorAll('button.copy-btn'),
-        ) as HTMLButtonElement[];
-        for (const btn of buttons) {
-          // Ensure button always has text - use fallback if translation is empty
-          const finalCopy = tCopy && tCopy.trim() ? tCopy : fallbackCopy;
-          btn.setAttribute('aria-label', finalCopy);
-          btn.title = finalCopy;
-          btn.textContent = finalCopy;
-        }
-      });
-    } catch {
-      // no-op: DOM not ready or no document (SSR)
-    }
-  }
-
-  private async copyCode(
-    pre: HTMLPreElement,
-    codeEl: Element,
-    btn: HTMLButtonElement,
-    tCopy: string,
-    tCopied: string,
-  ): Promise<void> {
-    const text = codeEl.textContent || '';
-    try {
-      if (navigator && 'clipboard' in navigator && (navigator as any).clipboard?.writeText) {
-        await (navigator as any).clipboard.writeText(text);
-      } else {
-        const ta = this.doc.createElement('textarea');
-        ta.value = text;
-        // Off-screen copy aid
-        ta.style.position = 'fixed';
-        ta.style.top = '-1000px';
-        this.doc.body.appendChild(ta);
-        ta.focus();
-        ta.select();
-        try {
-          this.doc.execCommand('copy');
-        } catch {}
-        this.doc.body.removeChild(ta);
-      }
-    } catch {
-      // ignore copy errors
-    } finally {
-      // Always provide user feedback regardless of copy API availability
-      btn.setAttribute('aria-label', tCopied);
-      btn.textContent = tCopied;
-      setTimeout(() => {
-        btn.setAttribute('aria-label', tCopy);
-        btn.textContent = tCopy;
-      }, 1500);
-    }
   }
 
   private removeTagById(id: string): void {

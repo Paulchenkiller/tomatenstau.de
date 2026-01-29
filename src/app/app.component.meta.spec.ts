@@ -13,10 +13,13 @@ class TranslateStub {
   getDefaultLang() {
     return 'en';
   }
+  get currentLang() {
+    return 'en';
+  }
 }
 
 class RouterStub {
-  public url = '/code/python';
+  public url = '/404';
   public events = new Subject<any>();
 }
 
@@ -52,19 +55,19 @@ describe('AppComponent meta and links', () => {
 
   it('should compose translated title from site name and section label', () => {
     // With our Translate stub, instant(key) returns the key itself
-    expect(document.title).toBe('INDEX.NAME – NAV.PYTHON');
+    expect(document.title).toBe('INDEX.NAME – 404.TITLE');
   });
 
   it('should set translated description meta tag based on route', () => {
     const tag = meta.getTag('name="description"');
-    expect(tag?.content).toBe('PYTHON.INDEX.INTRO');
+    expect(tag?.content).toBe('404.SUBTITLE');
   });
 
   it('should generate canonical and hreflang link tags', () => {
     const origin = window.location.origin;
     const canonical = document.getElementById('canonical-link') as HTMLLinkElement | null;
     expect(canonical).toBeTruthy();
-    expect(canonical!.href).toBe(`${origin}/code/python`);
+    expect(canonical!.href).toBe(`${origin}/404`);
 
     const en = document.getElementById('hreflang-en') as HTMLLinkElement | null;
     const de = document.getElementById('hreflang-de') as HTMLLinkElement | null;
@@ -78,9 +81,9 @@ describe('AppComponent meta and links', () => {
     expect(de?.getAttribute('hreflang')).toBe('de');
     expect(xd?.getAttribute('hreflang')).toBe('x-default');
 
-    expect(en?.href).toBe(`${origin}/code/python?lang=en`);
-    expect(de?.href).toBe(`${origin}/code/python?lang=de`);
-    expect(xd?.href).toBe(`${origin}/code/python`);
+    expect(en?.href).toBe(`${origin}/404?lang=en`);
+    expect(de?.href).toBe(`${origin}/404?lang=de`);
+    expect(xd?.href).toBe(`${origin}/404`);
   });
 
   it('should inject BreadcrumbList JSON-LD on non-home routes and not inject Person', () => {
