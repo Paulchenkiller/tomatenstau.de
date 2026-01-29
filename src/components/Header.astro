@@ -23,7 +23,7 @@ const switchDeLink = "/de";
         aria-label={t("HEADER.ARIA.HOME_LINK")}
         title={t("HEADER.ARIA.HOME_LINK")}
       >
-        <Image src={logoImg} alt={t("SITE.NAME")} width={72} height={72} />
+        <Image src={logoImg} alt={t("SITE.NAME")} width={72} height={72} loading="eager" />
       </a>
     </div>
     <nav
@@ -141,6 +141,7 @@ const switchDeLink = "/de";
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    width: 100%; /* Ensure it takes full width of the .row container */
   }
 
   .logo a {
