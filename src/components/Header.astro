@@ -1,0 +1,174 @@
+---
+import { useTranslations } from '../i18n/ui';
+import { Image } from 'astro:assets';
+import logoImg from '../assets/images/optimized/tomatenstau_logo.png';
+
+interface Props {
+  lang: 'en' | 'de';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const homeLink = lang === 'en' ? '/' : '/de';
+const switchEnLink = '/';
+const switchDeLink = '/de';
+---
+
+<header id="main-header" role="banner">
+  <div class="row header-content-wrapper">
+    <div class="logo">
+      <a
+        href={homeLink}
+        aria-label={t('HEADER.ARIA.HOME_LINK')}
+        title={t('HEADER.ARIA.HOME_LINK')}
+      >
+        <Image src={logoImg} alt={t('SITE.NAME')} width={72} height={72} />
+      </a>
+    </div>
+    <nav
+      id="main-nav"
+      role="navigation"
+      aria-label={t('HEADER.ARIA.MAIN_NAVIGATION')}
+    >
+      <ul class="header-social" role="list">
+        <li role="listitem">
+          <a href="mailto:meik@tomatenstau.de" target="_blank" rel="noopener noreferrer" aria-label={`E-Mail - ${t('HEADER.ARIA.OPENS_NEW_WINDOW')}`}>
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li role="listitem">
+           <a href="https://github.com/Paulchenkiller" target="_blank" rel="noopener noreferrer" aria-label={`GitHub - ${t('HEADER.ARIA.OPENS_NEW_WINDOW')}`}>
+            <i class="fab fa-github-square" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li role="listitem">
+            <a href="https://www.linkedin.com/in/meik-geldmacher" target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn - ${t('HEADER.ARIA.OPENS_NEW_WINDOW')}`}>
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li role="listitem">
+            <a href="https://www.xing.com/profile/Meik_Geldmacher" target="_blank" rel="noopener noreferrer" aria-label={`Xing - ${t('HEADER.ARIA.OPENS_NEW_WINDOW')}`}>
+            <i class="fab fa-xing-square" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <ul class="header-lang" aria-label={t('HEADER.ARIA.LANG_SWITCHER')} role="list">
+      <li role="listitem">
+        <a
+          href={switchEnLink}
+          class:list={{ active: lang === 'en' }}
+          title={t('HEADER.LANG.EN')}
+          aria-label={t('HEADER.ARIA.SWITCH_EN')}
+        >
+          <span class="fi fi-gb" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li role="listitem">
+        <a
+          href={switchDeLink}
+          class:list={{ active: lang === 'de' }}
+          title={t('HEADER.LANG.DE')}
+          aria-label={t('HEADER.ARIA.SWITCH_DE')}
+        >
+          <span class="fi fi-de" aria-hidden="true"></span>
+        </a>
+      </li>
+       <li role="listitem">
+        <button
+          type="button"
+          id="high-contrast-toggle"
+          title={t('A11Y.HIGH_CONTRAST')}
+          aria-label={t('A11Y.TOGGLE_HIGH_CONTRAST')}
+        >
+          <i class="fas fa-universal-access" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('high-contrast-toggle');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const body = document.body;
+      const isHc = body.getAttribute('data-theme') === 'hc';
+      if (isHc) {
+        body.removeAttribute('data-theme');
+        btn.setAttribute('aria-pressed', 'false');
+      } else {
+        body.setAttribute('data-theme', 'hc');
+        btn.setAttribute('aria-pressed', 'true');
+      }
+    });
+  }
+</script>
+
+<style>
+  #main-header {
+    background: #111417;
+    padding: 20px 0;
+    border-bottom: 1px solid #283436;
+  }
+  .header-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .logo a {
+    display: block;
+  }
+  .logo img {
+    display: block;
+    height: auto;
+  }
+
+  /* Social Icons */
+  .header-social {
+    display: flex;
+    gap: 20px;
+    margin: 0 20px;
+    padding: 0;
+    list-style: none;
+  }
+  .header-social a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+  }
+  .header-social a:hover {
+    color: #2e7d32;
+  }
+
+  /* Language Switcher */
+  .header-lang {
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+  }
+  .header-lang button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  .header-lang button:hover {
+    color: #2e7d32;
+  }
+
+  @media (max-width: 600px) {
+    .header-content-wrapper {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+</style>

@@ -1,0 +1,95 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: 'en' | 'de';
+}
+
+const { lang } = Astro.props;
+const currentYear = new Date().getFullYear();
+const t = useTranslations(lang);
+---
+
+<footer>
+  <div class="row">
+    <div class="twelve columns content footer-compact">
+      <ul class="social-links">
+        <li>
+          <a
+            href="mailto:meik@tomatenstau.de"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="E-Mail"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/Paulchenkiller"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <i class="fab fa-github-square"></i>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/meik-geldmacher"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.xing.com/profile/Meik_Geldmacher"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Xing"
+          >
+            <i class="fab fa-xing-square"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="copyright">
+        <li>&copy; {currentYear} Tomatenstau.de</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: #0f1215;
+    padding: 30px 0;
+    margin-top: 60px;
+    border-top: 1px solid #1f2326;
+    text-align: center;
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+  .social-links a {
+    color: #575859;
+    font-size: 1.8rem;
+  }
+  .social-links a:hover {
+    color: #fff;
+  }
+  .copyright {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #3f4143;
+    font-size: 1.4rem;
+  }
+</style>
