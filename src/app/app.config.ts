@@ -151,9 +151,9 @@ export const appConfig: ApplicationConfig = {
                   {
                     path: '',
                     loadComponent: () =>
-                      import('./code/perl/perl-regex-greediness/perl-regex-greediness.component').then(
-                        (m) => m.PerlRegexGreedinessComponent,
-                      ),
+                      import(
+                        './code/perl/perl-regex-greediness/perl-regex-greediness.component'
+                      ).then((m) => m.PerlRegexGreedinessComponent),
                   },
                 ],
               },
@@ -229,9 +229,9 @@ export const appConfig: ApplicationConfig = {
                   {
                     path: '',
                     loadComponent: () =>
-                      import('./code/java/java-equals-hashcode/java-equals-hashcode.component').then(
-                        (m) => m.JavaEqualsHashcodeComponent,
-                      ),
+                      import(
+                        './code/java/java-equals-hashcode/java-equals-hashcode.component'
+                      ).then((m) => m.JavaEqualsHashcodeComponent),
                   },
                 ],
               },
@@ -372,9 +372,9 @@ export const appConfig: ApplicationConfig = {
                   {
                     path: '',
                     loadComponent: () =>
-                      import('./code/haskell/haskell-typeclasses/haskell-typeclasses.component').then(
-                        (m) => m.HaskellTypeclassesComponent,
-                      ),
+                      import(
+                        './code/haskell/haskell-typeclasses/haskell-typeclasses.component'
+                      ).then((m) => m.HaskellTypeclassesComponent),
                   },
                 ],
               },
