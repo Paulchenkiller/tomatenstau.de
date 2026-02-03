@@ -4,7 +4,10 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": ["jest"],
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "paths": {
+      "@angular/common/http": ["./node_modules/@angular/common/types/http.d.ts"]
+    }
   },
   "files": ["src/polyfills.ts"],
   "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]

@@ -17,7 +17,7 @@ jobs:
       is-docs-only: ${{ steps.changes.outputs.docs-only }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -43,7 +43,7 @@ jobs:
     if: needs.setup.outputs.should-skip != 'true'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Check Conventional Commits
         uses: wagoid/commitlint-github-action@v6
@@ -58,7 +58,7 @@ jobs:
     if: needs.setup.outputs.should-skip != 'true' && needs.setup.outputs.is-docs-only != 'true'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Use Node.js
         uses: actions/setup-node@v6
@@ -78,7 +78,7 @@ jobs:
     if: needs.setup.outputs.should-skip != 'true' && needs.setup.outputs.is-docs-only != 'true'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Use Node.js
         uses: actions/setup-node@v6
@@ -100,7 +100,7 @@ jobs:
     if: needs.setup.outputs.should-skip != 'true' && needs.setup.outputs.is-docs-only != 'true'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Use Node.js
         uses: actions/setup-node@v6
@@ -112,7 +112,7 @@ jobs:
         run: npm ci
 
       - name: Cache Angular build
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             .angular/cache
@@ -125,7 +125,7 @@ jobs:
         run: npm run build -- --configuration=production
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: build-artifacts
           path: dist
