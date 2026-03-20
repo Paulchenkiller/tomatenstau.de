@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { CodeCopyDirective } from '../../code-copy.directive';
 
 @Component({
   selector: 'app-python-mutable-default',
   templateUrl: './python-mutable-default.component.html',
-  imports: [Highlight, HeadlineComponent, TranslateModule],
+  imports: [Highlight, CodeCopyDirective, HeadlineComponent, TranslateModule],
 })
 export class PythonMutableDefaultComponent {
   badCode = `def append_item(x, lst=[]):

@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { HeadlineComponent } from '../../../headline/headline.component';
 import { Highlight } from 'ngx-highlightjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { CodeCopyDirective } from '../../code-copy.directive';
 
 @Component({
   selector: 'app-prolog-hanoi',
   templateUrl: './prolog-hanoi.component.html',
-  imports: [HeadlineComponent, Highlight, TranslateModule],
+  imports: [HeadlineComponent, Highlight, CodeCopyDirective, TranslateModule],
 })
 export class PrologHanoiComponent {
   languages = [];

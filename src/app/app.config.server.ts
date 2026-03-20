@@ -4,6 +4,28 @@ import { appConfig } from './app.config';
 import { TransferState, makeStateKey } from '@angular/core';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
+import { TranslationDictionary } from './types/translation-dictionary';
+
+function loadTranslationDictionary(filePath: string, lang: string): TranslationDictionary | null {
+  if (!existsSync(filePath)) {
+    return null;
+  }
+
+  let content: string;
+  try {
+    content = readFileSync(filePath, 'utf8');
+  } catch (error) {
+    console.warn(`Could not read translation file for ${lang} at ${filePath}.`, error);
+    return null;
+  }
+
+  try {
+    return JSON.parse(content) as TranslationDictionary;
+  } catch (error) {
+    console.warn(`Could not parse translation file for ${lang} at ${filePath}.`, error);
+    return null;
+  }
+}
 
 const serverConfig: ApplicationConfig = {
   providers: [
@@ -16,16 +38,11 @@ const serverConfig: ApplicationConfig = {
         const distPath = join(process.cwd(), 'dist', 'tomatenstaude', 'browser');
 
         languages.forEach((lang) => {
-          try {
-            const filePath = join(distPath, 'assets', 'i18n', `${lang}.json`);
-            if (existsSync(filePath)) {
-              const content = readFileSync(filePath, 'utf8');
-              const data = JSON.parse(content);
-              const key = makeStateKey<any>(`transfer-translate-${lang}`);
-              transferState.set(key, data);
-            }
-          } catch (error) {
-            console.warn(`Could not load translation file for ${lang}:`, error);
+          const filePath = join(distPath, 'assets', 'i18n', `${lang}.json`);
+          const data = loadTranslationDictionary(filePath, lang);
+          if (data) {
+            const key = makeStateKey<TranslationDictionary>(`transfer-translate-${lang}`);
+            transferState.set(key, data);
           }
         });
       },

@@ -13,7 +13,6 @@ module.exports = {
   ],
   collectCoverage: true,
   collectCoverageFrom: [
-    'src/app/breadcrumb/**/*.ts',
     'src/app/header/**/*.ts',
     'src/app/app.component.ts',
     'src/app/page-not-found/**/*.ts',

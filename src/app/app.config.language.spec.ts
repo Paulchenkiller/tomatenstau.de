@@ -1,17 +1,22 @@
-import { TestBed } from '@angular/core/testing';
-import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { provideHttpClient } from '@angular/common/http';
-import { PLATFORM_ID } from '@angular/core';
+import {
+  readBrowserCookie,
+  resolvePreferredLanguage,
+  writeBrowserCookie,
+  writeBrowserStorage,
+} from './preferences/browser-preferences';
 
-describe('Language Initialization (app.config.ts)', () => {
-  let translateService: TranslateService;
-  let mockLocalStorage: { [key: string]: string };
-  let mockDocument: any;
+interface MockCookieDocument {
+  cookie: string;
+}
+
+describe('browser-preferences', () => {
+  let mockLocalStorage: Record<string, string>;
+  let mockDocument: MockCookieDocument;
+  let storage: Storage;
 
   beforeEach(() => {
-    // Mock localStorage
     mockLocalStorage = {};
-    const localStorageMock = {
+    storage = {
       getItem: (key: string) => mockLocalStorage[key] || null,
       setItem: (key: string, value: string) => {
         mockLocalStorage[key] = value;
@@ -22,285 +27,82 @@ describe('Language Initialization (app.config.ts)', () => {
       clear: () => {
         mockLocalStorage = {};
       },
-    };
-    Object.defineProperty(window, 'localStorage', {
-      value: localStorageMock,
-      writable: true,
-    });
+      key: (_index: number) => null,
+      length: 0,
+    } as Storage;
 
-    // Mock document.cookie
-    mockDocument = {
-      cookie: '',
-    };
-    Object.defineProperty(document, 'cookie', {
-      get: () => mockDocument.cookie,
-      set: (value: string) => {
-        mockDocument.cookie = value;
-      },
-      configurable: true,
-    });
+    mockDocument = { cookie: '' };
   });
 
-  afterEach(() => {
-    TestBed.resetTestingModule();
+  function resolveLanguage(search: string, navigatorLanguages = ['en-US']): string {
+    return resolvePreferredLanguage({
+      doc: mockDocument as Document,
+      fallback: 'en',
+      navigatorLanguage: navigatorLanguages[0],
+      navigatorLanguages,
+      search,
+      storage,
+      supported: ['en', 'de'],
+    }).resolvedLang;
+  }
+
+  it('reads and writes cookies safely', () => {
+    writeBrowserCookie(mockDocument as Document, 'lang', 'de', 365);
+
+    expect(mockDocument.cookie).toContain('lang=de');
+    expect(readBrowserCookie(mockDocument as Document, 'lang')).toBe('de');
   });
 
-  describe('URL Parameter Language Selection', () => {
-    it('should use language from URL parameter ?lang=de', () => {
-      // Mock window.location.search
-      window.history.pushState({}, '', '/?lang=de');
+  it('writes storage safely', () => {
+    writeBrowserStorage(storage, 'lang', 'de');
 
-      TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot()],
-        providers: [provideHttpClient(), { provide: PLATFORM_ID, useValue: 'browser' }],
-      });
-
-      translateService = TestBed.inject(TranslateService);
-      translateService.addLangs(['en', 'de']);
-      translateService.setDefaultLang('en');
-
-      // Simulate URL parameter detection
-      const params = new URLSearchParams(window.location.search);
-      const urlLang = params.get('lang');
-      if (urlLang && ['en', 'de'].includes(urlLang.toLowerCase())) {
-        translateService.use(urlLang.toLowerCase());
-      }
-
-      expect(translateService.currentLang).toBe('de');
-    });
-
-    it('should use language from URL parameter ?lang=en', () => {
-      window.history.pushState({}, '', '/?lang=en');
-
-      TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot()],
-        providers: [provideHttpClient(), { provide: PLATFORM_ID, useValue: 'browser' }],
-      });
-
-      translateService = TestBed.inject(TranslateService);
-      translateService.addLangs(['en', 'de']);
-      translateService.setDefaultLang('en');
-
-      const params = new URLSearchParams(window.location.search);
-      const urlLang = params.get('lang');
-      if (urlLang && ['en', 'de'].includes(urlLang.toLowerCase())) {
-        translateService.use(urlLang.toLowerCase());
-      }
-
-      expect(translateService.currentLang).toBe('en');
-    });
-
-    it('should ignore invalid URL language parameter', () => {
-      window.history.pushState({}, '', '/?lang=fr');
-
-      TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot()],
-        providers: [provideHttpClient(), { provide: PLATFORM_ID, useValue: 'browser' }],
-      });
-
-      translateService = TestBed.inject(TranslateService);
-      translateService.addLangs(['en', 'de']);
-      translateService.setDefaultLang('en');
-
-      const params = new URLSearchParams(window.location.search);
-      const urlLang = params.get('lang');
-      const normalizedUrlLang =
-        urlLang && ['en', 'de'].includes(urlLang.toLowerCase()) ? urlLang.toLowerCase() : null;
-
-      if (normalizedUrlLang) {
-        translateService.use(normalizedUrlLang);
-      } else {
-        translateService.use('en');
-      }
-
-      expect(translateService.currentLang).toBe('en');
-    });
+    expect(mockLocalStorage['lang']).toBe('de');
   });
 
-  describe('Cookie Language Selection', () => {
-    it('should use language from cookie when URL parameter is not set', () => {
+  describe('language resolution', () => {
+    it('uses language from the URL parameter', () => {
+      expect(resolveLanguage('/?lang=de'.replace('/', ''))).toBe('de');
+      expect(resolveLanguage('/?lang=en'.replace('/', ''))).toBe('en');
+    });
+
+    it('ignores invalid URL language parameters', () => {
+      expect(resolveLanguage('/?lang=fr'.replace('/', ''))).toBe('en');
+    });
+
+    it('uses language from cookie when URL parameter is not set', () => {
       mockDocument.cookie = 'lang=de; path=/';
-      window.history.pushState({}, '', '/');
 
-      TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot()],
-        providers: [provideHttpClient(), { provide: PLATFORM_ID, useValue: 'browser' }],
-      });
-
-      translateService = TestBed.inject(TranslateService);
-      translateService.addLangs(['en', 'de']);
-      translateService.setDefaultLang('en');
-
-      // Read cookie
-      const readCookie = (name: string): string | null => {
-        const nameEQ = name + '=';
-        const parts = (document.cookie || '').split(';');
-        for (let c of parts) {
-          c = c.trim();
-          if (c.startsWith(nameEQ)) {
-            return decodeURIComponent(c.substring(nameEQ.length));
-          }
-        }
-        return null;
-      };
-
-      const cookieSaved = (readCookie('lang') || '').toLowerCase();
-      const cookieLang = ['en', 'de'].includes(cookieSaved) ? cookieSaved : null;
-
-      if (cookieLang) {
-        translateService.use(cookieLang);
-      }
-
-      expect(translateService.currentLang).toBe('de');
+      expect(resolveLanguage('')).toBe('de');
     });
-  });
 
-  describe('LocalStorage Language Selection', () => {
-    it('should use language from localStorage when URL and cookie are not set', () => {
+    it('uses language from localStorage when URL and cookie are not set', () => {
       mockLocalStorage['lang'] = 'de';
-      mockDocument.cookie = '';
-      window.history.pushState({}, '', '/');
 
-      TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot()],
-        providers: [provideHttpClient(), { provide: PLATFORM_ID, useValue: 'browser' }],
-      });
-
-      translateService = TestBed.inject(TranslateService);
-      translateService.addLangs(['en', 'de']);
-      translateService.setDefaultLang('en');
-
-      const saved = localStorage.getItem('lang');
-      if (saved && ['en', 'de'].includes(saved)) {
-        translateService.use(saved);
-      }
-
-      expect(translateService.currentLang).toBe('de');
-    });
-  });
-
-  describe('Browser Language Detection', () => {
-    it('should use browser language when no other preference is set', () => {
-      mockDocument.cookie = '';
-      window.history.pushState({}, '', '/');
-      Object.defineProperty(navigator, 'languages', {
-        value: ['de-DE', 'de'],
-        writable: true,
-        configurable: true,
-      });
-
-      TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot()],
-        providers: [provideHttpClient(), { provide: PLATFORM_ID, useValue: 'browser' }],
-      });
-
-      translateService = TestBed.inject(TranslateService);
-      translateService.addLangs(['en', 'de']);
-      translateService.setDefaultLang('en');
-
-      const browserLangs = navigator.languages || [navigator.language];
-      const browserLang =
-        browserLangs
-          .map((lang) => lang?.toLowerCase().split('-')[0])
-          .find((lang) => ['de', 'en'].includes(lang || '')) || 'en';
-
-      translateService.use(browserLang);
-
-      expect(translateService.currentLang).toBe('de');
+      expect(resolveLanguage('')).toBe('de');
     });
 
-    it('should default to English when browser language is not supported', () => {
+    it('uses browser language when no other preference is set', () => {
       mockDocument.cookie = '';
-      window.history.pushState({}, '', '/');
-      Object.defineProperty(navigator, 'languages', {
-        value: ['fr-FR', 'fr'],
-        writable: true,
-        configurable: true,
-      });
 
-      TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot()],
-        providers: [provideHttpClient(), { provide: PLATFORM_ID, useValue: 'browser' }],
-      });
-
-      translateService = TestBed.inject(TranslateService);
-      translateService.addLangs(['en', 'de']);
-      translateService.setDefaultLang('en');
-
-      const browserLangs = navigator.languages || [navigator.language];
-      const browserLang =
-        browserLangs
-          .map((lang) => lang?.toLowerCase().split('-')[0])
-          .find((lang) => ['de', 'en'].includes(lang || '')) || 'en';
-
-      translateService.use(browserLang);
-
-      expect(translateService.currentLang).toBe('en');
+      expect(resolveLanguage('', ['de-DE', 'de'])).toBe('de');
     });
-  });
 
-  describe('Language Priority Order', () => {
-    it('should prioritize URL parameter over cookie and localStorage', () => {
+    it('defaults to English when browser language is not supported', () => {
+      expect(resolveLanguage('', ['fr-FR', 'fr'])).toBe('en');
+    });
+
+    it('prioritizes URL parameter over cookie and localStorage', () => {
       mockLocalStorage['lang'] = 'de';
       mockDocument.cookie = 'lang=de; path=/';
-      window.history.pushState({}, '', '/?lang=en');
 
-      TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot()],
-        providers: [provideHttpClient(), { provide: PLATFORM_ID, useValue: 'browser' }],
-      });
-
-      translateService = TestBed.inject(TranslateService);
-      translateService.addLangs(['en', 'de']);
-      translateService.setDefaultLang('en');
-
-      // Simulate priority detection
-      const params = new URLSearchParams(window.location.search);
-      const urlLang = params.get('lang');
-      const normalizedUrlLang =
-        urlLang && ['en', 'de'].includes(urlLang.toLowerCase()) ? urlLang.toLowerCase() : null;
-
-      const lang = normalizedUrlLang || localStorage.getItem('lang') || 'en';
-      translateService.use(lang);
-
-      expect(translateService.currentLang).toBe('en');
+      expect(resolveLanguage('?lang=en')).toBe('en');
     });
 
-    it('should prioritize cookie over localStorage', () => {
+    it('prioritizes cookie over localStorage', () => {
       mockLocalStorage['lang'] = 'en';
       mockDocument.cookie = 'lang=de; path=/';
-      window.history.pushState({}, '', '/');
 
-      TestBed.configureTestingModule({
-        imports: [TranslateModule.forRoot()],
-        providers: [provideHttpClient(), { provide: PLATFORM_ID, useValue: 'browser' }],
-      });
-
-      translateService = TestBed.inject(TranslateService);
-      translateService.addLangs(['en', 'de']);
-      translateService.setDefaultLang('en');
-
-      // Read cookie
-      const readCookie = (name: string): string | null => {
-        const nameEQ = name + '=';
-        const parts = (document.cookie || '').split(';');
-        for (let c of parts) {
-          c = c.trim();
-          if (c.startsWith(nameEQ)) {
-            return decodeURIComponent(c.substring(nameEQ.length));
-          }
-        }
-        return null;
-      };
-
-      const cookieSaved = (readCookie('lang') || '').toLowerCase();
-      const cookieLang = ['en', 'de'].includes(cookieSaved) ? cookieSaved : null;
-      const saved = localStorage.getItem('lang');
-
-      const lang = cookieLang || saved || 'en';
-      translateService.use(lang);
-
-      expect(translateService.currentLang).toBe('de');
+      expect(resolveLanguage('')).toBe('de');
     });
   });
 });

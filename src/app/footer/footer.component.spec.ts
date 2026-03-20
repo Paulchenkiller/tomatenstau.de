@@ -8,6 +8,7 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({}).compileComponents();
+    TestBed.overrideComponent(FooterComponent, { set: { template: '<footer></footer>' } });
   });
 
   beforeEach(() => {

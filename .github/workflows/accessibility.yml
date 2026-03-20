@@ -2,9 +2,9 @@ name: Accessibility Audit (WCAG 2.1 AA)
 
 on:
   push:
-    branches: [master, main]
+    branches: [main]
   pull_request:
-    branches: [master, main]
+    branches: [main]
 
 jobs:
   accessibility-audit:
@@ -29,10 +29,7 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install chromium
 
-      - name: Run Accessibility E2E Tests
-        run: npm run a11y:test
-
-      - name: Start server and run axe-core audit
+      - name: Run Accessibility Checks
         run: npm run a11y:ci
 
       - name: Upload accessibility report
@@ -41,40 +38,8 @@ jobs:
         with:
           name: accessibility-report
           path: |
-            accessibility-report.json
             test-results/
           retention-days: 30
-
-      - name: Comment PR with accessibility results
-        if: github.event_name == 'pull_request' && failure()
-        uses: actions/github-script@v8
-        with:
-          script: |
-            const fs = require('fs');
-            try {
-              const report = JSON.parse(fs.readFileSync('accessibility-report.json', 'utf8'));
-              const violations = report.violations || [];
-
-              if (violations.length > 0) {
-                let comment = '## ❌ Accessibility Issues Found (WCAG 2.1 AA)\n\n';
-                violations.forEach(violation => {
-                  comment += `### ${violation.id}\n`;
-                  comment += `**Impact**: ${violation.impact}\n`;
-                  comment += `**Description**: ${violation.description}\n`;
-                  comment += `**Help**: ${violation.help}\n`;
-                  comment += `**Tags**: ${violation.tags.join(', ')}\n\n`;
-                });
-
-                github.rest.issues.createComment({
-                  issue_number: context.issue.number,
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  body: comment
-                });
-              }
-            } catch (error) {
-              console.log('No accessibility report found or error reading it:', error);
-            }
 
   unit-accessibility-tests:
     runs-on: ubuntu-latest

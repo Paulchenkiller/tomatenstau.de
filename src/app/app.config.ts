@@ -1,4 +1,4 @@
-import { ApplicationConfig, APP_INITIALIZER, PLATFORM_ID } from '@angular/core';
+import { ApplicationConfig, APP_INITIALIZER, PLATFORM_ID, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateLoader, TranslateService } from '@ngx-translate/core';
@@ -37,12 +37,24 @@ import { HaskellTypeclassesComponent } from './code/haskell/haskell-typeclasses/
 import { HaskellMonadsComponent } from './code/haskell/haskell-monads/haskell-monads.component';
 import { HaskellPatternMatchingComponent } from './code/haskell/haskell-pattern-matching/haskell-pattern-matching.component';
 import { IconService } from './services/icon.service';
+import { buildRouteMeta } from './routing/route-meta.util';
+import {
+  resolvePreferredLanguage,
+  writeBrowserCookie,
+  writeBrowserStorage,
+} from './preferences/browser-preferences';
 
 export function TranslateLoaderFactory(transferState: TransferState, platformId: object) {
   // Use SSR-compatible loader on server, HTTP loader on client
   return isPlatformBrowser(platformId)
     ? new TranslateFsLoader(transferState, './assets/i18n/', '.json')
     : new TranslateFsLoader(transferState, './assets/i18n/', '.json');
+}
+
+function logPreferenceAccessError(action: string, key: string, error: unknown): void {
+  if (isDevMode()) {
+    console.warn(`Failed to ${action} for "${key}".`, error);
+  }
 }
 
 export const appConfig: ApplicationConfig = {
@@ -73,53 +85,37 @@ export const appConfig: ApplicationConfig = {
 
         // Only run browser-specific code on the client side
         if (isPlatformBrowser(platformId)) {
-          // Helpers to read/write a simple cookie
-          const readCookie = (name: string): string | null => {
-            try {
-              const nameEQ = name + '=';
-              const parts = (document.cookie || '').split(';');
-              for (let c of parts) {
-                c = c.trim();
-                if (c.startsWith(nameEQ)) {
-                  return decodeURIComponent(c.substring(nameEQ.length));
-                }
-              }
-            } catch {}
-            return null;
-          };
-          const writeCookie = (name: string, value: string, days: number) => {
-            try {
-              const maxAge = days > 0 ? `; max-age=${days * 24 * 60 * 60}` : '';
-              document.cookie = `${name}=${encodeURIComponent(value)}; path=/${maxAge}`;
-            } catch {}
-          };
+          const logError = (action: string, key: string, error: unknown) =>
+            logPreferenceAccessError(action, key, error);
+          const { cookieLang, resolvedLang, savedLang } = resolvePreferredLanguage({
+            doc: typeof document !== 'undefined' ? document : undefined,
+            fallback: 'en',
+            logError,
+            navigatorLanguage: navigator.language,
+            navigatorLanguages: navigator.languages,
+            search: window.location.search,
+            storage: typeof localStorage !== 'undefined' ? localStorage : undefined,
+            supported: ['en', 'de'],
+          });
 
-          const params = new URLSearchParams(window.location.search);
-          const urlLang = params.get('lang');
-          const normalizedUrlLang =
-            urlLang && ['en', 'de'].includes(urlLang.toLowerCase()) ? urlLang.toLowerCase() : null;
-
-          const cookieSaved = (readCookie('lang') || '').toLowerCase();
-          const cookieLang = ['en', 'de'].includes(cookieSaved) ? cookieSaved : null;
-          const saved = localStorage.getItem('lang');
-          const browserLangs = navigator.languages || [navigator.language];
-          const browserLang =
-            browserLangs
-              .map((lang) => lang?.toLowerCase().split('-')[0])
-              .find((lang) => ['de', 'en'].includes(lang || '')) || 'en';
-          const lang = normalizedUrlLang || cookieLang || saved || browserLang || 'en';
-
-          translate.use(lang);
-          try {
-            if (lang !== saved) {
-              localStorage.setItem('lang', lang);
-            }
-          } catch {}
-          try {
-            if (cookieLang !== lang) {
-              writeCookie('lang', lang, 365);
-            }
-          } catch {}
+          translate.use(resolvedLang);
+          if (resolvedLang !== savedLang) {
+            writeBrowserStorage(
+              typeof localStorage !== 'undefined' ? localStorage : undefined,
+              'lang',
+              resolvedLang,
+              logError,
+            );
+          }
+          if (cookieLang !== resolvedLang) {
+            writeBrowserCookie(
+              typeof document !== 'undefined' ? document : undefined,
+              'lang',
+              resolvedLang,
+              365,
+              logError,
+            );
+          }
         } else {
           // Server-side: just use default language
           translate.use('en');
@@ -149,148 +145,152 @@ export const appConfig: ApplicationConfig = {
       {
         path: '',
         component: IndexComponent,
-        data: { breadcrumb: 'Home', logo: 'home' },
+        data: buildRouteMeta('NAV.HOME', 'INDEX.INTRO', 'profile'),
       },
       {
         path: 'code',
-        data: { breadcrumb: 'Code', logo: 'terminal' },
+        data: buildRouteMeta('NAV.CODE', 'CODE.INTRO'),
         children: [
           { path: '', component: CodeComponent },
           {
             path: 'perl',
-            data: { breadcrumb: 'Perl', logo: 'keyboard' },
+            data: buildRouteMeta('NAV.PERL', 'PERL.INDEX.INTRO'),
             children: [
               { path: '', component: PerlIndexComponent },
               {
                 path: 'regex-greediness',
-                data: { breadcrumb: 'Regex Greedy/Lazy', logo: 'arrows-left-right' },
+                data: buildRouteMeta('NAV.REGEX_GREEDY_LAZY', 'PERL.REGEX.INTRO'),
                 children: [{ path: '', component: PerlRegexGreedinessComponent }],
               },
               {
                 path: 'context',
-                data: { breadcrumb: 'Kontext', logo: 'list' },
+                data: buildRouteMeta('NAV.CONTEXT', 'PERL.CONTEXT.INTRO'),
                 children: [{ path: '', component: PerlContextComponent }],
               },
             ],
           },
           {
             path: 'python',
-            data: { breadcrumb: 'Python', logo: ['fab', 'python'] },
+            data: buildRouteMeta('NAV.PYTHON', 'PYTHON.INDEX.INTRO'),
             children: [
               { path: '', component: PythonIndexComponent },
               {
                 path: 'mutable-default',
-                data: { breadcrumb: 'Mutable Default', logo: 'exclamation' },
+                data: buildRouteMeta('NAV.MUTABLE_DEFAULT', 'PYTHON.MUTABLE_DEFAULT.INTRO'),
                 children: [{ path: '', component: PythonMutableDefaultComponent }],
               },
               {
                 path: 'gil-threads',
-                data: { breadcrumb: 'GIL & Threads', logo: 'spinner' },
+                data: buildRouteMeta('NAV.GIL_THREADS', 'PYTHON.GIL_THREADS.INTRO'),
                 children: [{ path: '', component: PythonGilThreadsComponent }],
               },
             ],
           },
           {
             path: 'java',
-            data: { breadcrumb: 'Java', logo: 'mug-hot' },
+            data: buildRouteMeta('NAV.JAVA', 'JAVA.INDEX.INTRO'),
             children: [
               { path: '', component: JavaIndexComponent },
               {
                 path: 'equals-hashcode',
-                data: { breadcrumb: 'equals & hashCode', logo: 'equals' },
+                data: buildRouteMeta('NAV.EQUALS_HASHCODE', 'JAVA.EQUALS_HASHCODE.INTRO'),
                 children: [{ path: '', component: JavaEqualsHashcodeComponent }],
               },
               {
                 path: 'concurrent-modification',
-                data: { breadcrumb: 'ConcurrentModification', logo: 'code-branch' },
+                data: buildRouteMeta('NAV.CONCURRENT_MODIFICATION', 'JAVA.CONCURRENT.INTRO'),
                 children: [{ path: '', component: JavaConcurrentModificationComponent }],
               },
             ],
           },
           {
             path: 'javascript',
-            data: { breadcrumb: 'JavaScript/TypeScript', logo: 'code' },
+            data: buildRouteMeta('NAV.JAVASCRIPT', 'JAVASCRIPT.INDEX.INTRO'),
             children: [
               { path: '', component: JavascriptIndexComponent },
               {
                 path: 'closures-scope',
-                data: { breadcrumb: 'Closures & Scope', logo: 'code' },
+                data: buildRouteMeta('NAV.CLOSURES_SCOPE', 'JAVASCRIPT.CLOSURES.INTRO'),
                 children: [{ path: '', component: JavascriptClosuresScopeComponent }],
               },
               {
                 path: 'hoisting-tdz',
-                data: { breadcrumb: 'Hoisting & TDZ', logo: 'code' },
+                data: buildRouteMeta('NAV.HOISTING_TDZ', 'JAVASCRIPT.HOISTING.INTRO'),
                 children: [{ path: '', component: JavascriptHoistingTdzComponent }],
               },
               {
                 path: 'async-await',
-                data: { breadcrumb: 'async/await', logo: 'code' },
+                data: buildRouteMeta('NAV.ASYNC_AWAIT', 'JAVASCRIPT.ASYNC.INTRO'),
                 children: [{ path: '', component: JavascriptAsyncAwaitComponent }],
               },
               {
                 path: 'this-arrow',
-                data: { breadcrumb: 'this & Arrow', logo: 'code' },
+                data: buildRouteMeta('NAV.THIS_ARROW', 'JAVASCRIPT.THIS.INTRO'),
                 children: [{ path: '', component: JavascriptThisArrowComponent }],
               },
               {
                 path: 'ts-structural-typing',
-                data: { breadcrumb: 'TS Structural Typing', logo: 'code' },
+                data: buildRouteMeta('NAV.TS_STRUCTURAL_TYPING', 'JAVASCRIPT.TS.INTRO'),
                 children: [{ path: '', component: TypescriptStructuralTypingComponent }],
               },
             ],
           },
           {
             path: 'haskell',
-            data: { breadcrumb: 'Haskell', logo: 'code' },
+            data: buildRouteMeta('NAV.HASKELL', 'HASKELL.INDEX.INTRO'),
             children: [
               { path: '', component: HaskellIndexComponent },
               {
                 path: 'purity-io',
-                data: { breadcrumb: 'Purity & IO', logo: 'code' },
+                data: buildRouteMeta('NAV.PURITY_IO', 'HASKELL.PURITY.INTRO'),
                 children: [{ path: '', component: HaskellPurityIoComponent }],
               },
               {
                 path: 'lazy-evaluation',
-                data: { breadcrumb: 'Lazy Evaluation', logo: 'code' },
+                data: buildRouteMeta('NAV.LAZY_EVALUATION', 'HASKELL.LAZY.INTRO'),
                 children: [{ path: '', component: HaskellLazyEvaluationComponent }],
               },
               {
                 path: 'typeclasses',
-                data: { breadcrumb: 'Typeclasses', logo: 'code' },
+                data: buildRouteMeta('NAV.TYPECLASSES', 'HASKELL.TYPECLASSES.INTRO'),
                 children: [{ path: '', component: HaskellTypeclassesComponent }],
               },
               {
                 path: 'monads',
-                data: { breadcrumb: 'Monaden', logo: 'code' },
+                data: buildRouteMeta('NAV.MONADS', 'HASKELL.MONADS.INTRO'),
                 children: [{ path: '', component: HaskellMonadsComponent }],
               },
               {
                 path: 'pattern-matching',
-                data: { breadcrumb: 'Pattern Matching', logo: 'code' },
+                data: buildRouteMeta('NAV.PATTERN_MATCHING', 'HASKELL.PATTERN.INTRO'),
                 children: [{ path: '', component: HaskellPatternMatchingComponent }],
               },
             ],
           },
           {
             path: 'prolog',
-            data: { breadcrumb: 'Prolog', logo: 'brain' },
+            data: buildRouteMeta('NAV.PROLOG', 'PROLOG.INDEX.INTRO'),
             children: [
               { path: '', component: PrologIndexComponent },
               {
                 path: 'ackermann',
-                data: { breadcrumb: 'Ackermann', logo: 'superscript' },
+                data: buildRouteMeta('NAV.ACKERMANN', 'PROLOG.ACKERMANN.P1'),
                 children: [{ path: '', component: PrologAckermannComponent }],
               },
               {
                 path: 'hanoi',
-                data: { breadcrumb: 'Hanoi', logo: 'gopuram' },
+                data: buildRouteMeta('NAV.HANOI', 'PROLOG.HANOI.P1'),
                 children: [{ path: '', component: PrologHanoiComponent }],
               },
             ],
           },
         ],
       },
-      { path: '**', component: PageNotFoundComponent },
+      {
+        path: '**',
+        component: PageNotFoundComponent,
+        data: buildRouteMeta('404.TITLE', '404.SUBTITLE'),
+      },
     ]),
   ],
 };

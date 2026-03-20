@@ -12,14 +12,13 @@ const header = {
 
 // Helper: ensure we start in English and with a known HC preference
 async function gotoHomeInEnglish(page) {
-  // Force preference off before navigation so app reads it on boot
   await page.addInitScript(() => {
-    try {
-      localStorage.setItem('pref:high-contrast', 'off');
-      localStorage.setItem('lang', 'en');
-    } catch {}
+    localStorage.setItem('pref:high-contrast', 'off');
+    localStorage.setItem('lang', 'en');
   });
   await page.goto('/?lang=en');
+  const savedLang = await page.evaluate(() => localStorage.getItem('lang'));
+  expect(savedLang).toBe('en');
 }
 
 test.describe('Header language switcher and high-contrast toggle', () => {
@@ -57,11 +56,8 @@ test.describe('Header language switcher and high-contrast toggle', () => {
   });
 
   test('URL ?lang param overrides saved language and persists', async ({ page }) => {
-    // Save DE, but navigate with ?lang=en
     await page.addInitScript(() => {
-      try {
-        localStorage.setItem('lang', 'de');
-      } catch {}
+      localStorage.setItem('lang', 'de');
     });
     await page.goto('/?lang=en');
 

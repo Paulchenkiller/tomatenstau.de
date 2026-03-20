@@ -2,17 +2,18 @@ import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { CodeCopyDirective } from '../../code-copy.directive';
 
 @Component({
   selector: 'app-javascript-this-arrow',
   templateUrl: './javascript-this-arrow.component.html',
-  imports: [Highlight, HeadlineComponent, TranslateModule],
+  imports: [Highlight, CodeCopyDirective, HeadlineComponent, TranslateModule],
 })
 export class JavascriptThisArrowComponent {
   codeThis = `const obj = {
   x: 42,
   normal() { return this.x; },
-  arrow: () => { return (this as any).x; }
+  arrow: () => undefined
 };
 
 console.log(obj.normal()); // 42

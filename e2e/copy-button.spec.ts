@@ -5,11 +5,9 @@ import { test, expect } from '@playwright/test';
 test.describe('Code copy buttons', () => {
   test('Button exists with aria-label, shows feedback on click, then reverts', async ({ page }) => {
     await page.goto('/code/python?lang=en');
+    await expect(page.getByRole('heading', { name: /Python/i })).toBeVisible();
 
-    const pre = page.locator('pre').first();
-    await expect(pre).toBeVisible();
-
-    const copyBtn = pre.locator('button.copy-btn');
+    const copyBtn = page.locator('button.copy-btn').first();
     await expect(copyBtn).toHaveText('Copy code to clipboard');
     await expect(copyBtn).toHaveAttribute('aria-label', 'Copy code to clipboard');
 
