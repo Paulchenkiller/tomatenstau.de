@@ -6,11 +6,11 @@ Last updated: 2026-03-20
 
 Current branch state verified during the latest pass:
 
+- `npm ci` -> passed without `.npmrc`; only deprecation chatter plus a sandbox-only Husky permission warning during `prepare`
 - `npm run lint` -> passed
 - `npm run test:ci` -> passed
 - `npm run build -- --configuration=production --verbose` -> emits a complete `dist/tomatenstaude` tree, then still exits abnormally in this sandbox
 - `npm run e2e` -> still blocked in this sandbox because the Angular dev server cannot bind a local port (`listen EPERM`)
-- `npm_config_legacy_peer_deps=false npm ci` -> exposes peer-dependency friction around `@stryker-mutator/typescript-checker@9.1.1`
 
 ## Remaining Work
 
@@ -41,10 +41,11 @@ Done already:
 - removed several broad `any` usages and dead state
 - removed remaining `any`/`Observable<any>` runtime usage under `src/app`
 - tightened several router/document test stubs
+- cleaned the largest remaining weak typing cluster in [header.component.spec.ts](/Users/meik/git/tomatenstaude/src/app/header/header.component.spec.ts)
 
 Left:
 
-- reduce remaining weak typing in tests where it still matters, especially [header.component.spec.ts](/Users/meik/git/tomatenstaude/src/app/header/header.component.spec.ts)
+- reduce remaining weak typing in tests where it still matters
 - tighten ESLint rules incrementally once the remaining cases are addressed
 
 ### Medium Priority
@@ -92,15 +93,20 @@ Left:
 - decide whether source-only assets should live outside `src/assets`
 - remove any remaining redundant originals once ownership is clear
 
-#### 6. Re-test install without `legacy-peer-deps`
+#### 6. Keep dependency maintenance moving
 
-Why:
+Status: mostly done
 
-- `.npmrc` still sets `legacy-peer-deps=true`
+Done already:
 
-Next step:
+- removed `.npmrc`
+- aligned the `@stryker-mutator/*` package family
+- aligned the top-level `@typescript-eslint/*` pair to the same resolved major/minor set
+- verified `npm ci` works on the normal path again
 
-- either upgrade or align the `@stryker-mutator/*` package family, or keep the flag with an explicit reason documented
+Left:
+
+- dependency deprecation/vulnerability cleanup remains separate from the peer-dependency fix
 
 ### Lower Priority
 
