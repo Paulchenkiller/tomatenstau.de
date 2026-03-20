@@ -60,6 +60,7 @@ Done already:
 - introduced shared global CSS tokens for button/code colors to reduce literal duplication
 - moved base document text/color ownership further into [src/css/main.scss](/Users/meik/git/tomatenstaude/src/css/main.scss)
 - removed another batch of duplicated global body/paragraph/heading contrast overrides from [src/styles.css](/Users/meik/git/tomatenstaude/src/styles.css)
+- removed redundant high-contrast shell-color overrides from [content.component.scss](/Users/meik/git/tomatenstaude/src/app/content/content.component.scss) and [index.component.scss](/Users/meik/git/tomatenstaude/src/app/index/index.component.scss)
 
 Why:
 
@@ -130,6 +131,7 @@ Why:
 Next step:
 
 - verify the exact late-stage failure mode in a normal local shell or CI runner and decide whether it is sandbox-only
+- follow the external verification checklist in [README.md](/Users/meik/git/tomatenstaude/README.md)
 
 #### 9. Improve server hardening
 

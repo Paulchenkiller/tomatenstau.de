@@ -92,6 +92,30 @@ npm run compress:build
 - `npm test` uses `ng test`, which is separate from the Jest-based CI path and is not the preferred verification command in this repo.
 - `npm run e2e` starts its own Angular dev server through Playwright.
 
+## External Verification
+
+These checks are the main remaining steps that should be run outside restricted sandboxes:
+
+```bash
+# install on the normal path
+npm ci
+
+# production build diagnostics
+npm run build -- --configuration=production --verbose
+
+# Playwright and accessibility runtime
+npx playwright install chromium
+npm run e2e
+npm run a11y:test
+npm run a11y:ci
+```
+
+Notes:
+
+- Use Node 20 LTS for these checks.
+- In this sandbox, `npm run build -- --configuration=production --verbose` emits output but exits abnormally afterward.
+- In this sandbox, `npm run e2e` and `npm run a11y:ci` cannot bind the local dev-server port.
+
 ## Project Layout
 
 ```text
