@@ -17,13 +17,11 @@ The current app includes:
 
 ```bash
 npm run a11y:test
-npm run a11y:audit
 npm run a11y:ci
 ```
 
 Related files:
 
-- [axe.config.js](/Users/meik/git/tomatenstaude/axe.config.js)
 - [e2e/accessibility.spec.ts](/Users/meik/git/tomatenstaude/e2e/accessibility.spec.ts)
 - [.github/workflows/accessibility.yml](/Users/meik/git/tomatenstaude/.github/workflows/accessibility.yml)
 
@@ -33,18 +31,18 @@ Verified locally in this repository on 2026-03-20:
 
 - `npm run lint` passed
 - `npm run test:ci` passed
-- `npm run e2e` could not be fully verified in this sandbox because local port binding failed with `listen EPERM`
+- `npm run build -- --configuration=production --verbose` passed
+- `npx playwright install chromium` passed
+- `npm run a11y:test` passed
+- `npm run a11y:ci` passed
 
-That means the accessibility test code exists and is wired into the repo, but the full E2E/a11y runtime still needs confirmation in a normal local or CI environment.
+That means the accessibility test code exists, is wired into the repo, and now passes on the current branch.
 
 ## Known Gaps
 
 - Accessibility claims in previous versions of this file were broader than what was directly verified.
 - Some accessibility styling is still handled through broad global overrides and `!important`, which should be refined.
-- The code-copy enhancement is still implemented imperatively in [src/app/app.component.ts](/Users/meik/git/tomatenstaude/src/app/app.component.ts), which should eventually move to a dedicated Angular directive or component.
 
 ## Next Improvements
 
-- replace timer-based and DOM-query-based code block enhancement with Angular primitives
 - reduce global CSS overrides in favor of scoped component styling and clearer tokens
-- verify E2E accessibility checks outside the current sandbox and tighten selectors where needed

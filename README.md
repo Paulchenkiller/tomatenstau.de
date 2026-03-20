@@ -77,7 +77,6 @@ npm run lighthouse
 npm run lighthouse:prod
 npm run lighthouse:live
 npm run a11y:test
-npm run a11y:audit
 npm run a11y:ci
 npm run test:mutation
 
@@ -91,10 +90,11 @@ npm run compress:build
 - `npm run test:ci` is the reliable local unit-test entry point.
 - `npm test` uses `ng test`, which is separate from the Jest-based CI path and is not the preferred verification command in this repo.
 - `npm run e2e` starts its own Angular dev server through Playwright.
+- `npm run a11y:ci` now reuses the Playwright-based accessibility suite instead of a separate ChromeDriver-based CLI audit path.
 
 ## External Verification
 
-These checks should be run outside restricted sandboxes and on Node 20 LTS:
+These checks are the main verification commands for the current branch:
 
 ```bash
 # install on the normal path
@@ -112,11 +112,9 @@ npm run a11y:ci
 
 Notes:
 
-- Use Node 20 LTS for all browser-tooling verification. That is the safest confirmed runtime for Angular, Playwright, and CI in this repo.
-- `npm ci`, `npm run lint`, `npm run test:ci`, and `npm run build -- --configuration=production --verbose` are already confirmed on the current branch.
-- A Node 25 verification run showed `npx playwright install chromium` failing during the FFmpeg download step, which left `chromium_headless_shell` missing. If that happens again, treat it as a runtime/tooling issue rather than an app failure.
-- `npm run e2e` and `npm run a11y:test` currently remain blocked until Playwright browser installation completes successfully. Occasional port `4200` conflicts were secondary noise during failed runs.
-- `npm run a11y:ci` currently reaches the audit step but fails because ChromeDriver `144` does not match the installed Chrome `146`. Fix that browser-driver mismatch before treating the audit as an app regression.
+- Node 20 LTS remains the recommended local and CI runtime.
+- `npm ci`, `npm run lint`, `npm run test:ci`, `npm run build -- --configuration=production --verbose`, `npx playwright install chromium`, `npm run e2e`, `npm run a11y:test`, and `npm run a11y:ci` are all confirmed on the current branch.
+- `npm run a11y:ci` now uses the Playwright-based accessibility suite instead of a separate ChromeDriver-dependent CLI path.
 
 ## Project Layout
 

@@ -71,7 +71,7 @@ We welcome suggestions for new features or improvements:
    ```bash
    npm test                 # Unit tests
    npm run e2e             # E2E tests
-   npm run a11y:audit      # Accessibility tests
+   npm run a11y:ci         # Accessibility tests
    npm run lint            # Code quality
    ```
 
@@ -213,7 +213,7 @@ We are committed to WCAG 2.1 AA compliance:
 
 ### Testing
 
-- Use automated tools: `npm run a11y:audit`
+- Use automated tools: `npm run a11y:ci`
 - Test with keyboard navigation only
 - Verify with screen readers (NVDA, JAWS, VoiceOver)
 - Check color contrast ratios

@@ -399,13 +399,13 @@ legend {
     15px/30px 'Raleway',
     sans-serif;
   margin: 12px 0;
-  color: #252525;
+  color: colors.$text_secondary;
   display: block;
 }
 
 label span,
 legend span {
-  color: #575859;
+  color: colors.$text;
   font:
     16px/30px 'Raleway',
     sans-serif;
@@ -414,7 +414,7 @@ legend span {
 input[type='checkbox'],
 input[type='radio'] {
   font-size: 15px;
-  color: #575859;
+  color: colors.$text;
 }
 
 input[type='checkbox'] {
