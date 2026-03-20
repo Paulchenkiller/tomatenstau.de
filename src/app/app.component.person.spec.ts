@@ -4,6 +4,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, of } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
+import { buildRouteMeta } from './routing/route-meta.util';
 
 class TranslateStub {
   public onLangChange = new Subject<{ lang: string }>();
@@ -28,6 +29,14 @@ class TranslateStub {
 class RouterStub {
   public url = '/';
   public events = new Subject<any>();
+  public routerState: any = {
+    snapshot: {
+      root: {
+        routeConfig: { path: '', data: buildRouteMeta('NAV.HOME', 'INDEX.INTRO', 'profile') },
+        firstChild: null,
+      },
+    },
+  };
 }
 
 describe('AppComponent person JSON-LD and normalizePath', () => {
@@ -68,6 +77,10 @@ describe('AppComponent person JSON-LD and normalizePath', () => {
 
     // Navigate to "/code/" (with trailing slash) to exercise normalizePath trimming
     router.url = '/code/';
+    router.routerState.snapshot.root.firstChild = {
+      routeConfig: { path: 'code', data: buildRouteMeta('NAV.CODE', 'CODE.INTRO') },
+      firstChild: null,
+    };
     router.events.next(new NavigationEnd(2, router.url, router.url));
     fixture.detectChanges();
 

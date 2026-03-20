@@ -1,22 +1,25 @@
 import { HeaderComponent } from './header.component';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-
 class TranslateStub {
   public currentLang = 'en';
-  public onLangChange = new Subject<{ lang: string }>();
+  public onLangChange = {
+    subscribe: (callback: (event: { lang: string }) => void) => {
+      this.subscribers.push(callback);
+      return { unsubscribe: () => undefined };
+    },
+  };
+  private readonly subscribers: Array<(event: { lang: string }) => void> = [];
   use = jest.fn((lang: string) => {
     this.currentLang = lang;
-    this.onLangChange.next({ lang });
+    this.emitLangChange(lang);
   });
   getDefaultLang() {
     return 'en';
   }
-}
-
-class FaIconLibraryStub {
-  addIconPacks() {
-    /* noop */
+  emitLangChange(lang: string) {
+    for (const subscriber of this.subscribers) {
+      subscriber({ lang });
+    }
   }
 }
 
@@ -39,16 +42,14 @@ function createMockDocument(initCookie = ''): Document {
 }
 
 describe('HeaderComponent', () => {
-  let router: Partial<Router> & { events: Subject<any>; navigate?: jest.Mock };
+  let router: Partial<Router> & { navigate?: jest.Mock };
   let translate: TranslateStub;
-  let lib: FaIconLibraryStub;
   let origLocalStorage: Storage | undefined;
   let origMatchMedia: any;
 
   beforeEach(() => {
-    router = { events: new Subject(), navigate: jest.fn() } as any;
+    router = { navigate: jest.fn() } as any;
     translate = new TranslateStub();
-    lib = new FaIconLibraryStub();
 
     // Mock localStorage
     origLocalStorage = (globalThis as any).localStorage as any;
@@ -89,23 +90,18 @@ describe('HeaderComponent', () => {
     (window as any).matchMedia = origMatchMedia;
   });
 
-  it('should initialize with current language, react to language changes, and close menu on router events', () => {
+  it('should initialize with current language and react to language changes', () => {
     const mockDoc = createMockDocument();
-    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
+    const cmp = new HeaderComponent(router as any, translate as any, mockDoc);
     expect(cmp.currentLang).toBe('en');
 
     translate.use('de');
     expect(cmp.currentLang).toBe('de');
-
-    // Router events should close the menu
-    (cmp as any).menu = true;
-    router.events.next({ type: 'NAV' });
-    expect((cmp as any).menu).toBe(false);
   });
 
   it('setLang persists to localStorage and cookie and reflects in URL via router.navigate', () => {
     const mockDoc = createMockDocument();
-    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
+    const cmp = new HeaderComponent(router as any, translate as any, mockDoc);
 
     cmp.setLang('de');
     expect(translate.use).toHaveBeenCalledWith('de');
@@ -123,7 +119,7 @@ describe('HeaderComponent', () => {
 
   it('setLang switches from German to English', () => {
     const mockDoc = createMockDocument();
-    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
+    const cmp = new HeaderComponent(router as any, translate as any, mockDoc);
 
     // Switch to German first
     cmp.setLang('de');
@@ -139,21 +135,21 @@ describe('HeaderComponent', () => {
 
   it('currentLang updates when language changes via onLangChange subscription', () => {
     const mockDoc = createMockDocument();
-    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
+    const cmp = new HeaderComponent(router as any, translate as any, mockDoc);
 
     expect(cmp.currentLang).toBe('en');
 
     // Simulate language change from external source
-    translate.onLangChange.next({ lang: 'de' });
+    translate.emitLangChange('de');
     expect(cmp.currentLang).toBe('de');
 
-    translate.onLangChange.next({ lang: 'en' });
+    translate.emitLangChange('en');
     expect(cmp.currentLang).toBe('en');
   });
 
   it('setLang persists language choice across multiple switches', () => {
     const mockDoc = createMockDocument();
-    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
+    const cmp = new HeaderComponent(router as any, translate as any, mockDoc);
 
     // Multiple language switches
     cmp.setLang('de');
@@ -172,7 +168,7 @@ describe('HeaderComponent', () => {
 
   it('toggleHighContrast toggles body attribute and persists preference', () => {
     const mockDoc = createMockDocument();
-    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
+    const cmp = new HeaderComponent(router as any, translate as any, mockDoc);
 
     // Initially off
     expect((mockDoc.body as any).getAttribute('data-theme')).toBeNull();
@@ -192,7 +188,7 @@ describe('HeaderComponent', () => {
 
   it('initializes high-contrast from cookie when present', () => {
     const mockDoc = createMockDocument('pref:high-contrast=on');
-    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
+    const cmp = new HeaderComponent(router as any, translate as any, mockDoc);
     expect((mockDoc.body as any).getAttribute('data-theme')).toBe('hc');
     expect((cmp as any).highContrast).toBe(true);
   });
@@ -211,7 +207,7 @@ describe('HeaderComponent', () => {
     }));
 
     const mockDoc = createMockDocument();
-    const cmp = new HeaderComponent(router as any, lib as any, translate as any, mockDoc);
+    const cmp = new HeaderComponent(router as any, translate as any, mockDoc);
 
     // Starts with matches=true
     expect((mockDoc.body as any).getAttribute('data-theme')).toBe('hc');

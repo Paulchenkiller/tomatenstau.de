@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { IconService } from '../services/icon.service';
 
 @Component({
   selector: 'app-footer',
@@ -10,9 +9,5 @@ import { IconService } from '../services/icon.service';
   imports: [FaIconComponent],
 })
 export class FooterComponent {
-  currentYear: number = new Date().getFullYear();
-
-  constructor(private iconService: IconService) {
-    // Icons are now loaded via the IconService
-  }
+  currentYear = new Date().getFullYear();
 }

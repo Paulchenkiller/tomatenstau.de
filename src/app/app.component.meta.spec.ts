@@ -4,6 +4,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
+import { buildRouteMeta } from './routing/route-meta.util';
 
 class TranslateStub {
   public onLangChange = new Subject<{ lang: string }>();
@@ -18,6 +19,23 @@ class TranslateStub {
 class RouterStub {
   public url = '/code/python';
   public events = new Subject<any>();
+  public routerState = {
+    snapshot: {
+      root: {
+        routeConfig: { path: '', data: buildRouteMeta('NAV.HOME', 'INDEX.INTRO', 'profile') },
+        firstChild: {
+          routeConfig: { path: 'code', data: buildRouteMeta('NAV.CODE', 'CODE.INTRO') },
+          firstChild: {
+            routeConfig: {
+              path: 'python',
+              data: buildRouteMeta('NAV.PYTHON', 'PYTHON.INDEX.INTRO'),
+            },
+            firstChild: null,
+          },
+        },
+      },
+    },
+  };
 }
 
 describe('AppComponent meta and links', () => {

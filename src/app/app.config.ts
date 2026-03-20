@@ -37,6 +37,7 @@ import { HaskellTypeclassesComponent } from './code/haskell/haskell-typeclasses/
 import { HaskellMonadsComponent } from './code/haskell/haskell-monads/haskell-monads.component';
 import { HaskellPatternMatchingComponent } from './code/haskell/haskell-pattern-matching/haskell-pattern-matching.component';
 import { IconService } from './services/icon.service';
+import { buildRouteMeta } from './routing/route-meta.util';
 
 export function TranslateLoaderFactory(transferState: TransferState, platformId: object) {
   // Use SSR-compatible loader on server, HTTP loader on client
@@ -149,148 +150,152 @@ export const appConfig: ApplicationConfig = {
       {
         path: '',
         component: IndexComponent,
-        data: { breadcrumb: 'Home', logo: 'home' },
+        data: buildRouteMeta('NAV.HOME', 'INDEX.INTRO', 'profile'),
       },
       {
         path: 'code',
-        data: { breadcrumb: 'Code', logo: 'terminal' },
+        data: buildRouteMeta('NAV.CODE', 'CODE.INTRO'),
         children: [
           { path: '', component: CodeComponent },
           {
             path: 'perl',
-            data: { breadcrumb: 'Perl', logo: 'keyboard' },
+            data: buildRouteMeta('NAV.PERL', 'PERL.INDEX.INTRO'),
             children: [
               { path: '', component: PerlIndexComponent },
               {
                 path: 'regex-greediness',
-                data: { breadcrumb: 'Regex Greedy/Lazy', logo: 'arrows-left-right' },
+                data: buildRouteMeta('NAV.REGEX_GREEDY_LAZY', 'PERL.REGEX.INTRO'),
                 children: [{ path: '', component: PerlRegexGreedinessComponent }],
               },
               {
                 path: 'context',
-                data: { breadcrumb: 'Kontext', logo: 'list' },
+                data: buildRouteMeta('NAV.CONTEXT', 'PERL.CONTEXT.INTRO'),
                 children: [{ path: '', component: PerlContextComponent }],
               },
             ],
           },
           {
             path: 'python',
-            data: { breadcrumb: 'Python', logo: ['fab', 'python'] },
+            data: buildRouteMeta('NAV.PYTHON', 'PYTHON.INDEX.INTRO'),
             children: [
               { path: '', component: PythonIndexComponent },
               {
                 path: 'mutable-default',
-                data: { breadcrumb: 'Mutable Default', logo: 'exclamation' },
+                data: buildRouteMeta('NAV.MUTABLE_DEFAULT', 'PYTHON.MUTABLE_DEFAULT.INTRO'),
                 children: [{ path: '', component: PythonMutableDefaultComponent }],
               },
               {
                 path: 'gil-threads',
-                data: { breadcrumb: 'GIL & Threads', logo: 'spinner' },
+                data: buildRouteMeta('NAV.GIL_THREADS', 'PYTHON.GIL_THREADS.INTRO'),
                 children: [{ path: '', component: PythonGilThreadsComponent }],
               },
             ],
           },
           {
             path: 'java',
-            data: { breadcrumb: 'Java', logo: 'mug-hot' },
+            data: buildRouteMeta('NAV.JAVA', 'JAVA.INDEX.INTRO'),
             children: [
               { path: '', component: JavaIndexComponent },
               {
                 path: 'equals-hashcode',
-                data: { breadcrumb: 'equals & hashCode', logo: 'equals' },
+                data: buildRouteMeta('NAV.EQUALS_HASHCODE', 'JAVA.EQUALS_HASHCODE.INTRO'),
                 children: [{ path: '', component: JavaEqualsHashcodeComponent }],
               },
               {
                 path: 'concurrent-modification',
-                data: { breadcrumb: 'ConcurrentModification', logo: 'code-branch' },
+                data: buildRouteMeta('NAV.CONCURRENT_MODIFICATION', 'JAVA.CONCURRENT.INTRO'),
                 children: [{ path: '', component: JavaConcurrentModificationComponent }],
               },
             ],
           },
           {
             path: 'javascript',
-            data: { breadcrumb: 'JavaScript/TypeScript', logo: 'code' },
+            data: buildRouteMeta('NAV.JAVASCRIPT', 'JAVASCRIPT.INDEX.INTRO'),
             children: [
               { path: '', component: JavascriptIndexComponent },
               {
                 path: 'closures-scope',
-                data: { breadcrumb: 'Closures & Scope', logo: 'code' },
+                data: buildRouteMeta('NAV.CLOSURES_SCOPE', 'JAVASCRIPT.CLOSURES.INTRO'),
                 children: [{ path: '', component: JavascriptClosuresScopeComponent }],
               },
               {
                 path: 'hoisting-tdz',
-                data: { breadcrumb: 'Hoisting & TDZ', logo: 'code' },
+                data: buildRouteMeta('NAV.HOISTING_TDZ', 'JAVASCRIPT.HOISTING.INTRO'),
                 children: [{ path: '', component: JavascriptHoistingTdzComponent }],
               },
               {
                 path: 'async-await',
-                data: { breadcrumb: 'async/await', logo: 'code' },
+                data: buildRouteMeta('NAV.ASYNC_AWAIT', 'JAVASCRIPT.ASYNC.INTRO'),
                 children: [{ path: '', component: JavascriptAsyncAwaitComponent }],
               },
               {
                 path: 'this-arrow',
-                data: { breadcrumb: 'this & Arrow', logo: 'code' },
+                data: buildRouteMeta('NAV.THIS_ARROW', 'JAVASCRIPT.THIS.INTRO'),
                 children: [{ path: '', component: JavascriptThisArrowComponent }],
               },
               {
                 path: 'ts-structural-typing',
-                data: { breadcrumb: 'TS Structural Typing', logo: 'code' },
+                data: buildRouteMeta('NAV.TS_STRUCTURAL_TYPING', 'JAVASCRIPT.TS.INTRO'),
                 children: [{ path: '', component: TypescriptStructuralTypingComponent }],
               },
             ],
           },
           {
             path: 'haskell',
-            data: { breadcrumb: 'Haskell', logo: 'code' },
+            data: buildRouteMeta('NAV.HASKELL', 'HASKELL.INDEX.INTRO'),
             children: [
               { path: '', component: HaskellIndexComponent },
               {
                 path: 'purity-io',
-                data: { breadcrumb: 'Purity & IO', logo: 'code' },
+                data: buildRouteMeta('NAV.PURITY_IO', 'HASKELL.PURITY.INTRO'),
                 children: [{ path: '', component: HaskellPurityIoComponent }],
               },
               {
                 path: 'lazy-evaluation',
-                data: { breadcrumb: 'Lazy Evaluation', logo: 'code' },
+                data: buildRouteMeta('NAV.LAZY_EVALUATION', 'HASKELL.LAZY.INTRO'),
                 children: [{ path: '', component: HaskellLazyEvaluationComponent }],
               },
               {
                 path: 'typeclasses',
-                data: { breadcrumb: 'Typeclasses', logo: 'code' },
+                data: buildRouteMeta('NAV.TYPECLASSES', 'HASKELL.TYPECLASSES.INTRO'),
                 children: [{ path: '', component: HaskellTypeclassesComponent }],
               },
               {
                 path: 'monads',
-                data: { breadcrumb: 'Monaden', logo: 'code' },
+                data: buildRouteMeta('NAV.MONADS', 'HASKELL.MONADS.INTRO'),
                 children: [{ path: '', component: HaskellMonadsComponent }],
               },
               {
                 path: 'pattern-matching',
-                data: { breadcrumb: 'Pattern Matching', logo: 'code' },
+                data: buildRouteMeta('NAV.PATTERN_MATCHING', 'HASKELL.PATTERN.INTRO'),
                 children: [{ path: '', component: HaskellPatternMatchingComponent }],
               },
             ],
           },
           {
             path: 'prolog',
-            data: { breadcrumb: 'Prolog', logo: 'brain' },
+            data: buildRouteMeta('NAV.PROLOG', 'PROLOG.INDEX.INTRO'),
             children: [
               { path: '', component: PrologIndexComponent },
               {
                 path: 'ackermann',
-                data: { breadcrumb: 'Ackermann', logo: 'superscript' },
+                data: buildRouteMeta('NAV.ACKERMANN', 'PROLOG.ACKERMANN.P1'),
                 children: [{ path: '', component: PrologAckermannComponent }],
               },
               {
                 path: 'hanoi',
-                data: { breadcrumb: 'Hanoi', logo: 'gopuram' },
+                data: buildRouteMeta('NAV.HANOI', 'PROLOG.HANOI.P1'),
                 children: [{ path: '', component: PrologHanoiComponent }],
               },
             ],
           },
         ],
       },
-      { path: '**', component: PageNotFoundComponent },
+      {
+        path: '**',
+        component: PageNotFoundComponent,
+        data: buildRouteMeta('404.TITLE', '404.SUBTITLE'),
+      },
     ]),
   ],
 };

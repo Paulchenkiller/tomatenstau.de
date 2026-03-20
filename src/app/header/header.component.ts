@@ -4,8 +4,6 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { NgForOf } from '@angular/common';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
-import { IconService } from '../services/icon.service';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -31,24 +29,17 @@ export class HeaderComponent {
       name: 'XING',
     },
   ];
-  nav: any;
-  menu = false;
   currentLang = 'en';
   highContrast = false;
   private prefersContrastMql: MediaQueryList | null = null;
 
   constructor(
     private router: Router,
-    private iconService: IconService,
     private translate: TranslateService,
     @Inject(DOCUMENT) private doc: Document,
   ) {
-    // Icons are now loaded via the IconService
-    this.router.events.subscribe(() => {
-      this.menu = false;
-    });
     this.currentLang = this.translate.currentLang || this.translate.getDefaultLang() || 'en';
-    this.translate.onLangChange.subscribe((event) => {
+    this.translate.onLangChange.subscribe((event: { lang: string }) => {
       this.currentLang = event.lang;
     });
 
@@ -148,9 +139,5 @@ export class HeaderComponent {
       const maxAge = days > 0 ? `; max-age=${days * 24 * 60 * 60}` : '';
       this.doc.cookie = `${name}=${encodeURIComponent(value)}; path=/${maxAge}`;
     } catch {}
-  }
-
-  clickEvent(): void {
-    this.nav = !this.nav;
   }
 }

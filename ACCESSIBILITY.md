@@ -1,171 +1,50 @@
-# Accessibility Compliance Statement
+# Accessibility Notes
 
-This website is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.
+This repository includes accessibility-focused implementation and automated checks, but this file is intentionally limited to statements that match the current codebase.
 
-## Conformance Status
+## Current Implementation
 
-This website aims to conform with **WCAG 2.1 AA** standards as required by the **European Accessibility Act (EAA)**, which comes into effect in June 2025.
+The current app includes:
 
-### Current Compliance Level
+- skip links in [src/app/app.component.html](/Users/meik/git/tomatenstaude/src/app/app.component.html)
+- a main landmark in [src/app/content/content.component.html](/Users/meik/git/tomatenstaude/src/app/content/content.component.html)
+- language switching and a high-contrast toggle in [src/app/header/header.component.html](/Users/meik/git/tomatenstaude/src/app/header/header.component.html)
+- translated `lang` attribute updates and route-based metadata updates in [src/app/app.component.ts](/Users/meik/git/tomatenstaude/src/app/app.component.ts)
+- accessibility-related global styles in [src/styles.css](/Users/meik/git/tomatenstaude/src/styles.css)
+- Playwright + axe coverage in [e2e/accessibility.spec.ts](/Users/meik/git/tomatenstaude/e2e/accessibility.spec.ts)
 
-- **WCAG 2.1 Level A**: Fully compliant
-- **WCAG 2.1 Level AA**: In progress (target: 100% compliance by June 2025)
-
-## Accessibility Features
-
-### Navigation and Structure
-
-- ✅ Skip links for keyboard navigation
-- ✅ Consistent navigation structure across all pages
-- ✅ Proper heading hierarchy (H1-H6)
-- ✅ Breadcrumb navigation with ARIA labels
-- ✅ Keyboard-only navigation support
-
-### Visual Design
-
-- ✅ High contrast mode support
-- ✅ Color contrast ratios meeting WCAG AA standards (4.5:1 for normal text, 3:1 for large text)
-- ✅ Text can be resized up to 200% without loss of functionality
-- ✅ No content relies solely on color to convey information
-
-### Content and Language
-
-- ✅ Alternative text for all meaningful images
-- ✅ Multiple language support (German/English) with proper lang attributes
-- ✅ Clear and simple language where possible
-- ✅ Consistent terminology throughout the site
-
-### Forms and Interactive Elements
-
-- ✅ All form controls have associated labels
-- ✅ Error messages are clearly identified and associated with form fields
-- ✅ Focus indicators are visible for all interactive elements
-- ✅ Button purposes are clearly indicated
-
-### Code Examples and Technical Content
-
-- ✅ Code syntax highlighting maintains adequate contrast
-- ✅ Copy buttons have descriptive aria-labels
-- ✅ Code examples are properly structured with semantic markup
-
-## Testing and Validation
-
-### Automated Testing
-
-We use the following tools for accessibility testing:
-
-- **axe-core**: Automated WCAG 2.1 AA compliance testing
-- **Playwright with axe**: End-to-end accessibility testing
-- **Jest with jest-axe**: Unit-level accessibility testing
-
-### Manual Testing
-
-- Keyboard navigation testing
-- Screen reader testing (NVDA, JAWS, VoiceOver)
-- High contrast mode validation
-- Mobile accessibility testing
-
-### Continuous Integration
-
-All accessibility tests run automatically on:
-
-- Every pull request
-- Every deployment to production
-- Weekly scheduled audits
-
-## Running Accessibility Tests
-
-### For Developers
+## Available Checks
 
 ```bash
-# Run all accessibility tests
 npm run a11y:test
-
-# Run axe-core audit (requires server running)
 npm run a11y:audit
-
-# Run accessibility tests in CI mode
 npm run a11y:ci
 ```
 
-### Test Configuration
+Related files:
 
-Accessibility tests are configured in:
+- [axe.config.js](/Users/meik/git/tomatenstaude/axe.config.js)
+- [e2e/accessibility.spec.ts](/Users/meik/git/tomatenstaude/e2e/accessibility.spec.ts)
+- [.github/workflows/accessibility.yml](/Users/meik/git/tomatenstaude/.github/workflows/accessibility.yml)
 
-- `axe.config.js` - Main axe-core configuration
-- `e2e/accessibility.spec.ts` - End-to-end accessibility tests
-- `src/app/accessibility.spec.ts` - Unit accessibility tests
+## Verified State During Recent Cleanup
 
-## Known Issues and Roadmap
+Verified locally in this repository on 2026-03-20:
 
-### Current Issues
+- `npm run lint` passed
+- `npm run test:ci` passed
+- `npm run e2e` could not be fully verified in this sandbox because local port binding failed with `listen EPERM`
 
-- [ ] Some third-party components may not fully comply with WCAG 2.1 AA
-- [ ] Advanced code execution features need accessibility enhancements
+That means the accessibility test code exists and is wired into the repo, but the full E2E/a11y runtime still needs confirmation in a normal local or CI environment.
 
-### Upcoming Improvements (by June 2025)
+## Known Gaps
 
-- [ ] Enhanced screen reader support for dynamic content
-- [ ] Voice navigation compatibility
-- [ ] Advanced keyboard shortcuts for power users
-- [ ] Improved mobile accessibility features
+- Accessibility claims in previous versions of this file were broader than what was directly verified.
+- Some accessibility styling is still handled through broad global overrides and `!important`, which should be refined.
+- The code-copy enhancement is still implemented imperatively in [src/app/app.component.ts](/Users/meik/git/tomatenstaude/src/app/app.component.ts), which should eventually move to a dedicated Angular directive or component.
 
-## Feedback and Support
+## Next Improvements
 
-If you experience any accessibility barriers or have suggestions for improvement:
-
-### Contact Information
-
-- **Email**: [accessibility@tomatenstau.de](mailto:accessibility@tomatenstau.de)
-- **GitHub Issues**: [Report accessibility issues](https://github.com/username/tomatenstau.de/issues/new?labels=accessibility&template=accessibility-issue.md)
-
-### Response Time
-
-We aim to respond to accessibility feedback within:
-
-- **Critical issues**: 1 business day
-- **Non-critical issues**: 5 business days
-
-## Legal Compliance
-
-### European Accessibility Act (EAA)
-
-This website is prepared to comply with the European Accessibility Act, which requires:
-
-- WCAG 2.1 Level AA conformance
-- Accessibility statement (this document)
-- Feedback mechanism for users
-- Regular monitoring and reporting
-
-### Web Content Accessibility Guidelines (WCAG) 2.1
-
-We follow the WCAG 2.1 guidelines based on four main principles:
-
-1. **Perceivable** - Information must be presentable in ways users can perceive
-2. **Operable** - Interface components must be operable by all users
-3. **Understandable** - Information and UI operation must be understandable
-4. **Robust** - Content must be robust enough for various assistive technologies
-
-## Technical Implementation
-
-### Accessibility Technologies Used
-
-- **ARIA (Accessible Rich Internet Applications)** for dynamic content
-- **Semantic HTML5** elements for proper structure
-- **CSS** for visual accessibility features
-- **Angular CDK a11y module** for focus management
-
-### Browser and Assistive Technology Support
-
-Tested and supported with:
-
-- **Screen Readers**: NVDA, JAWS, VoiceOver, TalkBack
-- **Browsers**: Chrome, Firefox, Safari, Edge (latest 2 versions)
-- **Operating Systems**: Windows, macOS, iOS, Android
-
----
-
-**Last Updated**: September 2025
-**Next Review**: December 2025
-**Standard**: WCAG 2.1 AA
-**Compliance Target**: June 2025 (EAA Deadline)
+- replace timer-based and DOM-query-based code block enhancement with Angular primitives
+- reduce global CSS overrides in favor of scoped component styling and clearer tokens
+- verify E2E accessibility checks outside the current sandbox and tighten selectors where needed

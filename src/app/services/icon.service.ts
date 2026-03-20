@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 // Import only specific icons instead of entire icon packs
-import { faHome, faEnvelope, faUniversalAccess } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faUniversalAccess } from '@fortawesome/free-solid-svg-icons';
 
 import {
   faGithub,
@@ -25,7 +25,6 @@ export class IconService {
     // Add only the specific icons we actually use
     this.library.addIcons(
       // Solid icons
-      faHome,
       faEnvelope,
       faUniversalAccess,
 
@@ -37,19 +36,5 @@ export class IconService {
       faXingSquare,
       faLinkedinSquare,
     );
-  }
-
-  // Method to get available icon information for debugging
-  getLoadedIcons(): string[] {
-    return [
-      'fas:home',
-      'fas:envelope',
-      'fas:universal-access',
-      'fab:github',
-      'fab:linkedin',
-      'fab:xing',
-      'fab:github-square',
-      'fab:xing-square',
-    ];
   }
 }

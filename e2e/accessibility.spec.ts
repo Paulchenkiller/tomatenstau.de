@@ -36,20 +36,6 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
     expect(accessibilityScanResults.violations).toEqual([]);
   });
 
-  test('Contact page should be accessible', async ({ page }) => {
-    await page.goto('/contact');
-
-    // Wait for page to fully load and translations to be applied
-    await page.waitForTimeout(2000);
-    await page.waitForLoadState('networkidle');
-
-    const accessibilityScanResults = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
-      .analyze();
-
-    expect(accessibilityScanResults.violations).toEqual([]);
-  });
-
   test('404 page should be accessible', async ({ page }) => {
     await page.goto('/non-existent-page');
 
@@ -119,8 +105,8 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
     await expect(mainContent).toHaveAttribute('id', 'main-content');
   });
 
-  test('All form controls should have proper labels', async ({ page }) => {
-    await page.goto('/contact');
+  test('404 page search controls should have proper labels', async ({ page }) => {
+    await page.goto('/non-existent-page');
 
     // Check that all input elements have associated labels
     const inputs = await page.locator('input, textarea, select');
