@@ -1,6 +1,6 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine, isMainModule } from '@angular/ssr/node';
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import bootstrap from './main.server';
@@ -11,6 +11,15 @@ const indexHtml = join(serverDistFolder, 'index.server.html');
 
 const app = express();
 const commonEngine = new CommonEngine();
+
+app.use((req, res, next) => {
+  res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), geolocation=(), microphone=()');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  next();
+});
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -27,11 +36,16 @@ const commonEngine = new CommonEngine();
 /**
  * Serve static files from /browser
  */
-app.get(
-  '**',
+app.use(
   express.static(browserDistFolder, {
+    immutable: true,
+    index: false,
     maxAge: '1y',
-    index: 'index.html',
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-store');
+      }
+    },
   }),
 );
 
@@ -51,6 +65,17 @@ app.get('**', (req, res, next) => {
     })
     .then((html) => res.send(html))
     .catch((err) => next(err));
+});
+
+app.use((error: unknown, _req: Request, res: Response, next: NextFunction) => {
+  console.error('SSR render failed.', error);
+
+  if (res.headersSent) {
+    next(error);
+    return;
+  }
+
+  res.status(500).send('Internal Server Error');
 });
 
 /**

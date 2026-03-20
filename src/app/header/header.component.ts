@@ -76,15 +76,21 @@ export class HeaderComponent implements OnDestroy {
     this.applyHighContrast();
   }
 
-  setLang(lang: 'en' | 'de'): void {
+  async setLang(lang: 'en' | 'de'): Promise<void> {
     this.translate.use(lang);
     this.writeLocalStorage('lang', lang);
     this.writeCookie('lang', lang, 365);
-    void this.router.navigate([], {
-      queryParams: { lang },
-      queryParamsHandling: 'merge',
-      replaceUrl: true,
-    });
+    try {
+      await this.router.navigate([], {
+        queryParams: { lang },
+        queryParamsHandling: 'merge',
+        replaceUrl: true,
+      });
+    } catch (error) {
+      if (isDevMode()) {
+        console.warn(`Failed to update lang query param to "${lang}".`, error);
+      }
+    }
   }
 
   toggleHighContrast(): void {

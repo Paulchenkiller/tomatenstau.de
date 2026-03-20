@@ -13,7 +13,7 @@ export class JavascriptThisArrowComponent {
   codeThis = `const obj = {
   x: 42,
   normal() { return this.x; },
-  arrow: () => { return (this as any).x; }
+  arrow: () => undefined
 };
 
 console.log(obj.normal()); // 42

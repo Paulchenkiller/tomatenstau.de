@@ -92,4 +92,29 @@ describe('CodeCopyDirective', () => {
     expect(button.textContent).toBe('Copy code to clipboard');
     expect(button.getAttribute('aria-label')).toBe('Copy code to clipboard');
   });
+
+  it('does not show copied feedback when both copy paths fail', async () => {
+    const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    Object.assign(navigator, {
+      clipboard: { writeText: jest.fn().mockRejectedValue(new Error('Clipboard denied')) },
+    });
+    const execCommandMock = jest.fn().mockReturnValue(false);
+    Object.defineProperty(document, 'execCommand', {
+      configurable: true,
+      value: execCommandMock,
+    });
+
+    const pre = fixture.nativeElement.querySelector('#pre1') as HTMLPreElement;
+    const code = pre.querySelector('code') as HTMLElement;
+    code.textContent = 'console.log(1)';
+    const button = pre.querySelector('button.copy-btn') as HTMLButtonElement;
+
+    button.click();
+    await Promise.resolve();
+
+    expect(button.textContent).toBe('Copy code to clipboard');
+    expect(button.getAttribute('aria-label')).toBe('Copy code to clipboard');
+    expect(execCommandMock).toHaveBeenCalledWith('copy');
+    consoleWarnSpy.mockRestore();
+  });
 });

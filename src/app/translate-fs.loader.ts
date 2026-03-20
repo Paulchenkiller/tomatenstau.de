@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { makeStateKey, TransferState } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { TranslationDictionary } from './types/translation-dictionary';
 
 /**
  * TranslateLoader that works with Server-Side Rendering
@@ -18,8 +19,8 @@ export class TranslateFsLoader implements TranslateLoader {
     private suffix: string = '.json',
   ) {}
 
-  public getTranslation(lang: string): Observable<any> {
-    const key = makeStateKey<any>(`transfer-translate-${lang}`);
+  public getTranslation(lang: string): Observable<TranslationDictionary> {
+    const key = makeStateKey<TranslationDictionary | null>(`transfer-translate-${lang}`);
     const data = this.transferState.get(key, null);
 
     // If we have data in transfer state (from server), use it
@@ -28,6 +29,6 @@ export class TranslateFsLoader implements TranslateLoader {
     }
 
     // Fallback to HTTP request for client-side navigation
-    return this.http.get(`${this.prefix}${lang}${this.suffix}`);
+    return this.http.get<TranslationDictionary>(`${this.prefix}${lang}${this.suffix}`);
   }
 }

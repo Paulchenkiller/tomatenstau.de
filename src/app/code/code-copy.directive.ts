@@ -6,6 +6,7 @@ import {
   OnDestroy,
   Renderer2,
   DOCUMENT,
+  isDevMode,
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -96,9 +97,13 @@ export class CodeCopyDirective implements AfterViewInit, OnDestroy {
     const copiedLabel = this.getCopiedLabel();
     const defaultLabel = this.getCopyLabel();
 
-    const didCopy = await this.copyWithClipboardApi(text);
+    let didCopy = await this.copyWithClipboardApi(text);
     if (!didCopy) {
-      this.copyWithFallback(text);
+      didCopy = this.copyWithFallback(text);
+    }
+
+    if (!didCopy) {
+      return;
     }
 
     this.button.textContent = copiedLabel;
@@ -127,12 +132,13 @@ export class CodeCopyDirective implements AfterViewInit, OnDestroy {
     try {
       await clipboard.writeText(text);
       return true;
-    } catch {
+    } catch (error) {
+      this.logCopyError('clipboard', error);
       return false;
     }
   }
 
-  private copyWithFallback(text: string): void {
+  private copyWithFallback(text: string): boolean {
     const textarea = this.renderer.createElement('textarea') as HTMLTextAreaElement;
     textarea.value = text;
     this.renderer.setStyle(textarea, 'position', 'fixed');
@@ -142,9 +148,19 @@ export class CodeCopyDirective implements AfterViewInit, OnDestroy {
     textarea.select();
 
     try {
-      this.doc.execCommand('copy');
+      const copied = this.doc.execCommand('copy');
+      if (!copied) {
+        this.logCopyError('fallback', new Error('document.execCommand("copy") returned false.'));
+      }
+      return copied;
     } finally {
       this.renderer.removeChild(this.doc.body, textarea);
+    }
+  }
+
+  private logCopyError(stage: 'clipboard' | 'fallback', error: unknown): void {
+    if (isDevMode()) {
+      console.warn(`Failed to copy code via ${stage}.`, error);
     }
   }
 

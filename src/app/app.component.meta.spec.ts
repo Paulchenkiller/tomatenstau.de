@@ -5,6 +5,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
 import { buildRouteMeta } from './routing/route-meta.util';
+import { AppRouteMeta } from './routing/route-meta';
+
+interface RouteSnapshotStub {
+  routeConfig: { path: string; data: { meta: AppRouteMeta } };
+  firstChild: RouteSnapshotStub | null;
+}
 
 class TranslateStub {
   public onLangChange = new Subject<{ lang: string }>();
@@ -18,7 +24,7 @@ class TranslateStub {
 
 class RouterStub {
   public url = '/code/python';
-  public events = new Subject<any>();
+  public events = new Subject<NavigationEnd>();
   public routerState = {
     snapshot: {
       root: {
@@ -33,7 +39,7 @@ class RouterStub {
             firstChild: null,
           },
         },
-      },
+      } satisfies RouteSnapshotStub,
     },
   };
 }

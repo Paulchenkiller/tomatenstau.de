@@ -3,10 +3,14 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { provideHttpClient } from '@angular/common/http';
 import { PLATFORM_ID } from '@angular/core';
 
+interface MockCookieDocument {
+  cookie: string;
+}
+
 describe('Language Initialization (app.config.ts)', () => {
   let translateService: TranslateService;
-  let mockLocalStorage: { [key: string]: string };
-  let mockDocument: any;
+  let mockLocalStorage: Record<string, string>;
+  let mockDocument: MockCookieDocument;
 
   beforeEach(() => {
     // Mock localStorage
@@ -29,9 +33,7 @@ describe('Language Initialization (app.config.ts)', () => {
     });
 
     // Mock document.cookie
-    mockDocument = {
-      cookie: '',
-    };
+    mockDocument = { cookie: '' };
     Object.defineProperty(document, 'cookie', {
       get: () => mockDocument.cookie,
       set: (value: string) => {

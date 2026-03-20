@@ -24,7 +24,7 @@ function fetchX(opts: Options) {}
 fetchX({ url: 'x', timout: 1000 }); // Fehler: "timout" ist falsch geschrieben
 
 // Workaround: Zwischenvariable (bewusst einsetzen!)
-const o = { url: 'x', timout: 1000 } as any;
+const o = { url: 'x', timout: 1000 };
 fetchX(o); // kein Fehler – Excess Property Check umgangen
 `;
 

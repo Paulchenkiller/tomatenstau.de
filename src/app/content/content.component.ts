@@ -11,11 +11,9 @@ import { isPlatformBrowser } from '@angular/common';
   imports: [RouterOutlet, TranslateModule],
 })
 export class ContentComponent {
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {
-    // do nothing
-  }
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
 
-  onActivate(_event: any): void {
+  onActivate(): void {
     // Only run scroll animation in browser environment
     if (!isPlatformBrowser(this.platformId)) {
       return;

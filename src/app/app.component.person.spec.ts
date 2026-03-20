@@ -5,6 +5,17 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subject, of } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
 import { buildRouteMeta } from './routing/route-meta.util';
+import { AppRouteMeta } from './routing/route-meta';
+
+interface CopyLabels {
+  'A11Y.COPY_CODE': string;
+  'A11Y.COPIED': string;
+}
+
+interface RouteSnapshotStub {
+  routeConfig: { path: string; data: { meta: AppRouteMeta } };
+  firstChild: RouteSnapshotStub | null;
+}
 
 class TranslateStub {
   public onLangChange = new Subject<{ lang: string }>();
@@ -12,13 +23,12 @@ class TranslateStub {
     return key;
   }
   get(keys: string[]) {
-    // return labels used by enhanceCodeBlocks
-    const dict: any = {
+    const dict: CopyLabels = {
       'A11Y.COPY_CODE': 'Copy code to clipboard',
       'A11Y.COPIED': 'Copied!',
     };
-    const result: any = {};
-    keys.forEach((k) => (result[k] = dict[k] || k));
+    const result: Record<string, string> = {};
+    keys.forEach((key) => (result[key] = dict[key as keyof CopyLabels] || key));
     return of(result);
   }
   getDefaultLang() {
@@ -28,8 +38,8 @@ class TranslateStub {
 
 class RouterStub {
   public url = '/';
-  public events = new Subject<any>();
-  public routerState: any = {
+  public events = new Subject<NavigationEnd>();
+  public routerState: { snapshot: { root: RouteSnapshotStub } } = {
     snapshot: {
       root: {
         routeConfig: { path: '', data: buildRouteMeta('NAV.HOME', 'INDEX.INTRO', 'profile') },

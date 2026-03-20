@@ -2,8 +2,6 @@
 
 Last updated: 2026-03-20
 
-This file is a living backlog. Completed work should be moved into the completed section whenever changes land on the branch.
-
 ## Verification Snapshot
 
 Current branch state verified during the latest pass:
@@ -13,150 +11,70 @@ Current branch state verified during the latest pass:
 - `npm run build -- --configuration=production` -> local process still exits abnormally in this sandbox after emitting output
 - `npm run e2e` -> still blocked in this sandbox because the Angular dev server cannot bind a local port (`listen EPERM`)
 
-## Completed On `codex-improvement-cleanup`
-
-### Route and test drift
-
-- removed the dead `ContactComponent` feature and its skipped spec
-- removed stale `/contact` assertions from `e2e/accessibility.spec.ts`
-
-### Route metadata consolidation
-
-- added typed route metadata helpers in [src/app/routing/route-meta.ts](/Users/meik/git/tomatenstaude/src/app/routing/route-meta.ts)
-- normalized route metadata in [src/app/app.config.ts](/Users/meik/git/tomatenstaude/src/app/app.config.ts)
-- removed the hardcoded URL-to-title and URL-to-description maps from [src/app/app.component.ts](/Users/meik/git/tomatenstaude/src/app/app.component.ts)
-- route-based SEO and breadcrumb JSON-LD are now derived from the active route tree
-
-### Dead code cleanup
-
-- removed the unused breadcrumb component and related files
-- removed unused footer side-effect injection
-- removed unused header state and related dead logic
-- trimmed unused icon registration code
-
-### Dependency and asset cleanup
-
-- removed unused packages from `package.json` and `package-lock.json`:
-  - `@ngx-translate/http-loader`
-  - `chromedriver`
-  - `jasmine-core`
-  - `jasmine-spec-reporter`
-  - `@fortawesome/free-regular-svg-icons`
-- removed unreferenced image assets from `src/assets/images` and `src/assets/images/optimized`
-
-### Documentation drift
-
-- rewrote [README.md](/Users/meik/git/tomatenstaude/README.md) to match the actual scripts and current Angular version
-- rewrote [ACCESSIBILITY.md](/Users/meik/git/tomatenstaude/ACCESSIBILITY.md) to match what is actually implemented and verified
-
-### E2E baseline improvement
-
-- switched Playwright config from `localhost` to `127.0.0.1` in [playwright.config.ts](/Users/meik/git/tomatenstaude/playwright.config.ts)
-
 ## Remaining Work
 
 ### High Priority
 
-#### 1. Replace imperative DOM enhancement for code blocks
+#### 1. Reduce remaining silent error handling
 
-Status: done
+Status: mostly done
 
-Why:
+Done already:
 
-- code-copy behavior previously lived in [src/app/app.component.ts](/Users/meik/git/tomatenstaude/src/app/app.component.ts) as root-level DOM mutation
+- language URL-sync failures are logged explicitly in the header
+- clipboard fallback paths now avoid false-positive success feedback
+- SSR translation preload now distinguishes missing files from read/parse failures
 
-Done:
+Left:
 
-- extracted copy behavior into [src/app/code/code-copy.directive.ts](/Users/meik/git/tomatenstaude/src/app/code/code-copy.directive.ts)
-- removed code-block enhancement logic from [src/app/app.component.ts](/Users/meik/git/tomatenstaude/src/app/app.component.ts)
-- added directive coverage in [src/app/code/code-copy.directive.spec.ts](/Users/meik/git/tomatenstaude/src/app/code/code-copy.directive.spec.ts)
+- align the remaining browser preference helper duplication between bootstrap and header
+- decide whether server-side preload warnings should be centralized behind a logger abstraction
 
-#### 2. Reduce silent `catch {}` usage
+#### 2. Improve type safety further
 
-Status: open
+Status: mostly done
 
-Why:
+Done already:
 
-- silent catches still exist in header, app bootstrap, and meta/update paths
+- typed route metadata
+- typed translation dictionaries for SSR/client translation loading
+- removed several broad `any` usages and dead state
+- removed remaining `any`/`Observable<any>` runtime usage under `src/app`
+- tightened several router/document test stubs
 
-Next step:
+Left:
 
-- replace broad catches with narrower handling and explicit fallbacks
-
-#### 3. Make long-lived subscriptions lifecycle-safe
-
-Status: done
-
-Why:
-
-- `AppComponent` and `HeaderComponent` previously subscribed directly in constructors without explicit teardown
-
-Done:
-
-- added `OnDestroy` + `Subject` teardown in [src/app/app.component.ts](/Users/meik/git/tomatenstaude/src/app/app.component.ts)
-- added `OnDestroy` + `Subject` teardown in [src/app/header/header.component.ts](/Users/meik/git/tomatenstaude/src/app/header/header.component.ts)
+- reduce remaining weak typing in tests where it still matters
+- tighten ESLint rules incrementally once the remaining cases are addressed
 
 ### Medium Priority
 
-#### 4. Improve E2E reliability further
-
-Status: in progress
-
-Done:
-
-- Playwright now uses `127.0.0.1`
-- host, port, and base URL are now environment-overridable in [playwright.config.ts](/Users/meik/git/tomatenstaude/playwright.config.ts)
-- removed fixed sleeps and brittle positional selectors from [e2e/accessibility.spec.ts](/Users/meik/git/tomatenstaude/e2e/accessibility.spec.ts)
-- relaxed brittle URL matching in [e2e/notfound-search.spec.ts](/Users/meik/git/tomatenstaude/e2e/notfound-search.spec.ts)
-
-Left:
-
-- verify full runtime outside this sandbox
-
-#### 5. Unskip and repair remaining skipped specs
-
-Status: done
-
-Done:
-
-- converted the remaining five skipped article specs into direct smoke tests
-- there are no remaining `describe.skip(...)` suites under `src/app`
-
-Left:
-
-- optionally add a CI guard against new committed `.skip`
-
-#### 6. Improve type safety
-
-Status: partially done
-
-Done:
-
-- introduced typed route metadata
-- removed one `any`-driven header field and related dead code
-
-Left:
-
-- reduce `Observable<any>` and remaining broad `any` usage
-- tighten ESLint rules incrementally
-
-#### 7. Refactor accessibility and theme styles
-
-Status: open
+#### 3. Refactor accessibility and theme styles
 
 Why:
 
 - [src/styles.css](/Users/meik/git/tomatenstaude/src/styles.css) still contains many global overrides and `!important` rules
+- [src/css/main.scss](/Users/meik/git/tomatenstaude/src/css/main.scss) overlaps with those global rules
 
 Next step:
 
-- introduce clearer design/accessibility tokens and reduce global overrides
+- introduce clearer tokens and reduce blanket global overrides
 
-#### 8. Continue asset cleanup
+#### 4. Verify E2E runtime outside this sandbox
 
-Status: partially done
+Done already:
 
-Done:
+- removed fixed sleeps and brittle selectors from key E2E specs
+- made Playwright host, port, and base URL environment-overridable
+- kept the copy-button flow covered while tightening its failure behavior
+
+Left:
+
+- confirm the full Playwright/a11y flow in a normal local or CI environment
+
+#### 5. Continue asset cleanup
+
+Done already:
 
 - removed clearly unreferenced image files
 
@@ -165,9 +83,7 @@ Left:
 - decide whether source-only assets should live outside `src/assets`
 - remove any remaining redundant originals once ownership is clear
 
-#### 9. Re-test install without `legacy-peer-deps`
-
-Status: open
+#### 6. Re-test install without `legacy-peer-deps`
 
 Why:
 
@@ -175,26 +91,22 @@ Why:
 
 Next step:
 
-- verify dependency installation without this escape hatch and remove it if no longer needed
+- verify install without that compatibility flag and remove it if no longer needed
 
 ### Lower Priority
 
-#### 10. Strengthen SEO and structured data further
+#### 7. Strengthen SEO and structured data further
 
-Status: partially done
+Done already:
 
-Done:
-
-- route-driven metadata is now centralized
+- route-driven metadata is centralized
 
 Left:
 
 - expand richer metadata for tutorial/article pages if needed
 - add SSR assertions for rendered metadata
 
-#### 11. Improve build diagnostics
-
-Status: open
+#### 8. Improve build diagnostics
 
 Why:
 
@@ -204,21 +116,22 @@ Next step:
 
 - verify build behavior in a normal local shell or CI runner and capture the exact failure mode
 
-#### 12. Improve server hardening
+#### 9. Improve server hardening
 
-Status: open
+Status: in progress
 
-Why:
+Done already:
 
-- [src/server.ts](/Users/meik/git/tomatenstaude/src/server.ts) still lacks explicit security header handling
+- added baseline security headers in the SSR Express server
+- moved static serving to `index: false` so SSR owns HTML responses
+- added an explicit SSR error handler
 
-Next step:
+Left:
 
-- add CSP and related headers at server or hosting/CDN level
+- add CSP carefully after validating current asset/font/script usage
+- enable HSTS only in a production HTTPS environment or at the CDN/proxy layer
 
-#### 13. Normalize CI and deployment workflows
-
-Status: open
+#### 10. Normalize CI and deployment workflows
 
 Why:
 
@@ -227,12 +140,3 @@ Why:
 Next step:
 
 - align deploy, CI, and accessibility workflows
-
-## Suggested Next Slice
-
-The next best cleanup batch is:
-
-1. extract the copy-button enhancement out of `AppComponent`
-2. remove or narrow silent catches
-3. replace brittle E2E waits/selectors
-4. repair and unskip the remaining five skipped specs
