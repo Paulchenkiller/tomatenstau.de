@@ -38,6 +38,11 @@ import { HaskellMonadsComponent } from './code/haskell/haskell-monads/haskell-mo
 import { HaskellPatternMatchingComponent } from './code/haskell/haskell-pattern-matching/haskell-pattern-matching.component';
 import { IconService } from './services/icon.service';
 import { buildRouteMeta } from './routing/route-meta.util';
+import {
+  resolvePreferredLanguage,
+  writeBrowserCookie,
+  writeBrowserStorage,
+} from './preferences/browser-preferences';
 
 export function TranslateLoaderFactory(transferState: TransferState, platformId: object) {
   // Use SSR-compatible loader on server, HTTP loader on client
@@ -49,48 +54,6 @@ export function TranslateLoaderFactory(transferState: TransferState, platformId:
 function logPreferenceAccessError(action: string, key: string, error: unknown): void {
   if (isDevMode()) {
     console.warn(`Failed to ${action} for "${key}".`, error);
-  }
-}
-
-function readDocumentCookie(name: string): string | null {
-  const namePrefix = `${name}=`;
-  try {
-    const parts = (document.cookie || '').split(';');
-    for (let cookie of parts) {
-      cookie = cookie.trim();
-      if (cookie.startsWith(namePrefix)) {
-        return decodeURIComponent(cookie.substring(namePrefix.length));
-      }
-    }
-  } catch (error) {
-    logPreferenceAccessError('read cookie', name, error);
-  }
-  return null;
-}
-
-function writeDocumentCookie(name: string, value: string, days: number): void {
-  try {
-    const maxAge = days > 0 ? `; max-age=${days * 24 * 60 * 60}` : '';
-    document.cookie = `${name}=${encodeURIComponent(value)}; path=/${maxAge}`;
-  } catch (error) {
-    logPreferenceAccessError('write cookie', name, error);
-  }
-}
-
-function readWindowStorage(key: string): string | null {
-  try {
-    return localStorage.getItem(key);
-  } catch (error) {
-    logPreferenceAccessError('read localStorage', key, error);
-    return null;
-  }
-}
-
-function writeWindowStorage(key: string, value: string): void {
-  try {
-    localStorage.setItem(key, value);
-  } catch (error) {
-    logPreferenceAccessError('write localStorage', key, error);
   }
 }
 
@@ -122,27 +85,36 @@ export const appConfig: ApplicationConfig = {
 
         // Only run browser-specific code on the client side
         if (isPlatformBrowser(platformId)) {
-          const params = new URLSearchParams(window.location.search);
-          const urlLang = params.get('lang');
-          const normalizedUrlLang =
-            urlLang && ['en', 'de'].includes(urlLang.toLowerCase()) ? urlLang.toLowerCase() : null;
+          const logError = (action: string, key: string, error: unknown) =>
+            logPreferenceAccessError(action, key, error);
+          const { cookieLang, resolvedLang, savedLang } = resolvePreferredLanguage({
+            doc: typeof document !== 'undefined' ? document : undefined,
+            fallback: 'en',
+            logError,
+            navigatorLanguage: navigator.language,
+            navigatorLanguages: navigator.languages,
+            search: window.location.search,
+            storage: typeof localStorage !== 'undefined' ? localStorage : undefined,
+            supported: ['en', 'de'],
+          });
 
-          const cookieSaved = (readDocumentCookie('lang') || '').toLowerCase();
-          const cookieLang = ['en', 'de'].includes(cookieSaved) ? cookieSaved : null;
-          const saved = readWindowStorage('lang');
-          const browserLangs = navigator.languages || [navigator.language];
-          const browserLang =
-            browserLangs
-              .map((lang) => lang?.toLowerCase().split('-')[0])
-              .find((lang) => ['de', 'en'].includes(lang || '')) || 'en';
-          const lang = normalizedUrlLang || cookieLang || saved || browserLang || 'en';
-
-          translate.use(lang);
-          if (lang !== saved) {
-            writeWindowStorage('lang', lang);
+          translate.use(resolvedLang);
+          if (resolvedLang !== savedLang) {
+            writeBrowserStorage(
+              typeof localStorage !== 'undefined' ? localStorage : undefined,
+              'lang',
+              resolvedLang,
+              logError,
+            );
           }
-          if (cookieLang !== lang) {
-            writeDocumentCookie('lang', lang, 365);
+          if (cookieLang !== resolvedLang) {
+            writeBrowserCookie(
+              typeof document !== 'undefined' ? document : undefined,
+              'lang',
+              resolvedLang,
+              365,
+              logError,
+            );
           }
         } else {
           // Server-side: just use default language

@@ -31,6 +31,12 @@ Implemented features in the current codebase:
 
 The project may install on newer odd-numbered Node releases, but Angular warns against using them for production work.
 
+## Branch and Deploy Notes
+
+- `main` is the canonical branch for CI, accessibility checks, and deployment.
+- The current GitHub Pages deploy workflow still depends on the repository `ACCESS_TOKEN` secret.
+- CSP and HSTS are intentionally deferred at the app-server layer until the final production hosting edge is verified.
+
 ## Setup
 
 ```bash

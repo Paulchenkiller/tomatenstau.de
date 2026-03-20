@@ -8,8 +8,9 @@ Current branch state verified during the latest pass:
 
 - `npm run lint` -> passed
 - `npm run test:ci` -> passed
-- `npm run build -- --configuration=production` -> local process still exits abnormally in this sandbox after emitting output
+- `npm run build -- --configuration=production --verbose` -> emits a complete `dist/tomatenstaude` tree, then still exits abnormally in this sandbox
 - `npm run e2e` -> still blocked in this sandbox because the Angular dev server cannot bind a local port (`listen EPERM`)
+- `npm_config_legacy_peer_deps=false npm ci` -> exposes peer-dependency friction around `@stryker-mutator/typescript-checker@9.1.1`
 
 ## Remaining Work
 
@@ -27,7 +28,6 @@ Done already:
 
 Left:
 
-- align the remaining browser preference helper duplication between bootstrap and header
 - decide whether server-side preload warnings should be centralized behind a logger abstraction
 
 #### 2. Improve type safety further
@@ -44,12 +44,21 @@ Done already:
 
 Left:
 
-- reduce remaining weak typing in tests where it still matters
+- reduce remaining weak typing in tests where it still matters, especially [header.component.spec.ts](/Users/meik/git/tomatenstaude/src/app/header/header.component.spec.ts)
 - tighten ESLint rules incrementally once the remaining cases are addressed
 
 ### Medium Priority
 
 #### 3. Refactor accessibility and theme styles
+
+Status: in progress
+
+Done already:
+
+- removed stale breadcrumb-era selectors from [src/styles.css](/Users/meik/git/tomatenstaude/src/styles.css)
+- introduced shared global CSS tokens for button/code colors to reduce literal duplication
+- moved base document text/color ownership further into [src/css/main.scss](/Users/meik/git/tomatenstaude/src/css/main.scss)
+- removed another batch of duplicated global body/paragraph/heading contrast overrides from [src/styles.css](/Users/meik/git/tomatenstaude/src/styles.css)
 
 Why:
 
@@ -58,7 +67,7 @@ Why:
 
 Next step:
 
-- introduce clearer tokens and reduce blanket global overrides
+- continue removing blanket `!important` overrides, especially global form/code contrast duplication
 
 #### 4. Verify E2E runtime outside this sandbox
 
@@ -91,7 +100,7 @@ Why:
 
 Next step:
 
-- verify install without that compatibility flag and remove it if no longer needed
+- either upgrade or align the `@stryker-mutator/*` package family, or keep the flag with an explicit reason documented
 
 ### Lower Priority
 
@@ -110,11 +119,11 @@ Left:
 
 Why:
 
-- local production build still ends abnormally in this sandbox even though output is emitted
+- local production build still ends abnormally in this sandbox even though output and prerender artifacts are emitted
 
 Next step:
 
-- verify build behavior in a normal local shell or CI runner and capture the exact failure mode
+- verify the exact late-stage failure mode in a normal local shell or CI runner and decide whether it is sandbox-only
 
 #### 9. Improve server hardening
 
@@ -125,6 +134,7 @@ Done already:
 - added baseline security headers in the SSR Express server
 - moved static serving to `index: false` so SSR owns HTML responses
 - added an explicit SSR error handler
+- disabled Express `x-powered-by`
 
 Left:
 
@@ -133,10 +143,16 @@ Left:
 
 #### 10. Normalize CI and deployment workflows
 
-Why:
+Status: mostly done
 
-- workflow duplication and branch strategy drift still exist
+Done already:
 
-Next step:
+- aligned workflows around `main`
+- removed brittle docs-only skip logic from [ci.yml](/Users/meik/git/tomatenstaude/.github/workflows/ci.yml)
+- aligned accessibility scripts with env-driven host/port handling
+- documented current deploy-branch and token assumptions in [README.md](/Users/meik/git/tomatenstaude/README.md)
 
-- align deploy, CI, and accessibility workflows
+Left:
+
+- consider migrating GitHub Pages deploy away from the personal `ACCESS_TOKEN` secret to the native Pages flow
+- reduce setup duplication between [ci.yml](/Users/meik/git/tomatenstaude/.github/workflows/ci.yml) and [accessibility.yml](/Users/meik/git/tomatenstaude/.github/workflows/accessibility.yml)

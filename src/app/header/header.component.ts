@@ -5,6 +5,12 @@ import { NgForOf } from '@angular/common';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import {
+  readBrowserCookie,
+  readBrowserStorage,
+  writeBrowserCookie,
+  writeBrowserStorage,
+} from '../preferences/browser-preferences';
 
 @Component({
   selector: 'app-header',
@@ -115,53 +121,32 @@ export class HeaderComponent implements OnDestroy {
   }
 
   private readLocalStorage(key: string): string | null {
-    if (typeof window === 'undefined') {
-      return null;
-    }
-
-    try {
-      return localStorage.getItem(key);
-    } catch (error) {
-      this.logStorageAccessError('read localStorage', key, error);
-      return null;
-    }
+    return readBrowserStorage(
+      typeof localStorage !== 'undefined' ? localStorage : undefined,
+      key,
+      (action, failingKey, error) => this.logStorageAccessError(action, failingKey, error),
+    );
   }
 
   private writeLocalStorage(key: string, value: string): void {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    try {
-      localStorage.setItem(key, value);
-    } catch (error) {
-      this.logStorageAccessError('write localStorage', key, error);
-    }
+    writeBrowserStorage(
+      typeof localStorage !== 'undefined' ? localStorage : undefined,
+      key,
+      value,
+      (action, failingKey, error) => this.logStorageAccessError(action, failingKey, error),
+    );
   }
 
   private readCookie(name: string): string | null {
-    const namePrefix = `${name}=`;
-    try {
-      const parts = (this.doc.cookie || '').split(';');
-      for (let cookie of parts) {
-        cookie = cookie.trim();
-        if (cookie.startsWith(namePrefix)) {
-          return decodeURIComponent(cookie.substring(namePrefix.length));
-        }
-      }
-    } catch (error) {
-      this.logCookieAccessError('read', name, error);
-    }
-    return null;
+    return readBrowserCookie(this.doc, name, (action, failingName, error) =>
+      this.logCookieAccessError(action, failingName, error),
+    );
   }
 
   private writeCookie(name: string, value: string, days: number): void {
-    try {
-      const maxAge = days > 0 ? `; max-age=${days * 24 * 60 * 60}` : '';
-      this.doc.cookie = `${name}=${encodeURIComponent(value)}; path=/${maxAge}`;
-    } catch (error) {
-      this.logCookieAccessError('write', name, error);
-    }
+    writeBrowserCookie(this.doc, name, value, days, (action, failingName, error) =>
+      this.logCookieAccessError(action, failingName, error),
+    );
   }
 
   private logStorageAccessError(action: string, key: string, error: unknown): void {

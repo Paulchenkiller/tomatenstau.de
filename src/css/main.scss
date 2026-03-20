@@ -12,18 +12,18 @@ html {
 }
 
 body {
-  background: #111417;
+  background: colors.$bg;
   font:
     16px/30px 'Merriweather',
     serif;
   font-weight: normal;
-  color: #575859;
+  color: colors.$text;
 }
 
 a,
 a:visited {
   outline: none;
-  color: white;
+  color: colors.$link;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -33,7 +33,7 @@ a:visited {
 
 a:hover,
 a:focus {
-  color: #2e7d32;
+  color: colors.$green;
 }
 
 h1,
@@ -43,7 +43,7 @@ h4,
 h5,
 h6 {
   font-family: 'Raleway', sans-serif;
-  color: #ffffff;
+  color: colors.$heading;
   font-style: normal;
   text-rendering: optimizeLegibility;
   margin: 18px 0 15px;
@@ -108,7 +108,7 @@ p.lead {
   font:
     20px/36px 'Merriweather',
     serif;
-  color: #707273;
+  color: colors.$text_muted;
 }
 
 em {
@@ -239,7 +239,7 @@ dl {
 
 dt {
   margin: 0;
-  color: #2e7d32;
+  color: colors.$green;
 }
 
 dd {
@@ -457,47 +457,12 @@ td.hljs-ln-code {
   padding-left: 8px !important;
 }
 
-/* Overrides using central color variables */
-html,
-body {
-  height: 100%;
-}
-
-/* Prevent layout shift when vertical scrollbar appears/disappears */
-html {
-  scrollbar-gutter: stable both-edges; /* reserve gutter without forcing a visible scrollbar */
-}
-
-body {
-  background: colors.$bg;
-  color: colors.$text;
-}
-
-a,
-a:visited {
-  color: colors.$link;
-  transition: all 0.3s ease-in-out;
-}
-
-a:hover,
-a:focus {
-  color: colors.$green;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: colors.$heading;
-}
-
-p.lead {
-  color: colors.$text_muted;
-}
-
 /* High-contrast overrides for code blocks and copy button */
+body[data-theme='hc'] {
+  background: #000;
+  color: #fff;
+}
+
 body[data-theme='hc'] pre {
   background: #000 !important;
   color: #fff !important;

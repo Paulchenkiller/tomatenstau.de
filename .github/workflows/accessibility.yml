@@ -2,9 +2,9 @@ name: Accessibility Audit (WCAG 2.1 AA)
 
 on:
   push:
-    branches: [master, main]
+    branches: [main]
   pull_request:
-    branches: [master, main]
+    branches: [main]
 
 jobs:
   accessibility-audit:
@@ -73,7 +73,8 @@ jobs:
                 });
               }
             } catch (error) {
-              console.log('No accessibility report found or error reading it:', error);
+              const message = error instanceof Error ? error.message : String(error);
+              console.log(`Accessibility report missing or unreadable: ${message}`);
             }
 
   unit-accessibility-tests:

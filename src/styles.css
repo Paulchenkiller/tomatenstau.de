@@ -69,46 +69,25 @@
 /* Ensure sufficient color contrast */
 :root {
   --focus-color: #005fcc;
+  --app-background: #111417;
+  --button-background: #1976d2;
+  --button-background-hover: #1565c0;
+  --button-text: #ffffff;
+  --code-background: #1e1e1e;
+  --code-comment: #6a9955;
+  --code-function: #dcdcaa;
+  --code-keyword: #4fc1ff;
+  --code-literal: #b5cea8;
+  --code-string: #ce9178;
+  --code-text: #d4d4d4;
+  --code-type: #4ec9b0;
+  --code-variable: #9cdcfe;
   --high-contrast-bg: #000;
   --high-contrast-text: #fff;
-}
-
-/* Fix color contrast issues identified by axe */
-.text {
-  color: #ffffff !important; /* High contrast white text */
-}
-
-/* Additional contrast fixes */
-.breadcrumb .text {
-  color: #ffffff !important;
+  --text-strong: #ffffff;
 }
 
 /* Ensure all text meets WCAG AA contrast requirements */
-body {
-  background-color: #111417;
-  color: #ffffff;
-}
-
-/* Fix paragraph text contrast - critical for WCAG AA compliance */
-p {
-  color: #ffffff !important; /* High contrast white on dark background - 14.5:1 ratio */
-}
-
-/* All text elements need sufficient contrast */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #ffffff !important;
-}
-
-/* Fix form label contrast */
-label {
-  color: #ffffff !important; /* High contrast white text */
-}
-
 /* All form elements should have high contrast */
 input,
 textarea,
@@ -118,26 +97,11 @@ select {
   border: 1px solid #ffffff !important;
 }
 
-/* Ensure content text is readable */
-.content p,
-.intro p,
-app-code p,
-[class*='component'] p {
-  color: #ffffff !important; /* Force high contrast for all paragraph text */
-}
-
-/* Fix any low contrast elements */
-span.text,
-.header-social .text,
-.breadcrumb .text {
-  color: #ffffff !important; /* 14.5:1 contrast ratio on dark background */
-}
-
 /* Copy button accessibility - high contrast */
 .copy-btn {
-  background-color: #1976d2 !important; /* High contrast blue */
-  color: #ffffff !important; /* White text */
-  border: 1px solid #1976d2 !important;
+  background-color: var(--button-background) !important; /* High contrast blue */
+  color: var(--button-text) !important; /* White text */
+  border: 1px solid var(--button-background) !important;
   padding: 4px 8px !important;
   border-radius: 4px !important;
   font-size: 12px !important;
@@ -148,18 +112,18 @@ span.text,
 
 .copy-btn:hover,
 .copy-btn:focus {
-  background-color: #1565c0 !important; /* Darker blue on hover/focus */
-  color: #ffffff !important;
-  outline: 2px solid #ffffff !important;
+  background-color: var(--button-background-hover) !important; /* Darker blue on hover/focus */
+  color: var(--button-text) !important;
+  outline: 2px solid var(--button-text) !important;
   outline-offset: 2px !important;
 }
 
-/* Fix button class contrast - used on Contact and 404 pages */
+/* Fix button class contrast on legacy CTA/button styles */
 .button,
 button.button {
-  background-color: #1976d2 !important; /* High contrast blue instead of green */
-  color: #ffffff !important; /* White text for maximum contrast */
-  border: 1px solid #1976d2 !important;
+  background-color: var(--button-background) !important; /* High contrast blue instead of green */
+  color: var(--button-text) !important; /* White text for maximum contrast */
+  border: 1px solid var(--button-background) !important;
   padding: 8px 16px !important;
   font-weight: bold !important;
 }
@@ -168,9 +132,9 @@ button.button {
 .button:focus,
 button.button:hover,
 button.button:focus {
-  background-color: #1565c0 !important;
-  color: #ffffff !important;
-  outline: 2px solid #ffffff !important;
+  background-color: var(--button-background-hover) !important;
+  color: var(--button-text) !important;
+  outline: 2px solid var(--button-text) !important;
   outline-offset: 2px !important;
 }
 
@@ -205,41 +169,41 @@ button.button:focus {
 
 /* Improved default syntax highlighting with WCAG AA contrast */
 .hljs {
-  background: #1e1e1e !important; /* Dark background */
-  color: #d4d4d4 !important; /* Light text - 8.5:1 contrast */
+  background: var(--code-background) !important; /* Dark background */
+  color: var(--code-text) !important; /* Light text - 8.5:1 contrast */
 }
 
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-title {
-  color: #4fc1ff !important; /* Light blue - 4.6:1 contrast */
+  color: var(--code-keyword) !important; /* Light blue - 4.6:1 contrast */
 }
 
 .hljs-string,
 .hljs-attr {
-  color: #ce9178 !important; /* Orange - 4.5:1 contrast */
+  color: var(--code-string) !important; /* Orange - 4.5:1 contrast */
 }
 
 .hljs-comment,
 .hljs-quote {
-  color: #6a9955 !important; /* Green - 4.5:1 contrast */
+  color: var(--code-comment) !important; /* Green - 4.5:1 contrast */
 }
 
 .hljs-number,
 .hljs-literal {
-  color: #b5cea8 !important; /* Light green - 5.2:1 contrast */
+  color: var(--code-literal) !important; /* Light green - 5.2:1 contrast */
 }
 
 .hljs-function,
 .hljs-title.function {
-  color: #dcdcaa !important; /* Light yellow - 7.8:1 contrast */
+  color: var(--code-function) !important; /* Light yellow - 7.8:1 contrast */
 }
 
 .hljs-variable,
 .hljs-template-variable {
-  color: #9cdcfe !important; /* Cyan - 6.7:1 contrast */
+  color: var(--code-variable) !important; /* Cyan - 6.7:1 contrast */
 }
 
 .hljs-type {
-  color: #4ec9b0 !important; /* Teal - 5.9:1 contrast */
+  color: var(--code-type) !important; /* Teal - 5.9:1 contrast */
 }
