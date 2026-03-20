@@ -2,165 +2,44 @@
 
 Last updated: 2026-03-20
 
-## Verification Snapshot
+## Verified Current State
 
-Current branch state verified during the latest pass:
-
-- `npm ci` -> passed without `.npmrc`; only deprecation chatter plus a sandbox-only Husky permission warning during `prepare`
-- `npm run lint` -> passed
-- `npm run test:ci` -> passed
-- `npm run build -- --configuration=production --verbose` -> emits a complete `dist/tomatenstaude` tree, then still exits abnormally in this sandbox
-- `npm run e2e` -> still blocked in this sandbox because the Angular dev server cannot bind a local port (`listen EPERM`)
+- `npm ci` passes without `.npmrc`
+- `npm run lint` passes
+- `npm run test:ci` passes
+- `npm run build -- --configuration=production --verbose` passes and writes `dist/tomatenstaude`
 
 ## Remaining Work
 
 ### High Priority
 
-#### 1. Reduce remaining silent error handling
+#### 1. Restore browser-based verification on the supported runtime
 
-Status: mostly done
+- Run Playwright install and browser-based checks on Node 20 LTS
+- Investigate why `npx playwright install chromium` fails on Node 25 during the FFmpeg step and leaves `chromium_headless_shell` missing
+- Re-run `npm run e2e` and `npm run a11y:test` after browser installation succeeds
 
-Done already:
+#### 2. Fix the accessibility audit browser-driver mismatch
 
-- language URL-sync failures are logged explicitly in the header
-- clipboard fallback paths now avoid false-positive success feedback
-- SSR translation preload now distinguishes missing files from read/parse failures
-
-Left:
-
-- decide whether server-side preload warnings should be centralized behind a logger abstraction
-
-#### 2. Improve type safety further
-
-Status: mostly done
-
-Done already:
-
-- typed route metadata
-- typed translation dictionaries for SSR/client translation loading
-- removed several broad `any` usages and dead state
-- removed remaining `any`/`Observable<any>` runtime usage under `src/app`
-- tightened several router/document test stubs
-- cleaned the largest remaining weak typing cluster in [header.component.spec.ts](/Users/meik/git/tomatenstaude/src/app/header/header.component.spec.ts)
-
-Left:
-
-- reduce remaining weak typing in tests where it still matters
-- tighten ESLint rules incrementally once the remaining cases are addressed
+- `npm run a11y:ci` currently reaches the audit step and then fails because ChromeDriver `144` does not match the installed Chrome `146`
+- Align the axe/ChromeDriver path with the browser version used in CI/local verification
 
 ### Medium Priority
 
-#### 3. Refactor accessibility and theme styles
+#### 3. Continue low-risk type and test cleanup
 
-Status: in progress
+- reduce the remaining weak typing in tests where it still affects maintainability
+- tighten ESLint rules incrementally only after those cases are addressed
 
-Done already:
+#### 4. Finish the last safe CSS cleanup slice
 
-- removed stale breadcrumb-era selectors from [src/styles.css](/Users/meik/git/tomatenstaude/src/styles.css)
-- introduced shared global CSS tokens for button/code colors to reduce literal duplication
-- moved base document text/color ownership further into [src/css/main.scss](/Users/meik/git/tomatenstaude/src/css/main.scss)
-- removed another batch of duplicated global body/paragraph/heading contrast overrides from [src/styles.css](/Users/meik/git/tomatenstaude/src/styles.css)
-- removed redundant high-contrast shell-color overrides from [content.component.scss](/Users/meik/git/tomatenstaude/src/app/content/content.component.scss) and [index.component.scss](/Users/meik/git/tomatenstaude/src/app/index/index.component.scss)
-
-Why:
-
-- [src/styles.css](/Users/meik/git/tomatenstaude/src/styles.css) still contains many global overrides and `!important` rules
-- [src/css/main.scss](/Users/meik/git/tomatenstaude/src/css/main.scss) overlaps with those global rules
-
-Next step:
-
-- continue removing blanket `!important` overrides, especially global form/code contrast duplication
-
-#### 4. Verify E2E runtime outside this sandbox
-
-Done already:
-
-- removed fixed sleeps and brittle selectors from key E2E specs
-- made Playwright host, port, and base URL environment-overridable
-- kept the copy-button flow covered while tightening its failure behavior
-
-Left:
-
-- confirm the full Playwright/a11y flow in a normal local or CI environment
-
-#### 5. Continue asset cleanup
-
-Done already:
-
-- removed clearly unreferenced image files
-
-Left:
-
-- decide whether source-only assets should live outside `src/assets`
-- remove any remaining redundant originals once ownership is clear
-
-#### 6. Keep dependency maintenance moving
-
-Status: mostly done
-
-Done already:
-
-- removed `.npmrc`
-- aligned the `@stryker-mutator/*` package family
-- aligned the top-level `@typescript-eslint/*` pair to the same resolved major/minor set
-- verified `npm ci` works on the normal path again
-
-Left:
-
-- dependency deprecation/vulnerability cleanup remains separate from the peer-dependency fix
+- continue removing redundant global contrast overrides where they only restate existing theme defaults
+- treat broader changes in [src/styles.css](/Users/meik/git/tomatenstaude/src/styles.css) as browser-verified work
 
 ### Lower Priority
 
-#### 7. Strengthen SEO and structured data further
+#### 5. Optional server and deployment hardening
 
-Done already:
-
-- route-driven metadata is centralized
-
-Left:
-
-- expand richer metadata for tutorial/article pages if needed
-- add SSR assertions for rendered metadata
-
-#### 8. Improve build diagnostics
-
-Why:
-
-- local production build still ends abnormally in this sandbox even though output and prerender artifacts are emitted
-
-Next step:
-
-- verify the exact late-stage failure mode in a normal local shell or CI runner and decide whether it is sandbox-only
-- follow the external verification checklist in [README.md](/Users/meik/git/tomatenstaude/README.md)
-
-#### 9. Improve server hardening
-
-Status: in progress
-
-Done already:
-
-- added baseline security headers in the SSR Express server
-- moved static serving to `index: false` so SSR owns HTML responses
-- added an explicit SSR error handler
-- disabled Express `x-powered-by`
-
-Left:
-
-- add CSP carefully after validating current asset/font/script usage
-- enable HSTS only in a production HTTPS environment or at the CDN/proxy layer
-
-#### 10. Normalize CI and deployment workflows
-
-Status: mostly done
-
-Done already:
-
-- aligned workflows around `main`
-- removed brittle docs-only skip logic from [ci.yml](/Users/meik/git/tomatenstaude/.github/workflows/ci.yml)
-- aligned accessibility scripts with env-driven host/port handling
-- documented current deploy-branch and token assumptions in [README.md](/Users/meik/git/tomatenstaude/README.md)
-
-Left:
-
-- consider migrating GitHub Pages deploy away from the personal `ACCESS_TOKEN` secret to the native Pages flow
-- reduce setup duplication between [ci.yml](/Users/meik/git/tomatenstaude/.github/workflows/ci.yml) and [accessibility.yml](/Users/meik/git/tomatenstaude/.github/workflows/accessibility.yml)
+- add CSP only after validating the current asset, font, and script sources
+- enable HSTS only at the final HTTPS edge
+- consider migrating GitHub Pages deployment away from the personal `ACCESS_TOKEN` secret to the native Pages flow

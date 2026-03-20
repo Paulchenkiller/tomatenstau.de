@@ -94,7 +94,7 @@ npm run compress:build
 
 ## External Verification
 
-These checks are the main remaining steps that should be run outside restricted sandboxes:
+These checks should be run outside restricted sandboxes and on Node 20 LTS:
 
 ```bash
 # install on the normal path
@@ -112,9 +112,11 @@ npm run a11y:ci
 
 Notes:
 
-- Use Node 20 LTS for these checks.
-- In this sandbox, `npm run build -- --configuration=production --verbose` emits output but exits abnormally afterward.
-- In this sandbox, `npm run e2e` and `npm run a11y:ci` cannot bind the local dev-server port.
+- Use Node 20 LTS for all browser-tooling verification. That is the safest confirmed runtime for Angular, Playwright, and CI in this repo.
+- `npm ci`, `npm run lint`, `npm run test:ci`, and `npm run build -- --configuration=production --verbose` are already confirmed on the current branch.
+- A Node 25 verification run showed `npx playwright install chromium` failing during the FFmpeg download step, which left `chromium_headless_shell` missing. If that happens again, treat it as a runtime/tooling issue rather than an app failure.
+- `npm run e2e` and `npm run a11y:test` currently remain blocked until Playwright browser installation completes successfully. Occasional port `4200` conflicts were secondary noise during failed runs.
+- `npm run a11y:ci` currently reaches the audit step but fails because ChromeDriver `144` does not match the installed Chrome `146`. Fix that browser-driver mismatch before treating the audit as an app regression.
 
 ## Project Layout
 
