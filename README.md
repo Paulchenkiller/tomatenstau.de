@@ -33,7 +33,7 @@ The project may install on newer odd-numbered Node releases, but Angular warns a
 
 ## Branch and Deploy Notes
 
-- `main` is the canonical branch for CI, accessibility checks, and deployment.
+- `master` is the current default branch. Build, accessibility, and deploy workflows also listen to `main` for compatibility.
 - The current GitHub Pages deploy workflow still depends on the repository `ACCESS_TOKEN` secret.
 - CSP and HSTS are intentionally deferred at the app-server layer until the final production hosting edge is verified.
 
@@ -53,6 +53,8 @@ Default dev server URL: `http://localhost:4200`
 ```bash
 # development
 npm start
+npm run serve:static
+npm run serve:ssr
 npm run start:prod
 
 # quality
@@ -91,6 +93,8 @@ npm run compress:build
 - `npm test` uses `ng test`, which is separate from the Jest-based CI path and is not the preferred verification command in this repo.
 - `npm run e2e` starts its own Angular dev server through Playwright.
 - `npm run a11y:ci` now reuses the Playwright-based accessibility suite instead of a separate ChromeDriver-based CLI audit path.
+- `npm run serve:static` serves the prerendered browser output from `dist/tomatenstaude/browser`.
+- `npm run serve:ssr` serves the SSR server bundle from `dist/tomatenstaude/server/server.mjs`.
 
 ## External Verification
 

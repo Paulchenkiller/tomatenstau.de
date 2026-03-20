@@ -104,9 +104,7 @@ jobs:
       - name: Cache Angular build
         uses: actions/cache@v5
         with:
-          path: |
-            .angular/cache
-            dist
+          path: .angular/cache
           key: ${{ runner.os }}-angular-build-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-angular-build-

@@ -1,4 +1,3 @@
-const CompressionPlugin = require('compression-webpack-plugin');
 const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
@@ -12,10 +11,12 @@ const readdir = promisify(fs.readdir);
 const stat = promisify(fs.stat);
 
 async function compressFiles() {
-  const distPath = 'dist/tomatenstaude';
+  const distPath = 'dist/tomatenstaude/browser';
 
   if (!fs.existsSync(distPath)) {
-    console.log('❌ Build directory not found. Run npm run build first.');
+    console.log(
+      '❌ Browser build directory not found. Run npm run build -- --configuration=production first.',
+    );
     process.exit(1);
   }
 
@@ -111,10 +112,10 @@ async function compressFiles() {
 
   console.log('🚀 SERVER CONFIGURATION:');
   console.log(
-    '   http-server with compression: npx http-server dist/tomatenstaude -p 4201 --gzip --brotli',
+    '   static preview: npx http-server dist/tomatenstaude/browser -p 4201 --cors --silent',
   );
-  console.log('   Brotli takes precedence over Gzip when both are available');
-  console.log('   Modern browsers will automatically request .br files');
+  console.log('   precompressed .br files should be served by the final host or CDN');
+  console.log('   modern browsers will automatically request .br files when hosting is configured');
 }
 
 function formatBytes(bytes, decimals = 2) {

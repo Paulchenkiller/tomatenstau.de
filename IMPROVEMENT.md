@@ -8,6 +8,7 @@ Last updated: 2026-03-20
 - `npm run lint` passes
 - `npm run test:ci` passes
 - `npm run build -- --configuration=production --verbose` passes and writes `dist/tomatenstaude`
+- production prerender output no longer emits malformed route directories
 - `npx playwright install chromium` passes
 - `npm run e2e` passes
 - `npm run a11y:test` passes
