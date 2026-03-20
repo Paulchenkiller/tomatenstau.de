@@ -1,14 +1,10 @@
 import { HeaderComponent } from './header.component';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+
 class TranslateStub {
   public currentLang = 'en';
-  public onLangChange = {
-    subscribe: (callback: (event: { lang: string }) => void) => {
-      this.subscribers.push(callback);
-      return { unsubscribe: () => undefined };
-    },
-  };
-  private readonly subscribers: Array<(event: { lang: string }) => void> = [];
+  public onLangChange = new Subject<{ lang: string }>();
   use = jest.fn((lang: string) => {
     this.currentLang = lang;
     this.emitLangChange(lang);
@@ -17,9 +13,7 @@ class TranslateStub {
     return 'en';
   }
   emitLangChange(lang: string) {
-    for (const subscriber of this.subscribers) {
-      subscriber({ lang });
-    }
+    this.onLangChange.next({ lang });
   }
 }
 

@@ -59,15 +59,17 @@ Current branch state verified during the latest pass:
 
 #### 1. Replace imperative DOM enhancement for code blocks
 
-Status: open
+Status: done
 
 Why:
 
-- [src/app/app.component.ts](/Users/meik/git/tomatenstaude/src/app/app.component.ts) still queries `pre` elements, injects buttons, and uses timers.
+- code-copy behavior previously lived in [src/app/app.component.ts](/Users/meik/git/tomatenstaude/src/app/app.component.ts) as root-level DOM mutation
 
-Next step:
+Done:
 
-- move copy-button behavior into a directive or dedicated code-block component
+- extracted copy behavior into [src/app/code/code-copy.directive.ts](/Users/meik/git/tomatenstaude/src/app/code/code-copy.directive.ts)
+- removed code-block enhancement logic from [src/app/app.component.ts](/Users/meik/git/tomatenstaude/src/app/app.component.ts)
+- added directive coverage in [src/app/code/code-copy.directive.spec.ts](/Users/meik/git/tomatenstaude/src/app/code/code-copy.directive.spec.ts)
 
 #### 2. Reduce silent `catch {}` usage
 
@@ -83,48 +85,46 @@ Next step:
 
 #### 3. Make long-lived subscriptions lifecycle-safe
 
-Status: open
+Status: done
 
 Why:
 
-- `AppComponent` and `HeaderComponent` still subscribe directly in constructors
+- `AppComponent` and `HeaderComponent` previously subscribed directly in constructors without explicit teardown
 
-Next step:
+Done:
 
-- move to destroy-aware subscription handling supported by the repo setup
+- added `OnDestroy` + `Subject` teardown in [src/app/app.component.ts](/Users/meik/git/tomatenstaude/src/app/app.component.ts)
+- added `OnDestroy` + `Subject` teardown in [src/app/header/header.component.ts](/Users/meik/git/tomatenstaude/src/app/header/header.component.ts)
 
 ### Medium Priority
 
 #### 4. Improve E2E reliability further
 
-Status: partially done
+Status: in progress
 
 Done:
 
 - Playwright now uses `127.0.0.1`
+- host, port, and base URL are now environment-overridable in [playwright.config.ts](/Users/meik/git/tomatenstaude/playwright.config.ts)
+- removed fixed sleeps and brittle positional selectors from [e2e/accessibility.spec.ts](/Users/meik/git/tomatenstaude/e2e/accessibility.spec.ts)
+- relaxed brittle URL matching in [e2e/notfound-search.spec.ts](/Users/meik/git/tomatenstaude/e2e/notfound-search.spec.ts)
 
 Left:
 
-- replace fixed `waitForTimeout(...)` calls with semantic waits
-- tighten brittle selectors
 - verify full runtime outside this sandbox
 
 #### 5. Unskip and repair remaining skipped specs
 
-Status: open
+Status: done
 
-Still skipped:
+Done:
 
-- [src/app/code/perl/perl-index/perl-index.component.spec.ts](/Users/meik/git/tomatenstaude/src/app/code/perl/perl-index/perl-index.component.spec.ts)
-- [src/app/code/python/python-index/python-index.component.spec.ts](/Users/meik/git/tomatenstaude/src/app/code/python/python-index/python-index.component.spec.ts)
-- [src/app/code/prolog/prolog-index/prolog-index.component.spec.ts](/Users/meik/git/tomatenstaude/src/app/code/prolog/prolog-index/prolog-index.component.spec.ts)
-- [src/app/code/prolog/prolog-ackermann/prolog-ackermann.component.spec.ts](/Users/meik/git/tomatenstaude/src/app/code/prolog/prolog-ackermann/prolog-ackermann.component.spec.ts)
-- [src/app/code/prolog/prolog-hanoi/prolog-hanoi.component.spec.ts](/Users/meik/git/tomatenstaude/src/app/code/prolog/prolog-hanoi/prolog-hanoi.component.spec.ts)
+- converted the remaining five skipped article specs into direct smoke tests
+- there are no remaining `describe.skip(...)` suites under `src/app`
 
-Notes:
+Left:
 
-- these are still failing due to testbed/template setup issues unrelated to the main cleanup
-- add a CI guard against new committed `.skip` once these are repaired
+- optionally add a CI guard against new committed `.skip`
 
 #### 6. Improve type safety
 

@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { CodeCopyDirective } from '../../code-copy.directive';
 
 @Component({
   selector: 'app-haskell-purity-io',
   templateUrl: './haskell-purity-io.component.html',
-  imports: [Highlight, HeadlineComponent, TranslateModule],
+  imports: [Highlight, CodeCopyDirective, HeadlineComponent, TranslateModule],
 })
 export class HaskellPurityIoComponent {
   codeIo = `-- main hat den Typ IO (), Nebenwirkungen sind im IO-Kontext

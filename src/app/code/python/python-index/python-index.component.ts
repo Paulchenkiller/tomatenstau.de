@@ -3,11 +3,12 @@ import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { CodeCopyDirective } from '../../code-copy.directive';
 
 @Component({
   selector: 'app-python-index',
   templateUrl: './python-index.component.html',
-  imports: [Highlight, HeadlineComponent, RouterLink, TranslateModule],
+  imports: [Highlight, CodeCopyDirective, HeadlineComponent, RouterLink, TranslateModule],
 })
 export class PythonIndexComponent {
   helloWorld = `#!/usr/bin/python\nprint "Hello World";`;

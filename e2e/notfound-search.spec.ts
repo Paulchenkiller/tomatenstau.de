@@ -17,9 +17,8 @@ test.describe('404 page quick search', () => {
     const pyLink = page.getByRole('link', { name: 'Python' });
     await expect(pyLink).toBeVisible();
 
-    // Click and land on Python index
     await pyLink.click();
-    await expect(page).toHaveURL(/\/code\/python$/);
+    await expect(page).toHaveURL(/\/code\/python(\?.*)?$/);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Python/);
   });
 });

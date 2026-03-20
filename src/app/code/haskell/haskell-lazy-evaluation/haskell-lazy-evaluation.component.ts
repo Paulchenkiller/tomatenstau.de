@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { CodeCopyDirective } from '../../code-copy.directive';
 
 @Component({
   selector: 'app-haskell-lazy-evaluation',
   templateUrl: './haskell-lazy-evaluation.component.html',
-  imports: [Highlight, HeadlineComponent, TranslateModule],
+  imports: [Highlight, CodeCopyDirective, HeadlineComponent, TranslateModule],
 })
 export class HaskellLazyEvaluationComponent {
   codeLazy = `-- Infinite Liste dank Lazy Evaluation

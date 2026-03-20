@@ -1,8 +1,10 @@
-import { Component, Inject, DOCUMENT } from '@angular/core';
+import { Component, Inject, OnDestroy, isDevMode, DOCUMENT } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { NgForOf } from '@angular/common';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,7 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [RouterLink, FaIconComponent, NgForOf, TranslateModule],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnDestroy {
   socialMedia = [
     {
       icon: ['fab', 'github'],
@@ -32,6 +34,7 @@ export class HeaderComponent {
   currentLang = 'en';
   highContrast = false;
   private prefersContrastMql: MediaQueryList | null = null;
+  private readonly destroy$ = new Subject<void>();
 
   constructor(
     private router: Router,
@@ -39,98 +42,110 @@ export class HeaderComponent {
     @Inject(DOCUMENT) private doc: Document,
   ) {
     this.currentLang = this.translate.currentLang || this.translate.getDefaultLang() || 'en';
-    this.translate.onLangChange.subscribe((event: { lang: string }) => {
-      this.currentLang = event.lang;
-    });
+    this.translate.onLangChange
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((event: { lang: string }) => {
+        this.currentLang = event.lang;
+      });
 
-    // Initialize high-contrast from cookie/localStorage or OS setting
-    try {
-      const cookieVal = this.readCookie('pref:high-contrast');
-      if (cookieVal === 'on') {
+    const cookieVal = this.readCookie('pref:high-contrast');
+    if (cookieVal === 'on') {
+      this.highContrast = true;
+    } else if (cookieVal === 'off') {
+      this.highContrast = false;
+    } else {
+      const saved = this.readLocalStorage('pref:high-contrast');
+      if (saved === 'on') {
         this.highContrast = true;
-      } else if (cookieVal === 'off') {
+      } else if (saved === 'off') {
         this.highContrast = false;
-      } else {
-        const saved =
-          typeof window !== 'undefined' ? localStorage.getItem('pref:high-contrast') : null;
-        if (saved === 'on') {
-          this.highContrast = true;
-        } else if (saved === 'off') {
-          this.highContrast = false;
-        } else if (typeof window !== 'undefined' && 'matchMedia' in window) {
-          this.prefersContrastMql = window.matchMedia('(prefers-contrast: more)');
-          this.highContrast = !!this.prefersContrastMql.matches;
-          // React to OS changes only if no explicit preference saved
-          this.prefersContrastMql.addEventListener?.('change', (e: MediaQueryListEvent) => {
-            const explicit =
-              typeof window !== 'undefined' ? localStorage.getItem('pref:high-contrast') : null;
-            const cookieExplicit = this.readCookie('pref:high-contrast');
-            if (!explicit && !cookieExplicit) {
-              this.highContrast = e.matches;
-              this.applyHighContrast();
-            }
-          });
-        }
+      } else if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+        this.prefersContrastMql = window.matchMedia('(prefers-contrast: more)');
+        this.highContrast = !!this.prefersContrastMql.matches;
+        this.prefersContrastMql.addEventListener?.('change', (event: MediaQueryListEvent) => {
+          const explicit = this.readLocalStorage('pref:high-contrast');
+          const cookieExplicit = this.readCookie('pref:high-contrast');
+          if (!explicit && !cookieExplicit) {
+            this.highContrast = event.matches;
+            this.applyHighContrast();
+          }
+        });
       }
-    } catch {}
+    }
+
     this.applyHighContrast();
   }
 
   setLang(lang: 'en' | 'de'): void {
     this.translate.use(lang);
-    try {
-      localStorage.setItem('lang', lang);
-    } catch {}
-    // Also persist in a cookie to better survive environments resetting localStorage
-    try {
-      this.writeCookie('lang', lang, 365);
-    } catch {}
-    // Reflect chosen language in the URL (?lang=xx) so reloads honor the selection
-    try {
-      this.router.navigate([], {
-        queryParams: { lang },
-        queryParamsHandling: 'merge',
-        replaceUrl: true,
-      });
-    } catch {}
+    this.writeLocalStorage('lang', lang);
+    this.writeCookie('lang', lang, 365);
+    void this.router.navigate([], {
+      queryParams: { lang },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
   }
 
   toggleHighContrast(): void {
     this.highContrast = !this.highContrast;
-    const val = this.highContrast ? 'on' : 'off';
-    try {
-      localStorage.setItem('pref:high-contrast', val);
-    } catch {}
-    // Also persist in a cookie to survive aggressive localStorage resets (e.g., in certain environments)
-    try {
-      this.writeCookie('pref:high-contrast', val, 365);
-    } catch {}
+    const value = this.highContrast ? 'on' : 'off';
+    this.writeLocalStorage('pref:high-contrast', value);
+    this.writeCookie('pref:high-contrast', value, 365);
     this.applyHighContrast();
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   private applyHighContrast(): void {
+    if (this.highContrast) {
+      this.doc.body.setAttribute('data-theme', 'hc');
+    } else if (this.doc.body.getAttribute('data-theme') === 'hc') {
+      this.doc.body.removeAttribute('data-theme');
+    }
+  }
+
+  private readLocalStorage(key: string): string | null {
+    if (typeof window === 'undefined') {
+      return null;
+    }
+
     try {
-      if (this.highContrast) {
-        this.doc.body.setAttribute('data-theme', 'hc');
-      } else {
-        if (this.doc.body.getAttribute('data-theme') === 'hc') {
-          this.doc.body.removeAttribute('data-theme');
-        }
-      }
-    } catch {}
+      return localStorage.getItem(key);
+    } catch (error) {
+      this.logStorageAccessError('read localStorage', key, error);
+      return null;
+    }
+  }
+
+  private writeLocalStorage(key: string, value: string): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    try {
+      localStorage.setItem(key, value);
+    } catch (error) {
+      this.logStorageAccessError('write localStorage', key, error);
+    }
   }
 
   private readCookie(name: string): string | null {
+    const namePrefix = `${name}=`;
     try {
-      const nameEQ = name + '=';
       const parts = (this.doc.cookie || '').split(';');
-      for (let c of parts) {
-        c = c.trim();
-        if (c.startsWith(nameEQ)) {
-          return decodeURIComponent(c.substring(nameEQ.length));
+      for (let cookie of parts) {
+        cookie = cookie.trim();
+        if (cookie.startsWith(namePrefix)) {
+          return decodeURIComponent(cookie.substring(namePrefix.length));
         }
       }
-    } catch {}
+    } catch (error) {
+      this.logCookieAccessError('read', name, error);
+    }
     return null;
   }
 
@@ -138,6 +153,20 @@ export class HeaderComponent {
     try {
       const maxAge = days > 0 ? `; max-age=${days * 24 * 60 * 60}` : '';
       this.doc.cookie = `${name}=${encodeURIComponent(value)}; path=/${maxAge}`;
-    } catch {}
+    } catch (error) {
+      this.logCookieAccessError('write', name, error);
+    }
+  }
+
+  private logStorageAccessError(action: string, key: string, error: unknown): void {
+    if (isDevMode()) {
+      console.warn(`Failed to ${action} for "${key}".`, error);
+    }
+  }
+
+  private logCookieAccessError(action: string, name: string, error: unknown): void {
+    if (isDevMode()) {
+      console.warn(`Failed to ${action} cookie "${name}".`, error);
+    }
   }
 }

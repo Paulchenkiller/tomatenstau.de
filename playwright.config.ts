@@ -1,5 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const host = process.env.HOST || '127.0.0.1';
+const port = process.env.PORT || '4200';
+const baseURL = process.env.BASE_URL || `http://${host}:${port}`;
+
 export default defineConfig({
   testDir: './e2e',
   timeout: 30_000,
@@ -8,7 +12,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: process.env.CI ? 'github' : [['list'], ['html', { open: 'never' }]],
   use: {
-    baseURL: 'http://127.0.0.1:4200',
+    baseURL,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
@@ -20,8 +24,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run start -- --host=127.0.0.1 --port=4200',
-    url: 'http://127.0.0.1:4200',
+    command: `npm run start -- --host=${host} --port=${port}`,
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
   },

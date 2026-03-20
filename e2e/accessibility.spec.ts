@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 test.describe('WCAG 2.1 AA Compliance Audit', () => {
+  const langSwitcher = 'ul.header-lang';
+
   test('Homepage should be accessible', async ({ page }) => {
     await page.goto('/');
 
@@ -14,10 +16,8 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
 
   test('Code section overview should be accessible', async ({ page }) => {
     await page.goto('/code');
-
-    // Wait for page to fully load and translations to be applied
-    await page.waitForTimeout(2000);
-    await page.waitForSelector('a[routerLink]', { timeout: 5000 });
+    await expect(page.getByRole('heading', { name: /Code/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Python/i })).toBeVisible();
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
@@ -38,10 +38,7 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
 
   test('404 page should be accessible', async ({ page }) => {
     await page.goto('/non-existent-page');
-
-    // Wait for page to fully load and translations to be applied
-    await page.waitForTimeout(2000);
-    await page.waitForLoadState('networkidle');
+    await expect(page.getByRole('heading', { name: /Page not found/i })).toBeVisible();
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
@@ -52,14 +49,13 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
 
   test('Language switching should be accessible', async ({ page }) => {
     await page.goto('/');
+    await expect(page.locator(langSwitcher)).toHaveAttribute('aria-label', 'Language switcher');
 
-    // Wait for language buttons to load
-    await page.waitForSelector('.header-lang button', { timeout: 10000 });
-
-    // Test German language - use more reliable selector
-    const germanButton = page.locator('.header-lang button').nth(1); // Second button is German
+    const germanButton = page.getByRole('button', {
+      name: /Switch to German|Auf Deutsch umschalten/i,
+    });
     await germanButton.click();
-    await page.waitForTimeout(1000);
+    await expect(page.locator(langSwitcher)).toHaveAttribute('aria-label', 'Sprachauswahl');
 
     let accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
@@ -67,10 +63,11 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
 
     expect(accessibilityScanResults.violations).toEqual([]);
 
-    // Test English language - use more reliable selector
-    const englishButton = page.locator('.header-lang button').nth(0); // First button is English
+    const englishButton = page.getByRole('button', {
+      name: /Switch to English|Auf Englisch umschalten/i,
+    });
     await englishButton.click();
-    await page.waitForTimeout(1000);
+    await expect(page.locator(langSwitcher)).toHaveAttribute('aria-label', 'Language switcher');
 
     accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
@@ -81,7 +78,7 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
 
   test('Code examples with syntax highlighting should be accessible', async ({ page }) => {
     await page.goto('/code/javascript/closures-scope');
-    await page.waitForTimeout(2000); // Wait for syntax highlighting to load
+    await expect(page.locator('button.copy-btn').first()).toBeVisible();
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
@@ -99,17 +96,16 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
 
     expect(accessibilityScanResults.violations).toEqual([]);
 
-    // Test that the page content is accessible and properly structured
-    const mainContent = await page.locator('main');
+    const mainContent = page.locator('main');
     await expect(mainContent).toBeVisible();
     await expect(mainContent).toHaveAttribute('id', 'main-content');
   });
 
   test('404 page search controls should have proper labels', async ({ page }) => {
     await page.goto('/non-existent-page');
+    await expect(page.getByRole('heading', { name: /Page not found/i })).toBeVisible();
 
-    // Check that all input elements have associated labels
-    const inputs = await page.locator('input, textarea, select');
+    const inputs = page.locator('input, textarea, select');
     const count = await inputs.count();
 
     for (let i = 0; i < count; i++) {
@@ -127,41 +123,36 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
 
   test('Keyboard navigation should work throughout the site', async ({ page }) => {
     await page.goto('/');
+    await expect(page.getByRole('main')).toBeVisible();
 
-    // Test Tab navigation
     await page.keyboard.press('Tab');
-    let focusedElement = await page.locator(':focus');
+    let focusedElement = page.locator(':focus');
     await expect(focusedElement).toBeVisible();
 
-    // Continue tabbing through several elements
     for (let i = 0; i < 10; i++) {
       await page.keyboard.press('Tab');
-      focusedElement = await page.locator(':focus');
+      focusedElement = page.locator(':focus');
       await expect(focusedElement).toBeVisible();
     }
 
-    // Test Shift+Tab (reverse navigation)
     await page.keyboard.press('Shift+Tab');
-    focusedElement = await page.locator(':focus');
+    focusedElement = page.locator(':focus');
     await expect(focusedElement).toBeVisible();
   });
 
   test('Focus should be visible for all interactive elements', async ({ page }) => {
     await page.goto('/');
+    await expect(page.getByRole('main')).toBeVisible();
 
-    // Get all focusable elements
-    const focusableElements = await page.locator(
+    const focusableElements = page.locator(
       'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])',
     );
 
     const count = await focusableElements.count();
 
     for (let i = 0; i < Math.min(count, 20); i++) {
-      // Test first 20 elements
       const element = focusableElements.nth(i);
       await element.focus();
-
-      // Check that focus is visible (this is a simplified check)
       await expect(element).toBeFocused();
     }
   });
@@ -169,7 +160,7 @@ test.describe('WCAG 2.1 AA Compliance Audit', () => {
   test('Images should have appropriate alt text', async ({ page }) => {
     await page.goto('/');
 
-    const images = await page.locator('img');
+    const images = page.locator('img');
     const count = await images.count();
 
     for (let i = 0; i < count; i++) {

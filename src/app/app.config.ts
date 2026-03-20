@@ -1,4 +1,4 @@
-import { ApplicationConfig, APP_INITIALIZER, PLATFORM_ID } from '@angular/core';
+import { ApplicationConfig, APP_INITIALIZER, PLATFORM_ID, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateLoader, TranslateService } from '@ngx-translate/core';
@@ -46,6 +46,54 @@ export function TranslateLoaderFactory(transferState: TransferState, platformId:
     : new TranslateFsLoader(transferState, './assets/i18n/', '.json');
 }
 
+function logPreferenceAccessError(action: string, key: string, error: unknown): void {
+  if (isDevMode()) {
+    console.warn(`Failed to ${action} for "${key}".`, error);
+  }
+}
+
+function readDocumentCookie(name: string): string | null {
+  const namePrefix = `${name}=`;
+  try {
+    const parts = (document.cookie || '').split(';');
+    for (let cookie of parts) {
+      cookie = cookie.trim();
+      if (cookie.startsWith(namePrefix)) {
+        return decodeURIComponent(cookie.substring(namePrefix.length));
+      }
+    }
+  } catch (error) {
+    logPreferenceAccessError('read cookie', name, error);
+  }
+  return null;
+}
+
+function writeDocumentCookie(name: string, value: string, days: number): void {
+  try {
+    const maxAge = days > 0 ? `; max-age=${days * 24 * 60 * 60}` : '';
+    document.cookie = `${name}=${encodeURIComponent(value)}; path=/${maxAge}`;
+  } catch (error) {
+    logPreferenceAccessError('write cookie', name, error);
+  }
+}
+
+function readWindowStorage(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch (error) {
+    logPreferenceAccessError('read localStorage', key, error);
+    return null;
+  }
+}
+
+function writeWindowStorage(key: string, value: string): void {
+  try {
+    localStorage.setItem(key, value);
+  } catch (error) {
+    logPreferenceAccessError('write localStorage', key, error);
+  }
+}
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch()),
@@ -74,35 +122,14 @@ export const appConfig: ApplicationConfig = {
 
         // Only run browser-specific code on the client side
         if (isPlatformBrowser(platformId)) {
-          // Helpers to read/write a simple cookie
-          const readCookie = (name: string): string | null => {
-            try {
-              const nameEQ = name + '=';
-              const parts = (document.cookie || '').split(';');
-              for (let c of parts) {
-                c = c.trim();
-                if (c.startsWith(nameEQ)) {
-                  return decodeURIComponent(c.substring(nameEQ.length));
-                }
-              }
-            } catch {}
-            return null;
-          };
-          const writeCookie = (name: string, value: string, days: number) => {
-            try {
-              const maxAge = days > 0 ? `; max-age=${days * 24 * 60 * 60}` : '';
-              document.cookie = `${name}=${encodeURIComponent(value)}; path=/${maxAge}`;
-            } catch {}
-          };
-
           const params = new URLSearchParams(window.location.search);
           const urlLang = params.get('lang');
           const normalizedUrlLang =
             urlLang && ['en', 'de'].includes(urlLang.toLowerCase()) ? urlLang.toLowerCase() : null;
 
-          const cookieSaved = (readCookie('lang') || '').toLowerCase();
+          const cookieSaved = (readDocumentCookie('lang') || '').toLowerCase();
           const cookieLang = ['en', 'de'].includes(cookieSaved) ? cookieSaved : null;
-          const saved = localStorage.getItem('lang');
+          const saved = readWindowStorage('lang');
           const browserLangs = navigator.languages || [navigator.language];
           const browserLang =
             browserLangs
@@ -111,16 +138,12 @@ export const appConfig: ApplicationConfig = {
           const lang = normalizedUrlLang || cookieLang || saved || browserLang || 'en';
 
           translate.use(lang);
-          try {
-            if (lang !== saved) {
-              localStorage.setItem('lang', lang);
-            }
-          } catch {}
-          try {
-            if (cookieLang !== lang) {
-              writeCookie('lang', lang, 365);
-            }
-          } catch {}
+          if (lang !== saved) {
+            writeWindowStorage('lang', lang);
+          }
+          if (cookieLang !== lang) {
+            writeDocumentCookie('lang', lang, 365);
+          }
         } else {
           // Server-side: just use default language
           translate.use('en');

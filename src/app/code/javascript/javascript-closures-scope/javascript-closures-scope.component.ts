@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
 import { HeadlineComponent } from '../../../headline/headline.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { CodeCopyDirective } from '../../code-copy.directive';
 
 @Component({
   selector: 'app-javascript-closures-scope',
   templateUrl: './javascript-closures-scope.component.html',
-  imports: [Highlight, HeadlineComponent, TranslateModule],
+  imports: [Highlight, CodeCopyDirective, HeadlineComponent, TranslateModule],
 })
 export class JavascriptClosuresScopeComponent {
   codeVar = `// Erwartet oft 0..4, gibt aber 5x 5 aus
