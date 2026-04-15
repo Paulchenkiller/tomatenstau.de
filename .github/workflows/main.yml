@@ -1,20 +1,26 @@
 name: Build and Deploy
+
 on:
   push:
     branches:
-      - main
-jobs:
-  build:
-    runs-on: ubuntu-latest
+      - master
 
-    steps:
-      - uses: actions/checkout@v6
-      - name: All things angular
-        uses: AhsanAyaz/angular-deploy-gh-pages-actions@2272ef32f364bc80d8680ee03d8e58f126156c31
-        with:
-          github_access_token: ${{ secrets.ACCESS_TOKEN }} # see the Configuration section for how you can create secrets
-          deploy_branch: gh-pages # The branch the action should deploy to.
-          angular_dist_build_folder: dist/tomatenstaude/browser
-          build_configuration: production
 permissions:
   contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
