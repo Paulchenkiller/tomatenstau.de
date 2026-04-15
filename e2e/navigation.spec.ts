@@ -1,10 +1,10 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 
 // Force English to make assertions deterministic
-const goEn = async (page, path: string) =>
+const goEn = async (page: Page, path: string) =>
   page.goto(`${path}${path.includes('?') ? '&' : '?'}lang=en`);
 
-const expectH1 = async (page, re: RegExp) => {
+const expectH1 = async (page: Page, re: RegExp) => {
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(re);
 };
 

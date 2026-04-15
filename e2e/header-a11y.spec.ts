@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 
 const header = {
   langSwitcher: 'ul.header-lang',
@@ -11,7 +11,7 @@ const header = {
 };
 
 // Helper: ensure we start in English and with a known HC preference
-async function gotoHomeInEnglish(page) {
+async function gotoHomeInEnglish(page: Page) {
   await page.addInitScript(() => {
     localStorage.setItem('pref:high-contrast', 'off');
     localStorage.setItem('lang', 'en');
