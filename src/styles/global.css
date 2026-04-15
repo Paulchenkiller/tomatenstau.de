@@ -157,7 +157,7 @@ a:focus {
 }
 
 /* ── System high-contrast media query ── */
-@media (prefers-contrast: high) {
+@media (prefers-contrast: more) {
   * {
     border-color: currentColor !important;
   }

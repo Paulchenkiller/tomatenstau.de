@@ -163,7 +163,11 @@ const homeUrl = lang === 'en' ? '/' : '/de/';
     hcBtn.setAttribute('aria-pressed', String(isHC));
     hcBtn.addEventListener('click', () => {
       const next = document.documentElement.getAttribute('data-theme') !== 'hc';
-      document.documentElement.setAttribute('data-theme', next ? 'hc' : '');
+      if (next) {
+        document.documentElement.setAttribute('data-theme', 'hc');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
       hcBtn.setAttribute('aria-pressed', String(next));
       const val = next ? 'on' : 'off';
       try {

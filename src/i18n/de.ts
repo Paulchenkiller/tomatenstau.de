@@ -43,7 +43,6 @@ export const de: Translations = {
   },
   footer: {
     copyright: `© ${new Date().getFullYear()} tomatenstau.de`,
-    emailLabel: 'E-Mail',
   },
   social: {
     github: { label: 'GitHub', url: 'https://github.com/Paulchenkiller' },
