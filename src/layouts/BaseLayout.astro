@@ -18,6 +18,11 @@ const { lang, title, description, skipToMain } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description} />
 
+    <!-- Hreflang alternate links -->
+    <link rel="alternate" hreflang="en" href="https://tomatenstau.de/" />
+    <link rel="alternate" hreflang="de" href="https://tomatenstau.de/de/" />
+    <link rel="alternate" hreflang="x-default" href="https://tomatenstau.de/" />
+
     <!-- Favicons -->
     <link href="/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
     <link href="/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />

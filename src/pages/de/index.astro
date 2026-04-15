@@ -13,7 +13,7 @@ import { de as t } from '../../i18n/de';
 >
   <Header lang="de" t={{ header: t.header, site: t.site, social: t.social }} />
 
-  <main id="main-content" role="main" aria-label="Hauptinhaltsbereich">
+  <main id="main-content" aria-label="Hauptinhaltsbereich">
     <section class="intro" aria-labelledby="main-heading">
       <div class="container">
         <div class="intro__media">
@@ -25,7 +25,8 @@ import { de as t } from '../../i18n/de';
               class="intro__photo"
               width="300"
               height="300"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
             />
           </picture>
         </div>
@@ -35,24 +36,24 @@ import { de as t } from '../../i18n/de';
           <p class="lead">{t.index.intro}</p>
           <section aria-labelledby="highlights-heading">
             <h3 id="highlights-heading" class="visually-hidden">{t.index.highlightsHeading}</h3>
-            <ul class="intro__highlights" role="list">
-              <li role="listitem">
+            <ul class="intro__highlights">
+              <li>
                 <strong>{t.index.highlights.focus}</strong>
                 {t.index.highlights.focusText}
               </li>
-              <li role="listitem">
+              <li>
                 <strong>{t.index.highlights.tech}</strong>
                 {t.index.highlights.techText}
               </li>
-              <li role="listitem">
+              <li>
                 <strong>{t.index.highlights.platforms}</strong>
                 {t.index.highlights.platformsText}
               </li>
-              <li role="listitem">
+              <li>
                 <strong>{t.index.highlights.domains}</strong>
                 {t.index.highlights.domainsText}
               </li>
-              <li role="listitem">
+              <li>
                 <strong>{t.index.highlights.certs}</strong>
                 {t.index.highlights.certsText}
               </li>
