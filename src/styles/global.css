@@ -28,11 +28,6 @@
   --green-hover: #00ff55;
   --accent-muted: #aaffaa;
 }
-[data-theme='hc'] body {
-  background: #000;
-  color: #fff;
-}
-
 /* ── Base reset ── */
 *,
 *::before,

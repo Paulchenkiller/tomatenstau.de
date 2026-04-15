@@ -100,6 +100,7 @@ const homeUrl = lang === 'en' ? '/' : '/de/';
           title="English"
           aria-label={t.header.switchToEn}
           data-lang="en"
+          aria-current={lang === 'en' ? 'true' : undefined}
         >
           <span class="flag flag-gb" aria-hidden="true"></span>
         </a>
@@ -111,6 +112,7 @@ const homeUrl = lang === 'en' ? '/' : '/de/';
           title="Deutsch"
           aria-label={t.header.switchToDe}
           data-lang="de"
+          aria-current={lang === 'de' ? 'true' : undefined}
         >
           <span class="flag flag-de" aria-hidden="true"></span>
         </a>
