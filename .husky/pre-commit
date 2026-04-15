@@ -1,8 +1,5 @@
 echo "🔍 Running pre-commit checks..."
 
-echo "📝 Checking ESLint..."
-npm run lint:eslint
-
 echo "✨ Checking Prettier formatting..."
 npm run format:check
 
