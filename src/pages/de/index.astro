@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { de as t } from '../../i18n/de';
+---
+
+<BaseLayout
+  lang="de"
+  title={t.site.title}
+  description={t.site.description}
+  skipToMain={t.a11y.skipToMain}
+>
+  <Header lang="de" t={{ header: t.header, site: t.site, social: t.social }} />
+
+  <main id="main-content" role="main" aria-label="Hauptinhaltsbereich">
+    <section class="intro" aria-labelledby="main-heading">
+      <div class="container">
+        <div class="intro__media">
+          <picture>
+            <source srcset="/images/profilbild.webp" type="image/webp" />
+            <img
+              src="/images/profilbild.jpg"
+              alt={t.index.profilePhotoAlt}
+              class="intro__photo"
+              width="300"
+              height="300"
+              loading="lazy"
+            />
+          </picture>
+        </div>
+        <div class="intro__content">
+          <h1 id="main-heading">{t.index.name}</h1>
+          <h2 class="intro__title">{t.index.jobTitle}</h2>
+          <p class="lead">{t.index.intro}</p>
+          <section aria-labelledby="highlights-heading">
+            <h3 id="highlights-heading" class="visually-hidden">{t.index.highlightsHeading}</h3>
+            <ul class="intro__highlights" role="list">
+              <li role="listitem">
+                <strong>{t.index.highlights.focus}</strong>
+                {t.index.highlights.focusText}
+              </li>
+              <li role="listitem">
+                <strong>{t.index.highlights.tech}</strong>
+                {t.index.highlights.techText}
+              </li>
+              <li role="listitem">
+                <strong>{t.index.highlights.platforms}</strong>
+                {t.index.highlights.platformsText}
+              </li>
+              <li role="listitem">
+                <strong>{t.index.highlights.domains}</strong>
+                {t.index.highlights.domainsText}
+              </li>
+              <li role="listitem">
+                <strong>{t.index.highlights.certs}</strong>
+                {t.index.highlights.certsText}
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer t={{ footer: t.footer, social: t.social }} />
+</BaseLayout>
+
+<style>
+  main {
+    background: var(--app-bg);
+    padding-top: 120px;
+    padding-bottom: 88px;
+    min-height: 100vh;
+  }
+
+  .intro {
+    background: var(--app-bg);
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .intro__media {
+    width: 220px;
+    height: 250px;
+  }
+
+  .intro__photo {
+    width: 100%;
+    height: 100%;
+    max-width: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin-top: 10px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .intro__content h1 {
+    font-size: 26px;
+    line-height: 32px;
+    margin: 6px 0;
+  }
+
+  .intro__title {
+    color: var(--accent-muted);
+    font-weight: 800;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 4px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .lead {
+    color: var(--text-muted);
+  }
+
+  .intro__highlights {
+    margin: 16px 0 24px;
+    padding-left: 20px;
+    color: var(--text-secondary);
+    list-style: disc;
+    list-style-position: outside;
+  }
+
+  .intro__highlights li {
+    margin: 6px 0;
+  }
+
+  @media (max-width: 800px) {
+    .container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .intro__highlights {
+      text-align: left;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .intro__media {
+      order: -1;
+      width: 200px;
+      height: 230px;
+      margin: 0 auto;
+    }
+
+    .intro__photo {
+      margin: 10px auto 16px;
+    }
+  }
+</style>
