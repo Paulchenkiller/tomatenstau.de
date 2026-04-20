@@ -50,6 +50,8 @@ Thumbs.db
 
 .angular
 
+# Astro generated
+.astro/
 
 # Additional ignores
 # Output files
