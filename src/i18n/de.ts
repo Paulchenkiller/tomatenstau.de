@@ -3,9 +3,9 @@ import type { Translations } from './en';
 export const de: Translations = {
   site: {
     name: 'tomatenstau.de',
-    title: 'tomatenstau.de – Meik Geldmacher',
+    title: 'tomatenstau.de – Meik Geldmacher | Software- & Solution-Architekt',
     description:
-      'Persönliche Website von Meik Geldmacher – Software- & Solution-Architekt, Team Lead Manager.',
+      'Persönliche Website von Meik Geldmacher – Software- & Solution-Architekt und Team Lead Manager mit Schwerpunkt auf skalierbaren Architekturen, technischer Führung und IoT/Enterprise-Software.',
   },
   header: {
     homeLinkLabel: 'Zur Startseite',
@@ -26,13 +26,13 @@ export const de: Translations = {
     name: 'Meik Geldmacher',
     jobTitle: 'Software‑ & Solution‑Architekt · Team Lead Manager',
     intro:
-      'Ich bin in den Rollen Team Lead Manager sowie Software- und Solution-Architekt tätig. Mein Fokus liegt auf der Konzeption und Weiterentwicklung skalierbarer System- und Softwarearchitekturen, der Ausarbeitung von Zielbildern und Roadmaps, technischer Leitung und Coaching von Teams, einschließlich der Leitung eines KI-Teams, sowie dem Stakeholder-Management über Produkt-, Fach- und IT-Bereiche hinweg. Darüber hinaus verantworte ich Architektur-Reviews, Security- und Quality-Gates, Integrations- und Schnittstellenstrategien (APIs, Messaging/IoT) sowie die Umsetzung effizienter Delivery-Prozesse (CI/CD, Observability).',
+      'Ich bin in den Rollen Team Lead Manager sowie Software- und Solution-Architekt tätig. Mein Fokus liegt auf der Konzeption und Weiterentwicklung skalierbarer System- und Softwarearchitekturen, der Ausarbeitung von Zielbildern und Roadmaps sowie der technischen Leitung und dem Coaching von Teams — einschließlich der Leitung eines KI-Teams. Ich verantworte das Stakeholder-Management über Produkt-, Fach- und IT-Bereiche hinweg. Darüber hinaus verantworte ich Architektur-Reviews, Security- und Quality-Gates, Integrations- und Schnittstellenstrategien (APIs, Messaging/IoT) sowie die Umsetzung effizienter Delivery-Prozesse (CI/CD, Observability).',
     highlights: {
       focus: 'Schwerpunkte:',
       focusText:
         'Software- & Solution-Architektur, Projektleitung, Roadmaps & Stakeholder-Management',
       tech: 'Tech:',
-      techText: 'Angular, TypeScript/JavaScript, Node.js, Python, Java (Spring Boot 2.x/3.x), Perl',
+      techText: 'Angular, TypeScript/JavaScript, Node.js, Python, Java (Spring Boot 2.x/3.x)',
       platforms: 'Plattformen & Daten:',
       platformsText: 'RESTful APIs, MQTT/IoT, CI/CD, MySQL, MongoDB, Redis',
       domains: 'Domänen:',
@@ -47,7 +47,6 @@ export const de: Translations = {
   social: {
     github: { label: 'GitHub', url: 'https://github.com/Paulchenkiller' },
     linkedin: { label: 'LinkedIn', url: 'https://www.linkedin.com/in/meik-geldmacher' },
-    xing: { label: 'XING', url: 'https://www.xing.com/profile/Meik_Geldmacher' },
     email: { label: 'E-Mail', url: 'mailto:meik@tomatenstau.de' },
   },
   notFound: {

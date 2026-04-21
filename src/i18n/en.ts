@@ -1,9 +1,9 @@
 export const en = {
   site: {
     name: 'tomatenstau.de',
-    title: 'tomatenstau.de – Meik Geldmacher',
+    title: 'tomatenstau.de – Meik Geldmacher | Software & Solution Architect',
     description:
-      'Personal website of Meik Geldmacher – Software & Solution Architect, Team Lead Manager.',
+      'Personal website of Meik Geldmacher – Software & Solution Architect and Team Lead Manager specialising in scalable architectures, technical leadership, and IoT/enterprise software.',
   },
   header: {
     homeLinkLabel: 'Go to homepage',
@@ -24,13 +24,13 @@ export const en = {
     name: 'Meik Geldmacher',
     jobTitle: 'Software & Solution Architect · Team Lead Manager',
     intro:
-      'I work as a Team Lead Manager as well as a Software and Solution Architect. My focus is on designing and evolving scalable system and software architectures, defining target pictures and roadmaps, technical leadership and coaching of teams, including leading an AI team, as well as stakeholder management across product, business, and IT. Additionally, I am responsible for architecture reviews, security and quality gates, integration and interface strategies (APIs, messaging/IoT), and establishing efficient delivery processes (CI/CD, observability).',
+      'I work as a Team Lead Manager as well as a Software and Solution Architect. My focus is on designing and evolving scalable system and software architectures, defining target pictures and roadmaps, and technical leadership and coaching of teams — including leading an AI team. I drive stakeholder management across product, business, and IT. Additionally, I am responsible for architecture reviews, security and quality gates, integration and interface strategies (APIs, messaging/IoT), and establishing efficient delivery processes (CI/CD, observability).',
     highlights: {
       focus: 'Focus areas:',
       focusText:
         'Software & solution architecture, project leadership, roadmaps & stakeholder management',
       tech: 'Tech:',
-      techText: 'Angular, TypeScript/JavaScript, Node.js, Python, Java (Spring Boot 2.x/3.x), Perl',
+      techText: 'Angular, TypeScript/JavaScript, Node.js, Python, Java (Spring Boot 2.x/3.x)',
       platforms: 'Platforms & data:',
       platformsText: 'RESTful APIs, MQTT/IoT, CI/CD, MySQL, MongoDB, Redis',
       domains: 'Domains:',
@@ -45,7 +45,6 @@ export const en = {
   social: {
     github: { label: 'GitHub', url: 'https://github.com/Paulchenkiller' },
     linkedin: { label: 'LinkedIn', url: 'https://www.linkedin.com/in/meik-geldmacher' },
-    xing: { label: 'XING', url: 'https://www.xing.com/profile/Meik_Geldmacher' },
     email: { label: 'E-Mail', url: 'mailto:meik@tomatenstau.de' },
   },
   notFound: {
