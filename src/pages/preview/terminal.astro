@@ -144,6 +144,19 @@ const platforms = t.index.highlights.platformsText.split(', ');
         <p class="output output--name">{t.index.name}</p>
         <p class="output output--muted">{t.index.jobTitle}</p>
 
+        <!-- uptime -->
+        <div class="line mt">
+          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
+            class="px">$</span
+          >
+          <span class="cmd">uptime</span>
+        </div>
+        <p class="output output--muted">
+          up 12+ years &nbsp;·&nbsp; load average: <span class="uptime-tag">deadlines</span>, <span
+            class="uptime-tag">coffee</span
+          >, <span class="uptime-tag">architecture</span>
+        </p>
+
         <!-- about -->
         <div class="line mt">
           <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
@@ -240,6 +253,35 @@ const platforms = t.index.highlights.platformsText.split(', ');
           </div>
         </div>
 
+        <!-- tree skills -->
+        <div class="line mt">
+          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
+            class="px">$</span
+          >
+          <span class="cmd">tree ~/skills</span>
+        </div>
+        <pre
+          class="output tree-output"
+          aria-label="Skills tree">{`~/skills
+├── architecture/
+│   ├── hexagonal
+│   ├── clean
+│   └── event-driven
+├── languages/
+│   ├── TypeScript ★
+│   ├── Java
+│   └── Python
+├── platforms/
+│   ├── AWS
+│   ├── Kubernetes
+│   └── GitHub-Actions
+└── soft/
+    ├── team-lead
+    ├── stakeholder-mgmt
+    └── arch-reviews
+
+4 directories, 13 files`}</pre>
+
         <!-- git log -->
         <div class="line mt">
           <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd"
@@ -276,6 +318,41 @@ const platforms = t.index.highlights.platformsText.split(', ');
           <div class="git-row">
             <span class="git-hash">b4b4b08</span><span class="git-msg"
               >fix: lcp image loading, redundant aria roles, add hreflang</span
+            >
+          </div>
+        </div>
+
+        <!-- alias -->
+        <div class="line mt">
+          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
+            class="px">$</span
+          >
+          <span class="cmd">alias</span>
+        </div>
+        <div class="output alias-output">
+          <div class="alias-row">
+            <span class="alias-name">deploy</span><span class="alias-eq">=</span><span
+              class="alias-val">'./ship.sh --check --confirm'</span
+            >
+          </div>
+          <div class="alias-row">
+            <span class="alias-name">think</span><span class="alias-eq">=</span><span
+              class="alias-val">'coffee && sleep 300 && echo ready'</span
+            >
+          </div>
+          <div class="alias-row">
+            <span class="alias-name">meetings</span><span class="alias-eq">=</span><span
+              class="alias-val">'cal --week && focus-mode on'</span
+            >
+          </div>
+          <div class="alias-row">
+            <span class="alias-name">review</span><span class="alias-eq">=</span><span
+              class="alias-val">'arch-check --strict --no-excuses'</span
+            >
+          </div>
+          <div class="alias-row">
+            <span class="alias-name">standup</span><span class="alias-eq">=</span><span
+              class="alias-val">'echo "done, blocked: none" | mail -s standup team'</span
             >
           </div>
         </div>
@@ -801,6 +878,43 @@ const platforms = t.index.highlights.platformsText.split(', ');
   }
   .chafa-meta__ok {
     color: #27c93f;
+  }
+
+  /* ── uptime ── */
+  .uptime-tag {
+    color: #ffbd2e;
+  }
+
+  /* ── tree ── */
+  .tree-output {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #aaa;
+    margin: 4px 0 0;
+    white-space: pre;
+  }
+
+  /* ── alias ── */
+  .alias-output {
+    margin-top: 4px;
+  }
+
+  .alias-row {
+    line-height: 1.65;
+    font-size: 13px;
+  }
+
+  .alias-name {
+    color: #4fc3f7;
+  }
+
+  .alias-eq {
+    color: #555;
+  }
+
+  .alias-val {
+    color: #b388ff;
   }
 
   /* ── printenv ── */
