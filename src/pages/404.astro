@@ -40,26 +40,6 @@ import { en as t } from '../i18n/en';
           <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
             class="px">$</span
           >
-          <span class="cmd">ls -la</span>
-        </div>
-        <div class="output not-found">
-          <p class="ls-header">total 0</p>
-          <p>
-            <span class="ls-perm">drwxr-xr-x</span>
-            <span class="ls-meta">2 meik staff</span>
-            <span class="ls-dir">./</span>
-          </p>
-          <p>
-            <span class="ls-perm">drwxr-xr-x</span>
-            <span class="ls-meta">8 meik staff</span>
-            <span class="ls-dir">../</span>
-          </p>
-        </div>
-
-        <div class="line mt">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
           <span class="cmd">echo $?</span>
         </div>
         <p class="output output--exitcode">
@@ -71,13 +51,56 @@ import { en as t } from '../i18n/en';
           <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
             class="px">$</span
           >
-          <span class="cmd">cd ~</span>
+          <span class="cmd">ls -la ~</span>
         </div>
-        <div class="line">
+        <div class="output not-found">
+          <p class="ls-header">total 48</p>
+          <p>
+            <span class="ls-perm">drwxr-xr-x</span>
+            <span class="ls-meta">9 meik staff</span>
+            <span class="ls-dir">.</span>
+          </p>
+          <p>
+            <span class="ls-perm">drwxr-xr-x</span>
+            <span class="ls-meta">3 root staff</span>
+            <span class="ls-dir">..</span>
+          </p>
+          <p>
+            <span class="ls-perm">-rw-r--r--</span>
+            <span class="ls-meta">1 meik staff</span>
+            <span class="ls-file">about.txt</span>
+          </p>
+          <p>
+            <span class="ls-perm">-rw-r--r--</span>
+            <span class="ls-meta">1 meik staff</span>
+            <span class="ls-file">experience.tsv</span>
+          </p>
+          <p>
+            <span class="ls-perm">-rwxr-xr-x</span>
+            <span class="ls-meta">1 meik staff</span>
+            <a href="/" class="ls-exec">./home</a>
+          </p>
+          <p>
+            <span class="ls-perm">-rwxr-xr-x</span>
+            <span class="ls-meta">1 meik staff</span>
+            <span class="ls-exec ls-exec--disabled">./links</span>
+          </p>
+          <p>
+            <span class="ls-perm">drwxr-xr-x</span>
+            <span class="ls-meta">4 meik staff</span>
+            <span class="ls-dir">projects/</span>
+          </p>
+          <p>
+            <span class="ls-perm">drwxr-xr-x</span>
+            <span class="ls-meta">2 meik staff</span>
+            <span class="ls-dir">skills/</span>
+          </p>
+        </div>
+
+        <div class="line mt">
           <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
             class="px">$</span
           >
-          <a href="/" class="cmd cmd--link">./home</a>
           <span class="cursor" aria-hidden="true">█</span>
         </div>
       </div>
@@ -247,6 +270,27 @@ import { en as t } from '../i18n/en';
 
   .ls-dir {
     color: #4fc3f7;
+  }
+
+  .ls-file {
+    color: #9e9e9e;
+  }
+
+  .ls-exec {
+    color: #27c93f;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s;
+  }
+
+  .ls-exec:hover {
+    color: #5dde73;
+    text-decoration: underline;
+  }
+
+  .ls-exec--disabled {
+    opacity: 0.4;
+    cursor: default;
   }
 
   .cursor {
