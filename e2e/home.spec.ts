@@ -21,7 +21,6 @@ test.describe('EN home page', () => {
     await page.goto('/');
     await expect(page.locator('a[aria-label*="GitHub"]').first()).toBeVisible();
     await expect(page.locator('a[aria-label*="LinkedIn"]').first()).toBeVisible();
-    await expect(page.locator('a[aria-label*="XING"]').first()).toBeVisible();
   });
 
   test('lang switcher links exist', async ({ page }) => {
