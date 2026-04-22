@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { en as t } from '../i18n/en';
+
+const currentYear = new Date().getFullYear();
+const experienceYears = currentYear - 2012;
 ---
 
 <BaseLayout
@@ -61,7 +64,7 @@ import { en as t } from '../i18n/en';
             </p>
             <p>
               <span class="nf-key">experience</span>&nbsp;&nbsp;&nbsp; <span class="nf-val"
-                >14 years</span
+                >{experienceYears} years</span
               >
             </p>
             <p class="nf-rule">──────────────────────────────────</p>
@@ -122,9 +125,9 @@ import { en as t } from '../i18n/en';
 
         <!-- chafa image viewer -->
         <div id="chafa" class="line">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
+          <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+            >~</span
+          ><span class="px">$</span>
           <span class="cmd">chafa --colors=256 --size=32x16 ~/images/profilbild.jpg</span>
         </div>
         <div class="output chafa-output" role="img" aria-label={t.index.profilePhotoAlt}>
@@ -163,32 +166,19 @@ import { en as t } from '../i18n/en';
 
         <!-- whoami -->
         <div class="line">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
+          <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+            >~</span
+          ><span class="px">$</span>
           <span class="cmd">whoami</span>
         </div>
         <p class="output output--name">{t.index.name}</p>
         <p class="output output--muted">{t.index.jobTitle}</p>
 
-        <!-- uptime -->
-        <div class="line mt">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
-          <span class="cmd">uptime</span>
-        </div>
-        <p class="output output--muted">
-          up 14 years &nbsp;·&nbsp; load average: <span class="uptime-tag">deadlines</span>, <span
-            class="uptime-tag">coffee</span
-          >, <span class="uptime-tag">architecture</span>
-        </p>
-
         <!-- about -->
         <div id="about" class="line mt">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
+          <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+            >~</span
+          ><span class="px">$</span>
           <span class="cmd">cat about.txt</span>
         </div>
         <p class="output output--body">
@@ -200,9 +190,9 @@ import { en as t } from '../i18n/en';
 
         <!-- experience -->
         <div id="experience" class="line mt">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
+          <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+            >~</span
+          ><span class="px">$</span>
           <span class="cmd">column -t experience.tsv</span>
         </div>
         <pre
@@ -210,32 +200,22 @@ import { en as t } from '../i18n/en';
           aria-label="Experience timeline">{`PERIOD             ROLE                                       COMPANY
 ───────────────    ─────────────────────────────────────────  ───────────────────────────────
 11/2024–now        Team Lead Manager & Solution Architect     ebm-papst neo GmbH & Co. KG
+                   └─ Solution Architect for NEXAIRA          (Core · Fit)
 07/2021–10/2024    Team Lead / Solution Architect             adesso SE
+                   └─ Cloud-native manufacturing app          full architecture & project lead
+                   └─ Solution Architect                      adesso manufacturing industry
 10/2017–06/2021    Computer Scientist / Software Architect    DATEV eG
+                   └─ Collaboration platform                  tax consultants & clients · Data Science
 03/2016–09/2017    Development Engineer / Software Architect  Hytera Mobilfunk GmbH
-08/2012–01/2015    Computer Science Expert                    Delticom AG`}</pre>
-
-        <!-- ls projects -->
-        <div id="projects" class="line mt">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
-          <span class="cmd">ls projects/</span>
-        </div>
-        <div class="output ls-output" aria-label="Project list">
-          <span class="ls-dir">iot-platform/</span>
-          <span class="ls-dir">ai-team-infra/</span>
-          <span class="ls-dir">api-gateway/</span>
-          <span class="ls-file">arch-review-2024.pdf</span>
-          <span class="ls-file">roadmap-q1-2025.md</span>
-          <span class="ls-dir">tomatenstau.de/</span>
-        </div>
+                   └─ Secure IoT network                      MQTT · REST · Python · Node.js
+08/2012–01/2015    Computer Science Expert                    Delticom AG
+                   └─ Online shop platform & data feeds       SEO · A/B testing · Perl`}</pre>
 
         <!-- skills -->
         <div id="skills" class="line mt">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
+          <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+            >~</span
+          ><span class="px">$</span>
           <span class="cmd">npm list --depth=2</span>
         </div>
         <pre
@@ -271,40 +251,11 @@ import { en as t } from '../i18n/en';
     ├── architecture-reviews
     └── stakeholder-management`}</pre>
 
-        <!-- links -->
-        <div id="links" class="line mt">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
-          <span class="cmd">./links --open</span>
-        </div>
-        <ul class="output link-list" role="list">
-          <li>
-            <span class="link-label">[github] </span><a
-              href={t.social.github.url}
-              target="_blank"
-              rel="noopener noreferrer">{t.social.github.url}</a
-            >
-          </li>
-          <li>
-            <span class="link-label">[linkedin]</span><a
-              href={t.social.linkedin.url}
-              target="_blank"
-              rel="noopener noreferrer">{t.social.linkedin.url}</a
-            >
-          </li>
-          <li>
-            <span class="link-label">[mail] </span><a href={t.social.email.url}
-              >{t.social.email.url}</a
-            >
-          </li>
-        </ul>
-
         <!-- man meik -->
         <div class="line mt">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
+          <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+            >~</span
+          ><span class="px">$</span>
           <span class="cmd">man meik</span>
         </div>
         <div class="output man-output" aria-label="Manual page for meik">
@@ -334,7 +285,8 @@ import { en as t } from '../i18n/en';
             Previously Software Architect and Team Lead at adesso SE (2021–2024),<br />
             Software Architect at DATEV eG (2017–2021), and Development Engineer<br />
             at Hytera Mobilfunk GmbH (2016–2017).<br /><br />
-            14 years of experience across IoT, cloud-native systems, e-commerce,<br />
+            {experienceYears} years of experience across IoT, cloud-native systems, e-commerce,<br
+            />
             and enterprise software. Dual study in Computer Science (DHBW, 2017–2020).<br />
             Specialised in distributed architectures, DDD, and team leadership.
           </p>
@@ -371,7 +323,7 @@ import { en as t } from '../i18n/en';
           </p>
           <p class="man-indent">
             <span class="man-flag">--version</span><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;meik 14.0.0 (stable, since 2012)
+            &nbsp;&nbsp;&nbsp;&nbsp;meik {experienceYears}.0.0 (stable, since 2012)
           </p>
 
           <p class="man-section">CERTIFICATIONS</p>
@@ -414,15 +366,17 @@ import { en as t } from '../i18n/en';
 
           <p class="man-footer" aria-hidden="true">
             MEIK(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomatenstau.de
-            2025&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEIK(1)
+            {
+              currentYear
+            }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEIK(1)
           </p>
         </div>
 
         <!-- cursor -->
         <div class="line mt">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
+          <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+            >~</span
+          ><span class="px">$</span>
           <span class="cursor" aria-hidden="true">█</span>
         </div>
       </div>
@@ -629,20 +583,6 @@ import { en as t } from '../i18n/en';
   }
 
   /* ── ls output ── */
-  .ls-output {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 24px;
-    margin-top: 6px;
-    font-size: 13px;
-  }
-
-  .ls-dir {
-    color: #4fc3f7;
-  }
-  .ls-file {
-    color: #9e9e9e;
-  }
 
   /* ── Git log ── */
   .git-log {
@@ -665,38 +605,6 @@ import { en as t } from '../i18n/en';
   }
 
   /* ── Links ── */
-  .link-list {
-    list-style: none;
-    padding: 0;
-    margin: 6px 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    font-size: 13px;
-  }
-
-  .link-list li {
-    display: flex;
-    gap: 8px;
-  }
-
-  .link-label {
-    color: #27c93f;
-    white-space: pre;
-    flex-shrink: 0;
-  }
-
-  .link-list a {
-    color: #4fc3f7;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .link-list a:hover {
-    color: #81d4fa;
-    text-decoration: underline;
-  }
-
   /* ── Cursor ── */
   .cursor {
     color: #27c93f;
@@ -776,11 +684,6 @@ import { en as t } from '../i18n/en';
   }
   .chafa-meta__ok {
     color: #27c93f;
-  }
-
-  /* ── uptime ── */
-  .uptime-tag {
-    color: #ffbd2e;
   }
 
   /* ── npm list ── */
