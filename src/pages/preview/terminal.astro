@@ -35,12 +35,12 @@ const platforms = t.index.highlights.platformsText.split(', ');
         <div class="neofetch" aria-label="System info">
           <pre
             class="neofetch__ascii"
-            aria-hidden="true">{`  ████████╗
-  ╚══██╔══╝
-     ██║
-     ██║
-     ██║
-     ╚═╝   `}</pre>
+            aria-hidden="true">{`███╗   ███╗███████╗██╗██╗  ██╗
+████╗ ████║██╔════╝██║██║ ██╔╝
+██╔████╔██║█████╗  ██║█████╔╝
+██║╚██╔╝██║██╔══╝  ██║██╔═██╗
+██║ ╚═╝ ██║███████╗██║██║  ██╗
+╚═╝     ╚═╝╚══════╝╚═╝╚═╝  ╚═╝`}</pre>
           <div class="neofetch__info">
             <p>
               <span class="nf-key">user</span><span class="nf-sep">@</span><span class="nf-key"
@@ -308,6 +308,100 @@ const platforms = t.index.highlights.platformsText.split(', ');
             >
           </li>
         </ul>
+
+        <!-- printenv -->
+        <div class="line mt">
+          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
+            class="px">$</span
+          >
+          <span class="cmd">printenv</span>
+        </div>
+        <div class="output env-output">
+          <div class="env-row">
+            <span class="env-key">USER</span><span class="env-eq">=</span><span class="env-val"
+              >meik</span
+            >
+          </div>
+          <div class="env-row">
+            <span class="env-key">LOCATION</span><span class="env-eq">=</span><span class="env-val"
+              >Germany</span
+            >
+          </div>
+          <div class="env-row">
+            <span class="env-key">TIMEZONE</span><span class="env-eq">=</span><span class="env-val"
+              >Europe/Berlin</span
+            >
+          </div>
+          <div class="env-row">
+            <span class="env-key">PREFERRED_LANG</span><span class="env-eq">=</span><span
+              class="env-val">TypeScript</span
+            >
+          </div>
+          <div class="env-row">
+            <span class="env-key">SECOND_LANG</span><span class="env-eq">=</span><span
+              class="env-val">Java</span
+            >
+          </div>
+          <div class="env-row">
+            <span class="env-key">ARCHITECTURE</span><span class="env-eq">=</span><span
+              class="env-val">hexagonal+clean</span
+            >
+          </div>
+          <div class="env-row">
+            <span class="env-key">COFFEE</span><span class="env-eq">=</span><span class="env-val"
+              >black</span
+            >
+          </div>
+          <div class="env-row">
+            <span class="env-key">CURRENT_STATUS</span><span class="env-eq">=</span><span
+              class="env-val">building-things</span
+            >
+          </div>
+        </div>
+
+        <!-- man meik -->
+        <div class="line mt">
+          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
+            class="px">$</span
+          >
+          <span class="cmd">man meik</span>
+        </div>
+        <div class="output man-output" aria-label="Manual page for meik">
+          <p class="man-header" aria-hidden="true">
+            MAN(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User
+            Commands&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MAN(1)
+          </p>
+          <p class="man-section">NAME</p>
+          <p class="man-indent">meik – Software &amp; Solution Architect, Team Lead</p>
+          <p class="man-section">SYNOPSIS</p>
+          <p class="man-indent">
+            <span class="man-cmd">meik</span> [--design-systems] [--lead-teams] [--ship-it]
+          </p>
+          <p class="man-section">DESCRIPTION</p>
+          <p class="man-indent">
+            Designs and evolves scalable system architectures, defines target<br />pictures and
+            roadmaps, leads cross-functional teams including AI.<br />Bridges product, business, and
+            engineering.
+          </p>
+          <p class="man-section">OPTIONS</p>
+          <p class="man-indent">
+            <span class="man-flag">--iSAQB-CPSA-A</span>&nbsp;&nbsp;&nbsp;Certified Professional for
+            Software Architecture
+          </p>
+          <p class="man-indent">
+            <span class="man-flag">--iSAQB-CPSA-F</span>&nbsp;&nbsp;&nbsp;Foundation Level
+          </p>
+          <p class="man-indent">
+            <span class="man-flag">--location</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Germany,
+            Remote-friendly
+          </p>
+          <p class="man-section">SEE ALSO</p>
+          <p class="man-indent">github(1), linkedin(1), coffee(1)</p>
+          <p class="man-footer" aria-hidden="true">
+            MAN(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomatenstau.de
+            2025&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MAN(1)
+          </p>
+        </div>
 
         <!-- cursor -->
         <div class="line mt">
@@ -707,6 +801,68 @@ const platforms = t.index.highlights.platformsText.split(', ');
   }
   .chafa-meta__ok {
     color: #27c93f;
+  }
+
+  /* ── printenv ── */
+  .env-output {
+    margin-top: 4px;
+  }
+
+  .env-row {
+    line-height: 1.65;
+    font-size: 13px;
+  }
+
+  .env-key {
+    color: #27c93f;
+  }
+
+  .env-eq {
+    color: #555;
+  }
+
+  .env-val {
+    color: #e0e0e0;
+  }
+
+  /* ── man meik ── */
+  .man-output {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .man-header,
+  .man-footer {
+    color: #555;
+    font-size: 12px;
+    white-space: pre;
+    margin: 0 0 8px;
+  }
+
+  .man-footer {
+    margin: 8px 0 0;
+  }
+
+  .man-section {
+    color: #4fc3f7;
+    font-weight: 700;
+    margin: 10px 0 2px;
+  }
+
+  .man-indent {
+    padding-left: 24px;
+    color: #aaa;
+    margin: 2px 0;
+  }
+
+  .man-cmd {
+    color: #e0e0e0;
+    font-weight: 700;
+  }
+
+  .man-flag {
+    color: #b388ff;
   }
 
   @media (max-width: 640px) {
