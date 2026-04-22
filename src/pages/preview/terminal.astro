@@ -239,18 +239,16 @@ const platforms = t.index.highlights.platformsText.split(', ');
           <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
             class="px">$</span
           >
-          <span class="cmd">cat skills.txt</span>
+          <span class="cmd">column -t skills.tsv</span>
         </div>
-        <div class="output">
-          <p class="sk-group-label"># Languages & Frameworks</p>
-          <div class="skill-grid">
-            {skills.map((s) => <span class="skill-item">{s}</span>)}
-          </div>
-          <p class="sk-group-label"># Platforms & Infrastructure</p>
-          <div class="skill-grid">
-            {platforms.map((p) => <span class="skill-item skill-item--dim">{p}</span>)}
-          </div>
-        </div>
+        <pre
+          class="output col-table"
+          aria-label="Skills">{`CATEGORY              SKILLS
+────────────────────  ──────────────────────────────────────────────────
+Languages/Frameworks  TypeScript · Java · Python · Astro · Angular · SQL
+Platforms/Infra       AWS · Kubernetes · GitHub Actions · Docker · Linux
+Architecture          Hexagonal · Clean · DDD · Event-Driven · REST/gRPC
+Observability         OpenTelemetry · Grafana · Prometheus · ELK`}</pre>
 
         <!-- tree skills -->
         <div class="line mt">
@@ -568,35 +566,6 @@ const platforms = t.index.highlights.platformsText.split(', ');
   }
   .ls-file {
     color: #9e9e9e;
-  }
-
-  /* ── Skills ── */
-  .sk-group-label {
-    color: #333;
-    font-size: 12px;
-    margin: 10px 0 6px;
-  }
-
-  .skill-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 4px;
-  }
-
-  .skill-item {
-    background: #0d1f0d;
-    color: #27c93f;
-    border: 1px solid #1a3a1a;
-    border-radius: 4px;
-    padding: 2px 10px;
-    font-size: 12px;
-  }
-
-  .skill-item--dim {
-    background: #151515;
-    color: #444;
-    border-color: #1f1f1f;
   }
 
   /* ── Git log ── */
