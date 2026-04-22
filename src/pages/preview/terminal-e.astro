@@ -7,7 +7,7 @@ import { en as t } from '../../i18n/en';
 <BaseLayout
   lang="en"
   title="Terminal E Preview – tomatenstau.de"
-  description="Terminal layout preview – deep navy background"
+  description="Terminal layout preview – warm dark background"
   skipToMain="Skip to main content"
 >
   <fragment slot="head">
@@ -772,8 +772,22 @@ import { en as t } from '../../i18n/en';
     }
   }
 
-  /* ── Variant E: Deep Navy ── */
+  /* ── Variant E: Warm Dark ── */
   .terminal-page {
-    background: #030c18;
+    background: #100c08;
+    padding-top: 60px;
+    padding-bottom: 160px;
+  }
+
+  .terminal-page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 80% 50% at 50% 0%,
+      rgba(180, 90, 20, 0.12) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
   }
 </style>

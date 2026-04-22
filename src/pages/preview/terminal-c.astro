@@ -7,7 +7,7 @@ import { en as t } from '../../i18n/en';
 <BaseLayout
   lang="en"
   title="Terminal C Preview – tomatenstau.de"
-  description="Terminal layout preview – grid lines background"
+  description="Terminal layout preview – dot grid background"
   skipToMain="Skip to main content"
 >
   <fragment slot="head">
@@ -772,12 +772,12 @@ import { en as t } from '../../i18n/en';
     }
   }
 
-  /* ── Variant C: Grid Lines ── */
+  /* ── Variant C: Dot Grid ── */
   .terminal-page {
-    background-color: #0a0a0a;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
+    background-color: #090909;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+    background-size: 28px 28px;
+    padding-top: 60px;
+    padding-bottom: 160px;
   }
 </style>
