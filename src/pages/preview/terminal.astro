@@ -307,38 +307,101 @@ import { en as t } from '../../i18n/en';
         </div>
         <div class="output man-output" aria-label="Manual page for meik">
           <p class="man-header" aria-hidden="true">
-            MAN(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User
-            Commands&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MAN(1)
+            MEIK(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User
+            Commands&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEIK(1)
           </p>
+
           <p class="man-section">NAME</p>
-          <p class="man-indent">meik – Software &amp; Solution Architect, Team Lead</p>
+          <p class="man-indent">
+            meik – Solution Architect, Team Lead &amp; Senior Software Engineer
+          </p>
+
           <p class="man-section">SYNOPSIS</p>
           <p class="man-indent">
-            <span class="man-cmd">meik</span> [--design-systems] [--lead-teams] [--ship-it]
+            <span class="man-cmd">meik</span>
+            [<span class="man-flag">--architect</span>=<em>system</em>] [<span class="man-flag"
+              >--lead</span
+            >=<em>team</em>] [<span class="man-flag">--stack</span>=<em>ts|java|python</em>] [<span
+              class="man-flag">--remote</span
+            >] [<span class="man-flag">--verbose</span>]
           </p>
+
           <p class="man-section">DESCRIPTION</p>
           <p class="man-indent">
-            Designs and evolves scalable system architectures, defines target<br />pictures and
-            roadmaps, leads cross-functional teams including AI.<br />Bridges product, business, and
-            engineering.
+            Meik designs and evolves scalable backend systems and distributed<br />
+            architectures with a focus on long-term maintainability. He leads<br />
+            cross-functional engineering teams, defines technical roadmaps, and<br />
+            bridges the gap between product, business, and engineering.<br /><br />
+            Over 12 years of professional experience across e-commerce, IoT,<br />
+            and enterprise software. Currently focused on cloud-native systems,<br />
+            OpenTelemetry-based observability, and AI-assisted development.
           </p>
+
           <p class="man-section">OPTIONS</p>
           <p class="man-indent">
-            <span class="man-flag">--iSAQB-CPSA-A</span>&nbsp;&nbsp;&nbsp;Certified Professional for
-            Software Architecture
+            <span class="man-flag">--architect</span>=<em>system</em><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Design or review a system architecture. Applies hexagonal,<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;clean, or domain-driven patterns depending on context.
           </p>
           <p class="man-indent">
-            <span class="man-flag">--iSAQB-CPSA-F</span>&nbsp;&nbsp;&nbsp;Foundation Level
+            <span class="man-flag">--lead</span>=<em>team</em><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Enable a cross-functional team. Includes stakeholder alignment,<br
+            />
+            &nbsp;&nbsp;&nbsp;&nbsp;architecture reviews, and hands-on mentoring.
           </p>
           <p class="man-indent">
-            <span class="man-flag">--location</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Germany,
-            Remote-friendly
+            <span class="man-flag">--stack</span>=<em>lang</em><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Primary: TypeScript, Java 17, Python. Frameworks: Astro,<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Angular, Spring Boot. Infra: AWS, Kubernetes, Docker.
           </p>
+          <p class="man-indent">
+            <span class="man-flag">--remote</span><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Operates fully remote. Based in Germany (UTC+1/+2).
+          </p>
+          <p class="man-indent">
+            <span class="man-flag">--verbose</span><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Produces detailed documentation, ADRs, and RFC-style proposals.
+          </p>
+          <p class="man-indent">
+            <span class="man-flag">--version</span><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;meik 12.0.0 (stable, since 2012)
+          </p>
+
+          <p class="man-section">CERTIFICATIONS</p>
+          <p class="man-indent">
+            <span class="man-flag">iSAQB-CPSA-A</span>&nbsp;&nbsp;Certified Professional for
+            Software Architecture – Advanced<br />
+            <span class="man-flag">iSAQB-CPSA-F</span>&nbsp;&nbsp;Certified Professional for
+            Software Architecture – Foundation
+          </p>
+
+          <p class="man-section">EXIT CODES</p>
+          <p class="man-indent">
+            <span class="man-flag">0</span>&nbsp;&nbsp;Problem solved, system shipped<br />
+            <span class="man-flag">1</span>&nbsp;&nbsp;Requirements unclear – run with <span
+              class="man-flag">--verbose</span
+            > and retry<br />
+            <span class="man-flag">2</span>&nbsp;&nbsp;Coffee depleted – temporary unavailability,
+            non-fatal
+          </p>
+
           <p class="man-section">SEE ALSO</p>
-          <p class="man-indent">github(1), linkedin(1), coffee(1)</p>
+          <p class="man-indent">
+            <a href={t.social.github.url} target="_blank" rel="noopener noreferrer" class="man-link"
+              >github.com/Paulchenkiller</a
+            >(1),
+            <a
+              href={t.social.linkedin.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="man-link">linkedin.com/in/meik-geldmacher</a
+            >(1),
+            <a href={t.social.email.url} class="man-link">meik@tomatenstau.de</a>(1)
+          </p>
+
           <p class="man-footer" aria-hidden="true">
-            MAN(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomatenstau.de
-            2025&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MAN(1)
+            MEIK(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomatenstau.de
+            2025&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEIK(1)
           </p>
         </div>
 
@@ -761,6 +824,17 @@ import { en as t } from '../../i18n/en';
 
   .man-flag {
     color: #b388ff;
+  }
+
+  .man-link {
+    color: #4fc3f7;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .man-link:hover {
+    color: #81d4fa;
+    text-decoration: underline;
   }
 
   @media (max-width: 640px) {
