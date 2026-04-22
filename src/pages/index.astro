@@ -16,21 +16,6 @@ import { en as t } from '../i18n/en';
     />
   </fragment>
 
-  <!-- Redirect DE-preferring visitors to /de/ before first paint -->
-  <script is:inline>
-    (function () {
-      var cookieMatch = document.cookie.match(/(?:^|;\s*)lang=([^;]+)/);
-      var saved = cookieMatch ? cookieMatch[1] : null;
-      try {
-        saved = saved || localStorage.getItem('lang');
-      } catch (_) {}
-      if (saved === 'de') {
-        window.location.replace('/de/');
-      } else if (!saved && navigator.language && navigator.language.startsWith('de')) {
-        window.location.replace('/de/');
-      }
-    })();
-  </script>
   <main id="main-content" class="terminal-page">
     <div class="terminal" role="region" aria-label="Terminal interface">
       <!-- Title bar -->

@@ -2,7 +2,7 @@
 import type { Translations } from '../i18n/en';
 
 interface Props {
-  lang: 'en' | 'de';
+  lang: string;
   t: Pick<Translations, 'header' | 'site' | 'social'>;
 }
 const { lang, t } = Astro.props;
@@ -81,18 +81,6 @@ const homeUrl = lang === 'en' ? '/' : '/de/';
           aria-current={lang === 'en' ? 'true' : undefined}
         >
           <span class="flag flag-gb" aria-hidden="true"></span>
-        </a>
-      </li>
-      <li role="listitem">
-        <a
-          href="/de/"
-          class:list={['lang-btn', { active: lang === 'de' }]}
-          title="Deutsch"
-          aria-label={t.header.switchToDe}
-          data-lang="de"
-          aria-current={lang === 'de' ? 'true' : undefined}
-        >
-          <span class="flag flag-de" aria-hidden="true"></span>
         </a>
       </li>
       <li role="listitem">
