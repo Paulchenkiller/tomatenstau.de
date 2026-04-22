@@ -1,0 +1,275 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PreviewNav from '../../components/PreviewNav.astro';
+import { en as t } from '../../i18n/en';
+---
+
+<BaseLayout
+  lang="en"
+  title="Minimal Preview – tomatenstau.de"
+  description="Minimal editorial layout preview"
+  skipToMain="Skip to main content"
+>
+  <fragment slot="head">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </fragment>
+
+  <main id="main-content" class="page">
+    <div class="container">
+      <header class="site-header">
+        <span class="site-header__year">{new Date().getFullYear()}</span>
+        <nav class="site-header__links" aria-label="Social links">
+          <a href={t.social.github.url} target="_blank" rel="noopener noreferrer">GH</a>
+          <a href={t.social.linkedin.url} target="_blank" rel="noopener noreferrer">LI</a>
+          <a href={t.social.email.url}>Mail</a>
+        </nav>
+      </header>
+
+      <section class="hero" aria-labelledby="hero-name">
+        <h1 id="hero-name">
+          <em>Meik</em><br />
+          Geldmacher.
+        </h1>
+        <p class="hero__role">{t.index.jobTitle}</p>
+      </section>
+
+      <hr class="divider" />
+
+      <section class="about" aria-labelledby="about-heading">
+        <h2 id="about-heading" class="section-label">About</h2>
+        <p class="about__text">{t.index.intro}</p>
+      </section>
+
+      <hr class="divider" />
+
+      <section class="highlights" aria-labelledby="highlights-heading">
+        <h2 id="highlights-heading" class="section-label">{t.index.highlightsHeading}</h2>
+        <ul class="highlight-rows" role="list">
+          <li class="highlight-row">
+            <span class="highlight-row__key">{t.index.highlights.focus}</span>
+            <span class="highlight-row__val">{t.index.highlights.focusText}</span>
+          </li>
+          <li class="highlight-row">
+            <span class="highlight-row__key">{t.index.highlights.tech}</span>
+            <span class="highlight-row__val">{t.index.highlights.techText}</span>
+          </li>
+          <li class="highlight-row">
+            <span class="highlight-row__key">{t.index.highlights.platforms}</span>
+            <span class="highlight-row__val">{t.index.highlights.platformsText}</span>
+          </li>
+          <li class="highlight-row">
+            <span class="highlight-row__key">{t.index.highlights.domains}</span>
+            <span class="highlight-row__val">{t.index.highlights.domainsText}</span>
+          </li>
+          <li class="highlight-row">
+            <span class="highlight-row__key">{t.index.highlights.certs}</span>
+            <span class="highlight-row__val">{t.index.highlights.certsText}</span>
+          </li>
+        </ul>
+      </section>
+
+      <hr class="divider" />
+
+      <footer class="site-footer">
+        <nav class="site-footer__links" aria-label="Social links">
+          <a href={t.social.github.url} target="_blank" rel="noopener noreferrer"> GitHub ↗ </a>
+          <a href={t.social.linkedin.url} target="_blank" rel="noopener noreferrer"> LinkedIn ↗ </a>
+          <a href={t.social.email.url}>
+            {t.social.email.url.replace('mailto:', '')} ↗
+          </a>
+        </nav>
+        <p class="site-footer__copy">{t.footer.copyright}</p>
+      </footer>
+    </div>
+  </main>
+
+  <PreviewNav current="minimal" />
+</BaseLayout>
+
+<style>
+  :global(body) {
+    background: #faf9f7;
+    color: #1a1a1a;
+  }
+
+  .page {
+    min-height: 100vh;
+    font-family: 'Lora', Georgia, serif;
+    background: #faf9f7;
+    color: #1a1a1a;
+    padding-bottom: 100px;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid #e0ddd8;
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+    color: #888;
+  }
+
+  .site-header__links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .site-header__links a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .site-header__links a:hover {
+    color: #1a1a1a;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 80px 0 48px;
+  }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(52px, 8vw, 88px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: #1a1a1a;
+    margin: 0 0 24px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: #5a5a5a;
+  }
+
+  .hero__role {
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    color: #888;
+    margin: 0;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid #e0ddd8;
+    margin: 0;
+  }
+
+  /* ── Sections ── */
+  .section-label {
+    font-family: system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin: 40px 0 20px;
+  }
+
+  .about {
+    padding-bottom: 40px;
+  }
+
+  .about__text {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #444;
+    margin: 0;
+  }
+
+  /* ── Highlights ── */
+  .highlights {
+    padding-bottom: 40px;
+  }
+
+  .highlight-rows {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .highlight-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e0ddd8;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .highlight-row:first-child {
+    border-top: 1px solid #e0ddd8;
+  }
+
+  .highlight-row__key {
+    font-family: system-ui, sans-serif;
+    font-size: 12px;
+    color: #aaa;
+    padding-top: 2px;
+  }
+
+  .highlight-row__val {
+    color: #333;
+    font-size: 14px;
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    padding: 40px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+    color: #aaa;
+  }
+
+  .site-footer__links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .site-footer__links a {
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .site-footer__links a:hover {
+    opacity: 0.6;
+  }
+
+  .site-footer__copy {
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .highlight-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .site-footer {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+  }
+</style>

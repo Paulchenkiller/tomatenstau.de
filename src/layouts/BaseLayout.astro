@@ -46,6 +46,8 @@ const { lang, title, description, skipToMain } = Astro.props;
       rel="stylesheet"
     />
 
+    <slot name="head" />
+
     <!-- High-contrast init: runs before first paint to prevent flash -->
     <script is:inline>
       (function () {

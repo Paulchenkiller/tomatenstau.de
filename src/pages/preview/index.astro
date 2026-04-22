@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  lang="en"
+  title="Layout Previews – tomatenstau.de"
+  description="Design variant previews"
+  skipToMain="Skip to main content"
+>
+  <main id="main-content">
+    <div class="overview">
+      <h1>Layout Previews</h1>
+      <p>Klick eine Variante an, um sie im Browser zu testen.</p>
+      <ul class="grid" role="list">
+        <li>
+          <a href="/preview/hero/" class="card">
+            <span class="card__badge">01</span>
+            <strong>Hero Centered</strong>
+            <span>Foto + Name vollflächig, darunter Highlights</span>
+            <span class="card__tag">Dark · Teal · Zentriert</span>
+          </a>
+        </li>
+        <li>
+          <a href="/preview/bento/" class="card">
+            <span class="card__badge">02</span>
+            <strong>Bento Grid</strong>
+            <span>Inhalt in unterschiedlich großen Kacheln</span>
+            <span class="card__tag">Dark · Slate · Kacheln</span>
+          </a>
+        </li>
+        <li>
+          <a href="/preview/sidebar/" class="card">
+            <span class="card__badge">03</span>
+            <strong>Sidebar Fixed</strong>
+            <span>Linke Leiste mit Foto + Nav, Content scrollt</span>
+            <span class="card__tag">Dark · Navy · Zweispaltig</span>
+          </a>
+        </li>
+        <li>
+          <a href="/preview/terminal/" class="card">
+            <span class="card__badge">04</span>
+            <strong>Terminal</strong>
+            <span>CLI-Ästhetik, Monospace, gefakte Kommandos</span>
+            <span class="card__tag">Schwarz · Grün · Monospace</span>
+          </a>
+        </li>
+        <li>
+          <a href="/preview/minimal/" class="card">
+            <span class="card__badge">05</span>
+            <strong>Minimal</strong>
+            <span>Viel Weißraum, große Typografie, kein Bild</span>
+            <span class="card__tag">Hell · Cream · Editorial</span>
+          </a>
+        </li>
+      </ul>
+      <a href="/" class="back">← Zurück zur Hauptseite</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    min-height: 100vh;
+    background: #0d1117;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+  }
+
+  .overview {
+    max-width: 800px;
+    width: 100%;
+  }
+
+  h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 32px;
+    color: #fff;
+    margin: 0 0 8px;
+  }
+
+  p {
+    color: #8b949e;
+    margin: 0 0 40px;
+    font-family: system-ui, sans-serif;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
+  }
+
+  .card:hover {
+    border-color: #58a6ff;
+    transform: translateY(-2px);
+  }
+
+  .card__badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #58a6ff;
+    letter-spacing: 1px;
+  }
+
+  .card strong {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    color: #e6edf3;
+  }
+
+  .card span:not(.card__badge):not(.card__tag) {
+    font-size: 13px;
+    color: #8b949e;
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+  }
+
+  .card__tag {
+    font-size: 11px !important;
+    color: #3fb950 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    margin-top: 4px;
+  }
+
+  .back {
+    color: #8b949e;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .back:hover {
+    color: #fff;
+  }
+</style>
