@@ -236,45 +236,38 @@ import { en as t } from '../../i18n/en';
           <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
             class="px">$</span
           >
-          <span class="cmd">column -t skills.tsv</span>
+          <span class="cmd">npm list --depth=2</span>
         </div>
         <pre
-          class="output col-table"
-          aria-label="Skills">{`CATEGORY              SKILLS
-────────────────────  ──────────────────────────────────────────────────
-Languages/Frameworks  TypeScript · Java · Python · Astro · Angular · SQL
-Platforms/Infra       AWS · Kubernetes · GitHub Actions · Docker · Linux
-Architecture          Hexagonal · Clean · DDD · Event-Driven · REST/gRPC
-Observability         OpenTelemetry · Grafana · Prometheus · ELK`}</pre>
-
-        <!-- tree skills -->
-        <div class="line mt">
-          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
-            class="px">$</span
-          >
-          <span class="cmd">tree ~/skills</span>
-        </div>
-        <pre
-          class="output tree-output"
-          aria-label="Skills tree">{`~/skills
-├── architecture/
+          class="output npm-list"
+          aria-label="Skills">{`meik@12.0.0 ~/skills
+├── languages
+│   ├── typescript@latest ★
+│   ├── java@17
+│   ├── python@3.11
+│   └── sql@ansi
+├── frameworks
+│   ├── astro@5
+│   ├── angular@19
+│   └── spring-boot@3
+├── architecture
 │   ├── hexagonal
 │   ├── clean
+│   ├── domain-driven-design
 │   └── event-driven
-├── languages/
-│   ├── TypeScript ★
-│   ├── Java
-│   └── Python
-├── platforms/
-│   ├── AWS
-│   ├── Kubernetes
-│   └── GitHub-Actions
-└── soft/
+├── platforms
+│   ├── aws
+│   ├── kubernetes
+│   ├── docker
+│   └── github-actions
+├── observability
+│   ├── opentelemetry
+│   ├── grafana
+│   └── prometheus
+└── soft
     ├── team-lead
-    ├── stakeholder-mgmt
-    └── arch-reviews
-
-4 directories, 13 files`}</pre>
+    ├── architecture-reviews
+    └── stakeholder-management`}</pre>
 
         <!-- links -->
         <div class="line mt">
@@ -704,14 +697,18 @@ Observability         OpenTelemetry · Grafana · Prometheus · ELK`}</pre>
     color: #ffbd2e;
   }
 
-  /* ── tree ── */
-  .tree-output {
+  /* ── npm list ── */
+  .npm-list {
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
-    line-height: 1.65;
+    line-height: 1.75;
     color: #aaa;
     margin: 4px 0 0;
     white-space: pre;
+  }
+
+  .npm-list::first-line {
+    color: #4fc3f7;
   }
 
   /* ── man meik ── */
