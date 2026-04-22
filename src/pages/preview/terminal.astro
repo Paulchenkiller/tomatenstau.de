@@ -359,12 +359,22 @@ import { en as t } from '../../i18n/en';
 <style>
   .terminal-page {
     min-height: 100vh;
-    background: #0a0a0a;
+    background: #2e2e2e;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 40px 24px 120px;
+    padding: 60px 24px 160px;
     font-family: 'JetBrains Mono', 'Courier New', monospace;
+    position: relative;
+  }
+
+  .terminal-page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
   }
 
   .terminal {
@@ -373,6 +383,8 @@ import { en as t } from '../../i18n/en';
     background: #111;
     border-radius: 12px;
     border: 1px solid #2a2a2a;
+    position: relative;
+    z-index: 1;
     box-shadow:
       0 0 0 1px #1a1a1a,
       0 40px 80px rgba(0, 0, 0, 0.9);
