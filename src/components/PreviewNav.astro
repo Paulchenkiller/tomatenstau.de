@@ -8,7 +8,9 @@ interface Props {
     | 'minimal'
     | 'terminal-a'
     | 'terminal-b'
-    | 'terminal-c';
+    | 'terminal-c'
+    | 'terminal-d'
+    | 'terminal-e';
 }
 const { current } = Astro.props;
 
@@ -20,6 +22,8 @@ const variants = [
   { id: 'terminal-a', label: 'Term A' },
   { id: 'terminal-b', label: 'Term B' },
   { id: 'terminal-c', label: 'Term C' },
+  { id: 'terminal-d', label: 'Term D' },
+  { id: 'terminal-e', label: 'Term E' },
   { id: 'minimal', label: 'Minimal' },
 ] as const;
 ---

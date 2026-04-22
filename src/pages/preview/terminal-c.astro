@@ -6,8 +6,8 @@ import { en as t } from '../../i18n/en';
 
 <BaseLayout
   lang="en"
-  title="Terminal C (CRT) – tomatenstau.de"
-  description="Terminal layout preview – retro CRT"
+  title="Terminal C Preview – tomatenstau.de"
+  description="Terminal layout preview – grid lines background"
   skipToMain="Skip to main content"
 >
   <fragment slot="head">
@@ -359,51 +359,33 @@ import { en as t } from '../../i18n/en';
 <style>
   .terminal-page {
     min-height: 100vh;
-    background: #080008;
+    background: #0a0a0a;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 60px 24px 120px;
+    padding: 40px 24px 120px;
     font-family: 'JetBrains Mono', 'Courier New', monospace;
   }
 
   .terminal {
     width: 100%;
     max-width: 1400px;
-    background: #0a0500;
-    border-radius: 20px;
-    border: 2px solid #2a1a00;
+    background: #111;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
     box-shadow:
-      0 0 0 4px #150c00,
-      0 0 40px rgba(255, 160, 0, 0.06),
-      0 40px 80px rgba(0, 0, 0, 0.95);
+      0 0 0 1px #1a1a1a,
+      0 40px 80px rgba(0, 0, 0, 0.9);
     overflow: hidden;
-    position: relative;
-  }
-
-  .terminal::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 3px,
-      rgba(0, 0, 0, 0.12) 3px,
-      rgba(0, 0, 0, 0.12) 4px
-    );
-    pointer-events: none;
-    z-index: 10;
-    border-radius: 20px;
   }
 
   .terminal__bar {
-    background: #120900;
+    background: #1e1e1e;
     padding: 12px 18px;
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px solid #2a1a00;
+    border-bottom: 1px solid #2a2a2a;
   }
 
   .dot {
@@ -788,5 +770,14 @@ import { en as t } from '../../i18n/en';
     .chafa-frame__bot {
       font-size: 10px;
     }
+  }
+
+  /* ── Variant C: Grid Lines ── */
+  .terminal-page {
+    background-color: #0a0a0a;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
 </style>

@@ -6,8 +6,8 @@ import { en as t } from '../../i18n/en';
 
 <BaseLayout
   lang="en"
-  title="Terminal B (Chrome) – tomatenstau.de"
-  description="Terminal layout preview – strong chrome"
+  title="Terminal B Preview – tomatenstau.de"
+  description="Terminal layout preview – radial gradient background"
   skipToMain="Skip to main content"
 >
   <fragment slot="head">
@@ -359,35 +359,33 @@ import { en as t } from '../../i18n/en';
 <style>
   .terminal-page {
     min-height: 100vh;
-    background: #000;
+    background: #0a0a0a;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 60px 24px 120px;
+    padding: 40px 24px 120px;
     font-family: 'JetBrains Mono', 'Courier New', monospace;
   }
 
   .terminal {
     width: 100%;
     max-width: 1400px;
-    background: #0e0e0e;
-    border-radius: 10px;
-    border: 1px solid #444;
+    background: #111;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
     box-shadow:
-      0 0 0 1px #2a2a2a,
-      0 2px 0 0 #555,
-      0 30px 60px rgba(0, 0, 0, 0.95),
-      0 60px 120px rgba(0, 0, 0, 0.7);
+      0 0 0 1px #1a1a1a,
+      0 40px 80px rgba(0, 0, 0, 0.9);
     overflow: hidden;
   }
 
   .terminal__bar {
-    background: linear-gradient(180deg, #333 0%, #252525 100%);
-    padding: 16px 20px;
+    background: #1e1e1e;
+    padding: 12px 18px;
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px solid #111;
+    border-bottom: 1px solid #2a2a2a;
   }
 
   .dot {
@@ -772,5 +770,10 @@ import { en as t } from '../../i18n/en';
     .chafa-frame__bot {
       font-size: 10px;
     }
+  }
+
+  /* ── Variant B: Radial Gradient ── */
+  .terminal-page {
+    background: radial-gradient(ellipse 120% 55% at 50% 0%, #0c0c1e 0%, #0a0a0a 65%);
   }
 </style>
