@@ -3,4 +3,7 @@ echo "🔍 Running pre-commit checks..."
 echo "✨ Checking Prettier formatting..."
 npm run format:check
 
+echo "🔎 Running Astro type check..."
+npm run check
+
 echo "✅ Pre-commit checks completed successfully!"
