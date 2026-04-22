@@ -207,48 +207,16 @@ const platforms = t.index.highlights.platformsText.split(', ');
           <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
             class="px">$</span
           >
-          <span class="cmd">cat experience.txt</span>
+          <span class="cmd">column -t experience.tsv</span>
         </div>
-        <div class="output">
-          <table class="exp-table" aria-label="Experience timeline">
-            <tr>
-              <td class="exp-year">2021 – now</td>
-              <td class="exp-sep">│</td>
-              <td
-                ><span class="exp-title">Team Lead Manager & Solution Architect</span><br /><span
-                  class="exp-company">Lorem Ipsum Technologies GmbH</span
-                ></td
-              >
-            </tr>
-            <tr>
-              <td class="exp-year">2018 – 2021</td>
-              <td class="exp-sep">│</td>
-              <td
-                ><span class="exp-title">Senior Software Architect</span><br /><span
-                  class="exp-company">Dolor Sit AG — Industry / IoT Division</span
-                ></td
-              >
-            </tr>
-            <tr>
-              <td class="exp-year">2015 – 2018</td>
-              <td class="exp-sep">│</td>
-              <td
-                ><span class="exp-title">Software Engineer (Java / Node.js)</span><br /><span
-                  class="exp-company">Consectetur Solutions — E-Commerce Platform</span
-                ></td
-              >
-            </tr>
-            <tr>
-              <td class="exp-year">2012 – 2015</td>
-              <td class="exp-sep">│</td>
-              <td
-                ><span class="exp-title">Junior Developer</span><br /><span class="exp-company"
-                  >Adipiscing Digital — Web & Mobile</span
-                ></td
-              >
-            </tr>
-          </table>
-        </div>
+        <pre
+          class="output col-table"
+          aria-label="Experience timeline">{`PERIOD       ROLE                                    COMPANY
+─────────    ──────────────────────────────────────  ──────────────────────────────────────
+2021–now     Team Lead Manager & Solution Architect  Lorem Ipsum Technologies GmbH
+2018–2021    Senior Software Architect               Dolor Sit AG — Industry / IoT Division
+2015–2018    Software Engineer (Java / Node.js)      Consectetur Solutions — E-Commerce
+2012–2015    Junior Developer                        Adipiscing Digital — Web & Mobile`}</pre>
 
         <!-- ls projects -->
         <div class="line mt">
@@ -576,35 +544,14 @@ const platforms = t.index.highlights.platformsText.split(', ');
     margin: 6px 0 0;
   }
 
-  /* ── Experience table ── */
-  .exp-table {
-    border-collapse: collapse;
+  /* ── column -t table ── */
+  .col-table {
     font-size: 13px;
+    line-height: 1.7;
+    color: #aaa;
+    white-space: pre;
     margin-top: 6px;
-  }
-
-  .exp-table tr {
-    vertical-align: top;
-  }
-  .exp-table td {
-    padding: 4px 12px 4px 0;
-  }
-
-  .exp-year {
-    color: #555;
-    white-space: nowrap;
-  }
-  .exp-sep {
-    color: #2a3a2a;
-    padding: 4px 8px;
-  }
-  .exp-title {
-    color: #ccc;
-    font-weight: 700;
-  }
-  .exp-company {
-    color: #555;
-    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
   }
 
   /* ── ls output ── */
