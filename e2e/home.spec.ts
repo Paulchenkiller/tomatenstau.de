@@ -141,7 +141,7 @@ test.describe('404 page', () => {
 
   test('has link back to home', async ({ page }) => {
     await page.goto('/does-not-exist');
-    const homeLink = page.locator('a[href="/"]');
+    const homeLink = page.locator('.not-found a[href="/"]');
     await expect(homeLink).toBeVisible();
   });
 });
