@@ -93,6 +93,47 @@ const platforms = t.index.highlights.platformsText.split(', ');
 
         <div class="sep" aria-hidden="true"></div>
 
+        <!-- chafa image viewer -->
+        <div class="line">
+          <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
+            class="px">$</span
+          >
+          <span class="cmd">chafa --colors=256 --size=32x16 ~/images/profilbild.jpg</span>
+        </div>
+        <div class="output chafa-output" role="img" aria-label={t.index.profilePhotoAlt}>
+          <div class="chafa-frame">
+            <div class="chafa-frame__top" aria-hidden="true">
+              ╭──────────────────────────────────────────────────────────╮
+            </div>
+            <div class="chafa-frame__mid">
+              <span class="chafa-frame__side" aria-hidden="true">│ </span>
+              <picture>
+                <source srcset="/images/profilbild.webp" type="image/webp" />
+                <img
+                  src="/images/profilbild.jpg"
+                  alt=""
+                  class="chafa-img"
+                  width="300"
+                  height="300"
+                />
+              </picture>
+              <span class="chafa-frame__side" aria-hidden="true"> │</span>
+            </div>
+            <div class="chafa-frame__bot" aria-hidden="true">
+              ╰──────────────────────────────────────────────────────────╯
+            </div>
+          </div>
+          <p class="chafa-meta" aria-hidden="true">
+            <span class="chafa-meta__file">profilbild.jpg</span>
+            <span class="chafa-meta__sep">·</span>
+            <span>300×300</span>
+            <span class="chafa-meta__sep">·</span>
+            <span>JPEG</span>
+            <span class="chafa-meta__sep">·</span>
+            <span class="chafa-meta__ok">✓ rendered via chafa 1.14</span>
+          </p>
+        </div>
+
         <!-- whoami -->
         <div class="line">
           <span class="prompt">meik@ts</span><span class="px">:</span><span class="wd">~</span><span
@@ -604,6 +645,70 @@ const platforms = t.index.highlights.platformsText.split(', ');
     }
   }
 
+  /* ── Chafa image viewer ── */
+  .chafa-output {
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .chafa-frame {
+    display: inline-flex;
+    flex-direction: column;
+    font-size: 12px;
+    line-height: 1;
+    color: #333;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .chafa-frame__top,
+  .chafa-frame__bot {
+    white-space: pre;
+    letter-spacing: -0.3px;
+  }
+
+  .chafa-frame__mid {
+    display: flex;
+    align-items: center;
+  }
+
+  .chafa-frame__side {
+    white-space: pre;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+  }
+
+  .chafa-img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    image-rendering: auto;
+    filter: contrast(1.08) saturate(0.85) brightness(0.95);
+  }
+
+  .chafa-meta {
+    font-size: 11px;
+    color: #444;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin: 0;
+    padding-left: 2px;
+  }
+
+  .chafa-meta__file {
+    color: #4fc3f7;
+  }
+  .chafa-meta__sep {
+    color: #2a2a2a;
+  }
+  .chafa-meta__ok {
+    color: #27c93f;
+  }
+
   @media (max-width: 640px) {
     .terminal__body {
       padding: 16px;
@@ -614,6 +719,14 @@ const platforms = t.index.highlights.platformsText.split(', ');
     }
     .neofetch__ascii {
       display: none;
+    }
+    .chafa-img {
+      width: 140px;
+      height: 140px;
+    }
+    .chafa-frame__top,
+    .chafa-frame__bot {
+      font-size: 10px;
     }
   }
 </style>
