@@ -149,6 +149,16 @@ const experienceYears = currentYear - 2012;
               <td>MQTT · REST · Python · Node.js</td>
             </tr>
             <tr class="exp-main">
+              <td>11/2015–06/2017</td>
+              <td>Freelance Software Developer</td>
+              <td>(self-employed)</td>
+            </tr>
+            <tr class="exp-sub">
+              <td></td>
+              <td>└─ Front- &amp; backend development</td>
+              <td>Python · JavaScript · AngularJS</td>
+            </tr>
+            <tr class="exp-main">
               <td>08/2015–11/2015</td>
               <td>Software Developer</td>
               <td>Videobeat Networks GmbH</td>
@@ -618,16 +628,98 @@ const experienceYears = currentYear - 2012;
   }
 
   @media (max-width: 640px) {
+    .terminal-page {
+      padding: 16px 12px 80px;
+    }
+
     .terminal__body {
       padding: 16px;
       font-size: 12px;
     }
+
+    /* neofetch: stack vertically, center image */
     .neofetch {
       flex-direction: column;
+      align-items: center;
     }
+
+    .neofetch__info {
+      width: 100%;
+    }
+
     .chafa-img {
       width: 120px;
       height: 120px;
+    }
+
+    /* experience table: card layout */
+    .exp-table {
+      display: block;
+      width: 100%;
+    }
+
+    .exp-table thead {
+      display: none;
+    }
+
+    .exp-table tbody,
+    .exp-table tr,
+    .exp-table td {
+      display: block;
+    }
+
+    .exp-table td {
+      padding-right: 0;
+      white-space: normal;
+      padding-top: 0;
+    }
+
+    .exp-table tbody tr:not(.exp-sub) {
+      margin-top: 16px;
+      padding-left: 10px;
+      border-left: 2px solid #2a2a2a;
+    }
+
+    .exp-table tbody tr:not(.exp-sub) td:first-child {
+      color: #555;
+      font-size: 11px;
+    }
+
+    .exp-table tbody tr:not(.exp-sub) td:nth-child(2) {
+      color: #ddd;
+    }
+
+    .exp-table tbody tr:not(.exp-sub) td:nth-child(3) {
+      color: #4fc3f7;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .exp-main td {
+      padding-top: 0;
+    }
+
+    .exp-sub {
+      padding-left: 10px;
+    }
+
+    .exp-sub td:first-child {
+      display: none;
+    }
+
+    .exp-sub td {
+      font-size: 11px;
+      padding-bottom: 0;
+    }
+
+    /* man page: hide decorative header/footer, reduce indent */
+    .man-header,
+    .man-footer {
+      display: none;
+    }
+
+    .man-indent {
+      padding-left: 12px;
     }
   }
 </style>
