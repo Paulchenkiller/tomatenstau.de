@@ -1,0 +1,6 @@
+echo "🧪 Running e2e tests before push..."
+
+npm run build --silent
+npm run test:ci
+
+echo "✅ E2E tests passed!"

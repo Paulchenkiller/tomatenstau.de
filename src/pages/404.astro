@@ -1,0 +1,301 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { en as t } from '../i18n/en';
+---
+
+<BaseLayout
+  lang="en"
+  title={`404 – ${t.notFound.title}`}
+  description={t.notFound.subtitle}
+  skipToMain="Skip to main content"
+>
+  <fragment slot="head">
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </fragment>
+
+  <main id="main-content" class="terminal-page">
+    <div class="terminal" role="region" aria-label="Terminal interface">
+      <div class="terminal__bar" aria-hidden="true">
+        <span class="dot dot--red"></span>
+        <span class="dot dot--yellow"></span>
+        <span class="dot dot--green"></span>
+        <span class="terminal__title">meik@tomatenstau.de — bash — 120×40</span>
+      </div>
+
+      <div class="terminal__body">
+        <div class="line">
+          <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+            >~</span
+          ><span class="px">$</span>
+          <span class="cmd">cd <span id="err-path"></span></span>
+        </div>
+        <p class="output output--error">
+          bash: cd: <span id="err-path2"></span>: No such file or directory
+        </p>
+
+        <div class="line mt">
+          <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+            >~</span
+          ><span class="px">$</span>
+          <span class="cmd">echo $?</span>
+        </div>
+        <p class="output output--exitcode">
+          <span class="exit-code">404</span>
+          <span class="exit-msg">— {t.notFound.title}</span>
+        </p>
+
+        <div class="line mt">
+          <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+            >~</span
+          ><span class="px">$</span>
+          <span class="cmd">ls -la ~</span>
+        </div>
+        <div class="output not-found">
+          <p class="ls-header">total 12</p>
+          <p>
+            <span class="ls-perm">drwxr-xr-x</span>
+            <span class="ls-meta">5 meik staff</span>
+            <span class="ls-dir">.</span>
+          </p>
+          <p>
+            <span class="ls-perm">drwxr-xr-x</span>
+            <span class="ls-meta">3 root staff</span>
+            <span class="ls-dir">..</span>
+          </p>
+          <p>
+            <span class="ls-perm">-rw-r--r--</span>
+            <span class="ls-meta">1 meik staff</span>
+            <a href="/#experience" class="ls-file ls-link">experience.tsv</a>
+          </p>
+          <p>
+            <span class="ls-perm">-rwxr-xr-x</span>
+            <span class="ls-meta">1 meik staff</span>
+            <a href="/" class="ls-exec">./home</a>
+          </p>
+          <p>
+            <span class="ls-perm">drwxr-xr-x</span>
+            <span class="ls-meta">3 meik staff</span>
+            <a href="/#chafa" class="ls-dir ls-link">images/</a>
+          </p>
+        </div>
+
+        <div class="line mt">
+          <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+            >~</span
+          ><span class="px">$</span>
+          <span class="cursor" aria-hidden="true">█</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  const path = window.location.pathname;
+  const a = document.getElementById('err-path');
+  const b = document.getElementById('err-path2');
+  if (a) a.textContent = path;
+  if (b) b.textContent = path;
+</script>
+
+<style>
+  .terminal-page {
+    min-height: 100vh;
+    background: #2e2e2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    position: relative;
+  }
+
+  .terminal-page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .terminal {
+    width: 100%;
+    max-width: 640px;
+    background: #111;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+    position: relative;
+    z-index: 1;
+    box-shadow:
+      0 0 0 1px #1a1a1a,
+      0 40px 80px rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+  }
+
+  .terminal__bar {
+    background: #1e1e1e;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .dot--red {
+    background: #ff5f56;
+  }
+  .dot--yellow {
+    background: #ffbd2e;
+  }
+  .dot--green {
+    background: #27c93f;
+  }
+
+  .terminal__title {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+    margin-left: -44px;
+  }
+
+  .terminal__body {
+    padding: 24px 28px 36px;
+    line-height: 1.65;
+    font-size: 13.5px;
+  }
+
+  .line {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .mt {
+    margin-top: 20px;
+  }
+
+  .prompt {
+    color: #27c93f;
+    font-weight: 700;
+  }
+  .px {
+    color: #555;
+  }
+  .wd {
+    color: #4fc3f7;
+  }
+  .cmd {
+    color: #e8e8e8;
+    margin-left: 8px;
+  }
+
+  .output {
+    margin: 5px 0 0;
+    padding-left: 0;
+    color: #9e9e9e;
+    font-size: 13px;
+  }
+
+  .output--error {
+    color: #ff5f56;
+    margin-top: 4px;
+  }
+
+  .output--exitcode {
+    margin-top: 4px;
+  }
+
+  .exit-code {
+    color: #ff5f56;
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .exit-msg {
+    color: #666;
+    margin-left: 8px;
+  }
+
+  .not-found {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 4px;
+  }
+
+  .not-found p {
+    margin: 0;
+  }
+
+  .ls-header {
+    color: #555;
+    margin: 0;
+  }
+
+  .ls-perm {
+    color: #555;
+    margin-right: 12px;
+  }
+
+  .ls-meta {
+    color: #666;
+    margin-right: 12px;
+  }
+
+  .ls-dir {
+    color: #4fc3f7;
+  }
+
+  .ls-file {
+    color: #9e9e9e;
+  }
+
+  .ls-link {
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .ls-link:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+  }
+
+  .ls-exec {
+    color: #27c93f;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s;
+  }
+
+  .ls-exec:hover {
+    color: #5dde73;
+    text-decoration: underline;
+  }
+
+  .cursor {
+    color: #27c93f;
+    animation: blink 1s step-end infinite;
+    margin-left: 8px;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
