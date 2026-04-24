@@ -23,7 +23,7 @@ const experienceYears = currentYear - 2012;
     <div class="terminal" role="region" aria-label="Terminal interface">
       <!-- Title bar -->
       <div class="terminal__bar" aria-hidden="true">
-        <span class="dot dot--red"></span>
+        <span class="dot dot--red" id="dot-close" title="Close" style="cursor:pointer"></span>
         <span class="dot dot--yellow"></span>
         <span class="dot dot--green"></span>
         <span class="terminal__title">meik@tomatenstau.de — bash — 120×40</span>
@@ -335,6 +335,21 @@ const experienceYears = currentYear - 2012;
       </div>
     </div>
   </main>
+
+  <!-- Easter egg: red dot close -->
+  <div id="easter-egg" aria-hidden="true">
+    <div class="ee-inner">
+      <picture>
+        <source srcset="/images/tomatenstau_logo.webp" type="image/webp" />
+        <img src="/images/tomatenstau_logo.png" alt="" class="ee-logo" width="320" height="150" />
+      </picture>
+      <p class="ee-line">
+        <span class="ee-green">meik@tomatenstau.de</span><span class="ee-dim">:~$</span> logout
+      </p>
+      <p class="ee-line ee-dim">Connection to tomatenstau.de closed.</p>
+      <p class="ee-hint">click anywhere to reconnect</p>
+    </div>
+  </div>
 </BaseLayout>
 
 <style>
@@ -731,4 +746,121 @@ const experienceYears = currentYear - 2012;
       padding-left: 12px;
     }
   }
+
+  /* ── Easter egg ── */
+  .terminal.closing {
+    animation: terminal-close 0.35s cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+
+  @keyframes terminal-close {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    60% {
+      transform: scale(1.01);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(0.92) translateY(-8px);
+      opacity: 0;
+    }
+  }
+
+  #easter-egg {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #1a1a1a;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: ee-fade-in 0.4s ease forwards;
+  }
+
+  #easter-egg.visible {
+    display: flex;
+  }
+
+  @keyframes ee-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .ee-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    text-align: center;
+  }
+
+  .ee-logo {
+    width: 280px;
+    height: auto;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 24px rgba(255, 95, 86, 0.3));
+  }
+
+  .ee-line {
+    font-size: 14px;
+    color: #9e9e9e;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  .ee-green {
+    color: #27c93f;
+  }
+
+  .ee-dim {
+    color: #555;
+  }
+
+  .ee-hint {
+    margin: 0;
+    font-size: 11px;
+    color: #3a3a3a;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    animation: hint-blink 2s step-end infinite;
+  }
+
+  @keyframes hint-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
 </style>
+
+<script>
+  const dotClose = document.getElementById('dot-close');
+  const terminal = dotClose?.closest('.terminal') as HTMLElement | null;
+  const easterEgg = document.getElementById('easter-egg');
+
+  dotClose?.addEventListener('click', () => {
+    if (!terminal || !easterEgg) return;
+    terminal.classList.add('closing');
+    setTimeout(() => {
+      terminal.style.visibility = 'hidden';
+      easterEgg.classList.add('visible');
+    }, 340);
+  });
+
+  easterEgg?.addEventListener('click', () => {
+    if (!terminal) return;
+    easterEgg.classList.remove('visible');
+    terminal.style.visibility = '';
+    terminal.classList.remove('closing');
+  });
+</script>
