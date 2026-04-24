@@ -5,15 +5,6 @@ export const en = {
     description:
       'Personal website of Meik Geldmacher – Software & Solution Architect and Team Lead Manager specialising in scalable architectures, technical leadership, and IoT/enterprise software.',
   },
-  header: {
-    homeLinkLabel: 'Go to homepage',
-    mainNavLabel: 'Main navigation',
-    langSwitcherLabel: 'Language switcher',
-    switchToEn: 'Switch to English',
-    opensInNewWindow: 'opens in new window',
-    highContrast: 'High contrast mode',
-    toggleHighContrast: 'Toggle high contrast mode',
-  },
   a11y: {
     skipToMain: 'Skip to main content',
   },

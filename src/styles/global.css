@@ -1,32 +1,20 @@
 /* ── Color custom properties ── */
 :root {
   --app-bg: #111417;
-  --header-bg: rgba(17, 20, 23, 0.8);
-  --border: #575859;
   --text: #d0d1d2;
-  --text-muted: #b7b8b9;
-  --text-secondary: #d0d1d2;
   --heading: #ffffff;
   --link: #ffffff;
   --green: #2e7d32;
-  --green-hover: #3f8f43;
-  --accent-muted: #9db69e;
   --focus-color: #005fcc;
 }
 
 /* ── High contrast overrides (set on <html data-theme="hc">) ── */
 [data-theme='hc'] {
   --app-bg: #000000;
-  --header-bg: #000000;
-  --border: #666666;
   --text: #ffffff;
-  --text-muted: #e0e0e0;
-  --text-secondary: #ffffff;
   --heading: #ffffff;
   --link: #ffffff;
   --green: #00cc44;
-  --green-hover: #00ff55;
-  --accent-muted: #aaffaa;
 }
 /* ── Base reset ── */
 *,
