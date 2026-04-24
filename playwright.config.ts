@@ -1,8 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const host = process.env.HOST || '127.0.0.1';
-const port = process.env.PORT || '4200';
-const baseURL = process.env.BASE_URL || `http://${host}:${port}`;
+const baseURL = process.env.BASE_URL || 'http://localhost:4321';
 
 export default defineConfig({
   testDir: './e2e',
@@ -20,16 +18,13 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome'],
-        channel: 'chromium',
-      },
+      use: { ...devices['Desktop Chrome'] },
     },
   ],
   webServer: {
-    command: `npm run start -- --host=${host} --port=${port}`,
+    command: 'npm run preview',
     url: baseURL,
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
+    timeout: 30_000,
   },
 });

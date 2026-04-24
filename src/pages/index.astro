@@ -1,0 +1,930 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { en as t } from '../i18n/en';
+
+const currentYear = new Date().getFullYear();
+const experienceYears = currentYear - 2012;
+---
+
+<BaseLayout
+  lang="en"
+  title={t.site.title}
+  description={t.site.description}
+  skipToMain={t.a11y.skipToMain}
+>
+  <fragment slot="head">
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </fragment>
+
+  <main id="main-content" class="terminal-page">
+    <div class="terminal" role="region" aria-label="Terminal interface">
+      <!-- Title bar -->
+      <div class="terminal__bar" aria-hidden="true">
+        <span class="dot dot--red" id="dot-close" title="Close" style="cursor:pointer"></span>
+        <span class="dot dot--yellow"></span>
+        <span class="dot dot--green"></span>
+        <span class="terminal__title">meik@tomatenstau.de — bash — 120×40</span>
+      </div>
+
+      <div class="terminal__body">
+        <!-- neofetch-style block -->
+        <div id="ts-neofetch">
+          <div id="chafa" class="neofetch" aria-label="System info">
+            <picture class="neofetch__img">
+              <source srcset="/images/profilbild.webp" type="image/webp" />
+              <img
+                src="/images/profilbild.jpg"
+                alt={t.index.profilePhotoAlt}
+                class="chafa-img"
+                width="300"
+                height="300"
+              />
+            </picture>
+            <div class="neofetch__info">
+              <p>
+                <span class="nf-key">meik</span><span class="nf-sep">@</span><span class="nf-key"
+                  >tomatenstau.de</span
+                >
+              </p>
+              <p class="nf-rule">──────────────────────────────────</p>
+              <p>
+                <span class="nf-key">name</span
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="nf-val"
+                  >Meik Geldmacher</span
+                >
+              </p>
+              <p>
+                <span class="nf-key">role</span
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="nf-val"
+                  >Software &amp; Solution Architect</span
+                >
+              </p>
+              <p>
+                <span class="nf-key">title</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
+                  class="nf-val">Team Lead Manager</span
+                >
+              </p>
+              <p>
+                <span class="nf-key">focus</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
+                  class="nf-val">Architecture · API · IoT · AI</span
+                >
+              </p>
+              <p>
+                <span class="nf-key">experience</span>&nbsp;&nbsp;&nbsp; <span class="nf-val"
+                  >{experienceYears} years</span
+                >
+              </p>
+              <p class="nf-rule">──────────────────────────────────</p>
+              <div class="nf-colors" aria-hidden="true">
+                {
+                  ['#27c93f', '#4fc3f7', '#b388ff', '#e8e8e8'].map((c) => (
+                    <span class="nf-swatch" style={`background:${c}`} />
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="sep" aria-hidden="true"></div>
+        </div>
+
+        <!-- experience -->
+        <div id="ts-exp">
+          <div id="experience" class="line mt">
+            <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+              >~</span
+            ><span class="px">$</span>
+            <span class="cmd" data-cmd="column -t experience.tsv">column -t experience.tsv</span>
+          </div>
+          <table class="exp-table" aria-label="Experience timeline">
+            <thead>
+              <tr>
+                <th scope="col">PERIOD</th>
+                <th scope="col">ROLE</th>
+                <th scope="col">COMPANY</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>11/2024–now</td>
+                <td>Team Lead Manager &amp; Solution Architect</td>
+                <td>ebm-papst neo GmbH &amp; Co. KG</td>
+              </tr>
+              <tr class="exp-sub">
+                <td></td>
+                <td>└─ NEXAIRA Solution Architecture · Cloud Engineering · device onboarding</td>
+                <td></td>
+              </tr>
+              <tr class="exp-main">
+                <td>07/2021–10/2024</td>
+                <td>Team Lead Manager &amp; Solution Architect</td>
+                <td>adesso SE</td>
+              </tr>
+              <tr class="exp-sub">
+                <td></td>
+                <td>└─ cloud-native manufacturing app · full architecture &amp; project lead</td>
+                <td></td>
+              </tr>
+              <tr class="exp-main">
+                <td>10/2017–06/2021</td>
+                <td>Computer Scientist / Software Architect</td>
+                <td>DATEV eG</td>
+              </tr>
+              <tr class="exp-sub">
+                <td></td>
+                <td>└─ collaboration platform · tax consultants &amp; clients · Data Science</td>
+                <td></td>
+              </tr>
+              <tr class="exp-main">
+                <td>03/2016–09/2017</td>
+                <td>Development Engineer / Software Architect</td>
+                <td>Hytera Mobilfunk GmbH</td>
+              </tr>
+              <tr class="exp-sub">
+                <td></td>
+                <td>└─ secure IoT network · MQTT · REST · Python · Node.js · Angular</td>
+                <td></td>
+              </tr>
+              <tr class="exp-main">
+                <td>11/2015–06/2017</td>
+                <td>Freelance Software Developer</td>
+                <td>(self-employed)</td>
+              </tr>
+              <tr class="exp-main">
+                <td>08/2015–11/2015</td>
+                <td>Software Developer</td>
+                <td>Videobeat Networks GmbH</td>
+              </tr>
+              <tr class="exp-sub">
+                <td></td>
+                <td>└─ YouTube analytics API · Python · JavaScript · AngularJS</td>
+                <td></td>
+              </tr>
+              <tr class="exp-main">
+                <td>08/2012–08/2015</td>
+                <td>Computer Science Expert</td>
+                <td>Delticom AG</td>
+              </tr>
+              <tr class="exp-sub exp-sub--last">
+                <td></td>
+                <td>└─ online shops · data feeds · SEO · A/B testing · Perl</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- man meik -->
+        <div id="ts-man">
+          <div id="about" class="line mt">
+            <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+              >~</span
+            ><span class="px">$</span>
+            <span class="cmd" data-cmd="man meik">man meik</span>
+          </div>
+          <div class="output man-output" aria-label="Manual page for meik">
+            <p class="man-header" aria-hidden="true">
+              MEIK(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User
+              Commands&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEIK(1)
+            </p>
+
+            <p class="man-section">NAME</p>
+            <p class="man-indent">
+              meik – Solution Architect, Team Lead &amp; Senior Software Engineer
+            </p>
+
+            <p class="man-section">SYNOPSIS</p>
+            <p class="man-indent">
+              <span class="man-cmd">meik</span>
+              [<span class="man-flag">--architect</span>=<em>system</em>] [<span class="man-flag"
+                >--lead</span
+              >=<em>team</em>] [<span class="man-flag">--stack</span>=<em>lang</em>] [<span
+                class="man-flag">--domain</span
+              >=<em>area</em>]<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="man-flag">--ci-cd</span>] [<span
+                class="man-flag">--iot</span
+              >] [<span class="man-flag">--verbose</span>] [<span class="man-flag">--version</span>]
+            </p>
+
+            <p class="man-section">DESCRIPTION</p>
+            <p class="man-indent">
+              {experienceYears} years of professional software engineering and architecture.<br />
+              Dual study in Computer Science (DHBW Stuttgart, Campus Horb, 2017–2020).<br /><br />
+              Bridges product, business, and engineering. Owns target pictures, roadmaps,<br />
+              and technical strategy end-to-end across distributed teams and stakeholders.
+            </p>
+
+            <p class="man-section">OPTIONS</p>
+            <p class="man-indent">
+              <span class="man-flag">--architect</span>=<em>system</em><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Design, evaluate, or evolve system and software architectures.<br
+              />
+              &nbsp;&nbsp;&nbsp;&nbsp;Patterns: hexagonal, domain-driven design, clean, event-driven.<br
+              />
+              &nbsp;&nbsp;&nbsp;&nbsp;Artefacts: ADRs, C4 diagrams, RFCs, interface specifications.<br
+              />
+              &nbsp;&nbsp;&nbsp;&nbsp;Runs architecture reviews, quality gates, and security audits.
+            </p>
+            <p class="man-indent">
+              <span class="man-flag">--lead</span>=<em>team</em><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Lead cross-functional engineering teams.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Roadmap ownership, OKR alignment, sprint planning.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Architecture reviews and technical decision-making.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Stakeholder management across product, business, and IT.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Mentoring, coaching, and onboarding of engineers.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Leads AI team and co-owns offshore engineering team in India (ebm-papst
+              neo, since 2024).
+            </p>
+            <p class="man-indent">
+              <span class="man-flag">--stack</span>=<em>lang</em><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Primary: TypeScript, Java 17, Python, Kotlin.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Frameworks: Spring Boot 3, Angular, Node.js.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Infra: AWS, Kubernetes, Docker.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Databases: MySQL, MongoDB, Redis, Elasticsearch.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Protocols: REST, MQTT, GraphQL, WebSockets.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Observability: OpenTelemetry, Grafana, ELK Stack.
+            </p>
+            <p class="man-indent">
+              <span class="man-flag">--domain</span>=<em>area</em><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;IoT &amp; Air / Ventilation: device onboarding, secure network architecture,
+              MQTT (ebm-papst).<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Manufacturing: cloud-native SaaS, industrial automation, connected
+              products.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Mobile Radio: professional radio networks, TETRA standard (Hytera).<br
+              />
+              &nbsp;&nbsp;&nbsp;&nbsp;Tax &amp; Enterprise: collaboration platforms, data science, compliance
+              (DATEV).<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;E-commerce: SEO/SEA, A/B testing, data feeds, online shops.
+            </p>
+            <p class="man-indent">
+              <span class="man-flag">--ci-cd</span><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Designs and operates delivery pipelines with full observability.<br
+              />
+              &nbsp;&nbsp;&nbsp;&nbsp;Tooling: Jenkins, GitHub Actions, GitLab CI.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Includes quality gates, security scanning, test automation.<br
+              />
+              &nbsp;&nbsp;&nbsp;&nbsp;Promotes DevOps culture and shared ownership of delivery.
+            </p>
+            <p class="man-indent">
+              <span class="man-flag">--iot</span><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Secure IoT network design and implementation.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;MQTT broker, REST interface specifications, AsyncAPI.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Device onboarding (NEXAIRA), configuration management.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Python and Node.js backends, Angular frontends.
+            </p>
+            <p class="man-indent">
+              <span class="man-flag">--verbose</span><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Produces ADRs, RFCs, C4 architecture diagrams,<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;interface specifications (REST, MQTT, AsyncAPI),<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;technical roadmaps, and decision frameworks.
+            </p>
+            <p class="man-indent">
+              <span class="man-flag">--version</span><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;meik {experienceYears}.0.0 (stable, since 2012)
+            </p>
+
+            <p class="man-section">CERTIFICATIONS</p>
+            <p class="man-indent">
+              <span class="man-flag">iSAQB-CPSA-A</span>&nbsp;&nbsp;Certified Professional for
+              Software Architecture – Advanced Level (06/2023)<br />
+              <span class="man-flag">iSAQB-ARCEVAL</span>&nbsp;Module: Architecture Evaluation
+              (04/2022)<br />
+              <span class="man-flag">iSAQB-CLOUDINFRA</span>&nbsp;Module: Cloud Infrastructure
+              (04/2022)<br />
+              <span class="man-flag">iSAQB-DDD</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Module:
+              Domain-Driven Design (04/2022)<br />
+              <span class="man-flag">iSAQB-CPSA-F</span>&nbsp;&nbsp;Certified Professional for
+              Software Architecture – Foundation Level (12/2016)
+            </p>
+
+            <p class="man-section">EXIT CODES</p>
+            <p class="man-indent">
+              <span class="man-flag">0</span>&nbsp;&nbsp;Problem solved, system shipped<br />
+              <span class="man-flag">1</span>&nbsp;&nbsp;Requirements unclear – run with <span
+                class="man-flag">--verbose</span
+              > and retry<br />
+              <span class="man-flag">2</span>&nbsp;&nbsp;Scope creep detected – add to backlog and
+              reschedule
+            </p>
+
+            <p class="man-section">SEE ALSO</p>
+            <p class="man-indent">
+              <a
+                href={t.social.github.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="man-link">github(1)</a
+              >,
+              <a
+                href={t.social.linkedin.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="man-link">linkedin(1)</a
+              >,
+              <a href={t.social.email.url} class="man-link">email(1)</a>
+            </p>
+
+            <p class="man-footer" aria-hidden="true">
+              MEIK(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomatenstau.de
+              {
+                currentYear
+              }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEIK(1)
+            </p>
+          </div>
+        </div>
+
+        <!-- cursor -->
+        <div id="ts-cursor">
+          <div class="line mt">
+            <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
+              >~</span
+            ><span class="px">$</span>
+            <span class="cursor" aria-hidden="true">█</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Easter egg: red dot close -->
+  <div id="easter-egg" aria-hidden="true">
+    <div class="ee-inner">
+      <picture>
+        <source srcset="/images/tomatenstau_logo.webp" type="image/webp" />
+        <img src="/images/tomatenstau_logo.png" alt="" class="ee-logo" width="320" height="150" />
+      </picture>
+      <p class="ee-line">
+        <span class="ee-green">meik@tomatenstau.de</span><span class="ee-dim">:~$</span> logout
+      </p>
+      <p class="ee-line ee-dim">Connection to tomatenstau.de closed.</p>
+      <p class="ee-hint">click anywhere to reconnect</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .terminal-page {
+    min-height: 100vh;
+    background: #2e2e2e;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 60px 24px 160px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    position: relative;
+  }
+
+  .terminal-page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .terminal {
+    width: 100%;
+    max-width: 1400px;
+    background: #111;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+    position: relative;
+    z-index: 1;
+    box-shadow:
+      0 0 0 1px #1a1a1a,
+      0 40px 80px rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+  }
+
+  .terminal__bar {
+    background: #1e1e1e;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .dot--red {
+    background: #ff5f56;
+  }
+  .dot--yellow {
+    background: #ffbd2e;
+  }
+  .dot--green {
+    background: #27c93f;
+  }
+
+  .terminal__title {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    margin-left: -44px;
+  }
+
+  .terminal__body {
+    padding: 24px 28px 36px;
+    line-height: 1.65;
+    font-size: 13.5px;
+  }
+
+  /* ── Neofetch ── */
+  .neofetch {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+
+  .neofetch__img {
+    flex-shrink: 0;
+    line-height: 0;
+  }
+
+  .neofetch__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 13px;
+  }
+
+  .neofetch__info p {
+    margin: 0;
+  }
+
+  .nf-key {
+    color: #27c93f;
+    font-weight: 700;
+  }
+  .nf-sep {
+    color: #555;
+  }
+  .nf-val {
+    color: #ddd;
+  }
+  .nf-rule {
+    color: #333;
+  }
+
+  .nf-colors {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .nf-swatch {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+  }
+
+  /* ── Separator ── */
+  .sep {
+    border-top: 1px solid #222;
+    margin: 20px 0;
+  }
+
+  /* ── Prompt ── */
+  .line {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .mt {
+    margin-top: 22px;
+  }
+
+  .prompt {
+    color: #27c93f;
+    font-weight: 700;
+  }
+  .px {
+    color: #555;
+  }
+  .wd {
+    color: #4fc3f7;
+  }
+  .cmd {
+    color: #e8e8e8;
+    margin-left: 8px;
+  }
+
+  /* ── Output ── */
+  .output {
+    margin: 5px 0 0;
+    padding-left: 0;
+    color: #9e9e9e;
+  }
+
+  /* ── experience table ── */
+  .exp-table {
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #aaa;
+    margin-top: 6px;
+  }
+
+  .exp-table th {
+    color: #ddd;
+    font-weight: 700;
+    text-align: left;
+    padding-right: 28px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #333;
+    white-space: nowrap;
+  }
+
+  .exp-table td {
+    padding-right: 28px;
+    padding-top: 2px;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+
+  .exp-sub td {
+    color: #888;
+    font-size: 12px;
+    padding-bottom: 4px;
+    white-space: normal;
+  }
+
+  .exp-main td {
+    padding-top: 8px;
+  }
+
+  /* ── Cursor ── */
+  .cursor {
+    color: #27c93f;
+    animation: blink 1s step-end infinite;
+    margin-left: 8px;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* ── Profile image ── */
+  .chafa-img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    image-rendering: auto;
+    filter: contrast(1.08) saturate(0.85) brightness(0.95);
+  }
+
+  /* ── man meik ── */
+  .man-output {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .man-header,
+  .man-footer {
+    color: #888;
+    font-size: 12px;
+    white-space: pre;
+    margin: 0 0 8px;
+  }
+
+  .man-footer {
+    margin: 8px 0 0;
+  }
+
+  .man-section {
+    color: #4fc3f7;
+    font-weight: 700;
+    margin: 10px 0 2px;
+  }
+
+  .man-indent {
+    padding-left: 24px;
+    color: #aaa;
+    margin: 2px 0;
+  }
+
+  .man-cmd {
+    color: #e0e0e0;
+    font-weight: 700;
+  }
+
+  .man-flag {
+    color: #b388ff;
+  }
+
+  .man-link {
+    color: #4fc3f7;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .man-link:hover {
+    color: #81d4fa;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .terminal-page {
+      padding: 16px 12px 80px;
+    }
+
+    .terminal__body {
+      padding: 16px;
+      font-size: 12px;
+    }
+
+    /* neofetch: stack vertically, center image */
+    .neofetch {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .neofetch__info {
+      width: 100%;
+    }
+
+    .chafa-img {
+      width: 120px;
+      height: 120px;
+    }
+
+    /* experience table: card layout */
+    .exp-table {
+      display: block;
+      width: 100%;
+    }
+
+    .exp-table thead {
+      display: none;
+    }
+
+    .exp-table tbody,
+    .exp-table tr,
+    .exp-table td {
+      display: block;
+    }
+
+    .exp-table td {
+      padding-right: 0;
+      white-space: normal;
+      padding-top: 0;
+    }
+
+    .exp-table tbody tr:not(.exp-sub) {
+      margin-top: 16px;
+      padding-left: 10px;
+      border-left: 2px solid #2a2a2a;
+    }
+
+    .exp-table tbody tr:not(.exp-sub) td:first-child {
+      color: #555;
+      font-size: 11px;
+    }
+
+    .exp-table tbody tr:not(.exp-sub) td:nth-child(2) {
+      color: #ddd;
+    }
+
+    .exp-table tbody tr:not(.exp-sub) td:nth-child(3) {
+      color: #4fc3f7;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .exp-main td {
+      padding-top: 0;
+    }
+
+    .exp-sub {
+      padding-left: 10px;
+    }
+
+    .exp-sub td {
+      font-size: 11px;
+      padding-bottom: 0;
+    }
+
+    /* man page: hide decorative header/footer, reduce indent */
+    .man-header,
+    .man-footer {
+      display: none;
+    }
+
+    .man-indent {
+      padding-left: 12px;
+    }
+  }
+
+  /* ── Easter egg ── */
+  .terminal.closing {
+    animation: terminal-close 0.35s cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+
+  @keyframes terminal-close {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    60% {
+      transform: scale(1.01);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(0.92) translateY(-8px);
+      opacity: 0;
+    }
+  }
+
+  #easter-egg {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #1a1a1a;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: ee-fade-in 0.4s ease forwards;
+  }
+
+  #easter-egg.visible {
+    display: flex;
+  }
+
+  @keyframes ee-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .ee-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    text-align: center;
+  }
+
+  .ee-logo {
+    width: 280px;
+    height: auto;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 24px rgba(255, 95, 86, 0.3));
+  }
+
+  .ee-line {
+    font-size: 14px;
+    color: #9e9e9e;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  .ee-green {
+    color: #27c93f;
+  }
+
+  .ee-dim {
+    color: #555;
+  }
+
+  .ee-hint {
+    margin: 0;
+    font-size: 11px;
+    color: #3a3a3a;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    animation: hint-blink 2s step-end infinite;
+  }
+
+  @keyframes hint-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+</style>
+
+<script>
+  const dotClose = document.getElementById('dot-close');
+  const terminal = dotClose?.closest('.terminal') as HTMLElement | null;
+  const easterEgg = document.getElementById('easter-egg');
+
+  dotClose?.addEventListener('click', () => {
+    if (!terminal || !easterEgg) return;
+    terminal.classList.add('closing');
+    setTimeout(() => {
+      terminal.style.visibility = 'hidden';
+      easterEgg.classList.add('visible');
+      document.documentElement.style.overflow = 'hidden';
+    }, 340);
+  });
+
+  easterEgg?.addEventListener('click', () => {
+    if (!terminal || !easterEgg) return;
+    document.documentElement.style.overflow = '';
+    easterEgg.classList.remove('visible');
+    terminal.style.visibility = '';
+    terminal.classList.remove('closing');
+    runRestartAnimation();
+  });
+
+  function sleep(ms: number) {
+    return new Promise<void>((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function typeText(el: HTMLElement, text: string) {
+    el.textContent = '';
+    for (const ch of text) {
+      el.textContent += ch;
+      await sleep(38 + Math.random() * 28);
+    }
+  }
+
+  async function fadeIn(el: HTMLElement, duration: number) {
+    el.style.removeProperty('display');
+    el.style.opacity = '0';
+    el.style.transition = 'none';
+    await sleep(16);
+    el.style.transition = `opacity ${duration}ms ease`;
+    el.style.opacity = '1';
+    await sleep(duration);
+  }
+
+  async function runRestartAnimation() {
+    const tsNeofetch = document.getElementById('ts-neofetch') as HTMLElement | null;
+    const tsExp = document.getElementById('ts-exp') as HTMLElement | null;
+    const tsMan = document.getElementById('ts-man') as HTMLElement | null;
+    const tsCursor = document.getElementById('ts-cursor') as HTMLElement | null;
+    if (!tsNeofetch || !tsExp || !tsMan || !tsCursor) return;
+
+    const expCmd = tsExp.querySelector<HTMLElement>('.cmd');
+    const expTable = tsExp.querySelector<HTMLElement>('.exp-table');
+    const manCmd = tsMan.querySelector<HTMLElement>('.cmd');
+    const manOutput = tsMan.querySelector<HTMLElement>('.man-output');
+
+    // Collapse terminal: hide all sections with display:none so height shrinks
+    for (const el of [tsNeofetch, tsExp, tsMan, tsCursor]) {
+      el.style.display = 'none';
+    }
+    if (expCmd) expCmd.textContent = '';
+    if (manCmd) manCmd.textContent = '';
+
+    await sleep(200);
+
+    // 1 — neofetch grows in
+    await fadeIn(tsNeofetch, 500);
+    await sleep(300);
+
+    // 2 — show command prompt instantly, type command, reveal table
+    tsExp.style.removeProperty('display');
+    tsExp.style.opacity = '1';
+    if (expTable) expTable.style.display = 'none';
+    await sleep(80);
+    if (expCmd) await typeText(expCmd, expCmd.dataset.cmd ?? 'column -t experience.tsv');
+    await sleep(180);
+    if (expTable) await fadeIn(expTable, 400);
+    await sleep(400);
+
+    // 3 — show command prompt instantly, type command, reveal man page
+    tsMan.style.removeProperty('display');
+    tsMan.style.opacity = '1';
+    if (manOutput) manOutput.style.display = 'none';
+    await sleep(80);
+    if (manCmd) await typeText(manCmd, manCmd.dataset.cmd ?? 'man meik');
+    await sleep(180);
+    if (manOutput) await fadeIn(manOutput, 500);
+    await sleep(400);
+
+    // 4 — cursor
+    await fadeIn(tsCursor, 300);
+  }
+</script>
