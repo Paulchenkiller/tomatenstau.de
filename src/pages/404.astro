@@ -30,10 +30,10 @@ import { en as t } from '../i18n/en';
           <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
             >~</span
           ><span class="px">$</span>
-          <span class="cmd">cd {Astro.url.pathname}</span>
+          <span class="cmd">cd <span id="err-path"></span></span>
         </div>
         <p class="output output--error">
-          bash: cd: {Astro.url.pathname}: No such file or directory
+          bash: cd: <span id="err-path2"></span>: No such file or directory
         </p>
 
         <div class="line mt">
@@ -92,6 +92,14 @@ import { en as t } from '../i18n/en';
     </div>
   </main>
 </BaseLayout>
+
+<script>
+  const path = window.location.pathname;
+  const a = document.getElementById('err-path');
+  const b = document.getElementById('err-path2');
+  if (a) a.textContent = path;
+  if (b) b.textContent = path;
+</script>
 
 <style>
   .terminal-page {

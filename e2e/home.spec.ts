@@ -95,7 +95,8 @@ test.describe('404 page', () => {
 
   test('displays the attempted path in the cd command', async ({ page }) => {
     await page.goto('/does-not-exist');
-    await expect(page.locator('.cmd').first()).toContainText('/does-not-exist');
+    const browsedPath = new URL(page.url()).pathname;
+    await expect(page.locator('.cmd').first()).toContainText(browsedPath);
   });
 
   test('has link back to home', async ({ page }) => {
