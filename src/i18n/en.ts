@@ -10,7 +10,6 @@ export const en = {
     mainNavLabel: 'Main navigation',
     langSwitcherLabel: 'Language switcher',
     switchToEn: 'Switch to English',
-    switchToDe: 'Switch to German',
     opensInNewWindow: 'opens in new window',
     highContrast: 'High contrast mode',
     toggleHighContrast: 'Toggle high contrast mode',
@@ -20,27 +19,6 @@ export const en = {
   },
   index: {
     profilePhotoAlt: 'Profile photo of Meik Geldmacher',
-    highlightsHeading: 'Professional highlights and skills',
-    name: 'Meik Geldmacher',
-    jobTitle: 'Software & Solution Architect · Team Lead Manager',
-    intro:
-      'I work as a Team Lead Manager as well as a Software and Solution Architect. My focus is on designing and evolving scalable system and software architectures, defining target pictures and roadmaps, and technical leadership and coaching of teams — including leading an AI team. I drive stakeholder management across product, business, and IT. Additionally, I am responsible for architecture reviews, security and quality gates, integration and interface strategies (APIs, messaging/IoT), and establishing efficient delivery processes (CI/CD, observability).',
-    highlights: {
-      focus: 'Focus areas:',
-      focusText:
-        'Software & solution architecture, project leadership, roadmaps & stakeholder management',
-      tech: 'Tech:',
-      techText: 'Angular, TypeScript/JavaScript, Node.js, Python, Java (Spring Boot 2.x/3.x)',
-      platforms: 'Platforms & data:',
-      platformsText: 'RESTful APIs, MQTT/IoT, CI/CD, MySQL, MongoDB, Redis',
-      domains: 'Domains:',
-      domainsText: 'Industry/IoT, manufacturing, enterprise applications, e-commerce/SEO',
-      certs: 'Certifications:',
-      certsText: 'iSAQB CPSA-A (06/2023), modules DDD, CLOUDINFRA, ARCEVAL; CPSA-F (12/2016)',
-    },
-  },
-  footer: {
-    copyright: `© ${new Date().getFullYear()} tomatenstau.de`,
   },
   social: {
     github: { label: 'GitHub', url: 'https://github.com/Paulchenkiller' },

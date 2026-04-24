@@ -34,10 +34,36 @@ test.describe('EN home page', () => {
     await expect(page.locator('[aria-label="Terminal interface"]')).toBeVisible();
   });
 
+  test('neofetch block shows name and role', async ({ page }) => {
+    await page.goto('/');
+    const neofetch = page.locator('[aria-label="System info"]');
+    await expect(neofetch).toBeVisible();
+    await expect(neofetch).toContainText('Meik Geldmacher');
+    await expect(neofetch).toContainText('Solution Architect');
+  });
+
   test('profile photo is visible', async ({ page }) => {
     await page.goto('/');
     const img = page.locator('.chafa-img');
     await expect(img).toBeVisible();
+  });
+
+  test('experience table is rendered with entries', async ({ page }) => {
+    await page.goto('/');
+    const table = page.locator('.exp-table');
+    await expect(table).toBeVisible();
+    await expect(table).toContainText('ebm-papst neo');
+    await expect(table).toContainText('adesso SE');
+    await expect(table).toContainText('DATEV eG');
+  });
+
+  test('man meik section is rendered', async ({ page }) => {
+    await page.goto('/');
+    const man = page.locator('[aria-label="Manual page for meik"]');
+    await expect(man).toBeVisible();
+    await expect(man).toContainText('DESCRIPTION');
+    await expect(man).toContainText('OPTIONS');
+    await expect(man).toContainText('SEE ALSO');
   });
 
   test('social links are present', async ({ page }) => {
@@ -61,9 +87,15 @@ test.describe('404 page', () => {
     expect(response?.status()).toBe(404);
   });
 
-  test('shows not-found heading', async ({ page }) => {
+  test('shows terminal interface with 404 exit code', async ({ page }) => {
     await page.goto('/does-not-exist');
-    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.locator('[aria-label="Terminal interface"]')).toBeVisible();
+    await expect(page.locator('.exit-code')).toContainText('404');
+  });
+
+  test('displays the attempted path in the cd command', async ({ page }) => {
+    await page.goto('/does-not-exist');
+    await expect(page.locator('.cmd').first()).toContainText('/does-not-exist');
   });
 
   test('has link back to home', async ({ page }) => {
