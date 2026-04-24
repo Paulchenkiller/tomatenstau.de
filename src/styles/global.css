@@ -35,11 +35,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scrollbar-gutter: stable;
-  background-color: #2e2e2e;
-}
-
 html,
 body {
   height: 100%;
