@@ -867,11 +867,13 @@ const experienceYears = currentYear - 2012;
     setTimeout(() => {
       terminal.style.visibility = 'hidden';
       easterEgg.classList.add('visible');
+      document.documentElement.style.overflow = 'hidden';
     }, 340);
   });
 
   easterEgg?.addEventListener('click', () => {
     if (!terminal || !easterEgg) return;
+    document.documentElement.style.overflow = '';
     easterEgg.classList.remove('visible');
     terminal.style.visibility = '';
     terminal.classList.remove('closing');
@@ -890,6 +892,16 @@ const experienceYears = currentYear - 2012;
     }
   }
 
+  async function fadeIn(el: HTMLElement, duration: number) {
+    el.style.removeProperty('display');
+    el.style.opacity = '0';
+    el.style.transition = 'none';
+    await sleep(16);
+    el.style.transition = `opacity ${duration}ms ease`;
+    el.style.opacity = '1';
+    await sleep(duration);
+  }
+
   async function runRestartAnimation() {
     const tsNeofetch = document.getElementById('ts-neofetch') as HTMLElement | null;
     const tsExp = document.getElementById('ts-exp') as HTMLElement | null;
@@ -902,55 +914,40 @@ const experienceYears = currentYear - 2012;
     const manCmd = tsMan.querySelector<HTMLElement>('.cmd');
     const manOutput = tsMan.querySelector<HTMLElement>('.man-output');
 
-    // Reset: hide all sections, clear typed command text
+    // Collapse terminal: hide all sections with display:none so height shrinks
     for (const el of [tsNeofetch, tsExp, tsMan, tsCursor]) {
-      el.style.transition = 'none';
-      el.style.opacity = '0';
+      el.style.display = 'none';
     }
     if (expCmd) expCmd.textContent = '';
     if (manCmd) manCmd.textContent = '';
-    if (expTable) {
-      expTable.style.transition = 'none';
-      expTable.style.opacity = '0';
-    }
-    if (manOutput) {
-      manOutput.style.transition = 'none';
-      manOutput.style.opacity = '0';
-    }
 
     await sleep(200);
 
-    // 1 — neofetch fades in
-    tsNeofetch.style.transition = 'opacity 0.5s ease';
-    tsNeofetch.style.opacity = '1';
-    await sleep(700);
+    // 1 — neofetch grows in
+    await fadeIn(tsNeofetch, 500);
+    await sleep(300);
 
-    // 2 — show prompt, type command, reveal table
-    tsExp.style.transition = 'none';
+    // 2 — show command prompt instantly, type command, reveal table
+    tsExp.style.removeProperty('display');
     tsExp.style.opacity = '1';
+    if (expTable) expTable.style.display = 'none';
     await sleep(80);
     if (expCmd) await typeText(expCmd, expCmd.dataset.cmd ?? 'column -t experience.tsv');
     await sleep(180);
-    if (expTable) {
-      expTable.style.transition = 'opacity 0.4s ease';
-      expTable.style.opacity = '1';
-    }
-    await sleep(600);
+    if (expTable) await fadeIn(expTable, 400);
+    await sleep(400);
 
-    // 3 — show prompt, type command, reveal man page
-    tsMan.style.transition = 'none';
+    // 3 — show command prompt instantly, type command, reveal man page
+    tsMan.style.removeProperty('display');
     tsMan.style.opacity = '1';
+    if (manOutput) manOutput.style.display = 'none';
     await sleep(80);
     if (manCmd) await typeText(manCmd, manCmd.dataset.cmd ?? 'man meik');
     await sleep(180);
-    if (manOutput) {
-      manOutput.style.transition = 'opacity 0.5s ease';
-      manOutput.style.opacity = '1';
-    }
-    await sleep(600);
+    if (manOutput) await fadeIn(manOutput, 500);
+    await sleep(400);
 
-    // 4 — cursor appears
-    tsCursor.style.transition = 'opacity 0.3s ease';
-    tsCursor.style.opacity = '1';
+    // 4 — cursor
+    await fadeIn(tsCursor, 300);
   }
 </script>
