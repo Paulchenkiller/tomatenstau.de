@@ -109,9 +109,9 @@ const experienceYears = currentYear - 2012;
               <td>ebm-papst neo GmbH &amp; Co. KG</td>
             </tr>
             <tr class="exp-sub">
-              <td></td>
-              <td>└─ Solution Architect for NEXAIRA</td>
-              <td>(Core · Fit)</td>
+              <td>└─</td>
+              <td>Solution Architect for NEXAIRA</td>
+              <td>Core · Fit</td>
             </tr>
             <tr class="exp-main">
               <td>07/2021–10/2024</td>
@@ -119,19 +119,19 @@ const experienceYears = currentYear - 2012;
               <td>adesso SE</td>
             </tr>
             <tr class="exp-sub">
+              <td>└─ 07/2024–10/2024</td>
+              <td>Team Lead Manager</td>
               <td></td>
-              <td>└─ Team Lead Manager</td>
-              <td>07/2024–10/2024</td>
             </tr>
             <tr class="exp-sub">
-              <td></td>
-              <td>└─ Solution Architect &amp; Project Lead</td>
-              <td>07/2023–06/2024</td>
+              <td>└─ 07/2023–06/2024</td>
+              <td>Solution Architect &amp; Project Lead</td>
+              <td>cloud-native manufacturing</td>
             </tr>
             <tr class="exp-sub">
-              <td></td>
-              <td>└─ Software Architect</td>
-              <td>07/2021–06/2023</td>
+              <td>└─ 07/2021–06/2023</td>
+              <td>Software Architect</td>
+              <td>adesso manufacturing industry</td>
             </tr>
             <tr class="exp-main">
               <td>10/2017–06/2021</td>
@@ -139,8 +139,8 @@ const experienceYears = currentYear - 2012;
               <td>DATEV eG</td>
             </tr>
             <tr class="exp-sub">
-              <td></td>
-              <td>└─ Collaboration platform</td>
+              <td>└─</td>
+              <td>Collaboration platform</td>
               <td>tax consultants &amp; clients · Data Science</td>
             </tr>
             <tr class="exp-main">
@@ -149,19 +149,14 @@ const experienceYears = currentYear - 2012;
               <td>Hytera Mobilfunk GmbH</td>
             </tr>
             <tr class="exp-sub">
+              <td>└─ 07/2017–09/2017</td>
+              <td>Development Engineer / Software Architect</td>
               <td></td>
-              <td>└─ Development Engineer / Software Architect</td>
-              <td>07/2017–09/2017</td>
             </tr>
             <tr class="exp-sub">
-              <td></td>
-              <td>└─ Software Developer &amp; Architect (via Brunel)</td>
-              <td>03/2016–06/2017</td>
-            </tr>
-            <tr class="exp-sub">
-              <td></td>
-              <td>└─ Secure IoT network</td>
-              <td>MQTT · REST · Python · Node.js</td>
+              <td>└─ 03/2016–06/2017</td>
+              <td>Software Developer &amp; Architect</td>
+              <td>via Brunel · MQTT · REST · Python</td>
             </tr>
             <tr class="exp-main">
               <td>11/2015–06/2017</td>
@@ -169,8 +164,8 @@ const experienceYears = currentYear - 2012;
               <td>(self-employed)</td>
             </tr>
             <tr class="exp-sub">
-              <td></td>
-              <td>└─ Front- &amp; backend development</td>
+              <td>└─</td>
+              <td>Front- &amp; backend development</td>
               <td>Python · JavaScript · AngularJS</td>
             </tr>
             <tr class="exp-main">
@@ -179,8 +174,8 @@ const experienceYears = currentYear - 2012;
               <td>Videobeat Networks GmbH</td>
             </tr>
             <tr class="exp-sub">
-              <td></td>
-              <td>└─ YouTube marketing analytics API</td>
+              <td>└─</td>
+              <td>YouTube marketing analytics API</td>
               <td>Python · JavaScript · AngularJS</td>
             </tr>
             <tr class="exp-main">
@@ -189,18 +184,18 @@ const experienceYears = currentYear - 2012;
               <td>Delticom AG</td>
             </tr>
             <tr class="exp-sub">
+              <td>└─ 01/2015–08/2015</td>
+              <td>Computer Science Expert, Software Dev</td>
               <td></td>
-              <td>└─ Computer Science Expert, Software Dev</td>
-              <td>01/2015–08/2015</td>
             </tr>
             <tr class="exp-sub">
+              <td>└─ 08/2012–01/2015</td>
+              <td>Apprenticeship Computer Science Expert</td>
               <td></td>
-              <td>└─ Apprenticeship Computer Science Expert</td>
-              <td>08/2012–01/2015</td>
             </tr>
             <tr class="exp-sub exp-sub--last">
-              <td></td>
-              <td>└─ Online shop platform &amp; data feeds</td>
+              <td>└─</td>
+              <td>Online shop platform &amp; data feeds</td>
               <td>SEO · A/B testing · Perl</td>
             </tr>
           </tbody>
@@ -542,6 +537,11 @@ const experienceYears = currentYear - 2012;
     padding-bottom: 4px;
   }
 
+  .exp-sub td:first-child {
+    color: #555;
+    white-space: nowrap;
+  }
+
   .exp-main td {
     padding-top: 8px;
   }
@@ -723,13 +723,14 @@ const experienceYears = currentYear - 2012;
       padding-left: 10px;
     }
 
-    .exp-sub td:first-child {
-      display: none;
-    }
-
     .exp-sub td {
       font-size: 11px;
       padding-bottom: 0;
+    }
+
+    .exp-sub td:first-child {
+      color: #555;
+      font-size: 10px;
     }
 
     /* man page: hide decorative header/footer, reduce indent */
