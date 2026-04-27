@@ -1,5 +1,78 @@
 import { test, expect } from '@playwright/test';
 
+test.describe('Interactive terminal', () => {
+  test('typing a known command shows coloured prompt echo and response', async ({ page }) => {
+    await page.goto('/');
+    await page.keyboard.type('whoami');
+    await page.keyboard.press('Enter');
+    const block = page.locator('#ts-cmd-output > div').last();
+    await expect(block).toContainText('meik@tomatenstau.de');
+    await expect(block).toContainText('whoami');
+  });
+
+  test('unknown command shows zsh error', async ({ page }) => {
+    await page.goto('/');
+    await page.keyboard.type('foobar');
+    await page.keyboard.press('Enter');
+    await expect(page.locator('#ts-cmd-output')).toContainText('zsh: command not found: foobar');
+  });
+
+  test('help command shows multiple lines', async ({ page }) => {
+    await page.goto('/');
+    await page.keyboard.type('help');
+    await page.keyboard.press('Enter');
+    const response = page.locator('#ts-cmd-output .cmd-response').last();
+    await expect(response).toContainText('available commands:');
+    await expect(response).toContainText('whoami');
+    await expect(response).toContainText('clear');
+  });
+
+  test('clear command empties the output', async ({ page }) => {
+    await page.goto('/');
+    await page.keyboard.type('whoami');
+    await page.keyboard.press('Enter');
+    await expect(page.locator('#ts-cmd-output')).not.toBeEmpty();
+    await page.keyboard.type('clear');
+    await page.keyboard.press('Enter');
+    await expect(page.locator('#ts-cmd-output')).toBeEmpty();
+  });
+
+  test('exit command triggers the easter egg overlay', async ({ page }) => {
+    await page.goto('/');
+    await page.keyboard.type('exit');
+    await page.keyboard.press('Enter');
+    await expect(page.locator('#easter-egg')).toBeVisible({ timeout: 2000 });
+  });
+
+  test('input display shows typed text and clears after enter', async ({ page }) => {
+    await page.goto('/');
+    await page.keyboard.type('ls');
+    await expect(page.locator('#ts-input-display')).toHaveText('ls');
+    await page.keyboard.press('Enter');
+    await expect(page.locator('#ts-input-display')).toHaveText('');
+  });
+
+  test('backspace removes last character from input display', async ({ page }) => {
+    await page.goto('/');
+    await page.keyboard.type('lss');
+    await page.keyboard.press('Backspace');
+    await expect(page.locator('#ts-input-display')).toHaveText('ls');
+  });
+
+  test('make coffee shows brewing progress and success message', async ({ page }) => {
+    await page.goto('/');
+    await page.keyboard.type('make coffee');
+    await page.keyboard.press('Enter');
+    await expect(page.locator('#ts-cmd-output .cmd-response').last()).toContainText('Brewing', {
+      timeout: 3000,
+    });
+    await expect(page.locator('#ts-cmd-output .cmd-response').last()).toContainText(
+      'Coffee ready',
+      { timeout: 5000 },
+    );
+  });
+});
+
 test.describe('Easter egg', () => {
   test('red dot click shows Easter egg overlay', async ({ page }) => {
     await page.goto('/');

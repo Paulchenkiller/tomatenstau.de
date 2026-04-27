@@ -336,13 +336,14 @@ const experienceYears = currentYear - 2012;
           </div>
         </div>
 
-        <!-- cursor -->
+        <!-- cursor / interactive prompt -->
         <div id="ts-cursor">
-          <div class="line mt">
+          <div id="ts-cmd-output"></div>
+          <div class="line mt" id="ts-prompt-line">
             <span class="prompt">meik@tomatenstau.de</span><span class="px">:</span><span class="wd"
               >~</span
             ><span class="px">$</span>
-            <span class="cursor" aria-hidden="true">█</span>
+            <span id="ts-input-display"></span><span class="cursor" aria-hidden="true">█</span>
           </div>
         </div>
       </div>
@@ -737,6 +738,55 @@ const experienceYears = currentYear - 2012;
     }
   }
 
+  /* ── Interactive terminal prompt ── */
+  #ts-cmd-output {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 13px;
+    color: #9e9e9e;
+  }
+
+  #ts-cmd-output > div {
+    margin-top: 6px;
+  }
+
+  #ts-cmd-output .cmd-line {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  #ts-cmd-output .cmd-echo {
+    color: #ccc;
+  }
+
+  #ts-cmd-output .cmd-response {
+    color: #9e9e9e;
+    white-space: pre-wrap;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  #ts-cmd-output .cmd-error {
+    color: #ff5f56;
+  }
+
+  #ts-cmd-output .cmd-success {
+    color: #27c93f;
+  }
+
+  #ts-input-display {
+    white-space: pre;
+    margin-left: 8px;
+  }
+
+  #ts-prompt-line .cursor {
+    margin-left: 0;
+  }
+
   /* ── Easter egg ── */
   .terminal.closing {
     animation: terminal-close 0.35s cubic-bezier(0.4, 0, 1, 1) forwards;
@@ -878,6 +928,152 @@ const experienceYears = currentYear - 2012;
     el.style.opacity = '1';
     await sleep(duration);
   }
+
+  /* ── Interactive terminal prompt ── */
+  (function setupTerminalInput() {
+    const inputDisplay = document.getElementById('ts-input-display') as HTMLElement | null;
+    const cmdOutput = document.getElementById('ts-cmd-output') as HTMLElement | null;
+    if (!inputDisplay || !cmdOutput) return;
+
+    let buffer = '';
+
+    const COMMANDS: Record<string, () => string> = {
+      help: () =>
+        [
+          `<span class="cmd-success">available commands:</span>`,
+          `  help                      show this help`,
+          `  whoami                    who are you?`,
+          `  clear                     clear terminal output`,
+          `  ls                        list files`,
+          `  cat .secret               read a secret file`,
+          `  make coffee               ☕`,
+          `  sudo make me a sandwich   classic`,
+          `  exit                      close the terminal`,
+        ].join('\n'),
+      whoami: () =>
+        `a curious human who reads other people's portfolio websites at ${new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}`,
+      ls: () => `experience.tsv   meik.man   tomatenstau_logo.webp   .secret`,
+      'cat .secret': () =>
+        `<span class="cmd-success">you found it. there is no secret. or is there?</span>`,
+      pwd: () => `/home/visitor`,
+      date: () => new Date().toLocaleString('de-DE'),
+      uname: () =>
+        `tomatenstau.de 6.1.9-astro #1 SMP Mon Apr 27 00:00:00 UTC 2026 x86_64 GNU/Linux`,
+      'sudo make me a sandwich': () => `<span class="cmd-success">okay.</span>`,
+      'make me a sandwich': () => `<span class="cmd-error">what? make it yourself.</span>`,
+      exit: () => {
+        setTimeout(() => document.getElementById('dot-close')?.click(), 300);
+        return `logout`;
+      },
+    };
+
+    const promptLine = document.getElementById('ts-prompt-line') as HTMLElement | null;
+
+    function appendOutput(cmd: string, responseHtml: string) {
+      const block = document.createElement('div');
+      block.innerHTML = `
+        <div class="cmd-line">
+          <span style="color:#27c93f;font-weight:700">meik@tomatenstau.de</span><span style="color:#555">:</span><span style="color:#4fc3f7">~</span><span style="color:#555">$</span>
+          <span class="cmd-echo">${cmd.replace(/</g, '&lt;')}</span>
+        </div>
+        <div class="cmd-line"><pre class="cmd-response">${responseHtml}</pre></div>
+      `;
+      cmdOutput!.appendChild(block);
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      return block;
+    }
+
+    async function brewCoffee() {
+      const block = document.createElement('div');
+      const echoLine = `
+        <div class="cmd-line">
+          <span style="color:#27c93f;font-weight:700">meik@tomatenstau.de</span><span style="color:#555">:</span><span style="color:#4fc3f7">~</span><span style="color:#555">$</span>
+          <span class="cmd-echo">make coffee</span>
+        </div>`;
+      const pre = document.createElement('pre');
+      pre.className = 'cmd-response';
+      block.innerHTML = echoLine;
+      const responseLine = document.createElement('div');
+      responseLine.className = 'cmd-line';
+      responseLine.appendChild(pre);
+      block.appendChild(responseLine);
+      cmdOutput!.appendChild(block);
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+      const steps = [{ text: 'Brewing...  [', delay: 400 }];
+      pre.textContent = steps[0].text;
+      await sleep(steps[0].delay);
+
+      const total = 10;
+      for (let i = 1; i <= total; i++) {
+        pre.textContent = `Brewing...  [${'#'.repeat(i)}${' '.repeat(total - i)}] ${i * 10}%`;
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        await sleep(120 + Math.random() * 80);
+      }
+
+      await sleep(300);
+      pre.innerHTML = `Brewing...  [##########] 100%\n<span class="cmd-success">☕ Coffee ready. Have a good one.</span>`;
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    let busy = false;
+
+    function setPromptVisible(visible: boolean) {
+      if (promptLine) promptLine.style.visibility = visible ? '' : 'hidden';
+    }
+
+    async function handleCommand(raw: string) {
+      const cmd = raw.trim().toLowerCase();
+      if (!cmd || busy) return;
+
+      if (cmd === 'clear') {
+        cmdOutput!.innerHTML = '';
+        return;
+      }
+
+      if (cmd === 'make coffee') {
+        busy = true;
+        setPromptVisible(false);
+        await brewCoffee();
+        setPromptVisible(true);
+        busy = false;
+        return;
+      }
+
+      const handler = COMMANDS[cmd];
+      if (handler) {
+        appendOutput(raw.trim(), handler());
+      } else {
+        appendOutput(
+          raw.trim(),
+          `<span class="cmd-error">zsh: command not found: ${raw.trim().replace(/</g, '&lt;')}</span>`,
+        );
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (
+        (e.target as HTMLElement).tagName === 'INPUT' ||
+        (e.target as HTMLElement).tagName === 'TEXTAREA'
+      )
+        return;
+      if (e.ctrlKey || e.altKey || e.metaKey) return;
+      if (busy) return;
+
+      if (e.key === 'Enter') {
+        const cmd = buffer;
+        buffer = '';
+        inputDisplay.textContent = '';
+        handleCommand(cmd);
+      } else if (e.key === 'Backspace') {
+        buffer = buffer.slice(0, -1);
+        inputDisplay.textContent = buffer;
+      } else if (e.key.length === 1) {
+        buffer += e.key;
+        inputDisplay.textContent = buffer;
+      }
+    });
+  })();
 
   async function runRestartAnimation() {
     const tsNeofetch = document.getElementById('ts-neofetch') as HTMLElement | null;

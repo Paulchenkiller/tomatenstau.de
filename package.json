@@ -9,7 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check",
+    "check": "rm -rf coverage && astro check",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "npm run check && npm run format:check",
