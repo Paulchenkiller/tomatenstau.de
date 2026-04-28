@@ -23,7 +23,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
     "@axe-core/playwright": "^4.11.1",
-    "@commitlint/cli": "^19.8.1",
+    "@commitlint/cli": "^20.5.2",
     "@commitlint/config-conventional": "^19.8.1",
     "@playwright/test": "^1.52.0",
     "@types/node": "^22.0.0",
