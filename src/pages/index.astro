@@ -1123,4 +1123,31 @@ const experienceYears = currentYear - 2012;
     // 4 — cursor
     await fadeIn(tsCursor, 300);
   }
+
+  const m = 'font-family:monospace;font-size:12px;';
+  const ok = `${m}color:#27c93f`;
+  const err = `${m}color:#ff5f56`;
+  const dim = `${m}color:#666`;
+  const base = `${m}color:#e8e8e8`;
+  console.log(
+    '%c[warn]%c unauthorized access to developer console',
+    `${m}color:#ffbd2e;font-weight:bold`,
+    base,
+  );
+  console.log(
+    '%c[info]%c initiating containment protocol...',
+    `${m}color:#4fc3f7;font-weight:bold`,
+    dim,
+  );
+  console.log('%c[info]%c just kidding. hi.', `${m}color:#4fc3f7;font-weight:bold`, dim);
+  console.log(' ');
+  console.log('%c running diagnostics:', base);
+  console.log('%c  ✓ imposter syndrome module: not found', ok);
+  console.log('%c  ✓ overengineered solutions: 3 (within acceptable range)', ok);
+  console.log('%c  ✗ coffee level: critical', err);
+  console.log('%c  ✓ tabs vs spaces conflict: suppressed (do not reopen)', ok);
+  console.log('%c  ✓ readme is actually up to date (yes, really)', ok);
+  console.log('%c  ✗ dark mode: only mode', err);
+  console.log(' ');
+  console.log('%c everything looks fine. suspicious.', dim);
 </script>

@@ -13,7 +13,7 @@
 ## Mouse-triggered
 
 - [ ] **Matrix-Regen** — Langer Klick oder Doppelklick → grüner fallender Code-Regen über den Screen
-- [ ] **Fake Coffee Process** — Klick auf verstecktes Symbol → `make coffee` läuft als Fake-Prozess durch
+- [x] **Fake Coffee Process** — `make coffee` im Terminal → läuft als Fake-Prozess durch
 
 ## Time-based
 
@@ -22,6 +22,6 @@
 
 ## Visual / Hidden
 
-- [ ] **ASCII-Art im Source** — In HTML-Comments oder `console.log` ein verstecktes ASCII-Kunstwerk für neugierige Entwickler
+- [x] **ASCII-Art im Source** — `console.log` beim Seitenaufruf: styled Banner + Repo-Link für neugierige Entwickler
 - [ ] **Cursor-Trail** — Schnelles Mausbewegen hinterlässt kurz grüne Pixel-Spuren
 - [ ] **Falscher BSOD / Kernel Panic** — Nach X Minuten Inaktivität erscheint kurz ein simulierter Systemabsturz-Screen, der nach 2 Sekunden weggeht

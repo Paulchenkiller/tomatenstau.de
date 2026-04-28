@@ -11,6 +11,21 @@ const { lang, title, description, skipToMain } = Astro.props;
 ---
 
 <!doctype html>
+<!--
+
+  ╔══════════════════════════════════════════════╗
+  ║  hey. you view-sourced a portfolio.          ║
+  ║  this means one of two things:               ║
+  ║                                              ║
+  ║    a) you're a developer                     ║
+  ║    b) you're very lost                       ║
+  ║                                              ║
+  ║  either way — welcome. make yourself at home.║
+  ╚══════════════════════════════════════════════╝
+
+  built with astro · hosted on github pages
+
+-->
 <html lang={lang} dir="ltr">
   <head>
     <meta charset="utf-8" />
@@ -29,40 +44,7 @@ const { lang, title, description, skipToMain } = Astro.props;
     <link href="/favicon/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png" />
     <meta name="theme-color" content="#111417" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      href="https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVtapbCIPrE.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather&family=Raleway:wght@800&display=swap"
-      rel="stylesheet"
-    />
-
     <slot name="head" />
-
-    <!-- High-contrast init: runs before first paint to prevent flash -->
-    <script is:inline>
-      (function () {
-        var cookieMatch = document.cookie.match(/(?:^|;\s*)pref:high-contrast=([^;]+)/);
-        var saved = cookieMatch ? cookieMatch[1] : null;
-        if (!saved) {
-          try {
-            saved = localStorage.getItem('pref:high-contrast');
-          } catch (_) {}
-        }
-        var usesSystem =
-          !saved && window.matchMedia && window.matchMedia('(prefers-contrast: more)').matches;
-        if (saved === 'on' || usesSystem) {
-          document.documentElement.setAttribute('data-theme', 'hc');
-        }
-      })();
-    </script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">{skipToMain}</a>
