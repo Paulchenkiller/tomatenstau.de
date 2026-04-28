@@ -1125,20 +1125,30 @@ const experienceYears = currentYear - 2012;
   }
 
   const m = 'font-family:monospace;font-size:12px;';
-  console.log('%c meik@tomatenstau.de', `${m}color:#27c93f;font-weight:bold;font-size:13px`);
-  console.log('%c ──────────────────────────────────────', `${m}color:#444`);
-  for (const [k, v] of [
-    ['OS      ', 'tomatenstau.de 6.1.9-astro'],
-    ['Host    ', 'github-pages'],
-    ['Shell   ', 'bash (easter eggs enabled)'],
-    ['Uptime  ', `since 2012 (${new Date().getFullYear() - 2012} years and counting)`],
-    ['Stack   ', 'Astro · TypeScript · plain CSS'],
-    ['Skills  ', 'Architecture · API · IoT · AI'],
-    ['Packages', '0 known vulnerabilities (probably)'],
-    ['Curiosity', 'clearly above average — you opened devtools'],
-  ] as const) {
-    console.log(`%c ${k}%c ${v}`, `${m}color:#4fc3f7`, `${m}color:#e8e8e8`);
-  }
-  console.log('%c ──────────────────────────────────────', `${m}color:#444`);
-  console.log('%c → github.com/Paulchenkiller/tomatenstau.de', `${m}color:#666`);
+  const ok = `${m}color:#27c93f`;
+  const err = `${m}color:#ff5f56`;
+  const dim = `${m}color:#666`;
+  const base = `${m}color:#e8e8e8`;
+  console.log(
+    '%c[warn]%c unauthorized access to developer console',
+    `${m}color:#ffbd2e;font-weight:bold`,
+    base,
+  );
+  console.log(
+    '%c[info]%c initiating containment protocol...',
+    `${m}color:#4fc3f7;font-weight:bold`,
+    dim,
+  );
+  console.log('%c[info]%c just kidding. hi.', `${m}color:#4fc3f7;font-weight:bold`, dim);
+  console.log(' ');
+  console.log('%c running diagnostics:', base);
+  console.log('%c  ✓ imposter syndrome module: not found', ok);
+  console.log('%c  ✓ overengineered solutions: 3 (within acceptable range)', ok);
+  console.log('%c  ✗ coffee level: critical', err);
+  console.log('%c  ✓ tabs vs spaces conflict: suppressed (do not reopen)', ok);
+  console.log('%c  ✓ readme is actually up to date (yes, really)', ok);
+  console.log('%c  ✗ dark mode: only mode', err);
+  console.log(' ');
+  console.log('%c everything looks fine. suspicious.', dim);
+  console.log('%c → github.com/Paulchenkiller/tomatenstau.de', `${m}color:#555`);
 </script>
