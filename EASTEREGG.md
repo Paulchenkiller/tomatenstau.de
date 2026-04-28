@@ -22,6 +22,6 @@
 
 ## Visual / Hidden
 
-- [ ] **ASCII-Art im Source** — In HTML-Comments oder `console.log` ein verstecktes ASCII-Kunstwerk für neugierige Entwickler
+- [x] **ASCII-Art im Source** — `console.log` beim Seitenaufruf: tomatenstau-ASCII-Logo + Hinweis auf das Repo für neugierige Entwickler
 - [ ] **Cursor-Trail** — Schnelles Mausbewegen hinterlässt kurz grüne Pixel-Spuren
 - [ ] **Falscher BSOD / Kernel Panic** — Nach X Minuten Inaktivität erscheint kurz ein simulierter Systemabsturz-Screen, der nach 2 Sekunden weggeht
