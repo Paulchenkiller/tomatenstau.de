@@ -13,7 +13,7 @@
 ## Mouse-triggered
 
 - [ ] **Matrix-Regen** — Langer Klick oder Doppelklick → grüner fallender Code-Regen über den Screen
-- [ ] **Fake Coffee Process** — Klick auf verstecktes Symbol → `make coffee` läuft als Fake-Prozess durch
+- [x] **Fake Coffee Process** — `make coffee` im Terminal → läuft als Fake-Prozess durch
 
 ## Time-based
 
