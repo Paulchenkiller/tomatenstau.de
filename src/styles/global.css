@@ -8,14 +8,6 @@
   --focus-color: #005fcc;
 }
 
-/* ── High contrast overrides (set on <html data-theme="hc">) ── */
-[data-theme='hc'] {
-  --app-bg: #000000;
-  --text: #ffffff;
-  --heading: #ffffff;
-  --link: #ffffff;
-  --green: #00cc44;
-}
 /* ── Base reset ── */
 *,
 *::before,
@@ -49,51 +41,7 @@ body {
 body {
   margin: 0;
   background: var(--app-bg);
-  font:
-    16px/30px 'Merriweather',
-    serif;
   color: var(--text);
-}
-
-/* ── Typography ── */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Raleway', sans-serif;
-  color: var(--heading);
-  font-style: normal;
-  text-rendering: optimizeLegibility;
-  margin: 18px 0 15px;
-}
-
-h1 {
-  font-size: 30px;
-  line-height: 36px;
-  margin-top: 0;
-  letter-spacing: -1px;
-}
-
-h2 {
-  font-size: 24px;
-  line-height: 30px;
-}
-
-h3 {
-  font-size: 20px;
-  line-height: 30px;
-}
-
-p {
-  margin: 15px 0;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 a,
