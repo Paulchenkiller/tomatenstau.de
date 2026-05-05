@@ -941,14 +941,17 @@ const experienceYears = currentYear - 2012;
       help: () =>
         [
           `<span class="cmd-success">available commands:</span>`,
-          `  help                      show this help`,
-          `  whoami                    who are you?`,
-          `  clear                     clear terminal output`,
-          `  ls                        list files`,
-          `  cat .secret               read a secret file`,
-          `  make coffee               ☕`,
-          `  sudo make me a sandwich   classic`,
-          `  exit                      close the terminal`,
+          `  help                        show this help`,
+          `  whoami                      who are you?`,
+          `  clear                       clear terminal output`,
+          `  ls                          list files`,
+          `  cat .secret                 read a secret file`,
+          `  neofetch                    system info`,
+          `  man meik                    read the manual`,
+          `  column -t experience.tsv    experience timeline`,
+          `  make coffee                 ☕`,
+          `  sudo make me a sandwich     classic`,
+          `  exit                        close the terminal`,
         ].join('\n'),
       whoami: () =>
         `a curious human who reads other people's portfolio websites at ${new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}`,
@@ -1022,6 +1025,26 @@ const experienceYears = currentYear - 2012;
       if (promptLine) promptLine.style.visibility = visible ? '' : 'hidden';
     }
 
+    function appendClonedSection(cmd: string, sourceEl: Element) {
+      const block = document.createElement('div');
+      block.innerHTML = `
+        <div class="cmd-line">
+          <span style="color:#27c93f;font-weight:700">meik@tomatenstau.de</span><span style="color:#555">:</span><span style="color:#4fc3f7">~</span><span style="color:#555">$</span>
+          <span class="cmd-echo">${cmd.replace(/</g, '&lt;')}</span>
+        </div>`;
+      const clone = sourceEl.cloneNode(true) as Element;
+      clone.removeAttribute('id');
+      clone.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
+      const wrapper = document.createElement('div');
+      wrapper.className = 'cmd-line';
+      wrapper.style.display = 'block';
+      wrapper.style.marginTop = '6px';
+      wrapper.appendChild(clone);
+      block.appendChild(wrapper);
+      cmdOutput!.appendChild(block);
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
     async function handleCommand(raw: string) {
       const cmd = raw.trim().toLowerCase();
       if (!cmd || busy) return;
@@ -1037,6 +1060,24 @@ const experienceYears = currentYear - 2012;
         await brewCoffee();
         setPromptVisible(true);
         busy = false;
+        return;
+      }
+
+      if (cmd === 'neofetch') {
+        const src = document.querySelector('#chafa');
+        if (src) appendClonedSection(raw.trim(), src);
+        return;
+      }
+
+      if (cmd === 'man meik') {
+        const src = document.querySelector('.man-output');
+        if (src) appendClonedSection(raw.trim(), src);
+        return;
+      }
+
+      if (cmd === 'column -t experience.tsv') {
+        const src = document.querySelector('.exp-table');
+        if (src) appendClonedSection(raw.trim(), src);
         return;
       }
 
