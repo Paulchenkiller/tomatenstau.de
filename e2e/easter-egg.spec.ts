@@ -68,6 +68,40 @@ test.describe('Interactive terminal', () => {
       { timeout: 5000 },
     );
   });
+
+  test('neofetch command shows name and role in output', async ({ page }) => {
+    await page.keyboard.type('neofetch');
+    await page.keyboard.press('Enter');
+    const output = page.locator('#ts-cmd-output').last();
+    await expect(output).toContainText('Meik Geldmacher');
+    await expect(output).toContainText('Solution');
+  });
+
+  test('man meik command shows man page in output', async ({ page }) => {
+    await page.keyboard.type('man meik');
+    await page.keyboard.press('Enter');
+    const output = page.locator('#ts-cmd-output').last();
+    await expect(output).toContainText('NAME');
+    await expect(output).toContainText('DESCRIPTION');
+  });
+
+  test('column -t experience.tsv command shows experience table in output', async ({ page }) => {
+    await page.keyboard.type('column -t experience.tsv');
+    await page.keyboard.press('Enter');
+    const output = page.locator('#ts-cmd-output').last();
+    await expect(output).toContainText('PERIOD');
+    await expect(output).toContainText('ROLE');
+    await expect(output).toContainText('COMPANY');
+  });
+
+  test('help lists neofetch, man meik and experience commands', async ({ page }) => {
+    await page.keyboard.type('help');
+    await page.keyboard.press('Enter');
+    const response = page.locator('#ts-cmd-output .cmd-response').last();
+    await expect(response).toContainText('neofetch');
+    await expect(response).toContainText('man meik');
+    await expect(response).toContainText('column -t experience.tsv');
+  });
 });
 
 test.describe('Easter egg', () => {
